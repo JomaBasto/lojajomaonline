@@ -7,9 +7,7 @@ export default function App() {
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showForm, setShowForm] = useState(false);
-  const [logged, setLogged] = useState(
-  !!localStorage.getItem("token")
-);
+  const [logged, setLogged] = useState(false);
 const [showLogin, setShowLogin] = useState(false);
   const [category, setCategory] = useState("all");
   const [activeImage, setActiveImage] = useState(0);
@@ -20,6 +18,7 @@ const [showLogin, setShowLogin] = useState(false);
 const [user, setUser] = useState(null);
 const [isAdmin, setIsAdmin] = useState(false);
 const [showRegister, setShowRegister] = useState(false);
+
 
   // 👟 TAMANHO
   const [selectedSize, setSelectedSize] = useState(null);
@@ -194,12 +193,6 @@ const [showRegister, setShowRegister] = useState(false);
   };
 
   // 🔍 FILTRO
-  const filteredProducts = Array.isArray(products)
-  ? products.filter((p) => {
-      if (category === "all") return true;
-      return p.category === category;
-    })
-  : [];
 
   // 🛒 ADD TO CART
   const addToCart = (product) => {
@@ -516,37 +509,33 @@ const [showRegister, setShowRegister] = useState(false);
         )}
 </section>
         {/* PRODUTOS */}
-        <div className="grid">
-  {Array.isArray(filteredProducts) &&
-    filteredProducts.map((p) => (
+<div className="grid">
+  {Array.isArray(products) && products.length > 0 ? (
+    products.map((p) => (
       <div className="card" key={p._id}>
-
-  {/* IMAGEM PRINCIPAL APENAS */}
-  <img
-          src={p.images?.[0]}
-          alt={p.name}
-          onClick={() => openGallery(p)}
-          style={{ cursor: "pointer" }}
-        />
 
         <h3>{p.name}</h3>
         <p>{p.price} €</p>
 
-        <button onClick={() => addToCart(p)}>
-          Adicionar ao Carrinho
-        </button>
-
         {logged && (
           <>
-            <button onClick={() => editProduct(p)}>Editar</button>
-            <button onClick={() => deleteProduct(p._id)}>Apagar</button>
+            <button onClick={() => editProduct(p)}>
+              Editar
+            </button>
+
+            <button onClick={() => deleteProduct(p._id)}>
+              Apagar
+            </button>
           </>
         )}
 
       </div>
     ))
-  }
+  ) : (
+    <p>Sem produtos</p>
+  )}
 </div>
+  
       {/* CARRINHO */}
       {cartOpen && (
   <div className="cart-overlay">
