@@ -57,15 +57,23 @@ const [showRegister, setShowRegister] = useState(false);
   useEffect(() => {
   async function loadProducts() {
     try {
-      const res = await fetch("https://lojajomaonline-1.onrender.com");
+      const res = await fetch("https://lojajomaonline-1.onrender.com/produtos");
+
+      if (!res.ok) {
+        console.log("Erro HTTP:", res.status);
+        setProducts([]);
+        return;
+      }
+
       const data = await res.json();
 
       if (Array.isArray(data)) {
         setProducts(data);
       } else {
-        console.log("API não devolveu array:", data);
+        console.log("Resposta inválida:", data);
         setProducts([]);
       }
+
     } catch (err) {
       console.log("Erro ao carregar produtos:", err);
       setProducts([]);
@@ -77,12 +85,12 @@ const [showRegister, setShowRegister] = useState(false);
 
   // 🗑️ APAGAR PRODUTO
   const deleteProduct = async (id) => {
-    await fetch(`http://localhost:3001/produtos/${id}`, {
-      method: "DELETE",
-    });
+  await fetch(`https://lojajomaonline-1.onrender.com/produtos/${id}`, {
+    method: "DELETE",
+  });
 
-    setProducts(products.filter(p => p._id !== id));
-  };
+  setProducts(products.filter(p => p._id !== id));
+};
 
   // ✏️ EDITAR PRODUTO
   const editProduct = async (product) => {
@@ -93,18 +101,18 @@ const [showRegister, setShowRegister] = useState(false);
 
     if (!newName || !newPrice || !newImage) return;
 
-    await fetch(`http://localhost:3001/produtos/${product._id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        name: newName,
-        price: newPrice,
-        imageUrl: newImage,
-        description: newDescription
-      })
-    });
+    await fetch(`https://lojajomaonline-1.onrender.com/produtos/${product._id}`, {
+  method: "PUT",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    name: newName,
+    price: newPrice,
+    imageUrl: newImage,
+    description: newDescription
+  })
+});
 
     setProducts(products.map(p =>
       p._id === product._id

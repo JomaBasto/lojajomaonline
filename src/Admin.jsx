@@ -8,9 +8,11 @@ export default function Admin() {
     loadOrders();
   }, []);
 
-  const loadOrders = async () => {
-    const res = await fetch("http://localhost:3001/encomendas");
-    const data = await res.json();
+  const API_URL = "https://lojajomaonline-1.onrender.com";
+
+const loadOrders = async () => {
+  const res = await fetch(`${API_URL}/encomendas`);
+  const data = await res.json();
 
     setOrders(data);
   };
