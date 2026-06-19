@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./firebase";
 
 export default function App() {
   // 🔥 STATES
@@ -59,7 +57,7 @@ const [showRegister, setShowRegister] = useState(false);
   useEffect(() => {
   async function loadProducts() {
     try {
-      const res = await fetch("http://localhost:3001/produtos");
+      const res = await fetch("https://lojajomaonline-1.onrender.com/produtos");
       const data = await res.json();
 
       if (Array.isArray(data)) {
@@ -197,7 +195,7 @@ const [showRegister, setShowRegister] = useState(false);
 
   // 🛒 ADD TO CART
   const addToCart = (product) => {
-  if (!product) return;
+  if (!selectedProduct) return;
 
   if (!selectedSize) {
     alert("Escolhe um tamanho primeiro 👟");
@@ -240,7 +238,7 @@ const [showRegister, setShowRegister] = useState(false);
     };
 
     try {
-      const res = await fetch("http://localhost:3001/encomendas", {
+      const res = await fetch("https://lojajomaonline-1.onrender.com/encomendas", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -291,7 +289,7 @@ const [showRegister, setShowRegister] = useState(false);
       Olá, {user?.name || "Utilizador"}
     </span>
 
-    <button onClick={handleLogout}>
+    <button onClick={logout}>
       Logout
     </button>
     {/* 👑 ADMIN AQUI */}
@@ -517,12 +515,7 @@ const [showRegister, setShowRegister] = useState(false);
 
   {/* IMAGEM PRINCIPAL APENAS */}
   <img
-  src={
-    Array.isArray(p.images) && p.images.length > 0
-      ? p.images[0]
-      : "https://via.placeholder.com/300"
-  }
-
+          src={p.images?.[0]}
           alt={p.name}
           onClick={() => openGallery(p)}
           style={{ cursor: "pointer" }}
