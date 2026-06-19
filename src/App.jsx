@@ -57,7 +57,7 @@ const [showRegister, setShowRegister] = useState(false);
   useEffect(() => {
   async function loadProducts() {
     try {
-      const res = await fetch("https://lojajomaonline-1.onrender.com/produtos");
+      const res = await fetch("https://lojajomaonline-1.onrender.com");
       const data = await res.json();
 
       if (Array.isArray(data)) {
@@ -157,7 +157,7 @@ const [showRegister, setShowRegister] = useState(false);
     };
 
     try {
-      const res = await fetch("http://localhost:3001/produtos", {
+      const res = await fetch("https://lojajomaonline-1.onrender.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -238,7 +238,7 @@ const [showRegister, setShowRegister] = useState(false);
     };
 
     try {
-      const res = await fetch("https://lojajomaonline-1.onrender.com/encomendas", {
+      const res = await fetch("https://lojajomaonline-1.onrender.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
