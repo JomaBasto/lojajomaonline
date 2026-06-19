@@ -297,7 +297,7 @@ const [showRegister, setShowRegister] = useState(false);
       Olá, {user?.name || "Utilizador"}
     </span>
 
-    <button onClick={logout}>
+    <button onClick={handleLogout}>
       Logout
     </button>
     {/* 👑 ADMIN AQUI */}
@@ -760,4 +760,5 @@ const [showRegister, setShowRegister] = useState(false);
 </footer>
 
 </div>
-); }
+); 
+}
