@@ -66,15 +66,12 @@ const [showRegister, setShowRegister] = useState(false);
 
       const data = await res.json();
 
-      if (Array.isArray(data)) {
-        setProducts(data);
-      } else {
-        console.log("Resposta inválida:", data);
-        setProducts([]);
-      }
+      console.log("PRODUTOS:", data);
+
+      setProducts(Array.isArray(data) ? data : []);
 
     } catch (err) {
-      console.log("Erro ao carregar produtos:", err);
+      console.log("Erro fetch:", err);
       setProducts([]);
     }
   }
