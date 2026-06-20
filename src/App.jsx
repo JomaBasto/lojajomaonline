@@ -7,7 +7,9 @@ export default function App() {
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showForm, setShowForm] = useState(false);
-  const [logged, setLogged] = useState(false);
+  const [logged, setLogged] = useState(
+  !!localStorage.getItem("token")
+);
 const [showLogin, setShowLogin] = useState(false);
   const [category, setCategory] = useState("all");
   const [activeImage, setActiveImage] = useState(0);
@@ -18,7 +20,46 @@ const [showLogin, setShowLogin] = useState(false);
 const [user, setUser] = useState(null);
 const [isAdmin, setIsAdmin] = useState(false);
 const [showRegister, setShowRegister] = useState(false);
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
 
+const login = async () => {
+  try {
+    const res = await fetch("https://lojajomaonline-1.onrender.com/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    console.log("STATUS:", res.status);
+
+    const data = await res.text(); // 👈 IMPORTANTE (não json!)
+
+    console.log("RESPOSTA BRUTA:", data);
+
+    const json = JSON.parse(data);
+
+    console.log("JSON FINAL:", json);
+
+    if (!res.ok) {
+      alert(json.message || "Erro no login");
+      return;
+    }
+
+    if (json.token) {
+      localStorage.setItem("token", json.token);
+    }
+
+    setLogged(true);
+    setShowLogin(false);
+    setIsAdmin(json.user?.role === "admin");
+    setUser(json.user);
+
+  } catch (err) {
+    console.error("ERRO REAL LOGIN:", err);
+    alert("Erro no login");
+  }
+};
 
   // 👟 TAMANHO
   const [selectedSize, setSelectedSize] = useState(null);
@@ -56,22 +97,17 @@ const [showRegister, setShowRegister] = useState(false);
   useEffect(() => {
   async function loadProducts() {
     try {
-      const res = await fetch("https://lojajomaonline-1.onrender.com/produtos");
-
-      if (!res.ok) {
-        console.log("Erro HTTP:", res.status);
-        setProducts([]);
-        return;
-      }
-
+      const res = await fetch("http://localhost:3001/produtos");
       const data = await res.json();
 
-      console.log("PRODUTOS:", data);
-
-      setProducts(Array.isArray(data) ? data : []);
-
+      if (Array.isArray(data)) {
+        setProducts(data);
+      } else {
+        console.log("API não devolveu array:", data);
+        setProducts([]);
+      }
     } catch (err) {
-      console.log("Erro fetch:", err);
+      console.log("Erro ao carregar produtos:", err);
       setProducts([]);
     }
   }
@@ -81,12 +117,12 @@ const [showRegister, setShowRegister] = useState(false);
 
   // 🗑️ APAGAR PRODUTO
   const deleteProduct = async (id) => {
-  await fetch(`https://lojajomaonline-1.onrender.com/produtos/${id}`, {
-    method: "DELETE",
-  });
+    await fetch(`http://localhost:3001/produtos/${id}`, {
+      method: "DELETE",
+    });
 
-  setProducts(products.filter(p => p._id !== id));
-};
+    setProducts(products.filter(p => p._id !== id));
+  };
 
   // ✏️ EDITAR PRODUTO
   const editProduct = async (product) => {
@@ -97,18 +133,18 @@ const [showRegister, setShowRegister] = useState(false);
 
     if (!newName || !newPrice || !newImage) return;
 
-    await fetch(`https://lojajomaonline-1.onrender.com/produtos/${product._id}`, {
-  method: "PUT",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    name: newName,
-    price: newPrice,
-    imageUrl: newImage,
-    description: newDescription
-  })
-});
+    await fetch(`http://localhost:3001/produtos/${product._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: newName,
+        price: newPrice,
+        imageUrl: newImage,
+        description: newDescription
+      })
+    });
 
     setProducts(products.map(p =>
       p._id === product._id
@@ -161,7 +197,7 @@ const [showRegister, setShowRegister] = useState(false);
     };
 
     try {
-      const res = await fetch("https://lojajomaonline-1.onrender.com", {
+      const res = await fetch("http://localhost:3001/produtos", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -190,6 +226,12 @@ const [showRegister, setShowRegister] = useState(false);
   };
 
   // 🔍 FILTRO
+  const filteredProducts = Array.isArray(products)
+  ? products.filter((p) => {
+      if (category === "all") return true;
+      return p.category === category;
+    })
+  : [];
 
   // 🛒 ADD TO CART
   const addToCart = (product) => {
@@ -236,7 +278,7 @@ const [showRegister, setShowRegister] = useState(false);
     };
 
     try {
-      const res = await fetch("https://lojajomaonline-1.onrender.com", {
+      const res = await fetch("http://localhost:3001/encomendas", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -266,7 +308,8 @@ const [showRegister, setShowRegister] = useState(false);
       backgroundRepeat: "no-repeat",
     }}
   >
-  
+  <p>Logged: {String(logged)}</p>
+    <p>Admin: {String(isAdmin)}</p>
       {/* HEADER + MENU */}
       <header className="header">
         <h1 className="logo">JomaBasto Store</h1>
@@ -287,7 +330,7 @@ const [showRegister, setShowRegister] = useState(false);
       Olá, {user?.name || "Utilizador"}
     </span>
 
-    <button onClick={handleLogout}>
+    <button onClick={logout}>
       Logout
     </button>
     {/* 👑 ADMIN AQUI */}
@@ -506,33 +549,51 @@ const [showRegister, setShowRegister] = useState(false);
         )}
 </section>
         {/* PRODUTOS */}
-<div className="grid">
-  {Array.isArray(products) && products.length > 0 ? (
-    products.map((p) => (
+        <div className="grid">
+  {Array.isArray(filteredProducts) &&
+    filteredProducts.map((p) => (
       <div className="card" key={p._id}>
+
+  {/* IMAGEM PRINCIPAL APENAS */}
+  <img
+          src={p.images?.[0]}
+          alt={p.name}
+          onClick={() => openGallery(p)}
+          style={{ cursor: "pointer" }}
+        />
 
         <h3>{p.name}</h3>
         <p>{p.price} €</p>
 
-        {logged && (
-          <>
-            <button onClick={() => editProduct(p)}>
-              Editar
-            </button>
+        <div
+  style={{
+    display: "flex",
+    gap: "10px",
+    flexWrap: "wrap",
+    marginTop: "10px"
+  }}
+>
+  <button onClick={() => addToCart(p)}>
+    🛒 Carrinho
+  </button>
 
-            <button onClick={() => deleteProduct(p._id)}>
-              Apagar
-            </button>
-          </>
-        )}
+  {isAdmin && (
+    <>
+      <button onClick={() => editProduct(p)}>
+        ✏️ Editar
+      </button>
+
+      <button onClick={() => deleteProduct(p._id)}>
+        🗑️ Apagar
+      </button>
+    </>
+  )}
+</div>
 
       </div>
     ))
-  ) : (
-    <p>Sem produtos</p>
-  )}
+  }
 </div>
-  
       {/* CARRINHO */}
       {cartOpen && (
   <div className="cart-overlay">
@@ -739,6 +800,47 @@ const [showRegister, setShowRegister] = useState(false);
     </div>
   </div>
 )}
+{showLogin && (
+  <div
+    style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      background: "rgba(0,0,0,0.6)",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      zIndex: 9999
+    }}
+  >
+    <div style={{ background: "white", padding: "20px", borderRadius: "10px" }}>
+      
+      <h2>Login</h2>
+
+      <input
+        placeholder="Email"
+        onChange={(e) => setEmail(e.target.value)}
+      />
+
+      <input
+        type="password"
+        placeholder="Password"
+        onChange={(e) => setPassword(e.target.value)}
+      />
+
+      <button onClick={login}>
+        Entrar
+      </button>
+
+      <button onClick={() => setShowLogin(false)}>
+        Fechar
+      </button>
+
+    </div>
+  </div>
+)}
 
 {/* FOOTER */}
 <footer className="footer">
@@ -746,5 +848,4 @@ const [showRegister, setShowRegister] = useState(false);
 </footer>
 
 </div>
-); 
-}
+); }
