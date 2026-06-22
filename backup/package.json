@@ -1,0 +1,1246 @@
+App.jsx
+
+import { useEffect, useState } from "react";
+import {
+  collection,
+  getDocs,
+  deleteDoc,
+  doc,
+  updateDoc,
+  addDoc
+} from "firebase/firestore";
+import { db } from "./firebase";
+import "./App.css";
+
+export default function App() {
+  const [category, setCategory] = useState("all");
+  const [products, setProducts] = useState([]);
+
+  // ➕ ADICIONAR PRODUTO
+  const addProduct = async () => {
+    const name = prompt("Nome do produto:");
+    const price = prompt("Preço:");
+    const imageUrl = prompt("Imagem URL:");
+
+    if (!name || !price || !imageUrl) return;
+
+    await addDoc(collection(db, "products"), {
+      name,
+      price,
+      imageUrl,
+      images: []
+    });
+
+    window.location.reload();
+  };
+
+  // 📦 CARREGAR PRODUTOS
+  useEffect(() => {
+    const filteredProducts =
+  category === "all"
+    ? products
+    : products.filter((p) => p.category === category);
+    async function loadProducts() {
+      const snapshot = await getDocs(collection(db, "products"));
+
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      setProducts(data);
+    }
+
+    loadProducts();
+  }, []);
+
+  return (
+    <div>
+
+      {/* HEADER */}
+      <header className="header">
+
+        <h1 className="logo">
+          JomaBasto Store
+        </h1>
+
+        <nav className="nav">
+
+          {/* HOMEM */}
+          <div className="dropdown">
+            <a>Homem ▾</a>
+
+            <div className="dropdown-menu">
+              <a>Running</a>
+              <a>Trail</a>
+              <a>Futebol</a>
+              <a>Futsal</a>
+              <a>Andebol</a>
+              <a>Voleibol</a>
+              <a>Basquetebol</a>
+              <a>Ténis</a>
+              <a>Padel</a>
+              <a>Casual</a>
+              <a>Verão</a>
+            </div>
+          </div>
+
+          {/* MULHER */}
+          <div className="dropdown">
+            <a>Mulher ▾</a>
+
+            <div className="dropdown-menu">
+              <a>Running</a>
+              <a>Trail</a>
+              <a>Futebol</a>
+              <a>Futsal</a>
+              <a>Andebol</a>
+              <a>Voleibol</a>
+              <a>Basquetebol</a>
+              <a>Ténis</a>
+              <a>Padel</a>
+              <a>Casual</a>
+              <a>Verão</a>
+            </div>
+          </div>
+
+          {/* CRIANÇA */}
+          <div className="dropdown">
+            <a>Criança ▾</a>
+
+            <div className="dropdown-menu">
+              <a>Running</a>
+              <a>Trail</a>
+              <a>Futebol</a>
+              <a>Futsal</a>
+              <a>Casual</a>
+              <a>Verão</a>
+            </div>
+          </div>
+
+          {/* ACESSÓRIOS */}
+          <div className="dropdown">
+            <a>Acessórios ▾</a>
+
+            <div className="dropdown-menu">
+              <a>Bola Futebol</a>
+              <a>Bola Futsal</a>
+              <a>Mochilas</a>
+              <a>Meias</a>
+              <a>Luvas</a>
+              <a>Acessórios de Trail/Running</a>
+              <a>Piscina</a>
+              <a>Bonés</a>
+              <a>Outros</a>
+            </div>
+          </div>
+
+          <a>Outlet</a>
+
+        </nav>
+
+      </header>
+
+      {/* HERO */}
+      <section className="hero">
+        <div className="overlay">
+          <h2>NUNCA PARES</h2>
+          <p>Descobre a nova coleção desportiva premium.</p>
+          <button>Comprar Agora</button>
+        </div>
+      </section>
+
+      {/* PRODUTOS */}
+      <section className="products-section">
+
+        <h2>🔥 Novidades</h2>
+
+        {/* ➕ BOTÃO ADICIONAR */}
+        <button onClick={addProduct}>
+          + Adicionar Produto
+        </button>
+
+        <div className="grid">
+
+          {products.map((p) => (
+            <div className="card" key={p.id}>
+
+              <img
+                src={p.imageUrl || "https://via.placeholder.com/300"}
+                alt={p.name}
+              />
+
+              <div className="info">
+
+                <h3>{p.name}</h3>
+
+                <p className="price">
+                  {p.price} €
+                </p>
+
+                <button>
+                  Adicionar ao Carrinho
+                </button>
+
+              </div>
+
+            </div>
+          ))}
+
+        </div>
+
+      </section>
+
+      {/* FOOTER */}
+      <footer className="footer">
+        <p>© 2026 JOMA STORE — Todos os direitos reservados</p>
+      </footer>
+
+    </div>
+  );
+}
+
+
+App.css
+
+:root {
+  --primary: #0057b8;
+  --primary-dark: #004494;
+  --text: #111;
+  --background: #f5f5f5;
+  --white: #ffffff;
+}* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY */
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  color: #111;
+}
+
+/* HEADER */
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  background: #0057b8;
+
+  color: white;
+
+  padding: 20px 60px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  z-index: 1000;
+
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* LOGO */
+
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 1px;
+}
+
+/* NAV */
+
+.header nav {
+  display: flex;
+  gap: 30px;
+}
+
+.header nav a {
+  color: white !important;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  opacity: 1;
+}
+
+.header nav a:hover {
+  color: #e6e6e6;
+  opacity: 1;
+}
+
+/* 🔥 BOTÕES PRETOS */
+
+button {
+  background-color: black;
+  color: white;
+
+  border: 1px solid black;
+
+  padding: 8px 14px;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+}
+
+/* HERO */
+
+.hero {
+  height: 100vh;
+
+  background-image: url("https://images.joma-sport.com/ka/apps/joma/files/20250513_134223_rmetls2612_3_.jpg");
+
+  background-size: cover;
+  background-position: center;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0,0,0,0.5);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding-left: 80px;
+}
+
+.overlay h2 {
+  color: white;
+  font-size: 80px;
+}
+
+.overlay p {
+  color: white;
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+.overlay button {
+  width: 220px;
+
+  padding: 15px;
+
+  border: none;
+
+  background: white;
+
+  font-size: 18px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.overlay button:hover {
+  background: #0057b8;
+  color: white;
+}
+
+/* PRODUCTS */
+
+.products-section {
+  padding: 80px 60px;
+}
+
+.products-section h2 {
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: 0.3s;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.info {
+  padding: 20px;
+}
+
+.info h3 {
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.info button {
+  width: 100%;
+  padding: 14px;
+
+  border: none;
+
+  background: #0057b8;
+  color: white;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.info button:hover {
+  opacity: 0.9;
+}
+
+/* FOOTER */
+
+.footer {
+  background: #0057b8;
+  color: white;
+
+  text-align: center;
+
+  padding: 30px;
+
+  margin-top: 60px;
+}
+
+/* NAV + DROPDOWN */
+
+.nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 20px;
+  left: 0;
+
+  background: white;
+  border: 1px solid #ddd;
+
+  display: flex;
+  flex-direction: column;
+
+  min-width: 150px;
+
+  z-index: 1000;
+}
+
+.dropdown-menu a {
+  padding: 8px;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.dropdown-menu a:hover {
+  background: #eee;
+  color: black;
+}
+
+.dropdown-menu a:hover {
+  background: #eee;
+}.logo-img {
+  height: 40px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  background: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+}
+
+.icons {
+  color: white;
+  cursor: pointer;
+}.card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}.dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 25px;
+  left: 0;
+
+  background: white;
+  border: 1px solid #ddd;
+
+  display: none;
+  flex-direction: column;
+
+  min-width: 180px;
+  z-index: 1000;
+}
+
+.dropdown-menu a {
+  padding: 10px;
+  color: black;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  background: #8a1414;
+}
+
+/* 🔥 abre menu ao passar rato */
+.dropdown:hover .dropdown-menu {
+  display: flex;
+}.dropdown-menu a {
+  color: black;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  color: #0057b8;
+}.header nav a {
+  background: var(--primary);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+
+firebase
+
+import { collection, getDocs, deleteDoc, doc, updateDoc, addDoc } from "firebase/firestore";
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
+import { getAuth } from "firebase/auth";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBwKdkDJCViVvvcfaxZ35_GGnRl5KQUKOU",
+  authDomain: "loja-online-a21b1.firebaseapp.com",
+  projectId: "loja-online-a21b1",
+  storageBucket: "loja-online-a21b1.firebasestorage.app",
+  messagingSenderId: "392700891313",
+  appId: "1:392700891313:web:d89997a94e6136a5289290",
+  measurementId: "G-DZ1NCEKG3B"
+};
+
+const app = initializeApp(firebaseConfig);
+
+// 🔥 Firestore (produtos)
+export const db = getFirestore(app);
+
+// 🖼️ Storage (imagens)
+export const storage = getStorage(app);
+
+// 🔐 Authentication (login)
+export const auth = getAuth(app);
+
+login 
+
+import { useState } from "react";
+import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
+import { auth } from "./firebase";
+
+export default function Login({ setUser }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  async function handleLogin() {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      setUser(userCredential.user);
+    } catch (error) {
+      alert("Login inválido");
+    }
+  }
+
+  async function handleResetPassword() {
+    try {
+      await sendPasswordResetEmail(auth, email);
+      alert("Email de reset enviado!");
+    } catch (error) {
+      console.log(error);
+      alert("Erro ao enviar reset");
+    }
+  }
+
+  return (
+    <div style={{ padding: 20 }}>
+      <h2>🔐 Admin Login</h2>
+
+      <input
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+
+      <br /><br />
+
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+
+      <br /><br />
+
+      <button onClick={handleLogin}>
+        Entrar
+      </button>
+
+      <br /><br />
+
+      <button onClick={handleResetPassword}>
+        Recuperar password
+      </button>
+    </div>
+  );
+}
+
+
+main.jsx
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+
+index.html
+
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loja Online</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
+
+ultimo App.jsx
+
+import { useEffect, useState } from "react";
+import {
+  collection,
+  getDocs,
+  addDoc
+} from "firebase/firestore";
+import { db } from "./firebase";
+import "./App.css";
+
+export default function App() {
+
+  const [products, setProducts] = useState([]);
+  const [category, setCategory] = useState("all");
+
+  // 🔍 FILTRO
+  const filteredProducts = products.filter((p) => {
+    if (category === "all") return true;
+    return p.category === category;
+  });
+
+  // ➕ ADICIONAR PRODUTO
+  const addProduct = async () => {
+    const name = prompt("Nome do produto:");
+    const price = prompt("Preço:");
+    const imageUrl = prompt("Imagem URL:");
+
+    if (!name || !price || !imageUrl) return;
+
+    await addDoc(collection(db, "products"), {
+      name,
+      price,
+      imageUrl,
+      category: "all",
+      images: []
+    });
+
+    window.location.reload();
+  };
+
+  // 📦 CARREGAR PRODUTOS
+  useEffect(() => {
+    async function loadProducts() {
+      const snapshot = await getDocs(collection(db, "products"));
+
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      setProducts(data);
+    }
+
+    loadProducts();
+  }, []);
+
+  return (
+    <div>
+
+      <header className="header">
+        <h1 className="logo">JomaBasto Store</h1>
+
+        <nav className="nav">
+
+          <div className="dropdown">
+            <a onClick={() => setCategory("all")}>Homem ▾</a>
+            <div className="dropdown-menu">
+              <a onClick={() => setCategory("homem-running")}>Running</a>
+    <a onClick={() => setCategory("homem-trail")}>Trail</a>
+    <a onClick={() => setCategory("homem-futebol")}>Futebol</a>
+    <a onClick={() => setCategory("homem-futsal")}>Futsal</a>
+    <a onClick={() => setCategory("homem-andebol")}>Andebol</a>
+    <a onClick={() => setCategory("homem-voleibol")}>Voleibol</a>
+    <a onClick={() => setCategory("homem-basquetebol")}>Basquetebol</a>
+    <a onClick={() => setCategory("homem-tenis")}>Ténis</a>
+    <a onClick={() => setCategory("homem-padel")}>Padel</a>
+    <a onClick={() => setCategory("homem-casual")}>Casual</a>
+    <a onClick={() => setCategory("homem-caminhada")}>Caminhada</a>
+            </div>
+          </div>
+
+          <div className="dropdown">
+  <a onClick={() => setCategory("all")}>Mulher ▾</a>
+
+  <div className="dropdown-menu">
+    <a onClick={() => setCategory("mulher-running")}>Running</a>
+    <a onClick={() => setCategory("mulher-trail")}>Trail</a>
+    <a onClick={() => setCategory("mulher-futebol")}>Futebol</a>
+    <a onClick={() => setCategory("mulher-futsal")}>Futsal</a>
+    <a onClick={() => setCategory("mulher-andebol")}>Andebol</a>
+    <a onClick={() => setCategory("mulher-voleibol")}>Voleibol</a>
+    <a onClick={() => setCategory("mulher-basquetebol")}>Basquetebol</a>
+    <a onClick={() => setCategory("mulher-tenis")}>Ténis</a>
+    <a onClick={() => setCategory("mulher-padel")}>Padel</a>
+    <a onClick={() => setCategory("mulher-casual")}>Casual</a>
+    <a onClick={() => setCategory("mulher-caminhada")}>Caminhada</a>
+  </div>
+</div>
+
+          <div className="dropdown">
+  <a onClick={() => setCategory("all")}>Criança ▾</a>
+
+  <div className="dropdown-menu">
+    <a onClick={() => setCategory("crianca-running")}>Running</a>
+    <a onClick={() => setCategory("crianca-trail")}>Trail</a>
+    <a onClick={() => setCategory("crianca-casual")}>Casual</a>
+    <a onClick={() => setCategory("crianca-futebol")}>Futebol</a>
+    <a onClick={() => setCategory("crianca-futsal")}>Futsal</a>
+  </div>
+</div>
+
+          <div className="dropdown">
+  <a onClick={() => setCategory("all")}>Acessórios ▾</a>
+
+  <div className="dropdown-menu">
+    <a onClick={() => setCategory("acessorios-bolas")}>Bolas</a>
+    <a onClick={() => setCategory("acessorios-luvas")}>Luvas</a>
+    <a onClick={() => setCategory("acessorios-meias")}>Meias</a>
+    <a onClick={() => setCategory("acessorios-mochilas")}>Mochilas</a>
+    <a onClick={() => setCategory("acessorios-bones")}>Bonés</a>
+    <a onClick={() => setCategory("acessorios-trail-running")}>Trail/Running</a>
+    <a onClick={() => setCategory("acessorios-verao")}>Verão</a>
+    <a onClick={() => setCategory("acessorios-outros")}>Outros</a>
+  </div>
+</div>
+
+          <a onClick={() => setCategory("all")}>Outlet</a>
+
+        </nav>
+      </header>
+
+      <section className="hero">
+        <div className="overlay">
+          <h2>NUNCA PARES</h2>
+          <p>Descobre a nova coleção desportiva premium.</p>
+          <button>Comprar Agora</button>
+        </div>
+      </section>
+
+      <section className="products-section">
+
+        <h2>🔥 Novidades</h2>
+
+        <button onClick={addProduct}>
+          + Adicionar Produto
+        </button>
+
+        <div className="grid">
+
+          {filteredProducts.map((p) => (
+            <div className="card" key={p.id}>
+
+              <img
+                src={p.imageUrl || "https://via.placeholder.com/300"}
+                alt={p.name}
+              />
+
+              <div className="info">
+                <h3>{p.name}</h3>
+                <p className="price">{p.price} €</p>
+
+                <button>
+                  Adicionar ao Carrinho
+                </button>
+              </div>
+
+            </div>
+          ))}
+
+        </div>
+
+      </section>
+
+      <footer className="footer">
+        <p>© 2026 JOMA STORE</p>
+      </footer>
+
+    </div>
+  );
+}
+
+
+ultimissimo App.jsx
+
+import { useEffect, useState } from "react";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  deleteDoc,
+  doc,
+  updateDoc
+} from "firebase/firestore";
+import { db } from "./firebase";
+import "./App.css";
+
+export default function App() {
+
+  const [products, setProducts] = useState([]);
+  const [category, setCategory] = useState("all");
+  const [showForm, setShowForm] = useState(false);
+
+  // 🗑️ APAGAR PRODUTO
+  const deleteProduct = async (id) => {
+    await deleteDoc(doc(db, "products", id));
+    setProducts(products.filter(p => p.id !== id));
+  };
+
+  // ✏️ EDITAR PRODUTO
+  const editProduct = async (product) => {
+    const newName = prompt("Novo nome:", product.name);
+    const newPrice = prompt("Novo preço:", product.price);
+    const newImage = prompt("Nova imagem URL:", product.imageUrl);
+    const newDescription = prompt("Nova descrição:", product.description);
+
+    if (!newName || !newPrice || !newImage) return;
+
+    await updateDoc(doc(db, "products", product.id), {
+      name: newName,
+      price: newPrice,
+      imageUrl: newImage,
+      description: newDescription
+    });
+
+    setProducts(products.map(p =>
+      p.id === product.id
+        ? { ...p, name: newName, price: newPrice, imageUrl: newImage, description: newDescription }
+        : p
+    ));
+  };
+
+
+  // 🔥 FORM STATE
+  const [form, setForm] = useState({
+  name: "",
+  price: "",
+  imageUrl: "",
+  category: "homem-running",
+  description: "",
+  sizes: []
+});
+
+  // 🔍 FILTRO PRODUTOS
+  const filteredProducts = products.filter((p) => {
+    if (category === "all") return true;
+    return p.category === category;
+  });
+
+  // ➕ ADICIONAR PRODUTO
+  const addProduct = async () => {
+  if (!form.name || !form.price || !form.imageUrl) return;
+
+  const productData = {
+    name: form.name,
+    price: form.price,
+    imageUrl: form.imageUrl,
+    category: form.category,
+    description: form.description,
+    sizes: []
+  };
+
+  await addDoc(collection(db, "products"), productData);
+
+  setForm({
+    name: "",
+    price: "",
+    imageUrl: "",
+    category: "homem-running",
+    description: "",
+    sizes: []
+  });
+
+  setShowForm(false);
+};
+
+  // 📦 CARREGAR PRODUTOS
+  useEffect(() => {
+    async function loadProducts() {
+      const snapshot = await getDocs(collection(db, "products"));
+
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      setProducts(data);
+    }
+
+    loadProducts();
+  }, []);
+
+  return (
+    <div>
+
+      {/* HEADER */}
+      <header className="header">
+        <h1 className="logo">JomaBasto Store</h1>
+
+        <nav className="nav">
+
+          {/* HOMEM */}
+          <div className="dropdown">
+            <a onClick={() => setCategory("all")}>Homem ▾</a>
+            <div className="dropdown-menu">
+              <a onClick={() => setCategory("homem-running")}>Running</a>
+              <a onClick={() => setCategory("homem-trail")}>Trail</a>
+              <a onClick={() => setCategory("homem-futebol")}>Futebol</a>
+              <a onClick={() => setCategory("homem-futsal")}>Futsal</a>
+              <a onClick={() => setCategory("homem-andebol")}>Andebol</a>
+              <a onClick={() => setCategory("homem-voleibol")}>Voleibol</a>
+              <a onClick={() => setCategory("homem-basquetebol")}>Basquetebol</a>
+              <a onClick={() => setCategory("homem-tenis")}>Ténis</a>
+              <a onClick={() => setCategory("homem-padel")}>Padel</a>
+              <a onClick={() => setCategory("homem-casual")}>Casual</a>
+              <a onClick={() => setCategory("homem-caminhada")}>Caminhada</a>
+            </div>
+          </div>
+
+          {/* MULHER */}
+          <div className="dropdown">
+            <a onClick={() => setCategory("all")}>Mulher ▾</a>
+            <div className="dropdown-menu">
+              <a onClick={() => setCategory("mulher-running")}>Running</a>
+              <a onClick={() => setCategory("mulher-trail")}>Trail</a>
+              <a onClick={() => setCategory("mulher-futebol")}>Futebol</a>
+              <a onClick={() => setCategory("mulher-futsal")}>Futsal</a>
+              <a onClick={() => setCategory("mulher-andebol")}>Andebol</a>
+              <a onClick={() => setCategory("mulher-voleibol")}>Voleibol</a>
+              <a onClick={() => setCategory("mulher-basquetebol")}>Basquetebol</a>
+              <a onClick={() => setCategory("mulher-tenis")}>Ténis</a>
+              <a onClick={() => setCategory("mulher-padel")}>Padel</a>
+              <a onClick={() => setCategory("mulher-casual")}>Casual</a>
+              <a onClick={() => setCategory("mulher-caminhada")}>Caminhada</a>
+            </div>
+          </div>
+
+          {/* CRIANÇA */}
+          <div className="dropdown">
+            <a onClick={() => setCategory("all")}>Criança ▾</a>
+            <div className="dropdown-menu">
+              <a onClick={() => setCategory("crianca-running")}>Running</a>
+              <a onClick={() => setCategory("crianca-trail")}>Trail</a>
+              <a onClick={() => setCategory("crianca-casual")}>Casual</a>
+              <a onClick={() => setCategory("crianca-futebol")}>Futebol</a>
+              <a onClick={() => setCategory("crianca-futsal")}>Futsal</a>
+            </div>
+          </div>
+
+          {/* ACESSÓRIOS */}
+          <div className="dropdown">
+            <a onClick={() => setCategory("all")}>Acessórios ▾</a>
+            <div className="dropdown-menu">
+              <a onClick={() => setCategory("acessorios-bolas")}>Bolas</a>
+              <a onClick={() => setCategory("acessorios-luvas")}>Luvas</a>
+              <a onClick={() => setCategory("acessorios-meias")}>Meias</a>
+              <a onClick={() => setCategory("acessorios-mochilas")}>Mochilas</a>
+              <a onClick={() => setCategory("acessorios-bones")}>Bonés</a>
+              <a onClick={() => setCategory("acessorios-trail-running")}>Trail/Running</a>
+              <a onClick={() => setCategory("acessorios-verao")}>Verão</a>
+              <a onClick={() => setCategory("acessorios-outros")}>Outros</a>
+            </div>
+          </div>
+
+          <a onClick={() => setCategory("all")}>Outlet</a>
+
+        </nav>
+      </header>
+
+      {/* HERO */}
+      <section className="hero">
+        <div className="overlay">
+          <h2>NUNCA PARES</h2>
+          <p>Descobre a nova coleção desportiva premium.</p>
+          <button>Comprar Agora</button>
+        </div>
+      </section>
+
+      {/* BOTÃO FORM */}
+      <section className="products-section">
+
+        <h2>🔥 Novidades</h2>
+
+        <button onClick={() => setShowForm(!showForm)}>
+          + Adicionar Produto
+        </button>
+
+
+{/* 👟 AQUI É ONDE COLOCAS OS TAMANHOS */}
+{showForm && (
+  <div className="form">
+
+    <input
+      placeholder="Nome"
+      value={form.name}
+      onChange={(e) =>
+        setForm({ ...form, name: e.target.value })
+      }
+    />
+
+    <input
+      placeholder="Preço"
+      value={form.price}
+      onChange={(e) =>
+        setForm({ ...form, price: e.target.value })
+      }
+    />
+
+    <input
+      placeholder="Imagem URL"
+      value={form.imageUrl}
+      onChange={(e) =>
+        setForm({ ...form, imageUrl: e.target.value })
+      }
+    />
+
+    <select
+  value={form.category}
+  onChange={(e) =>
+    setForm({ ...form, category: e.target.value })
+  }
+>
+  {/* HOMEM */}
+  <option value="homem-running">Homem - Running</option>
+  <option value="homem-trail">Homem - Trail</option>
+  <option value="homem-futebol">Homem - Futebol</option>
+  <option value="homem-futsal">Homem - Futsal</option>
+  <option value="homem-andebol">Homem - Andebol</option>
+  <option value="homem-voleibol">Homem - Voleibol</option>
+  <option value="homem-basquetebol">Homem - Basquetebol</option>
+  <option value="homem-tenis">Homem - Ténis</option>
+  <option value="homem-padel">Homem - Padel</option>
+  <option value="homem-casual">Homem - Casual</option>
+  <option value="homem-caminhada">Homem - Caminhada</option>
+
+  {/* MULHER */}
+  <option value="mulher-running">Mulher - Running</option>
+  <option value="mulher-trail">Mulher - Trail</option>
+  <option value="mulher-futebol">Mulher - Futebol</option>
+  <option value="mulher-futsal">Mulher - Futsal</option>
+  <option value="mulher-andebol">Mulher - Andebol</option>
+  <option value="mulher-voleibol">Mulher - Voleibol</option>
+  <option value="mulher-basquetebol">Mulher - Basquetebol</option>
+  <option value="mulher-tenis">Mulher - Ténis</option>
+  <option value="mulher-padel">Mulher - Padel</option>
+  <option value="mulher-casual">Mulher - Casual</option>
+  <option value="mulher-caminhada">Mulher - Caminhada</option>
+
+  {/* CRIANÇA */}
+  <option value="crianca-running">Criança - Running</option>
+  <option value="crianca-trail">Criança - Trail</option>
+  <option value="crianca-futebol">Criança - Futebol</option>
+  <option value="crianca-futsal">Criança - Futsal</option>
+  <option value="crianca-casual">Criança - Casual</option>
+
+  {/* ACESSÓRIOS */}
+  <option value="acessorios-bolas">Acessórios - Bolas</option>
+  <option value="acessorios-luvas">Acessórios - Luvas</option>
+  <option value="acessorios-meias">Acessórios - Meias</option>
+  <option value="acessorios-mochilas">Acessórios - Mochilas</option>
+  <option value="acessorios-bones">Acessórios - Bonés</option>
+  <option value="acessorios-trail">Acessórios - Trail/Running</option>
+  <option value="acessorios-verao">Acessórios - Verão</option>
+  <option value="acessorios-outros">Acessórios - Outros</option>
+</select>
+
+    <textarea
+      placeholder="Descrição"
+      value={form.description}
+      onChange={(e) =>
+        setForm({ ...form, description: e.target.value })
+      }
+    />
+
+    {/* 👟 TAMANHOS */}
+    <input
+      placeholder="Tamanhos (ex: 35,36,37,38)"
+      value={form.sizesText || ""}
+      onChange={(e) =>
+        setForm({
+          ...form,
+          sizesText: e.target.value,
+          sizes: e.target.value
+            .split(",")
+            .map(s => Number(s.trim()))
+            .filter(Boolean)
+        })
+      }
+    />
+
+    <button onClick={addProduct}>
+      Guardar Produto
+    </button>
+
+  </div>
+)}
+
+        {/* PRODUTOS */}
+<div className="grid">
+
+  {filteredProducts.map((p) => (
+    <div className="card" key={p.id}>
+      <button onClick={() => deleteProduct(p.id)}>
+  Apagar
+</button>
+<button onClick={() => editProduct(p)}>
+  Editar
+</button>
+
+      <img src={p.imageUrl} alt={p.name} />
+
+      <h3>{p.name}</h3>
+      <p>{p.price} €</p>
+      <p>{p.description}</p>
+
+      {/* 👟 TAMANHOS */}
+      {p.sizes && (
+  <div className="sizes">
+    {p.sizes.map((size) => (
+      <button key={size}>{size}</button>
+    ))}
+  </div>
+)}
+
+    </div>
+  ))}
+
+</div>
+
+      </section>
+
+      <footer className="footer">
+        <p>© 2026 JOMA STORE</p>
+      </footer>
+
+    </div>
+  );
+}
+
+
+
+
+
+fechar e abrir
+
+⚡ 4. Fluxo ideal (o correto no dia-a-dia)
+Abrir projeto:
+cd frontend
+npm run dev
+Fechar projeto:
+Ctrl + C
+🧠 5. Dica importante (para não voltares a ter erros)
+
+Se voltares a ver erros estranhos no Vite:
+
+parar servidor (Ctrl + C)
+
+limpar cache:
+
+rm -rf node_modules/.vite
+
+reiniciar:
+
+npm run dev
