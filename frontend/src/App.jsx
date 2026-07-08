@@ -541,6 +541,12 @@ console.log("SUBCATEGORY:", subCategory);
 
         <h2>Coleção JomaBasto</h2>
 
+        {isAdmin && (
+  <button onClick={() => setShowForm(!showForm)}>
+    {showForm ? "Fechar" : "+ Adicionar Produto"}
+  </button>
+)}
+
 
         {showForm && (
           <div className="form">
