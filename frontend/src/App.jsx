@@ -727,8 +727,7 @@ console.log("SUBCATEGORY:", subCategory);
         )}
 </section>
         {/* PRODUTOS */}
-        <p>Products: {products.length}</p>
-<p>Filtered: {filteredProducts.length}</p>
+      
         <div className="grid">
   {Array.isArray(filteredProducts) &&
     filteredProducts.map((p) => (
