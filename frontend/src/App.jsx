@@ -19,6 +19,9 @@ const [showLogin, setShowLogin] = useState(false);
 const [user, setUser] = useState(null);
 const [isAdmin, setIsAdmin] = useState(false);
 const [showRegister, setShowRegister] = useState(false);
+const [registerName, setRegisterName] = useState("");
+const [registerEmail, setRegisterEmail] = useState("");
+const [registerPassword, setRegisterPassword] = useState("");
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
 
@@ -36,9 +39,40 @@ useEffect(() => {
   }
 }, []);
 
+const register = async () => {
+  try {
+    const res = await fetch("https://lojajomaonline-1.onrender.com/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: registerName,
+        email: registerEmail,
+        password: registerPassword,
+      }),
+    });
+
+    const json = await res.json();
+
+    alert(json.message);
+
+    if (res.ok) {
+      setShowRegister(false);
+      setRegisterName("");
+      setRegisterEmail("");
+      setRegisterPassword("");
+    }
+
+  } catch (err) {
+    console.error("ERRO REGISTO:", err);
+    alert("Erro no registo");
+  }
+};
+
 const login = async () => {
   try {
-    const res = await fetch("http://localhost:3001/auth/login", {
+    const res = await fetch("https://lojajomaonline-1.onrender.com/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -1021,6 +1055,56 @@ console.log("SUBCATEGORY:", subCategory);
       </button>
 
       <button onClick={() => setShowLogin(false)}>
+        Fechar
+      </button>
+
+    </div>
+  </div>
+)}
+
+{showRegister && (
+  <div
+    style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      background: "rgba(0,0,0,0.6)",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      zIndex: 9999
+    }}
+  >
+    <div style={{ background: "white", padding: "20px", borderRadius: "10px" }}>
+
+      <h2>Registar</h2>
+
+      <input
+        placeholder="Nome"
+        value={registerName}
+        onChange={(e) => setRegisterName(e.target.value)}
+      />
+
+      <input
+        placeholder="Email"
+        value={registerEmail}
+        onChange={(e) => setRegisterEmail(e.target.value)}
+      />
+
+      <input
+        type="password"
+        placeholder="Password"
+        value={registerPassword}
+        onChange={(e) => setRegisterPassword(e.target.value)}
+      />
+
+      <button onClick={register}>
+        Criar conta
+      </button>
+
+      <button onClick={() => setShowRegister(false)}>
         Fechar
       </button>
 
