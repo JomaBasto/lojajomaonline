@@ -18,7 +18,7 @@ import Produto from "./models/Produto.js";
 import User from "./models/User.js";
 import Encomenda from "./models/Encomenda.js";
 import { verifyToken, isAdmin } from "./middleware/auth.js";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 // ======================
 // CONFIG
