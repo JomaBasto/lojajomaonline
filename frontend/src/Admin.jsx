@@ -54,6 +54,30 @@ export default function Admin() {
     >
       <h1>👑 Painel de Administração</h1>
 
+      {/* GESTÃO DE PRODUTOS */}
+<div
+  style={{
+    background: "#fff",
+    padding: 25,
+    marginBottom: 40,
+    borderRadius: 12,
+    boxShadow: "0 5px 20px rgba(0,0,0,.08)",
+  }}
+>
+  <h2>📦 Gestão de Produtos</h2>
+
+  <button
+    style={{
+      padding: 12,
+      fontSize: 16,
+      borderRadius: 8,
+      cursor: "pointer",
+    }}
+  >
+    + Adicionar Produto
+  </button>
+</div>
+
       <div
         style={{
           display: "flex",

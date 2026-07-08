@@ -539,11 +539,8 @@ console.log("SUBCATEGORY:", subCategory);
       {/* FORM */}
       <section className="products-section">
 
-        <h2>Novidades</h2>
+        <h2>Coleção JomaBasto</h2>
 
-        <button onClick={() => setShowForm(!showForm)}>
-          + Adicionar Produto
-        </button>
 
         {showForm && (
           <div className="form">
