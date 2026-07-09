@@ -148,7 +148,7 @@ useEffect(() => {
 const handleSave = async () => {
   try {
     console.log(form);
-    const res = await fetch("http://localhost:3001/produtos", {
+    const res = await fetch("https://jomabasto-backend.onrender.com/produtos", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
