@@ -918,7 +918,7 @@ console.log("SUBCATEGORY:", subCategory);
       <h3 style={{ marginTop: "10px" }}>Tamanhos</h3>
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-        {sizes.map((size) => (
+        {selectedProduct.sizes?.map((size) => (
           <button
             key={size}
             onClick={() => setSelectedSize(size)}
