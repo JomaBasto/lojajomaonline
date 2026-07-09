@@ -2,9 +2,10 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-console.log("RESEND =", process.env.RESEND_API_KEY);
-
-import { Resend } from "resend";
+console.log("MONGO:", !!process.env.MONGO_URL);
+console.log("JWT:", !!process.env.JWT_SECRET);
+console.log("STRIPE:", !!process.env.STRIPE_SECRET_KEY);
+console.log("RESEND:", !!process.env.RESEND_API_KEY);
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
