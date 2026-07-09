@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+import { Resend } from "resend";
 
 dotenv.config();
 
