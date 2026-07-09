@@ -29,10 +29,11 @@ router.post("/register", async (req, res) => {
       role: "user"
     });
 
-    res.status(201).json({
-      message: "Conta criada com sucesso",
-      user
-    });
+    console.log("REGISTER OK");
+
+return res.status(201).json({
+  message: "Conta criada com sucesso"
+});
 
   } catch (err) {
     console.log(err);
