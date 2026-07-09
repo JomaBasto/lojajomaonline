@@ -41,17 +41,17 @@ useEffect(() => {
 
 const register = async () => {
   try {
-    const res = await fetch("https://lojajomaonline-1.onrender.com/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: registerName,
-        email: registerEmail,
-        password: registerPassword,
-      }),
-    });
+    const res = await fetch("https://jomabasto-backend.onrender.com/auth/register", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    name: registerName,
+    email: registerEmail,
+    password: registerPassword,
+  }),
+});
 
     const json = await res.json();
 
@@ -72,7 +72,7 @@ const register = async () => {
 
 const login = async () => {
   try {
-    const res = await fetch("https://lojajomaonline-1.onrender.com/auth/login", {
+    const res = await fetch("https://jomabasto-backend.onrender.com/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
