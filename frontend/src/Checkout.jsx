@@ -19,7 +19,7 @@ export default function Checkout() {
     0
   );
 
-  const API_URL = "http://localhost:3001";
+  const API_URL = "https://jomabasto-backend.onrender.com";
 
   const pay = async () => {
     try {

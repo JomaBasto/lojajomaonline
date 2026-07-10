@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const API_URL = "http://localhost:3001";
+const API_URL = "https://jomabasto-backend.onrender.com";
 
 export default function AdminOrders() {
   const [orders, setOrders] = useState([]);

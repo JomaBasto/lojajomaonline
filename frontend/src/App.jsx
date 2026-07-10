@@ -26,6 +26,8 @@ const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
 
 useEffect(() => {
+  localStorage.removeItem("products");
+
   const token = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -187,7 +189,7 @@ const handleSave = async () => {
   useEffect(() => {
   async function loadProducts() {
     try {
-      const res = await fetch("http://localhost:3001/produtos");
+      const res = await fetch("https://jomabasto-backend.onrender.com/produtos");
       const data = await res.json();
       console.log("PRIMEIRO PRODUTO:", data[0]);
 
@@ -208,7 +210,7 @@ const handleSave = async () => {
 
   // 🗑️ APAGAR PRODUTO
   const deleteProduct = async (id) => {
-    await fetch(`http://localhost:3001/produtos/${id}`, {
+    await fetch(`https://jomabasto-backend.onrender.com/produtos/${id}`, {
   method: "DELETE",
   headers: {
     Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -227,7 +229,7 @@ const handleSave = async () => {
 
     if (!newName || !newPrice || !newImage) return;
 
-    await fetch(`http://localhost:3001/produtos/${product._id}`, {
+    await fetch(`https://jomabasto-backend.onrender.com/produtos/${product._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -282,7 +284,10 @@ const handleSave = async () => {
   console.log("MAIN:", form.mainCategory);
   console.log("SUB:", form.subCategory);
 
-  if (!form.name || !form.price || !form.images[0]) return;
+  if (!form.name || !form.price || !form.images[0]) {
+  alert("Preencha o nome, preço e pelo menos uma imagem do produto.");
+  return;
+}
 
   const productData = {
   name: form.name,
@@ -293,8 +298,10 @@ const handleSave = async () => {
   sizes: form.sizes
 };
 
+console.log("PRODUCTO A ENVIAR:", productData);
+
   try {
-    const res = await fetch("http://localhost:3001/produtos", {
+    const res = await fetch("https://jomabasto-backend.onrender.com/produtos", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -304,6 +311,8 @@ const handleSave = async () => {
     });
 
     const savedProduct = await res.json();
+    console.log("STATUS:", res.status);
+    console.log("RESPOSTA:", savedProduct);
 
     setProducts((prev) => [...prev, savedProduct]);
 
@@ -410,7 +419,7 @@ console.log("SUBCATEGORY:", subCategory);
   };
 
   try {
-    const res = await fetch("http://localhost:3001/encomendas", {
+    const res = await fetch("https://jomabasto-backend.onrender.com/encomendas", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -649,6 +658,7 @@ console.log("SUBCATEGORY:", subCategory);
     {form.mainCategory === "crianca" && (
       <>
         <option value="running">Running</option>
+        <option value="Futsal">Futsal</option>
         <option value="futebol">Futebol</option>
         <option value="casual">Casual</option>
       </>
@@ -765,7 +775,7 @@ console.log("SUBCATEGORY:", subCategory);
         <div className="grid">
   {Array.isArray(filteredProducts) &&
     filteredProducts.map((p) => (
-      console.log("A renderizar:", p.name),
+      console.log("A renderizar produto:", p),
 
       <div className="card" key={p._id}>
 

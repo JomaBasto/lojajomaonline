@@ -4,7 +4,7 @@ export default function Admin() {
 
   const [orders, setOrders] = useState([]);
 
-  const API_URL = "http://localhost:3001";
+  const API_URL = "https://jomabasto-backend.onrender.com";
 
   useEffect(() => {
     loadOrders();
