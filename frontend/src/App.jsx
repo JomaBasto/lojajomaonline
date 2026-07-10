@@ -187,21 +187,28 @@ const handleSave = async () => {
 
   // 📦 CARREGAR PRODUTOS
   useEffect(() => {
-  async function loadProducts() {
+  async function loadProducts(retry = 0) {
     try {
       const res = await fetch("https://jomabasto-backend.onrender.com/produtos");
+
+      if (!res.ok) throw new Error("Servidor indisponível");
+
       const data = await res.json();
-      console.log("PRIMEIRO PRODUTO:", data[0]);
 
       if (Array.isArray(data)) {
         setProducts(data);
       } else {
-        console.log("API não devolveu array:", data);
         setProducts([]);
       }
+
     } catch (err) {
-      console.log("Erro ao carregar produtos:", err);
-      setProducts([]);
+      console.log("Tentativa", retry + 1, "falhou");
+
+      if (retry < 5) {
+        setTimeout(() => loadProducts(retry + 1), 3000);
+      } else {
+        setProducts([]);
+      }
     }
   }
 
