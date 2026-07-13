@@ -138,6 +138,22 @@ app.get("/produtos", async (req, res) => {
   }
 });
 
+// APAGAR PRODUTO
+app.delete("/produtos/:id", verifyToken, isAdmin, async (req, res) => {
+  try {
+    const produto = await Produto.findByIdAndDelete(req.params.id);
+
+    if (!produto) {
+      return res.status(404).json({ error: "Produto não encontrado" });
+    }
+
+    res.json({ message: "Produto apagado com sucesso" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Erro ao apagar produto" });
+  }
+});
+
 // ======================
 // ENCOMENDAS (GUARDAR)
 // ======================
