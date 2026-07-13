@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 export default function App() {
   // 🔥 STATES
   const [category, setCategory] = useState("all");
-const [subCategory, setSubCategory] = useState("");
+  const [subCategory, setSubCategory] = useState("");
+  const [search, setSearch] = useState("");
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showForm, setShowForm] = useState(false);
@@ -109,6 +110,8 @@ const login = async () => {
 
   // 🛒 CARRINHO
   const [cart, setCart] = useState([]);
+  const [favorites, setFavorites] = useState([]);
+  const [showFavorites, setShowFavorites] = useState(false);
   useEffect(() => {
   const savedCart = localStorage.getItem("cart");
 
@@ -126,6 +129,18 @@ useEffect(() => {
     setActiveImage(0);
     setSelectedSize(null);
   };
+
+  const toggleFavorite = (product) => {
+  setFavorites((prev) => {
+    const exists = prev.find((p) => p._id === product._id);
+
+    if (exists) {
+      return prev.filter((p) => p._id !== product._id);
+    }
+
+    return [...prev, product];
+  });
+};
 
   const removeFromCart = (index) => {
     setCart(cart.filter((_, i) => i !== index));
@@ -216,16 +231,35 @@ const handleSave = async () => {
 }, []);
 
   // 🗑️ APAGAR PRODUTO
-  const deleteProduct = async (id) => {
-    await fetch(`https://jomabasto-backend.onrender.com/produtos/${id}`, {
-  method: "DELETE",
-  headers: {
-    Authorization: `Bearer ${localStorage.getItem("token")}`
+const deleteProduct = async (id) => {
+  if (!window.confirm("Tem a certeza que pretende apagar este produto?")) {
+    return;
   }
-});
 
-    setProducts(products.filter(p => p._id !== id));
-  };
+  try {
+    const res = await fetch(
+      `https://jomabasto-backend.onrender.com/produtos/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+
+    if (!res.ok) {
+      const error = await res.text();
+      alert("Erro ao apagar o produto.");
+      console.error(error);
+      return;
+    }
+
+    setProducts((prev) => prev.filter((p) => p._id !== id));
+  } catch (err) {
+    console.error(err);
+    alert("Erro de ligação ao servidor.");
+  }
+};
 
   // ✏️ EDITAR PRODUTO
   const editProduct = async (product) => {
@@ -298,6 +332,7 @@ const handleSave = async () => {
 
   const productData = {
   name: form.name,
+  reference: form.reference,
   price: form.price,
   images: form.images,
   category: `${form.mainCategory}-${form.subCategory}`.toLowerCase(),
@@ -325,6 +360,7 @@ console.log("PRODUCTO A ENVIAR:", productData);
 
     setForm({
       name: "",
+      reference: "",
       price: "",
       images: [],
       category: "homem-running",
@@ -369,7 +405,11 @@ console.log("SUBCATEGORY:", subCategory);
       const matchSub =
         !subCategory || subLower === subCategory.toLowerCase();
 
-      return matchMain && matchSub;
+      const matchSearch =
+  !search ||
+  p.name?.toLowerCase().includes(search.toLowerCase());
+
+return matchMain && matchSub && matchSearch;
     })
   : [];
 
@@ -475,7 +515,7 @@ console.log("SUBCATEGORY:", subCategory);
 ) : (
   <>
     <span style={{ marginRight: "10px" }}>
-      Olá, {user?.name || "Utilizador"}
+      Olá {user?.name?.split(" ")[0] || "Utilizador"}
     </span>
 
     <button onClick={handleLogout}>
@@ -561,6 +601,25 @@ console.log("SUBCATEGORY:", subCategory);
   Edições Especiais
 </a>
 
+<input
+  type="text"
+  placeholder="🔍 Pesquisar..."
+  value={search}
+  onChange={(e) => setSearch(e.target.value)}
+  style={{
+    padding: "8px 12px",
+    marginLeft: "20px",
+    borderRadius: "20px",
+    border: "1px solid #ccc",
+    width: "220px"
+  }}
+/>
+
+{/* FAVORITOS */}
+<button className="cart-btn" onClick={() => setShowFavorites(true)}>
+  ❤️ ({favorites.length})
+</button>
+
           {/* CARRINHO */}
           <button className="cart-btn" onClick={() => setCartOpen(true)}>
             🛒 ({cart.length})
@@ -606,6 +665,14 @@ console.log("SUBCATEGORY:", subCategory);
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
             />
+
+            <input
+  placeholder="Referência"
+  value={form.reference}
+  onChange={(e) =>
+    setForm({ ...form, reference: e.target.value })
+  }
+/>
 
             <input
               placeholder="Preço"
@@ -805,9 +872,10 @@ console.log("SUBCATEGORY:", subCategory);
     marginTop: "10px"
   }}
 >
-  <button onClick={() => addToCart(p)}>
-    🛒 Carrinho
-  </button>
+
+  <button onClick={() => toggleFavorite(p)}>
+  ❤️
+</button>
 
   {isAdmin && (
     <>
@@ -826,6 +894,50 @@ console.log("SUBCATEGORY:", subCategory);
     ))
   }
 </div>
+
+<button onClick={() => setShowFavorites(true)}>
+  ❤️ ({favorites.length})
+</button>
+
+{/* FAVORITOS */}
+{showFavorites && (
+  <div className="cart-overlay">
+    <div className="cart">
+      <h2>❤️ Favoritos</h2>
+
+      <button onClick={() => setShowFavorites(false)}>
+        Fechar
+      </button>
+
+      {favorites.length === 0 && (
+        <p>Sem favoritos</p>
+      )}
+
+      {favorites.map((item) => (
+  <div key={item._id} style={{ display: "flex", gap: "15px", marginBottom: "15px" }}>
+    
+    <img
+      src={item.images?.[0]}
+      alt={item.name}
+      style={{
+        width: "80px",
+        height: "80px",
+        objectFit: "cover",
+        borderRadius: "8px"
+      }}
+    />
+
+    <div>
+      <p>{item.name}</p>
+      <p>{item.price} €</p>
+    </div>
+
+  </div>
+))}
+    </div>
+  </div>
+)}
+
       {/* CARRINHO */}
       {cartOpen && (
   <div className="cart-overlay">
