@@ -1,0 +1,275 @@
+/* =========================
+RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* HEADER */
+.header {
+  background: #1d4ed8;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav a:hover {
+  opacity: 0.8;
+}
+
+/* DROPDOWN */
+.dropdown {
+  position: relative;
+}
+
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  min-width: 220px;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  z-index: 9999;
+  flex-direction: column;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: flex;
+}
+
+.dropdown-menu a {
+  color: #111;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  background: #f3f4f6;
+  border-radius: 6px;
+}
+
+/* HERO */
+.hero {
+  background-image: url("https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=1950&q=80");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 60vh;
+  position: relative;
+  z-index: 1;
+}
+
+.overlay {
+  text-align: center;
+  background: rgba(0,0,0,0.5);
+  padding: 30px;
+  border-radius: 12px;
+  color: white;
+}
+
+.overlay h2 {
+  font-size: 50px;
+}
+
+.overlay button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  background: #1d4ed8;
+  color: white;
+  cursor: pointer;
+}
+/* =========================
+CLIENTE MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  /* HEADER CLIENTE */
+  .header {
+    height: auto;
+    min-height: 65px;
+    padding: 12px 15px;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .nav {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 5px;
+  }
+
+  .nav a {
+    font-size: 14px;
+  }
+
+
+  /* HERO CLIENTE */
+  .hero {
+    height: 45vh;
+    min-height: 320px;
+    background-position: center;
+  }
+
+  .overlay {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .overlay h2 {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .overlay button {
+    padding: 10px 20px;
+    font-size: 15px;
+  }
+
+}
+/* =========================
+PRODUTOS CLIENTE MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .products-section {
+    width: 100%;
+    padding: 10px;
+    overflow: hidden;
+  }
+
+  .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+}
+
+  .card {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 8px;
+  }
+  
+  .card img {
+  width: 100%;
+  height: 140px;
+  object-fit: contain;
+  display: block;
+}
+
+.grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow: hidden;
+}
+
+.grid .card {
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.grid .card img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 140px !important;
+  object-fit: contain !important;
+}
+
+.footer {
+  background: #111;
+  color: #fff;
+  margin-top: 60px;
+  padding: 40px 20px 20px;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.footer-content div {
+  flex: 1;
+  min-width: 220px;
+}
+
+.footer-content h4 {
+  margin-bottom: 12px;
+  color: #e30613;
+}
+
+.footer-content p {
+  margin: 8px 0;
+  font-size: 15px;
+  color: #ddd;
+}
+
+.footer-bottom {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #333;
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+}
+}

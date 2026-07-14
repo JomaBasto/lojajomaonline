@@ -151,14 +151,9 @@ useEffect(() => {
   0
 );
 
-const shippingCost = cartTotal >= 70 || cartTotal === 0 ? 0 : 5.95;
-
-const finalTotal = cartTotal + shippingCost;
-
   // 📝 FORM
   const [form, setForm] = useState({
   name: "",
-  reference: "",
   price: "",
   images: ["", "", "", ""],
   category: "homem-running",
@@ -932,10 +927,10 @@ return matchMain && matchSub && matchSearch;
       }}
     />
 
-    <div className="cart-info">
-  <p>{item.name}</p>
-  <p>{item.price} €</p>
-</div>
+    <div>
+      <p>{item.name}</p>
+      <p>{item.price} €</p>
+    </div>
 
   </div>
 ))}
@@ -1014,29 +1009,7 @@ return matchMain && matchSub && matchSearch;
   </div>
 ))}
 
-      <hr style={{ margin: "20px 0" }} />
-
-<p>
-  <strong>Subtotal:</strong> {cartTotal.toFixed(2)} €
-</p>
-
-<p>
-  <strong>Portes:</strong>{" "}
-  {shippingCost === 0 ? (
-    <span style={{ color: "green" }}>Grátis</span>
-  ) : (
-    `${shippingCost.toFixed(2)} €`
-  )}
-</p>
-
-<h3>Total: {finalTotal.toFixed(2)} €</h3>
-
-{cartTotal < 70 && cartTotal > 0 && (
-  <p style={{ color: "#e30613", fontSize: "14px" }}>
-    🚚 Faltam {(70 - cartTotal).toFixed(2)} € para ter portes grátis.
-  </p>
-)}
-
+      <h3>Total: {cartTotal.toFixed(2)} €</h3>
     </div>
   </div>
 )}
@@ -1060,28 +1033,16 @@ return matchMain && matchSub && matchSearch;
     >
       <h2>{selectedProduct.name}</h2>
 
-{selectedProduct.reference && (
-  <p
-    style={{
-      fontSize: "14px",
-      margin: "5px 0 15px",
-      color: "#666",
-    }}
-  >
-    Referência: {selectedProduct.reference}
-  </p>
-)}
-
-<p
-  style={{
-    fontSize: "16px",
-    margin: "15px 0",
-    lineHeight: "1.5",
-    color: "#444",
-  }}
->
-  {selectedProduct.description}
-</p>
+      <p
+        style={{
+          fontSize: "16px",
+          margin: "15px 0",
+          lineHeight: "1.5",
+          color: "#444",
+        }}
+      >
+        {selectedProduct.description}
+      </p>
 
       <h3 style={{ marginTop: "10px" }}>Tamanhos</h3>
 
@@ -1282,34 +1243,9 @@ return matchMain && matchSub && matchSearch;
 
 {/* FOOTER */}
 <footer className="footer">
-
-  <div className="footer-content">
-
-    <div>
-      <h4>JomaBasto</h4>
-      <p>⭐ Revendedor Oficial Joma em Portugal</p>
-    </div>
-
-    <div>
-      <p>🚚 Portes grátis em compras superiores a 70€</p>
-      <p>📦 Envios por Correio Registado CTT</p>
-      <p>🔄 Trocas até 30 dias</p>
-      <p>🔒 Pagamentos seguros</p>
-    </div>
-
-    <div>
-      <p>📧 jomabasto@sapo.pt</p>
-      <p>📞 924 176 159</p>
-    </div>
-
-  </div>
-
-  <div className="footer-bottom">
-    © {new Date().getFullYear()} JomaBasto • Todos os direitos reservados.
-  </div>
-
+  <p>© 2026 JOMABASTO STORE</p>
 </footer>
 
 </div>
-);
+); 
 }
