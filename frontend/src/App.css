@@ -156,7 +156,7 @@ body {
 /* GRID */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(220px,100%),1fr));
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
   gap: 20px;
   padding: 20px;
 }
