@@ -474,3 +474,34 @@ body,
 
 }
 
+
+/* FINAL GRID CHILD SHRINK FIX */
+
+.grid {
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr)) !important;
+}
+
+.grid > * {
+  min-width: 0 !important;
+  width: auto !important;
+}
+
+.card {
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+.card img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
