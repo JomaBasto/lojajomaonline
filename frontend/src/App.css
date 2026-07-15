@@ -177,7 +177,7 @@ body {
 
 .card img {
   width: 100%;
-  height: 220px;
+  height: 250px;
   object-fit: contain;
 }
 
@@ -475,33 +475,67 @@ body,
 }
 
 
-/* FINAL GRID CHILD SHRINK FIX */
 
-.grid {
-  grid-template-columns: repeat(auto-fit, minmax(0, 1fr)) !important;
-}
 
-.grid > * {
-  min-width: 0 !important;
-  width: auto !important;
-}
-
-.card {
-  min-width: 0 !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  box-sizing: border-box;
-}
-
-.card img {
-  width: 100% !important;
-  max-width: 100% !important;
-  height: auto;
+/* CORREÇÃO GRID HORIZONTAL */
+.grid,
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
 }
 
 @media (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  .grid,
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
   }
+}
+
+
+
+
+/* AUMENTO FINAL DAS IMAGENS DOS PRODUTOS */
+.grid .card img,
+.products-grid .card img {
+  width: 100%;
+  height: 260px;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .grid .card img,
+  .products-grid .card img {
+    height: 180px;
+  }
+}
+
+
+
+
+
+/* IMAGEM MAIOR SEM SOBREPOSIÇÃO */
+.grid .card img,
+.products-grid .card img {
+  width: 100%;
+  height: 340px;
+  object-fit: contain;
+  display: block;
+}
+
+
+
+/* AJUSTE FINAL TAMANHO IMAGENS */
+.grid .card img,
+.products-grid .card img {
+  width: 100%;
+  height: 340px;
+  object-fit: contain;
+}
+
+.grid .card,
+.products-grid .card {
+  overflow: visible;
 }
 
