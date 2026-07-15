@@ -851,53 +851,64 @@ return matchMain && matchSub && matchSearch;
 </section>
         {/* PRODUTOS */}
       
-        <div className="grid">
+        <div className="products-grid">
   {Array.isArray(filteredProducts) &&
-    filteredProducts.map((p) => (
-      console.log("A renderizar produto:", p),
+    filteredProducts.map((p) => {
+      console.log("A renderizar produto:", p);
 
-      <div className="card" key={p._id}>
+      return (
+        <div className="card" key={p._id}>
 
-  {/* IMAGEM PRINCIPAL APENAS */}
-  <img
-          src={p.images?.[0]}
-          alt={p.name}
-          onClick={() => openGallery(p)}
-          style={{ cursor: "pointer" }}
-        />
-
-        <h3>{p.name}</h3>
-        <p>{p.price} €</p>
-
-        <div
+          {/* IMAGEM PRINCIPAL APENAS */}
+          <img
+  src={p.images?.[0]}
+  alt={p.name}
+  onClick={() => openGallery(p)}
   style={{
-    display: "flex",
-    gap: "10px",
-    flexWrap: "wrap",
-    marginTop: "10px"
+    cursor: "pointer",
+    width: "160px",
+    height: "160px",
+    maxWidth: "160px",
+    objectFit: "cover",
+    borderRadius: "8px",
+    display: "block",
+    margin: "0 auto"
   }}
->
+/>
 
-  <button onClick={() => toggleFavorite(p)}>
-  ❤️
-</button>
+          <h3>{p.name}</h3>
+          <p>{p.price} €</p>
 
-  {isAdmin && (
-    <>
-      <button onClick={() => editProduct(p)}>
-        ✏️ Editar
-      </button>
+          <div
+            style={{
+              display: "flex",
+              gap: "10px",
+              flexWrap: "wrap",
+              marginTop: "10px"
+            }}
+          >
 
-      <button onClick={() => deleteProduct(p._id)}>
-        🗑️ Apagar
-      </button>
-    </>
-  )}
-</div>
+            <button onClick={() => toggleFavorite(p)}>
+              ❤️
+            </button>
 
-      </div>
-    ))
-  }
+            {isAdmin && (
+              <>
+                <button onClick={() => editProduct(p)}>
+                  ✏️ Editar
+                </button>
+
+                <button onClick={() => deleteProduct(p._id)}>
+                  🗑️ Apagar
+                </button>
+              </>
+            )}
+
+          </div>
+
+        </div>
+      );
+    })}
 </div>
 
 <button onClick={() => setShowFavorites(true)}>
