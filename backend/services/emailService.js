@@ -93,6 +93,19 @@ export async function sendAdminEmail(order) {
 
   try {
 
+    const produtosHtml = order.items
+  .map(
+    (item) => `
+      <li>
+        <strong>${item.name}</strong><br>
+        Tamanho: ${item.size || "-"}<br>
+        Quantidade: ${item.qty || 1}<br>
+        Preço: ${item.price.toFixed(2)} €
+      </li>
+    `
+  )
+  .join("");
+
     await resend.emails.send({
 
       from: "Loja JOMA Basto <noreply@send.jomabasto.com>",
@@ -110,6 +123,12 @@ export async function sendAdminEmail(order) {
       <p><strong>Email:</strong> ${order.cliente.email}</p>
 
       <p><strong>Telefone:</strong> ${order.cliente.telefone}</p>
+
+      <h3>Produtos</h3>
+
+      <ul>
+        ${produtosHtml}
+      </ul>
 
       <p><strong>Total:</strong> ${order.total.toFixed(2)} €</p>
 
