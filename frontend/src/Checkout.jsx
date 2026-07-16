@@ -19,6 +19,8 @@ export default function Checkout() {
     0
   );
 
+  const shippingCost = total >= 70 || total === 0 ? 0 : 5.95;
+
   const API_URL = "https://jomabasto-backend.onrender.com";
 
   const pay = async () => {
@@ -49,6 +51,7 @@ export default function Checkout() {
         },
         body: JSON.stringify({
           items: cart,
+          shippingCost,
 
           cliente: {
             nome,
@@ -190,9 +193,17 @@ export default function Checkout() {
             </div>
           ))}
 
-          <h2 style={{ marginTop: "25px" }}>
-            Total: {total.toFixed(2)} €
-          </h2>
+          <p>
+  Subtotal: {total.toFixed(2)} €
+</p>
+
+<p>
+  Portes: {shippingCost.toFixed(2)} €
+</p>
+
+<h2 style={{ marginTop: "25px" }}>
+  Total: {(total + shippingCost).toFixed(2)} €
+</h2>
 
           <button
             onClick={pay}

@@ -731,6 +731,13 @@ return matchMain && matchSub && matchSearch;
         <option value="trail">Trail</option>
         <option value="futebol">Futebol</option>
         <option value="casual">Casual</option>
+        <option value="caminhada">Caminhada</option>
+        <option value="futsal">Futsal</option>
+        <option value="andebol">Andebol</option>
+        <option value="voleibol">Voleibol</option>
+        <option value="basquetebol">Basquetebol</option>
+        <option value="tenis">Ténis</option>
+        <option value="padel">Padel</option>
       </>
     )}
 

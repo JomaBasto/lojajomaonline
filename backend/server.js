@@ -219,7 +219,7 @@ app.put("/encomendas/:id", async (req, res) => {
 
 app.post("/create-checkout-session", async (req, res) => {
   try {
-    const { items, cliente } = req.body;
+    const { items, cliente, shippingCost = 0 } = req.body;
 
     if (!items || items.length === 0) {
       return res.status(400).json({ error: "Carrinho vazio" });
@@ -247,7 +247,8 @@ const session = await stripe.checkout.sessions.create({
   payment_method_types: ["card"],
   mode: "payment",
 
-  line_items: items.map((item) => ({
+  line_items: [
+  ...items.map((item) => ({
     price_data: {
       currency: "eur",
       product_data: {
@@ -257,6 +258,20 @@ const session = await stripe.checkout.sessions.create({
     },
     quantity: item.qty || 1,
   })),
+
+  ...(shippingCost > 0
+    ? [{
+        price_data: {
+          currency: "eur",
+          product_data: {
+            name: "Portes de envio",
+          },
+          unit_amount: Math.round(shippingCost * 100),
+        },
+        quantity: 1,
+      }]
+    : []),
+],
 
   success_url: "https://www.jomabasto.com/sucesso",
 cancel_url: "https://www.jomabasto.com/checkout",
