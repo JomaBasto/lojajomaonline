@@ -230,17 +230,19 @@ app.post("/create-checkout-session", async (req, res) => {
     }
 
     // Guardar a encomenda na MongoDB
-    const encomenda = new Encomenda({
-      cliente,
-      items,
-      total: items.reduce(
-        (sum, item) => sum + item.price * (item.qty || 1),
-        0
-      ),
-      estado: "Pendente",
-    });
+const subtotal = items.reduce(
+  (sum, item) => sum + item.price * (item.qty || 1),
+  0
+);
 
-    await encomenda.save();
+const encomenda = new Encomenda({
+  cliente,
+  items,
+  total: subtotal + shippingCost,
+  estado: "Pendente",
+});
+
+await encomenda.save();
 
 // Criar sessão Stripe
 const session = await stripe.checkout.sessions.create({
