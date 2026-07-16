@@ -644,9 +644,9 @@ return matchMain && matchSub && matchSearch;
         }}
       >
         <div className="overlay">
-          <h2>NUNCA PARES</h2>
-          <p>Descobre a nova coleção desportiva premium.</p>
-          <button>Comprar Agora</button>
+          <h2>PORTES GRÁTIS</h2>
+          <p>Em compras superiores a 70 €</p>
+          
         </div>
       </section>
 
