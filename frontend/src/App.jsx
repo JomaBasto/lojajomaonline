@@ -507,6 +507,41 @@ return matchMain && matchSub && matchSearch;
       {/* HEADER + MENU */}
       <header className="header">
         <h1 className="logo">JomaBasto Store</h1>
+
+        <div className="mobile-actions">
+
+  <input
+    type="text"
+    placeholder="🔍"
+    value={search}
+    onChange={(e) => setSearch(e.target.value)}
+  />
+
+  <button onClick={() => setFavoritesOpen(true)}>
+    ❤️
+  </button>
+
+  <button onClick={() => setCartOpen(true)}>
+    🛒
+  </button>
+
+  {!logged ? (
+    <>
+      <button onClick={() => setShowLogin(true)}>
+        Login
+      </button>
+
+      <button onClick={() => setShowRegister(true)}>
+        Registar
+      </button>
+    </>
+  ) : (
+    <button onClick={handleLogout}>
+      Logout
+    </button>
+  )}
+
+</div>
         
         <button
   className="mobile-menu-btn"
@@ -583,60 +618,6 @@ return matchMain && matchSub && matchSearch;
     </a>
   </div>
 
-  <div className="mobile-item">
-  <input
-    type="text"
-    placeholder="🔍 Pesquisar..."
-    value={search}
-    onChange={(e) => setSearch(e.target.value)}
-    style={{
-      width: "100%",
-      padding: "10px",
-      borderRadius: "8px",
-      border: "1px solid #ccc"
-    }}
-  />
-</div>
-
-<div className="mobile-item">
-  <a onClick={() => setFavoritesOpen(true)}>
-    ❤️ Favoritos
-  </a>
-</div>
-
-<div className="mobile-item">
-  <a onClick={() => setCartOpen(true)}>
-    🛒 Carrinho
-  </a>
-</div>
-
-{!logged ? (
-  <>
-    <div className="mobile-item">
-      <a onClick={() => setShowLogin(true)}>
-        🔐 Login
-      </a>
-    </div>
-
-    <div className="mobile-item">
-      <a onClick={() => setShowRegister(true)}>
-        📝 Registar
-      </a>
-    </div>
-  </>
-) : (
-  <>
-    <div className="mobile-item">
-      Olá {user?.name?.split(" ")[0] || "Utilizador"}
-    </div>
-
-    <div className="mobile-item">
-      <a onClick={handleLogout}>
-        Sair
-      </a>
-    </div>
-  </>
-)}
 
   </div>
 )}
