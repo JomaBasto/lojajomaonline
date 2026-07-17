@@ -1,13 +1,12 @@
-﻿import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 export default function App() {
-  // 🔥 STATES
+  // ?? STATES
   const [category, setCategory] = useState("all");
   const [subCategory, setSubCategory] = useState("");
   const [search, setSearch] = useState("");
-  const [searchOpen, setSearchOpen] = useState(false);
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showForm, setShowForm] = useState(false);
@@ -91,7 +90,7 @@ const login = async () => {
       return;
     }
 
-    // 🔐 GUARDAR TOKEN
+    // ?? GUARDAR TOKEN
     localStorage.setItem("token", json.token);
     localStorage.setItem("user", JSON.stringify(json.user));
 
@@ -106,10 +105,10 @@ const login = async () => {
   }
 };
 
-  // 👟 TAMANHO
+  // ?? TAMANHO
   const [selectedSize, setSelectedSize] = useState(null);
 
-  // 🛒 CARRINHO
+  // ?? CARRINHO
   const [cart, setCart] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [showFavorites, setShowFavorites] = useState(false);
@@ -124,7 +123,6 @@ useEffect(() => {
   localStorage.setItem("cart", JSON.stringify(cart));
 }, [cart]);
   const [cartOpen, setCartOpen] = useState(false);
-  const [mobileMenu, setMobileMenu] = useState(false);
 
   const openGallery = (product) => {
     setSelectedProduct(product);
@@ -157,7 +155,7 @@ const shippingCost = cartTotal >= 70 || cartTotal === 0 ? 0 : 5.95;
 
 const finalTotal = cartTotal + shippingCost;
 
-  // 📝 FORM
+  // ?? FORM
   const [form, setForm] = useState({
   name: "",
   reference: "",
@@ -207,13 +205,13 @@ const handleSave = async () => {
   }
 };
 
-  // 📦 CARREGAR PRODUTOS
+  // ?? CARREGAR PRODUTOS
   useEffect(() => {
   async function loadProducts(retry = 0) {
     try {
       const res = await fetch("https://jomabasto-backend.onrender.com/produtos");
 
-      if (!res.ok) throw new Error("Servidor indisponível");
+      if (!res.ok) throw new Error("Servidor indispon�vel");
 
       const data = await res.json();
 
@@ -237,7 +235,7 @@ const handleSave = async () => {
   loadProducts();
 }, []);
 
-  // 🗑️ APAGAR PRODUTO
+  // ??? APAGAR PRODUTO
 const deleteProduct = async (id) => {
   if (!window.confirm("Tem a certeza que pretende apagar este produto?")) {
     return;
@@ -264,16 +262,16 @@ const deleteProduct = async (id) => {
     setProducts((prev) => prev.filter((p) => p._id !== id));
   } catch (err) {
     console.error(err);
-    alert("Erro de ligação ao servidor.");
+    alert("Erro de liga��o ao servidor.");
   }
 };
 
-  // ✏️ EDITAR PRODUTO
+  // ?? EDITAR PRODUTO
   const editProduct = async (product) => {
     const newName = prompt("Novo nome:", product.name);
-    const newPrice = prompt("Novo preço:", product.price);
+    const newPrice = prompt("Novo pre�o:", product.price);
     const newImage = prompt("Nova imagem URL:", product.imageUrl);
-    const newDescription = prompt("Nova descrição:", product.description);
+    const newDescription = prompt("Nova descri��o:", product.description);
 
     if (!newName || !newPrice || !newImage) return;
 
@@ -303,7 +301,7 @@ const deleteProduct = async (id) => {
     ));
   };
 
-  // 📸 UPLOAD IMAGEM CLOUDINARY
+  // ?? UPLOAD IMAGEM CLOUDINARY
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
 
@@ -327,13 +325,13 @@ const deleteProduct = async (id) => {
     });
   };
 
-  // ➕ ADICIONAR PRODUTO
+  // ? ADICIONAR PRODUTO
   const addProduct = async () => {
   console.log("MAIN:", form.mainCategory);
   console.log("SUB:", form.subCategory);
 
   if (!form.name || !form.price || !form.images[0]) {
-  alert("Preencha o nome, preço e pelo menos uma imagem do produto.");
+  alert("Preencha o nome, pre�o e pelo menos uma imagem do produto.");
   return;
 }
 
@@ -380,7 +378,7 @@ console.log("PRODUCTO A ENVIAR:", productData);
     setShowForm(false);
 
   } catch (error) {
-    console.log("❌ erro ao guardar produto:", error);
+    console.log("? erro ao guardar produto:", error);
   }
 };
 
@@ -390,7 +388,7 @@ console.log("SUBCATEGORY:", subCategory);
 console.log("CATEGORY:", category);
 console.log("SUBCATEGORY:", subCategory);
 
-  // 🔍 FILTRO
+  // ?? FILTRO
   const filteredProducts = Array.isArray(products)
   ? products.filter((p) => {
       const main =
@@ -424,7 +422,7 @@ return matchMain && matchSub && matchSearch;
   if (!selectedProduct) return;
 
   if (!selectedSize) {
-    alert("Escolhe um tamanho primeiro 👟");
+    alert("Escolhe um tamanho primeiro ??");
     return;
   }
 
@@ -454,14 +452,14 @@ return matchMain && matchSub && matchSearch;
       ];
     }
 
-    // 💾 GUARDAR NO LOCALSTORAGE (IMPORTANTE)
+    // ?? GUARDAR NO LOCALSTORAGE (IMPORTANTE)
     localStorage.setItem("cart", JSON.stringify(updatedCart));
 
     return updatedCart;
   });
 };
 
-  // 💳 CHECKOUT
+  // ?? CHECKOUT
   const checkout = async () => {
   if (cart.length === 0) return;
 
@@ -509,143 +507,6 @@ return matchMain && matchSub && matchSearch;
       <header className="header">
         <h1 className="logo">JomaBasto Store</h1>
 
-        <div className="mobile-actions only-mobile">
-
-  <button
-  onClick={() => setSearchOpen(!searchOpen)}
-  style={{
-    fontSize: "22px",
-    background: "none",
-    border: "none",
-    cursor: "pointer"
-  }}
->
-  🔍
-</button>
-
-  <button onClick={() => setShowFavorites(true)}>
-  ❤️
-</button>
-
-  <button onClick={() => setCartOpen(true)}>
-    🛒
-  </button>
-
-  {!logged ? (
-    <>
-      <button onClick={() => setShowLogin(true)}>
-        Login
-      </button>
-
-      <button onClick={() => setShowRegister(true)}>
-        Registar
-      </button>
-    </>
-  ) : (
-    <button onClick={handleLogout}>
-      Logout
-    </button>
-  )}
-
-</div>
-
-{searchOpen && (
-  <div className="mobile-search">
-    <input
-      type="text"
-      placeholder="Pesquisar..."
-      value={search}
-      onChange={(e) => setSearch(e.target.value)}
-      style={{
-        width: "100%",
-        padding: "10px",
-        borderRadius: "20px",
-        border: "1px solid #ccc",
-        marginTop: "10px"
-      }}
-    />
-  </div>
-)}
-        
-        <button
-  className="mobile-menu-btn"
-  onClick={() => setMobileMenu(!mobileMenu)}
->
-  ☰
-</button>
-
-{mobileMenu && (
-  <div className="mobile-menu">
-
-  <details className="mobile-item">
-    <summary>Homem</summary>
-
-    <a onClick={() => setCategory("homem-running")}>Running</a>
-    <a onClick={() => setCategory("homem-trail")}>Trail</a>
-    <a onClick={() => setCategory("homem-futebol")}>Futebol</a>
-    <a onClick={() => setCategory("homem-futsal")}>Futsal</a>
-    <a onClick={() => setCategory("homem-andebol")}>Andebol</a>
-    <a onClick={() => setCategory("homem-voleibol")}>Voleibol</a>
-    <a onClick={() => setCategory("homem-basquetebol")}>Basquetebol</a>
-    <a onClick={() => setCategory("homem-tenis")}>Ténis</a>
-    <a onClick={() => setCategory("homem-padel")}>Padel</a>
-    <a onClick={() => setCategory("homem-casual")}>Casual</a>
-    <a onClick={() => setCategory("homem-caminhada")}>Caminhada</a>
-  </details>
-
-  <details className="mobile-item">
-    <summary>Mulher</summary>
-
-    <a onClick={() => setCategory("mulher-running")}>Running</a>
-    <a onClick={() => setCategory("mulher-trail")}>Trail</a>
-    <a onClick={() => setCategory("mulher-futebol")}>Futebol</a>
-    <a onClick={() => setCategory("mulher-futsal")}>Futsal</a>
-    <a onClick={() => setCategory("mulher-andebol")}>Andebol</a>
-    <a onClick={() => setCategory("mulher-voleibol")}>Voleibol</a>
-    <a onClick={() => setCategory("mulher-basquetebol")}>Basquetebol</a>
-    <a onClick={() => setCategory("mulher-tenis")}>Ténis</a>
-    <a onClick={() => setCategory("mulher-padel")}>Padel</a>
-    <a onClick={() => setCategory("mulher-casual")}>Casual</a>
-    <a onClick={() => setCategory("mulher-caminhada")}>Caminhada</a>
-  </details>
-
-  <details className="mobile-item">
-    <summary>Criança</summary>
-
-    <a onClick={() => setCategory("crianca-running")}>Running</a>
-    <a onClick={() => setCategory("crianca-trail")}>Trail</a>
-    <a onClick={() => setCategory("crianca-futebol")}>Futebol</a>
-    <a onClick={() => setCategory("crianca-futsal")}>Futsal</a>
-    <a onClick={() => setCategory("crianca-casual")}>Casual</a>
-  </details>
-
-  <details className="mobile-item">
-    <summary>Acessórios</summary>
-
-    <a onClick={() => setCategory("acessorios-bolas")}>Bolas</a>
-    <a onClick={() => setCategory("acessorios-luvas")}>Luvas</a>
-    <a onClick={() => setCategory("acessorios-meias")}>Meias</a>
-    <a onClick={() => setCategory("acessorios-mochilas")}>Mochilas</a>
-    <a onClick={() => setCategory("acessorios-bones")}>Bonés</a>
-    <a onClick={() => setCategory("acessorios-trail")}>Trail / Running</a>
-    <a onClick={() => setCategory("acessorios-verao")}>Verão</a>
-    <a onClick={() => setCategory("acessorios-outros")}>Outros</a>
-  </details>
-
-  <div className="mobile-item">
-    <a onClick={() => setCategory("outlet")}>Outlet</a>
-  </div>
-
-  <div className="mobile-item">
-    <a onClick={() => setCategory("edicoes-especiais")}>
-      Edições Especiais
-    </a>
-  </div>
-
-
-  </div>
-)}
-
         <nav className="nav"> {!logged ? (
   <>
     <button onClick={() => setShowLogin(true)}>
@@ -658,16 +519,14 @@ return matchMain && matchSub && matchSearch;
   </>
 ) : (
   <>
-    
-<span>
-  Olá {user?.name?.split(" ")[0] || "Utilizador"}
-</span>
+    <span style={{ marginRight: "10px" }}>
+      Ol� {user?.name?.split(" ")[0] || "Utilizador"}
+    </span>
 
-<button onClick={handleLogout}>
-  Logout
-</button>
-
-    {/* 👑 ADMIN AQUI */}
+    <button onClick={handleLogout}>
+      Logout
+    </button>
+    {/* ?? ADMIN AQUI */}
     {isAdmin && (
       <span style={{ marginLeft: "10px", color: "red" }}>
         ADMIN
@@ -678,7 +537,7 @@ return matchMain && matchSub && matchSearch;
 
           {/* HOMEM */}
           <div className="dropdown">
-            <a onClick={() => setCategory("all")}>Homem ▾</a>
+            <a onClick={() => setCategory("all")}>Homem ?</a>
             <div className="dropdown-menu">
               <a onClick={() => setCategory("homem-running")}>Running</a>
               <a onClick={() => setCategory("homem-trail")}>Trail</a>
@@ -687,7 +546,7 @@ return matchMain && matchSub && matchSearch;
               <a onClick={() => setCategory("homem-andebol")}>Andebol</a>
               <a onClick={() => setCategory("homem-voleibol")}>Voleibol</a>
               <a onClick={() => setCategory("homem-basquetebol")}>Basquetebol</a>
-              <a onClick={() => setCategory("homem-tenis")}>Ténis</a>
+              <a onClick={() => setCategory("homem-tenis")}>T�nis</a>
               <a onClick={() => setCategory("homem-padel")}>Padel</a>
               <a onClick={() => setCategory("homem-casual")}>Casual</a>
               <a onClick={() => setCategory("homem-caminhada")}>Caminhada</a>
@@ -696,7 +555,7 @@ return matchMain && matchSub && matchSearch;
 
           {/* MULHER */}
           <div className="dropdown">
-            <a onClick={() => setCategory("all")}>Mulher ▾</a>
+            <a onClick={() => setCategory("all")}>Mulher ?</a>
             <div className="dropdown-menu">
               <a onClick={() => setCategory("mulher-running")}>Running</a>
               <a onClick={() => setCategory("mulher-trail")}>Trail</a>
@@ -705,16 +564,16 @@ return matchMain && matchSub && matchSearch;
               <a onClick={() => setCategory("mulher-andebol")}>Andebol</a>
               <a onClick={() => setCategory("mulher-voleibol")}>Voleibol</a>
               <a onClick={() => setCategory("mulher-basquetebol")}>Basquetebol</a>
-              <a onClick={() => setCategory("mulher-tenis")}>Ténis</a>
+              <a onClick={() => setCategory("mulher-tenis")}>T�nis</a>
               <a onClick={() => setCategory("mulher-padel")}>Padel</a>
               <a onClick={() => setCategory("mulher-casual")}>Casual</a>
               <a onClick={() => setCategory("mulher-caminhada")}>Caminhada</a>
             </div>
           </div>
 
-          {/* CRIANÇA */}
+          {/* CRIAN�A */}
           <div className="dropdown">
-            <a onClick={() => setCategory("all")}>Criança ▾</a>
+            <a onClick={() => setCategory("all")}>Crian�a ?</a>
             <div className="dropdown-menu">
               <a onClick={() => setCategory("crianca-running")}>Running</a>
               <a onClick={() => setCategory("crianca-trail")}>Trail</a>
@@ -724,17 +583,17 @@ return matchMain && matchSub && matchSearch;
             </div>
           </div>
 
-          {/* ACESSÓRIOS */}
+          {/* ACESS�RIOS */}
           <div className="dropdown">
-            <a onClick={() => setCategory("all")}>Acessórios ▾</a>
+            <a onClick={() => setCategory("all")}>Acess�rios ?</a>
             <div className="dropdown-menu">
               <a onClick={() => setCategory("acessorios-bolas")}>Bolas</a>
               <a onClick={() => setCategory("acessorios-luvas")}>Luvas</a>
               <a onClick={() => setCategory("acessorios-meias")}>Meias</a>
               <a onClick={() => setCategory("acessorios-mochilas")}>Mochilas</a>
-              <a onClick={() => setCategory("acessorios-bones")}>Bonés</a>
+              <a onClick={() => setCategory("acessorios-bones")}>Bon�s</a>
               <a onClick={() => setCategory("acessorios-trail")}>Trail/Running</a>
-              <a onClick={() => setCategory("acessorios-verao")}>Verão</a>
+              <a onClick={() => setCategory("acessorios-verao")}>Ver�o</a>
               <a onClick={() => setCategory("acessorios-outros")}>Outros</a>
             </div>
           </div>
@@ -742,14 +601,14 @@ return matchMain && matchSub && matchSearch;
           {/* OUTLET */}
 <a onClick={() => setCategory("outlet")}>Outlet</a>
 
-{/* EDIÇÕES ESPECIAIS */}
+{/* EDI��ES ESPECIAIS */}
 <a onClick={() => setCategory("edicoes-especiais")}>
-  Edições Especiais
+  Edi��es Especiais
 </a>
 
 <input
   type="text"
-  placeholder="🔍 Pesquisar..."
+  placeholder="?? Pesquisar..."
   value={search}
   onChange={(e) => setSearch(e.target.value)}
   style={{
@@ -763,12 +622,12 @@ return matchMain && matchSub && matchSearch;
 
 {/* FAVORITOS */}
 <button className="cart-btn" onClick={() => setShowFavorites(true)}>
-  ❤️ ({favorites.length})
+  ?? ({favorites.length})
 </button>
 
           {/* CARRINHO */}
           <button className="cart-btn" onClick={() => setCartOpen(true)}>
-            🛒 ({cart.length})
+            ?? ({cart.length})
           </button>
 
         </nav>
@@ -785,16 +644,16 @@ return matchMain && matchSub && matchSearch;
         }}
       >
         <div className="overlay">
-          <h2>PORTES GRÁTIS</h2>
-          <p>Em compras superiores a 70 €</p>
-          
+          <h2>NUNCA PARES</h2>
+          <p>Descobre a nova cole��o desportiva premium.</p>
+          <button>Comprar Agora</button>
         </div>
       </section>
 
       {/* FORM */}
       <section className="products-section">
 
-        <h2>Coleção JomaBasto</h2>
+        <h2>Cole��o JomaBasto</h2>
 
         {isAdmin && (
   <button onClick={() => setShowForm(!showForm)}>
@@ -813,7 +672,7 @@ return matchMain && matchSub && matchSearch;
             />
 
             <input
-  placeholder="Referência"
+  placeholder="Refer�ncia"
   value={form.reference}
   onChange={(e) =>
     setForm({ ...form, reference: e.target.value })
@@ -821,7 +680,7 @@ return matchMain && matchSub && matchSearch;
 />
 
             <input
-              placeholder="Preço"
+              placeholder="Pre�o"
               value={form.price}
               onChange={(e) => setForm({ ...form, price: e.target.value })}
             />
@@ -834,11 +693,11 @@ return matchMain && matchSub && matchSearch;
   <option value="">Categoria principal</option>
   <option value="homem">Homem</option>
   <option value="mulher">Mulher</option>
-  <option value="crianca">Criança</option>
-  <option value="acessorios">Acessórios</option>
+  <option value="crianca">Crian�a</option>
+  <option value="acessorios">Acess�rios</option>
   <option value="outlet">Outlet</option>
   <option value="edicoes-especiais">
-    Edições Especiais
+    Edi��es Especiais
   </option>
 </select>
 {form.mainCategory && (
@@ -859,7 +718,7 @@ return matchMain && matchSub && matchSearch;
         <option value="andebol">Andebol</option>
         <option value="voleibol">Voleibol</option>
         <option value="basquetebol">Basquetebol</option>
-        <option value="tenis">Ténis</option>
+        <option value="tenis">T�nis</option>
         <option value="padel">Padel</option>
         <option value="casual">Casual</option>
         <option value="caminhada">Caminhada</option>
@@ -872,13 +731,6 @@ return matchMain && matchSub && matchSearch;
         <option value="trail">Trail</option>
         <option value="futebol">Futebol</option>
         <option value="casual">Casual</option>
-        <option value="caminhada">Caminhada</option>
-        <option value="futsal">Futsal</option>
-        <option value="andebol">Andebol</option>
-        <option value="voleibol">Voleibol</option>
-        <option value="basquetebol">Basquetebol</option>
-        <option value="tenis">Ténis</option>
-        <option value="padel">Padel</option>
       </>
     )}
 
@@ -897,9 +749,9 @@ return matchMain && matchSub && matchSearch;
         <option value="luvas">Luvas</option>
         <option value="meias">Meias</option>
         <option value="mochilas">Mochilas</option>
-        <option value="bones">Bonés</option>
+        <option value="bones">Bon�s</option>
         <option value="trail-running">Trail/Running</option>
-        <option value="verao">Verão</option>
+        <option value="verao">Ver�o</option>
         <option value="outros">Outros</option>
       </>
     )}
@@ -973,7 +825,7 @@ return matchMain && matchSub && matchSearch;
 />
 
             <textarea
-              placeholder="Descrição"
+              placeholder="Descri��o"
               value={form.description}
               onChange={(e) =>
                 setForm({ ...form, description: e.target.value })
@@ -999,75 +851,64 @@ return matchMain && matchSub && matchSearch;
 </section>
         {/* PRODUTOS */}
       
-        <div className="products-grid">
+        <div className="grid">
   {Array.isArray(filteredProducts) &&
-    filteredProducts.map((p) => {
-      console.log("A renderizar produto:", p);
+    filteredProducts.map((p) => (
+      console.log("A renderizar produto:", p),
 
-      return (
-        <div className="card" key={p._id}>
+      <div className="card" key={p._id}>
 
-          {/* IMAGEM PRINCIPAL APENAS */}
-          <img
-  src={p.images?.[0]}
-  alt={p.name}
-  onClick={() => openGallery(p)}
+  {/* IMAGEM PRINCIPAL APENAS */}
+  <img
+          src={p.images?.[0]}
+          alt={p.name}
+          onClick={() => openGallery(p)}
+          className="product-image"
+        />
+
+        <h3>{p.name}</h3>
+        <p>{p.price} �</p>
+
+        <div
   style={{
-    cursor: "pointer",
-    width: "160px",
-    height: "160px",
-    maxWidth: "160px",
-    objectFit: "cover",
-    borderRadius: "8px",
-    display: "block",
-    margin: "0 auto"
+    display: "flex",
+    gap: "10px",
+    flexWrap: "wrap",
+    marginTop: "10px"
   }}
-/>
+>
 
-          <h3>{p.name}</h3>
-          <p>{p.price} €</p>
+  <button onClick={() => toggleFavorite(p)}>
+  ??
+</button>
 
-          <div
-            style={{
-              display: "flex",
-              gap: "10px",
-              flexWrap: "wrap",
-              marginTop: "10px"
-            }}
-          >
+  {isAdmin && (
+    <>
+      <button onClick={() => editProduct(p)}>
+        ?? Editar
+      </button>
 
-            <button onClick={() => toggleFavorite(p)}>
-              ❤️
-            </button>
+      <button onClick={() => deleteProduct(p._id)}>
+        ??? Apagar
+      </button>
+    </>
+  )}
+</div>
 
-            {isAdmin && (
-              <>
-                <button onClick={() => editProduct(p)}>
-                  ✏️ Editar
-                </button>
-
-                <button onClick={() => deleteProduct(p._id)}>
-                  🗑️ Apagar
-                </button>
-              </>
-            )}
-
-          </div>
-
-        </div>
-      );
-    })}
+      </div>
+    ))
+  }
 </div>
 
 <button onClick={() => setShowFavorites(true)}>
-  ❤️ ({favorites.length})
+  ?? ({favorites.length})
 </button>
 
 {/* FAVORITOS */}
 {showFavorites && (
   <div className="cart-overlay">
     <div className="cart">
-      <h2>❤️ Favoritos</h2>
+      <h2>?? Favoritos</h2>
 
       <button onClick={() => setShowFavorites(false)}>
         Fechar
@@ -1093,7 +934,7 @@ return matchMain && matchSub && matchSearch;
 
     <div className="cart-info">
   <p>{item.name}</p>
-  <p>{item.price} €</p>
+  <p>{item.price} �</p>
 </div>
 
   </div>
@@ -1106,7 +947,7 @@ return matchMain && matchSub && matchSearch;
       {cartOpen && (
   <div className="cart-overlay">
     <div className="cart">
-      <h2>🛒 Carrinho</h2>
+      <h2>?? Carrinho</h2>
 
       <button onClick={() => setCartOpen(false)}>
         Fechar
@@ -1127,7 +968,7 @@ return matchMain && matchSub && matchSearch;
   <div key={index} className="cart-item">
 
     <p>{item.name}</p>
-    <p>{item.price} €</p>
+    <p>{item.price} �</p>
 
     <p>Tamanho: {item.size}</p>
     <p>Quantidade: {item.qty || 1}</p>
@@ -1176,23 +1017,23 @@ return matchMain && matchSub && matchSearch;
       <hr style={{ margin: "20px 0" }} />
 
 <p>
-  <strong>Subtotal:</strong> {cartTotal.toFixed(2)} €
+  <strong>Subtotal:</strong> {cartTotal.toFixed(2)} �
 </p>
 
 <p>
   <strong>Portes:</strong>{" "}
   {shippingCost === 0 ? (
-    <span style={{ color: "green" }}>Grátis</span>
+    <span style={{ color: "green" }}>Gr�tis</span>
   ) : (
-    `${shippingCost.toFixed(2)} €`
+    `${shippingCost.toFixed(2)} �`
   )}
 </p>
 
-<h3>Total: {finalTotal.toFixed(2)} €</h3>
+<h3>Total: {finalTotal.toFixed(2)} �</h3>
 
 {cartTotal < 70 && cartTotal > 0 && (
   <p style={{ color: "#e30613", fontSize: "14px" }}>
-    🚚 Faltam {(70 - cartTotal).toFixed(2)} € para ter portes grátis.
+    ?? Faltam {(70 - cartTotal).toFixed(2)} � para ter portes gr�tis.
   </p>
 )}
 
@@ -1200,7 +1041,7 @@ return matchMain && matchSub && matchSearch;
   </div>
 )}
 
-{/* 📸 GALERIA DO PRODUTO */}
+{/* ?? GALERIA DO PRODUTO */}
 {selectedProduct && (
   <div
     className="cart-overlay"
@@ -1227,7 +1068,7 @@ return matchMain && matchSub && matchSearch;
       color: "#666",
     }}
   >
-    Referência: {selectedProduct.reference}
+    Refer�ncia: {selectedProduct.reference}
   </p>
 )}
 
@@ -1298,11 +1139,11 @@ return matchMain && matchSub && matchSearch;
         ))}
       </div>
 
-      {/* 🛒 BOTÃO ADICIONAR AO CARRINHO */}
+      {/* ?? BOT�O ADICIONAR AO CARRINHO */}
       <button
         onClick={() => {
           if (!selectedSize) {
-            alert("Escolhe um tamanho 👟");
+            alert("Escolhe um tamanho ??");
             return;
           }
 
@@ -1325,7 +1166,7 @@ return matchMain && matchSub && matchSearch;
         Adicionar ao carrinho
       </button>
 
-      {/* 🔴 FECHAR */}
+      {/* ?? FECHAR */}
       <button
         onClick={() => {
           setSelectedProduct(null);
@@ -1446,25 +1287,25 @@ return matchMain && matchSub && matchSearch;
 
     <div>
       <h4>JomaBasto</h4>
-      <p>⭐ Revendedor Oficial Joma em Portugal</p>
+      <p>? Revendedor Oficial Joma em Portugal</p>
     </div>
 
     <div>
-      <p>🚚 Portes grátis em compras superiores a 70€</p>
-      <p>📦 Envios por Correio Registado CTT</p>
-      <p>🔄 Trocas até 30 dias</p>
-      <p>🔒 Pagamentos seguros</p>
+      <p>?? Portes gr�tis em compras superiores a 70�</p>
+      <p>?? Envios por Correio Registado CTT</p>
+      <p>?? Trocas at� 30 dias</p>
+      <p>?? Pagamentos seguros</p>
     </div>
 
     <div>
-      <p>📧 jomabasto@sapo.pt</p>
-      <p>📞 924 176 159</p>
+      <p>?? jomabasto@sapo.pt</p>
+      <p>?? 924 176 159</p>
     </div>
 
   </div>
 
   <div className="footer-bottom">
-    © {new Date().getFullYear()} JomaBasto • Todos os direitos reservados.
+    � {new Date().getFullYear()} JomaBasto � Todos os direitos reservados.
   </div>
 
 </footer>

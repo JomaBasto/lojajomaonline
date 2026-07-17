@@ -590,3 +590,17 @@ body,
 
 }
 
+
+/* Mostrar ações apenas no telemóvel */
+.only-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .only-mobile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+

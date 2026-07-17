@@ -7,7 +7,6 @@ export default function App() {
   const [category, setCategory] = useState("all");
   const [subCategory, setSubCategory] = useState("");
   const [search, setSearch] = useState("");
-  const [searchOpen, setSearchOpen] = useState(false);
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showForm, setShowForm] = useState(false);
@@ -124,7 +123,6 @@ useEffect(() => {
   localStorage.setItem("cart", JSON.stringify(cart));
 }, [cart]);
   const [cartOpen, setCartOpen] = useState(false);
-  const [mobileMenu, setMobileMenu] = useState(false);
 
   const openGallery = (product) => {
     setSelectedProduct(product);
@@ -509,143 +507,6 @@ return matchMain && matchSub && matchSearch;
       <header className="header">
         <h1 className="logo">JomaBasto Store</h1>
 
-        <div className="mobile-actions only-mobile">
-
-  <button
-  onClick={() => setSearchOpen(!searchOpen)}
-  style={{
-    fontSize: "22px",
-    background: "none",
-    border: "none",
-    cursor: "pointer"
-  }}
->
-  🔍
-</button>
-
-  <button onClick={() => setShowFavorites(true)}>
-  ❤️
-</button>
-
-  <button onClick={() => setCartOpen(true)}>
-    🛒
-  </button>
-
-  {!logged ? (
-    <>
-      <button onClick={() => setShowLogin(true)}>
-        Login
-      </button>
-
-      <button onClick={() => setShowRegister(true)}>
-        Registar
-      </button>
-    </>
-  ) : (
-    <button onClick={handleLogout}>
-      Logout
-    </button>
-  )}
-
-</div>
-
-{searchOpen && (
-  <div className="mobile-search">
-    <input
-      type="text"
-      placeholder="Pesquisar..."
-      value={search}
-      onChange={(e) => setSearch(e.target.value)}
-      style={{
-        width: "100%",
-        padding: "10px",
-        borderRadius: "20px",
-        border: "1px solid #ccc",
-        marginTop: "10px"
-      }}
-    />
-  </div>
-)}
-        
-        <button
-  className="mobile-menu-btn"
-  onClick={() => setMobileMenu(!mobileMenu)}
->
-  ☰
-</button>
-
-{mobileMenu && (
-  <div className="mobile-menu">
-
-  <details className="mobile-item">
-    <summary>Homem</summary>
-
-    <a onClick={() => setCategory("homem-running")}>Running</a>
-    <a onClick={() => setCategory("homem-trail")}>Trail</a>
-    <a onClick={() => setCategory("homem-futebol")}>Futebol</a>
-    <a onClick={() => setCategory("homem-futsal")}>Futsal</a>
-    <a onClick={() => setCategory("homem-andebol")}>Andebol</a>
-    <a onClick={() => setCategory("homem-voleibol")}>Voleibol</a>
-    <a onClick={() => setCategory("homem-basquetebol")}>Basquetebol</a>
-    <a onClick={() => setCategory("homem-tenis")}>Ténis</a>
-    <a onClick={() => setCategory("homem-padel")}>Padel</a>
-    <a onClick={() => setCategory("homem-casual")}>Casual</a>
-    <a onClick={() => setCategory("homem-caminhada")}>Caminhada</a>
-  </details>
-
-  <details className="mobile-item">
-    <summary>Mulher</summary>
-
-    <a onClick={() => setCategory("mulher-running")}>Running</a>
-    <a onClick={() => setCategory("mulher-trail")}>Trail</a>
-    <a onClick={() => setCategory("mulher-futebol")}>Futebol</a>
-    <a onClick={() => setCategory("mulher-futsal")}>Futsal</a>
-    <a onClick={() => setCategory("mulher-andebol")}>Andebol</a>
-    <a onClick={() => setCategory("mulher-voleibol")}>Voleibol</a>
-    <a onClick={() => setCategory("mulher-basquetebol")}>Basquetebol</a>
-    <a onClick={() => setCategory("mulher-tenis")}>Ténis</a>
-    <a onClick={() => setCategory("mulher-padel")}>Padel</a>
-    <a onClick={() => setCategory("mulher-casual")}>Casual</a>
-    <a onClick={() => setCategory("mulher-caminhada")}>Caminhada</a>
-  </details>
-
-  <details className="mobile-item">
-    <summary>Criança</summary>
-
-    <a onClick={() => setCategory("crianca-running")}>Running</a>
-    <a onClick={() => setCategory("crianca-trail")}>Trail</a>
-    <a onClick={() => setCategory("crianca-futebol")}>Futebol</a>
-    <a onClick={() => setCategory("crianca-futsal")}>Futsal</a>
-    <a onClick={() => setCategory("crianca-casual")}>Casual</a>
-  </details>
-
-  <details className="mobile-item">
-    <summary>Acessórios</summary>
-
-    <a onClick={() => setCategory("acessorios-bolas")}>Bolas</a>
-    <a onClick={() => setCategory("acessorios-luvas")}>Luvas</a>
-    <a onClick={() => setCategory("acessorios-meias")}>Meias</a>
-    <a onClick={() => setCategory("acessorios-mochilas")}>Mochilas</a>
-    <a onClick={() => setCategory("acessorios-bones")}>Bonés</a>
-    <a onClick={() => setCategory("acessorios-trail")}>Trail / Running</a>
-    <a onClick={() => setCategory("acessorios-verao")}>Verão</a>
-    <a onClick={() => setCategory("acessorios-outros")}>Outros</a>
-  </details>
-
-  <div className="mobile-item">
-    <a onClick={() => setCategory("outlet")}>Outlet</a>
-  </div>
-
-  <div className="mobile-item">
-    <a onClick={() => setCategory("edicoes-especiais")}>
-      Edições Especiais
-    </a>
-  </div>
-
-
-  </div>
-)}
-
         <nav className="nav"> {!logged ? (
   <>
     <button onClick={() => setShowLogin(true)}>
@@ -658,15 +519,13 @@ return matchMain && matchSub && matchSearch;
   </>
 ) : (
   <>
-    
-<span>
-  Olá {user?.name?.split(" ")[0] || "Utilizador"}
-</span>
+    <span style={{ marginRight: "10px" }}>
+      Olá {user?.name?.split(" ")[0] || "Utilizador"}
+    </span>
 
-<button onClick={handleLogout}>
-  Logout
-</button>
-
+    <button onClick={handleLogout}>
+      Logout
+    </button>
     {/* 👑 ADMIN AQUI */}
     {isAdmin && (
       <span style={{ marginLeft: "10px", color: "red" }}>
@@ -785,9 +644,9 @@ return matchMain && matchSub && matchSearch;
         }}
       >
         <div className="overlay">
-          <h2>PORTES GRÁTIS</h2>
-          <p>Em compras superiores a 70 €</p>
-          
+          <h2>NUNCA PARES</h2>
+          <p>Descobre a nova coleção desportiva premium.</p>
+          <button>Comprar Agora</button>
         </div>
       </section>
 
@@ -872,13 +731,6 @@ return matchMain && matchSub && matchSearch;
         <option value="trail">Trail</option>
         <option value="futebol">Futebol</option>
         <option value="casual">Casual</option>
-        <option value="caminhada">Caminhada</option>
-        <option value="futsal">Futsal</option>
-        <option value="andebol">Andebol</option>
-        <option value="voleibol">Voleibol</option>
-        <option value="basquetebol">Basquetebol</option>
-        <option value="tenis">Ténis</option>
-        <option value="padel">Padel</option>
       </>
     )}
 
@@ -999,64 +851,53 @@ return matchMain && matchSub && matchSearch;
 </section>
         {/* PRODUTOS */}
       
-        <div className="products-grid">
+        <div className="grid">
   {Array.isArray(filteredProducts) &&
-    filteredProducts.map((p) => {
-      console.log("A renderizar produto:", p);
+    filteredProducts.map((p) => (
+      console.log("A renderizar produto:", p),
 
-      return (
-        <div className="card" key={p._id}>
+      <div className="card" key={p._id}>
 
-          {/* IMAGEM PRINCIPAL APENAS */}
-          <img
-  src={p.images?.[0]}
-  alt={p.name}
-  onClick={() => openGallery(p)}
+  {/* IMAGEM PRINCIPAL APENAS */}
+  <img
+          src={p.images?.[0]}
+          alt={p.name}
+          onClick={() => openGallery(p)}
+          style={{ cursor: "pointer" }}
+        />
+
+        <h3>{p.name}</h3>
+        <p>{p.price} €</p>
+
+        <div
   style={{
-    cursor: "pointer",
-    width: "160px",
-    height: "160px",
-    maxWidth: "160px",
-    objectFit: "cover",
-    borderRadius: "8px",
-    display: "block",
-    margin: "0 auto"
+    display: "flex",
+    gap: "10px",
+    flexWrap: "wrap",
+    marginTop: "10px"
   }}
-/>
+>
 
-          <h3>{p.name}</h3>
-          <p>{p.price} €</p>
+  <button onClick={() => toggleFavorite(p)}>
+  ❤️
+</button>
 
-          <div
-            style={{
-              display: "flex",
-              gap: "10px",
-              flexWrap: "wrap",
-              marginTop: "10px"
-            }}
-          >
+  {isAdmin && (
+    <>
+      <button onClick={() => editProduct(p)}>
+        ✏️ Editar
+      </button>
 
-            <button onClick={() => toggleFavorite(p)}>
-              ❤️
-            </button>
+      <button onClick={() => deleteProduct(p._id)}>
+        🗑️ Apagar
+      </button>
+    </>
+  )}
+</div>
 
-            {isAdmin && (
-              <>
-                <button onClick={() => editProduct(p)}>
-                  ✏️ Editar
-                </button>
-
-                <button onClick={() => deleteProduct(p._id)}>
-                  🗑️ Apagar
-                </button>
-              </>
-            )}
-
-          </div>
-
-        </div>
-      );
-    })}
+      </div>
+    ))
+  }
 </div>
 
 <button onClick={() => setShowFavorites(true)}>
