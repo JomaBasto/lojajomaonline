@@ -518,31 +518,70 @@ return matchMain && matchSub && matchSearch;
 {mobileMenu && (
   <div className="mobile-menu">
 
-    <div className="mobile-item">
-      <a onClick={() => setCategory("all")}>Homem ▾</a>
-    </div>
+  <details className="mobile-item">
+    <summary>Homem</summary>
 
-    <div className="mobile-item">
-      <a onClick={() => setCategory("all")}>Mulher ▾</a>
-    </div>
+    <a onClick={() => setCategory("homem-running")}>Running</a>
+    <a onClick={() => setCategory("homem-trail")}>Trail</a>
+    <a onClick={() => setCategory("homem-futebol")}>Futebol</a>
+    <a onClick={() => setCategory("homem-futsal")}>Futsal</a>
+    <a onClick={() => setCategory("homem-andebol")}>Andebol</a>
+    <a onClick={() => setCategory("homem-voleibol")}>Voleibol</a>
+    <a onClick={() => setCategory("homem-basquetebol")}>Basquetebol</a>
+    <a onClick={() => setCategory("homem-tenis")}>Ténis</a>
+    <a onClick={() => setCategory("homem-padel")}>Padel</a>
+    <a onClick={() => setCategory("homem-casual")}>Casual</a>
+    <a onClick={() => setCategory("homem-caminhada")}>Caminhada</a>
+  </details>
 
-    <div className="mobile-item">
-      <a onClick={() => setCategory("all")}>Criança ▾</a>
-    </div>
+  <details className="mobile-item">
+    <summary>Mulher</summary>
 
-    <div className="mobile-item">
-      <a onClick={() => setCategory("all")}>Acessórios ▾</a>
-    </div>
+    <a onClick={() => setCategory("mulher-running")}>Running</a>
+    <a onClick={() => setCategory("mulher-trail")}>Trail</a>
+    <a onClick={() => setCategory("mulher-futebol")}>Futebol</a>
+    <a onClick={() => setCategory("mulher-futsal")}>Futsal</a>
+    <a onClick={() => setCategory("mulher-andebol")}>Andebol</a>
+    <a onClick={() => setCategory("mulher-voleibol")}>Voleibol</a>
+    <a onClick={() => setCategory("mulher-basquetebol")}>Basquetebol</a>
+    <a onClick={() => setCategory("mulher-tenis")}>Ténis</a>
+    <a onClick={() => setCategory("mulher-padel")}>Padel</a>
+    <a onClick={() => setCategory("mulher-casual")}>Casual</a>
+    <a onClick={() => setCategory("mulher-caminhada")}>Caminhada</a>
+  </details>
 
-    <div className="mobile-item">
-      <a onClick={() => setCategory("outlet")}>Outlet</a>
-    </div>
+  <details className="mobile-item">
+    <summary>Criança</summary>
 
-    <div className="mobile-item">
-      <a onClick={() => setCategory("edicoes-especiais")}>
-        Edições Especiais
-      </a>
-    </div>
+    <a onClick={() => setCategory("crianca-running")}>Running</a>
+    <a onClick={() => setCategory("crianca-trail")}>Trail</a>
+    <a onClick={() => setCategory("crianca-futebol")}>Futebol</a>
+    <a onClick={() => setCategory("crianca-futsal")}>Futsal</a>
+    <a onClick={() => setCategory("crianca-casual")}>Casual</a>
+  </details>
+
+  <details className="mobile-item">
+    <summary>Acessórios</summary>
+
+    <a onClick={() => setCategory("acessorios-bolas")}>Bolas</a>
+    <a onClick={() => setCategory("acessorios-luvas")}>Luvas</a>
+    <a onClick={() => setCategory("acessorios-meias")}>Meias</a>
+    <a onClick={() => setCategory("acessorios-mochilas")}>Mochilas</a>
+    <a onClick={() => setCategory("acessorios-bones")}>Bonés</a>
+    <a onClick={() => setCategory("acessorios-trail")}>Trail / Running</a>
+    <a onClick={() => setCategory("acessorios-verao")}>Verão</a>
+    <a onClick={() => setCategory("acessorios-outros")}>Outros</a>
+  </details>
+
+  <div className="mobile-item">
+    <a onClick={() => setCategory("outlet")}>Outlet</a>
+  </div>
+
+  <div className="mobile-item">
+    <a onClick={() => setCategory("edicoes-especiais")}>
+      Edições Especiais
+    </a>
+  </div>
 
   </div>
 )}
