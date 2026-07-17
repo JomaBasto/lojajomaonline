@@ -539,3 +539,54 @@ body,
   overflow: visible;
 }
 
+
+/* =========================
+   MENU MOBILE
+========================= */
+
+.mobile-menu-btn,
+.mobile-menu {
+  display: none;
+}
+
+/* Apenas telemóvel */
+@media (max-width: 768px) {
+
+  .mobile-menu-btn {
+    display: block;
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 2000;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: block;
+    width: 100%;
+    background: #1d4ed8;
+    box-shadow: 0 4px 12px rgba(0,0,0,.2);
+  }
+
+  .mobile-item {
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255,255,255,.2);
+  }
+
+  .mobile-item a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+  }
+
+}
+

@@ -123,7 +123,7 @@ useEffect(() => {
   localStorage.setItem("cart", JSON.stringify(cart));
 }, [cart]);
   const [cartOpen, setCartOpen] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   const openGallery = (product) => {
     setSelectedProduct(product);
@@ -507,12 +507,45 @@ return matchMain && matchSub && matchSearch;
       {/* HEADER + MENU */}
       <header className="header">
         <h1 className="logo">JomaBasto Store</h1>
+        
         <button
   className="mobile-menu-btn"
-  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+  onClick={() => setMobileMenu(!mobileMenu)}
 >
   ☰
 </button>
+
+{mobileMenu && (
+  <div className="mobile-menu">
+
+    <div className="mobile-item">
+      <a onClick={() => setCategory("all")}>Homem ▾</a>
+    </div>
+
+    <div className="mobile-item">
+      <a onClick={() => setCategory("all")}>Mulher ▾</a>
+    </div>
+
+    <div className="mobile-item">
+      <a onClick={() => setCategory("all")}>Criança ▾</a>
+    </div>
+
+    <div className="mobile-item">
+      <a onClick={() => setCategory("all")}>Acessórios ▾</a>
+    </div>
+
+    <div className="mobile-item">
+      <a onClick={() => setCategory("outlet")}>Outlet</a>
+    </div>
+
+    <div className="mobile-item">
+      <a onClick={() => setCategory("edicoes-especiais")}>
+        Edições Especiais
+      </a>
+    </div>
+
+  </div>
+)}
 
         <nav className="nav"> {!logged ? (
   <>
