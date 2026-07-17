@@ -663,8 +663,16 @@ return matchMain && matchSub && matchSearch;
   Olá {user?.name?.split(" ")[0] || "Utilizador"}
 </span>
 
-<button onClick={handleLogout}>
-  Logout
+<button
+  onClick={handleLogout}
+  style={{
+    fontSize: "22px",
+    background: "none",
+    border: "none",
+    cursor: "pointer"
+  }}
+>
+  👤
 </button>
 
     {/* 👑 ADMIN AQUI */}
