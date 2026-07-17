@@ -7,6 +7,7 @@ export default function App() {
   const [category, setCategory] = useState("all");
   const [subCategory, setSubCategory] = useState("");
   const [search, setSearch] = useState("");
+  const [searchOpen, setSearchOpen] = useState(false);
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showForm, setShowForm] = useState(false);
@@ -510,16 +511,21 @@ return matchMain && matchSub && matchSearch;
 
         <div className="mobile-actions">
 
-  <input
-    type="text"
-    placeholder="🔍"
-    value={search}
-    onChange={(e) => setSearch(e.target.value)}
-  />
+  <button
+  onClick={() => setSearchOpen(!searchOpen)}
+  style={{
+    fontSize: "22px",
+    background: "none",
+    border: "none",
+    cursor: "pointer"
+  }}
+>
+  🔍
+</button>
 
-  <button onClick={() => setFavoritesOpen(true)}>
-    ❤️
-  </button>
+  <button onClick={() => setShowFavorites(true)}>
+  ❤️
+</button>
 
   <button onClick={() => setCartOpen(true)}>
     🛒
@@ -542,6 +548,24 @@ return matchMain && matchSub && matchSearch;
   )}
 
 </div>
+
+{searchOpen && (
+  <div className="mobile-search">
+    <input
+      type="text"
+      placeholder="Pesquisar..."
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      style={{
+        width: "100%",
+        padding: "10px",
+        borderRadius: "20px",
+        border: "1px solid #ccc",
+        marginTop: "10px"
+      }}
+    />
+  </div>
+)}
         
         <button
   className="mobile-menu-btn"
@@ -634,13 +658,15 @@ return matchMain && matchSub && matchSearch;
   </>
 ) : (
   <>
-    <span style={{ marginRight: "10px" }}>
-      Olá {user?.name?.split(" ")[0] || "Utilizador"}
-    </span>
+    
+<span>
+  Olá {user?.name?.split(" ")[0] || "Utilizador"}
+</span>
 
-    <button onClick={handleLogout}>
-      Logout
-    </button>
+<button onClick={handleLogout}>
+  Logout
+</button>
+
     {/* 👑 ADMIN AQUI */}
     {isAdmin && (
       <span style={{ marginLeft: "10px", color: "red" }}>
