@@ -511,11 +511,11 @@ return matchMain && matchSub && matchSearch;
 
         <div className="mobile-actions only-mobile">
 
-  {user && (
-    <span className="mobile-user">
-      Olá {user.name.split(" ")[0]} 👋
-    </span>
-  )}
+  {logged && user && (
+  <span className="mobile-user">
+    Olá {user.name.split(" ")[0]} 👋
+  </span>
+)}
 
   <button
   onClick={() => setSearchOpen(!searchOpen)}
