@@ -791,15 +791,8 @@ return matchMain && matchSub && matchSearch;
       </header>
 
       {/* HERO */}
-      <section
-        className="hero"
-        style={{
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          minHeight: "100vh"
-        }}
-      >
+<section className="hero">
+      
         <div className="overlay">
           <h2>PORTES GRÁTIS</h2>
           <p>Em compras superiores a 70 €</p>
