@@ -365,7 +365,7 @@ body {
     width: 100%;
     height: 45vh;
     background-size: contain;
-    background-position: center center;
+    background-position: center top;
     background-repeat: no-repeat;
 }
 
@@ -605,6 +605,7 @@ body,
     gap: 8px;
   }
 }
+
 
 
 
