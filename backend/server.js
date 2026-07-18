@@ -138,6 +138,27 @@ app.get("/produtos", async (req, res) => {
   }
 });
 
+// EDITAR PRODUTO
+app.put("/produtos/:id", verifyToken, isAdmin, async (req, res) => {
+  try {
+    const produto = await Produto.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+
+    if (!produto) {
+      return res.status(404).json({ error: "Produto não encontrado" });
+    }
+
+    res.json(produto);
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Erro ao atualizar produto" });
+  }
+});
+
 // APAGAR PRODUTO
 app.delete("/produtos/:id", verifyToken, isAdmin, async (req, res) => {
   try {
