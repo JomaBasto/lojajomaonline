@@ -91,7 +91,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 60vh;
+  min-height: 100vh;
   position: relative;
   z-index: 1;
 }
@@ -605,6 +605,11 @@ body,
     gap: 8px;
   }
 }
+
+
+
+
+
 
 
 
