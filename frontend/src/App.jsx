@@ -342,7 +342,9 @@ const deleteProduct = async (id) => {
   reference: form.reference,
   price: form.price,
   images: form.images,
-  category: `${form.mainCategory}-${form.subCategory}`.toLowerCase(),
+  category: form.subCategory
+  ? `${form.mainCategory}-${form.subCategory}`.toLowerCase()
+  : form.mainCategory.toLowerCase(),
   description: form.description,
   sizes: form.sizes
 };
@@ -633,7 +635,7 @@ return matchMain && matchSub && matchSearch;
     <a onClick={() => setCategory("acessorios-meias")}>Meias</a>
     <a onClick={() => setCategory("acessorios-mochilas")}>Mochilas</a>
     <a onClick={() => setCategory("acessorios-bones")}>Bonés</a>
-    <a onClick={() => setCategory("acessorios-trail")}>Trail / Running</a>
+    <a onClick={() => setCategory("acessorios-trail-running")}>Trail / Running</a>
     <a onClick={() => setCategory("acessorios-verao")}>Verão</a>
     <a onClick={() => setCategory("acessorios-outros")}>Outros</a>
   </details>
@@ -747,7 +749,7 @@ return matchMain && matchSub && matchSearch;
               <a onClick={() => setCategory("acessorios-meias")}>Meias</a>
               <a onClick={() => setCategory("acessorios-mochilas")}>Mochilas</a>
               <a onClick={() => setCategory("acessorios-bones")}>Bonés</a>
-              <a onClick={() => setCategory("acessorios-trail")}>Trail/Running</a>
+              <a onClick={() => setCategory("acessorios-trail-running")}>Trail/Running</a>
               <a onClick={() => setCategory("acessorios-verao")}>Verão</a>
               <a onClick={() => setCategory("acessorios-outros")}>Outros</a>
             </div>
