@@ -141,6 +141,7 @@ app.get("/produtos", async (req, res) => {
 // EDITAR PRODUTO
 app.put("/produtos/:id", verifyToken, isAdmin, async (req, res) => {
   try {
+    console.log("DADOS RECEBIDOS:", req.body);
     const produto = await Produto.findByIdAndUpdate(
       req.params.id,
       req.body,

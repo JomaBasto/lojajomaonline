@@ -1,0 +1,11 @@
+{
+  "remoteName": "origin",
+  "projects": [
+    {
+      "id": "prj_JOHJ4bAJBi0Z3x5tXJtDk0W8B9mB",
+      "name": "joma-basto",
+      "directory": "frontend",
+      "orgId": "team_4tBwRV5cYs8BmsTyXzhD60HT"
+    }
+  ]
+}

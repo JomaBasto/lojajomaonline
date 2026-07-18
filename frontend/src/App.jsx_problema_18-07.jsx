@@ -270,63 +270,49 @@ const deleteProduct = async (id) => {
 
   // ✏️ EDITAR PRODUTO
   const editProduct = async (product) => {
-    const newName = prompt("Novo nome:", product.name);
-    const newPrice = prompt("Novo preço:", product.price);
-    const newImage = prompt(
-  "Nova imagem URL:",
-  product.imageUrl || product.images?.[0] || ""
-);
-    const newDescription = prompt("Nova descrição:", product.description);
-    const newSizes = prompt(
-  "Tamanhos disponíveis (separados por vírgula):",
-  product.sizes?.join(", ") || ""
-);
-console.log("TAMANHOS ESCOLHIDOS:", newSizes);
+  const newName = prompt("Novo nome:", product.name);
+  const newPrice = prompt("Novo preço:", product.price);
+  const newImage = prompt(
+    "Nova imagem URL:",
+    product.images?.[0] || ""
+  );
+  const newDescription = prompt(
+    "Nova descrição:",
+    product.description || ""
+  );
 
-    if (!newName || !newPrice) return;
+  if (!newName || !newPrice || !newImage) return;
 
-    console.log("A ENVIAR PARA BACKEND:", {
-  name: newName,
-  price: newPrice,
-  imageUrl: newImage,
-  description: newDescription,
-  sizes: newSizes
-    ? newSizes.split(",").map(s => s.trim())
-    : []
-});
-    
-    await fetch(`https://jomabasto-backend.onrender.com/produtos/${product._id}`, {
-  method: "PUT",
-  headers: {
-    "Content-Type": "application/json",
-    "Authorization": `Bearer ${localStorage.getItem("token")}`
-  },
-  body: JSON.stringify({
+  const updatedProduct = {
+    ...product,
     name: newName,
-    price: newPrice,
-    imageUrl: newImage,
-    description: newDescription,
-    sizes: newSizes
-      ? newSizes.split(",").map(s => s.trim())
-      : []
-  })
-});
-
-    setProducts(products.map(p =>
-  p._id === product._id
-    ? {
-        ...p,
-        name: newName,
-        price: newPrice,
-        imageUrl: newImage,
-        description: newDescription,
-        sizes: newSizes
-          ? newSizes.split(",").map(s => s.trim())
-          : []
-      }
-    : p
-));
+    price: Number(newPrice),
+    images: [newImage, ...(product.images?.slice(1) || [])],
+    description: newDescription
   };
+
+  const res = await fetch(
+    `https://jomabasto-backend.onrender.com/produtos/${product._id}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+      },
+      body: JSON.stringify(updatedProduct)
+    }
+  );
+
+  const data = await res.json();
+
+  console.log("PRODUTO ATUALIZADO:", data);
+
+  setProducts((prev) =>
+    prev.map((p) =>
+      p._id === product._id ? data : p
+    )
+  );
+};
 
   // 📸 UPLOAD IMAGEM CLOUDINARY
   const handleImageUpload = async (e) => {
@@ -1015,14 +1001,21 @@ return matchMain && matchSub && matchSearch;
             />
 
             <input
-              placeholder="Tamanhos (35,36,37)"
-              onChange={(e) =>
-                setForm({
-                  ...form,
-                  sizes: e.target.value.split(",")
-                })
-              }
-            />
+  placeholder="Tamanhos e stock (ex: 41:5,42:3,43:0)"
+  onChange={(e) =>
+    setForm({
+      ...form,
+      sizes: e.target.value.split(",").map(item => {
+        const [size, stock] = item.split(":");
+
+        return {
+          size: size.trim(),
+          stock: Number(stock) || 0
+        };
+      })
+    })
+  }
+/>
 
             <button onClick={addProduct}>
   Guardar Produto
@@ -1313,23 +1306,37 @@ return matchMain && matchSub && matchSearch;
 
       {/* MINIATURAS */}
       <div className="gallery">
-        {selectedProduct?.images?.map((img, i) => (
-          <img
-            key={i}
-            src={img}
-            className="gallery-image"
-            alt=""
-            onClick={() => setActiveImage(i)}
-            style={{
-              cursor: "pointer",
-              opacity: activeImage === i ? 1 : 0.6,
-              border:
-                activeImage === i
-                  ? "2px solid #1d4ed8"
-                  : "none",
-            }}
-          />
-        ))}
+        {selectedProduct.sizes?.map((item) => (
+  <button
+    key={item.size}
+    onClick={() => setSelectedSize(item)}
+    disabled={item.stock === 0}
+    style={{
+      padding: "8px 12px",
+      borderRadius: "6px",
+      border:
+        selectedSize?.size === item.size
+          ? "2px solid #1d4ed8"
+          : "1px solid #ccc",
+      background:
+        item.stock === 0
+          ? "#ddd"
+          : selectedSize?.size === item.size
+          ? "#1d4ed8"
+          : "white",
+      color:
+        item.stock === 0
+          ? "#777"
+          : selectedSize?.size === item.size
+          ? "white"
+          : "black",
+      cursor: item.stock === 0 ? "not-allowed" : "pointer",
+    }}
+  >
+    {item.size}
+    {item.stock === 0 && " (Sem stock)"}
+  </button>
+))}
       </div>
 
       {/* 🛒 BOTÃO ADICIONAR AO CARRINHO */}

@@ -363,9 +363,8 @@ body {
 
   .hero {
     width: 100%;
-    height: 260px;
-    min-height: 0;
-    background-size: cover;
+    height: 45vh;
+    background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
 }
@@ -522,7 +521,7 @@ body,
 .grid .card img,
 .products-grid .card img {
   width: 100%;
-  height: 250px;
+  height: 340px;
   object-fit: contain;
   display: block;
 }
@@ -533,7 +532,7 @@ body,
 .grid .card img,
 .products-grid .card img {
   width: 100%;
-  height: 250px;
+  height: 340px;
   object-fit: contain;
 }
 
@@ -606,12 +605,6 @@ body,
     gap: 8px;
   }
 }
-
-
-
-
-
-
 
 
 
