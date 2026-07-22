@@ -818,11 +818,6 @@ return matchMain && matchSub && matchSearch;
       {/* HERO */}
 <section className="hero">
       
-        <div className="overlay">
-          <h2>PORTES GRÁTIS</h2>
-          <p>Em compras superiores a 70 €</p>
-          
-        </div>
       </section>
 
       {/* FORM */}
