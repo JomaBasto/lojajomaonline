@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from "react";
+﻿import { useEffect, useState, useRef } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Categories from "./components/Categories";
@@ -10,10 +10,13 @@ export default function App() {
   const [search, setSearch] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const [products, setProducts] = useState([]);
+
+  const productsRef = useRef(null);
+
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [logged, setLogged] = useState(false);
-const [showLogin, setShowLogin] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
   const [activeImage, setActiveImage] = useState(0);
   const handleLogout = () => {
   localStorage.removeItem("token");
@@ -825,11 +828,17 @@ return matchMain && matchSub && matchSearch;
   onSelect={(sport) => {
     setCategory(sport);
     setSubCategory("");
+
+    setTimeout(() => {
+      productsRef.current?.scrollIntoView({
+        behavior: "smooth"
+      });
+    }, 100);
   }}
 />
 
 {/* FORM */}
-      <section className="products-section">
+     <section ref={productsRef} className="products-section">
 
         <h2>Coleção JomaBasto</h2>
 
