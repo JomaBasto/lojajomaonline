@@ -67,7 +67,7 @@ export default function Categories({ onSelect }) {
               Conforto para acompanhar o teu ritmo.
             </p>
 
-            <button onClick={() => onSelect("caminhada-caminhada")}>
+            <button onClick={() => onSelect("homem-caminhada")}>
   Ver coleção →
 </button>
 
