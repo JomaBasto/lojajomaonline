@@ -100,6 +100,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   object-position: center 50%;
   display: block;
 }
@@ -187,6 +188,7 @@ body {
   width: 100%;
   height: 250px;
   object-fit: cover;
+  object-position: center;
 }
 
 .card h3 {
@@ -285,6 +287,7 @@ body {
   width: 120px;
   height: 120px;
   object-fit: cover;
+  object-position: center;
   border-radius: 10px;
 }
 
@@ -418,7 +421,8 @@ body {
 
 html, body { max-width: 100%; overflow-x: hidden; }
 
-.product-image { width: 100%; max-width: 100%; height: auto; object-fit: cover; }
+.product-image { width: 100%; max-width: 100%; height: auto; object-fit: cover;
+  object-position: center; }
 
 /* FINAL GRID WIDTH FIX */
 .grid {
@@ -513,6 +517,7 @@ body,
   width: 100%;
   height: 260px;
   object-fit: cover;
+  object-position: center;
 }
 
 @media (max-width: 768px) {
@@ -532,6 +537,7 @@ body,
   width: 100%;
   height: 250px;
   object-fit: cover;
+  object-position: center;
   display: block;
 }
 
@@ -543,6 +549,7 @@ body,
   width: 100%;
   height: 250px;
   object-fit: cover;
+  object-position: center;
 }
 
 .grid .card,
@@ -698,6 +705,7 @@ body,
   width: 100%;
   height: 260px;
   object-fit: cover;
+  object-position: center;
   display: block;
 }
 
@@ -736,5 +744,10 @@ body,
   .categories-grid {
     grid-template-columns: 1fr;
   }
+}
+
+
+.trail-image {
+  object-position: center 65%;
 }
 
