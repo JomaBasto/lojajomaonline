@@ -1,7 +1,6 @@
 ﻿import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Categories from "./components/Categories";
 
 export default function App() {
   // 🔥 STATES
@@ -818,17 +817,10 @@ return matchMain && matchSub && matchSearch;
 
       {/* HERO */}
 <section className="hero">
-  <img src="/trail-background.png" alt="Trail" />
-</section>
+      
+      </section>
 
-<Categories
-  onSelect={(sport) => {
-    setCategory(sport);
-    setSubCategory("");
-  }}
-/>
-
-{/* FORM */}
+      {/* FORM */}
       <section className="products-section">
 
         <h2>Coleção JomaBasto</h2>

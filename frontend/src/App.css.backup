@@ -87,21 +87,16 @@ body {
 
 /* HERO */
 .hero {
-  width: 100%;
-  height: 620px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+  background-image: url("/trail-background.png");
+  background-size: contain;
+  background-position: center top;
+  background-repeat: no-repeat;
+  height: 700px;
+  margin-top: 0px;
+  
+  
   position: relative;
   z-index: 1;
-}
-
-.hero img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 50%;
-  display: block;
 }
 
 .overlay {
@@ -186,7 +181,7 @@ body {
 .card img {
   width: 100%;
   height: 250px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .card h3 {
@@ -512,7 +507,7 @@ body,
 .products-grid .card img {
   width: 100%;
   height: 260px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 @media (max-width: 768px) {
@@ -531,7 +526,7 @@ body,
 .products-grid .card img {
   width: 100%;
   height: 250px;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -542,7 +537,7 @@ body,
 .products-grid .card img {
   width: 100%;
   height: 250px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .grid .card,
@@ -630,111 +625,4 @@ body,
 
 
 
-
-
-
-
-
-
-
-
-
-/* =========================
-   CATEGORIAS
-========================= */
-
-.categories {
-  background: #ffffff;
-  padding: 80px 8%;
-}
-
-.categories-title {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.categories-title h2 {
-  font-size: 42px;
-  font-weight: 700;
-  color: #111;
-  margin-bottom: 15px;
-}
-
-.categories-title p {
-  font-size: 18px;
-  color: #666;
-  max-width: 650px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-
-
-/* =========================
-   GRID CATEGORIAS
-========================= */
-
-.categories-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  margin-top: 40px;
-}
-
-.category-card {
-  background: #fff;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0,0,0,.08);
-  transition: all .3s ease;
-  cursor: pointer;
-}
-
-.category-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 35px rgba(0,0,0,.15);
-}
-
-.category-card img {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  display: block;
-}
-
-.category-content {
-  padding: 25px;
-}
-
-.category-content h3 {
-  font-size: 28px;
-  color: #111;
-  margin-bottom: 10px;
-}
-
-.category-content p {
-  color: #666;
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.category-content button {
-  background: #6d28d9;
-  color: white;
-  border: none;
-  padding: 12px 22px;
-  border-radius: 10px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: .3s;
-}
-
-.category-content button:hover {
-  background: #5b21b6;
-}
-
-@media (max-width: 900px) {
-  .categories-grid {
-    grid-template-columns: 1fr;
-  }
-}
 
