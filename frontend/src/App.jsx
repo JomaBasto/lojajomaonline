@@ -222,7 +222,8 @@ const handleSave = async () => {
       const data = await res.json();
 
       if (Array.isArray(data)) {
-        setProducts(data);
+        console.log("Primeiro produto:", data[0]);
+setProducts(data);
       } else {
         setProducts([]);
       }
