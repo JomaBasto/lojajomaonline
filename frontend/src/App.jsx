@@ -579,7 +579,7 @@ return matchMain && matchSub && matchSearch;
 
   {logged && user?.name && (
     <span className="mobile-user">
-      Olá {user.name.split(" ")[0]} 
+      Olá {user.name.split(" ")[0]}
     </span>
   )}
 
@@ -631,7 +631,7 @@ return matchMain && matchSub && matchSearch;
 
     <div className="mobile-user-dropdown">
       <span>
-        Olá {user?.name?.split(" ")[0]} 👋
+        Olá {user?.name?.split(" ")[0]} 
       </span>
 
       <button onClick={handleLogout}>
@@ -751,7 +751,7 @@ return matchMain && matchSub && matchSearch;
 ) : (
   <>
     <span className="desktop-user">
-      Olá {user?.name?.split(" ")[0]} 👋
+      Olá {user?.name?.split(" ")[0]}
     </span>
 
     <button
