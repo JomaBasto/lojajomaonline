@@ -1,4 +1,10 @@
 ﻿import { useEffect, useState, useRef } from "react";
+import {
+  FiSearch,
+  FiHeart,
+  FiShoppingBag,
+  FiUser
+} from "react-icons/fi";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Categories from "./components/Categories";
@@ -716,7 +722,7 @@ return matchMain && matchSub && matchSearch;
     cursor: "pointer"
   }}
 >
-  👤
+  <FiUser size={22} />
 </button>
 
     {/* 👑 ADMIN AQUI */}
@@ -799,29 +805,33 @@ return matchMain && matchSub && matchSearch;
   Edições Especiais
 </a>
 
-<input
-  type="text"
-  placeholder="🔍 Pesquisar..."
-  value={search}
-  onChange={(e) => setSearch(e.target.value)}
-  style={{
-    padding: "8px 12px",
-    marginLeft: "20px",
-    borderRadius: "20px",
-    border: "1px solid #ccc",
-    width: "220px"
-  }}
-/>
+<div className="search-box">
+  <FiSearch className="search-icon" />
+
+  <input
+    type="text"
+    placeholder="Pesquisar produtos..."
+    value={search}
+    onChange={(e) => setSearch(e.target.value)}
+    className="search-input"
+  />
+</div>
 
 {/* FAVORITOS */}
-<button className="cart-btn" onClick={() => setShowFavorites(true)}>
-  ❤️ ({favorites.length})
+<button className="icon-btn" onClick={() => setShowFavorites(true)}>
+  <FiHeart size={22} />
+  {favorites.length > 0 && (
+    <span className="badge">{favorites.length}</span>
+  )}
 </button>
 
           {/* CARRINHO */}
-          <button className="cart-btn" onClick={() => setCartOpen(true)}>
-            🛒 ({cart.length})
-          </button>
+          <button className="icon-btn" onClick={() => setCartOpen(true)}>
+  <FiShoppingBag size={22} />
+  {cart.length > 0 && (
+    <span className="badge">{cart.length}</span>
+  )}
+</button>
 
         </nav>
       </header>
