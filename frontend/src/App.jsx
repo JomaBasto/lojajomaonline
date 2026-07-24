@@ -436,15 +436,21 @@ console.log("SUBCATEGORY:", subCategory);
           : "";
 
       const mainLower = (main || "").toLowerCase();
-      const subLower = (sub || "").toLowerCase();
+const subLower = (sub || "").toLowerCase();
 
-      const matchMain =
-        category === "all" || mainLower === category.toLowerCase();
+const selected = category.toLowerCase();
 
-      const matchSub =
-        !subCategory || subLower === subCategory.toLowerCase();
+const matchMain =
+  selected === "all" ||
+  mainLower === selected ||
+  (selected === "trail" && mainLower.endsWith("-trail")) ||
+  (selected === "running" && mainLower.endsWith("-running")) ||
+  (selected === "futsal" && mainLower.endsWith("-futsal"));
 
-      const matchSearch =
+const matchSub =
+  !subCategory || subLower === subCategory.toLowerCase();
+
+const matchSearch =
   !search ||
   p.name?.toLowerCase().includes(search.toLowerCase());
 

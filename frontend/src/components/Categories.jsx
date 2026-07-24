@@ -1,19 +1,15 @@
 export default function Categories({ onSelect }) {
   return (
     <section className="categories">
-
       <div className="categories-title">
-
         <h2>Encontra a sapatilha perfeita para ti</h2>
 
         <p>
           Escolhe a coleção que melhor se adapta ao teu estilo.
         </p>
-
       </div>
 
       <div className="categories-grid">
-
         <div className="category-card">
           <img
             src="/images/trail.png"
@@ -27,10 +23,9 @@ export default function Categories({ onSelect }) {
               Máxima aderência para qualquer terreno.
             </p>
 
-            <button onClick={() => onSelect("homem-trail")}>
-  Ver coleção →
-</button>
-
+            <button onClick={() => onSelect("trail")}>
+              Ver coleção →
+            </button>
           </div>
         </div>
 
@@ -47,35 +42,31 @@ export default function Categories({ onSelect }) {
               Leveza e desempenho para cada quilómetro.
             </p>
 
-            <button onClick={() => onSelect("homem-running")}>
-  Ver coleção →
-</button>
-
+            <button onClick={() => onSelect("running")}>
+              Ver coleção →
+            </button>
           </div>
         </div>
 
         <div className="category-card">
           <img
-            src="/images/caminhada.png"
-            alt="Caminhada"
+            src="/images/futsal.png"
+            alt="Futsal"
           />
 
           <div className="category-content">
-            <h3>Caminhada</h3>
+            <h3>Futsal</h3>
 
             <p>
-              Conforto para acompanhar o teu ritmo.
+              Controlo, agilidade e precisão em cada jogo.
             </p>
 
-            <button onClick={() => onSelect("homem-caminhada")}>
-  Ver coleção →
-</button>
-
+            <button onClick={() => onSelect("futsal")}>
+              Ver coleção →
+            </button>
           </div>
         </div>
-
       </div>
-
     </section>
   );
 }
