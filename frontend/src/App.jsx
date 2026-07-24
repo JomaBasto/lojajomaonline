@@ -731,34 +731,22 @@ return matchMain && matchSub && matchSearch;
   </div>
 )}
 
-        <nav className="nav"> {!logged ? (
-  <>
-    <button onClick={() => setShowLogin(true)}>
-      Login
-    </button>
-
-    <button onClick={() => setShowRegister(true)}>
-      Registar
-    </button>
-  </>
+        <nav className="nav"> 
+          {!logged ? (
+  <button
+    className="icon-btn"
+    onClick={() => setShowLogin(true)}
+  >
+    <FiUser size={22} />
+  </button>
 ) : (
   <>
-    
-<span>
-  Olá {user?.name?.split(" ")[0] || "Utilizador"}
-</span>
-
-<button
-  onClick={handleLogout}
-  style={{
-    fontSize: "22px",
-    background: "none",
-    border: "none",
-    cursor: "pointer"
-  }}
->
-  <FiUser size={22} />
-</button>
+    <button
+      className="icon-btn"
+      onClick={handleLogout}
+    >
+      <FiUser size={22} />
+    </button>
 
     {/* 👑 ADMIN AQUI */}
     {isAdmin && (
