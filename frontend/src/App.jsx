@@ -562,24 +562,37 @@ return matchMain && matchSub && matchSearch;
   )}
 
   <button
+  className="icon-btn"
   onClick={() => setSearchOpen(!searchOpen)}
-  style={{
-    fontSize: "22px",
-    background: "none",
-    border: "none",
-    cursor: "pointer"
-  }}
 >
-  🔍
+  <FiSearch size={22} />
 </button>
 
-  <button onClick={() => setShowFavorites(true)}>
-  ❤️
+<button
+  className="icon-btn"
+  onClick={() => setShowFavorites(true)}
+>
+  <FiHeart size={22} />
+
+  {favorites.length > 0 && (
+    <span className="badge">
+      {favorites.length}
+    </span>
+  )}
 </button>
 
-  <button onClick={() => setCartOpen(true)}>
-    🛒
-  </button>
+<button
+  className="icon-btn"
+  onClick={() => setCartOpen(true)}
+>
+  <FiShoppingBag size={22} />
+
+  {cart.length > 0 && (
+    <span className="badge">
+      {cart.length}
+    </span>
+  )}
+</button>
 
   {!logged ? (
     <>
