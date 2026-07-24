@@ -18,6 +18,7 @@ export default function App() {
   const [products, setProducts] = useState([]);
 
   const productsRef = useRef(null);
+  const firstProductRef = useRef(null);
 
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showForm, setShowForm] = useState(false);
@@ -473,6 +474,17 @@ const matchSearch =
 return matchMain && matchSub && matchSearch;
     })
   : [];
+
+  useEffect(() => {
+  if (search.trim().length < 2) return;
+
+  if (filteredProducts.length > 0) {
+    firstProductRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+}, [search, filteredProducts]);
 
   const addToCart = (product) => {
   if (!selectedProduct) return;
@@ -1087,11 +1099,15 @@ return matchMain && matchSub && matchSearch;
       
         <div className="products-grid">
   {Array.isArray(filteredProducts) &&
-    filteredProducts.map((p) => {
+    filteredProducts.map((p, index) => {
       console.log("A renderizar produto:", p);
 
       return (
-        <div className="card" key={p._id}>
+        <div
+  className="card"
+  key={p._id}
+  ref={index === 0 ? firstProductRef : null}
+>
 
           {/* IMAGEM PRINCIPAL APENAS */}
           <img
