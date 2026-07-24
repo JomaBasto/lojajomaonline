@@ -750,6 +750,10 @@ return matchMain && matchSub && matchSearch;
   </button>
 ) : (
   <>
+    <span className="desktop-user">
+      Olá {user?.name?.split(" ")[0]} 👋
+    </span>
+
     <button
       className="icon-btn"
       onClick={handleLogout}
