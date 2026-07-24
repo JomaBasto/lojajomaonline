@@ -573,7 +573,7 @@ return matchMain && matchSub && matchSearch;
   
       {/* HEADER + MENU */}
       <header className="header">
-        <h1 className="logo">JomaBasto Store</h1>
+        <h1 className="logo">JomaBasto Store TESTE</h1>
 
         <div className="mobile-actions only-mobile">
 
