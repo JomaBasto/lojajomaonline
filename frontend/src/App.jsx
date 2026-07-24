@@ -573,13 +573,13 @@ return matchMain && matchSub && matchSearch;
   
       {/* HEADER + MENU */}
       <header className="header">
-        <h1 className="logo">JomaBasto Store TESTE</h1>
+        <h1 className="logo">JomaBasto Store</h1>
 
         <div className="mobile-actions only-mobile">
 
   {logged && user?.name && (
     <span className="mobile-user">
-      Olá {user.name.split(" ")[0]} 👋
+      Olá {user.name.split(" ")[0]} 
     </span>
   )}
 
@@ -617,20 +617,29 @@ return matchMain && matchSub && matchSearch;
 </button>
 
   {!logged ? (
-    <>
-      <button onClick={() => setShowLogin(true)}>
-        Login
-      </button>
+  <button
+    className="icon-btn"
+    onClick={() => setShowLogin(true)}
+  >
+    <FiUser size={22} />
+  </button>
+) : (
+  <details className="mobile-user-menu">
+    <summary className="icon-btn">
+      <FiUser size={22} />
+    </summary>
 
-      <button onClick={() => setShowRegister(true)}>
-        Registar
+    <div className="mobile-user-dropdown">
+      <span>
+        Olá {user?.name?.split(" ")[0]} 👋
+      </span>
+
+      <button onClick={handleLogout}>
+        Logout
       </button>
-    </>
-  ) : (
-    <button onClick={handleLogout}>
-      Logout
-    </button>
-  )}
+    </div>
+  </details>
+)}
 
 </div>
 
