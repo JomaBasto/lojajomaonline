@@ -147,11 +147,18 @@ useEffect(() => {
   localStorage.setItem("cart", JSON.stringify(cart));
 }, [cart]);
   const [cartOpen, setCartOpen] = useState(false);
-  const [mobileMenu, setMobileMenu] = useState(false);
+const [mobileMenu, setMobileMenu] = useState(false);
 
 const selectCategory = (category) => {
   setCategory(category);
 
+  setTimeout(() => {
+    productsRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }, 100);
+};
 
 const selectMobileCategory = (category, e) => {
   selectCategory(category);
@@ -163,24 +170,6 @@ const selectMobileCategory = (category, e) => {
   }
 
   setMobileMenu(false);
-};
-
-const selectMobileCategory = (category, e) => {
-  selectCategory(category);
-
-  const details = e.currentTarget.closest("details");
-
-  if (details) {
-    details.removeAttribute("open");
-  }
-};
-
-  setTimeout(() => {
-    productsRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }, 100);
 };
 
   const openGallery = (product) => {
