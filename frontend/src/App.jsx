@@ -3,11 +3,23 @@ import {
   FiSearch,
   FiHeart,
   FiShoppingBag,
-  FiUser
+  FiUser,
+  FiTruck,
+  FiPackage,
+  FiRefreshCw,
+  FiShield,
+  FiMail,
+  FiPhone
 } from "react-icons/fi";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Categories from "./components/Categories";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaYoutube,
+  FaTiktok
+} from "react-icons/fa";
 
 export default function App() {
   // 🔥 STATES
@@ -1128,16 +1140,25 @@ return matchMain && matchSub && matchSearch;
 />
 
           <h3>{p.name}</h3>
-          <p>{p.price} €</p>
 
-          <div
-            style={{
-              display: "flex",
-              gap: "10px",
-              flexWrap: "wrap",
-              marginTop: "10px"
-            }}
-          >
+<p className="product-price">
+  {p.price} €
+</p>
+
+<div className="product-highlights">
+  <span className="stock-ok">
+    ✅ Em stock
+  </span>
+</div>
+
+<div
+  style={{
+    display: "flex",
+    gap: "10px",
+    flexWrap: "wrap",
+    marginTop: "10px"
+  }}
+>
 
             <button onClick={() => toggleFavorite(p)}>
               ❤️
@@ -1410,9 +1431,12 @@ return matchMain && matchSub && matchSearch;
           }
 
           addToCart({
-            ...selectedProduct,
-            size: selectedSize,
-          });
+  ...selectedProduct,
+  size: selectedSize,
+});
+
+setSelectedProduct(null);
+setSelectedSize(null);
         }}
         style={{
           marginTop: "15px",
@@ -1547,28 +1571,112 @@ return matchMain && matchSub && matchSearch;
 
   <div className="footer-content">
 
-    <div>
-      <h4>JomaBasto</h4>
-      <p>⭐ Revendedor Oficial Joma em Portugal</p>
-    </div>
+    <div className="footer-block footer-brand">
+  <img
+    src="/jomabasto.png"
+    alt="JomaBasto"
+    className="footer-logo"
+  />
 
-    <div>
-      <p>🚚 Portes grátis em compras superiores a 70€</p>
-      <p>📦 Envios por Correio Registado CTT</p>
-      <p>🔄 Trocas até 30 dias</p>
-      <p>🔒 Pagamentos seguros</p>
-    </div>
+  <p>Revendedor Oficial Joma em Portugal</p>
+</div>
 
-    <div>
-      <p>📧 jomabasto@sapo.pt</p>
-      <p>📞 924 176 159</p>
-    </div>
+    <div className="footer-block">
+  <FiTruck size={28} />
+  <h5>Portes</h5>
+  <p>Grátis acima de 70€</p>
+</div>
+
+<div className="footer-block">
+  <FiPackage size={28} />
+  <h5>Envios</h5>
+  <p>Correio Registado CTT</p>
+</div>
+
+<div className="footer-block">
+  <FiRefreshCw size={28} />
+  <h5>Trocas</h5>
+  <p>Até 15 dias</p>
+</div>
+
+<div className="footer-block">
+  <FiShield size={28} />
+  <h5>Pagamentos</h5>
+  <p>100% Seguros</p>
+</div>
+
+<div className="footer-block">
+  <FiMail size={22} />
+
+  <a
+    href="mailto:jomabasto@sapo.pt"
+    className="footer-contact"
+  >
+    jomabasto@sapo.pt
+  </a>
+
+  <FiPhone
+    size={22}
+    style={{ marginTop: "12px" }}
+  />
+
+  <a
+    href="tel:+351924176159"
+    className="footer-contact"
+  >
+    924 176 159
+  </a>
+</div>
 
   </div>
 
   <div className="footer-bottom">
-    © {new Date().getFullYear()} JomaBasto • Todos os direitos reservados.
-  </div>
+    <span>© {new Date().getFullYear()} JomaBasto</span>
+
+    <div className="footer-links">
+  <a href="#">Termos</a>
+  <a href="#">Privacidade</a>
+</div>
+
+<div className="footer-social">
+
+  <span>Segue-nos</span>
+
+  <a
+    href="https://facebook.com/jomabasto"
+    target="_blank"
+    rel="noreferrer"
+  >
+    <FaFacebookF />
+  </a>
+
+  <a
+    href="https://instagram.com/jomabasto"
+    target="_blank"
+    rel="noreferrer"
+  >
+    <FaInstagram />
+  </a>
+
+  <a
+    href="https://youtube.com/jomabasto"
+    target="_blank"
+    rel="noreferrer"
+  >
+    <FaYoutube />
+  </a>
+
+  <a
+    href="https://tiktok.com/@jomabasto"
+    target="_blank"
+    rel="noreferrer"
+  >
+    <FaTiktok />
+  </a>
+
+</div>
+
+</div>
 
 </footer>
 

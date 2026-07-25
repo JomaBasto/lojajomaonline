@@ -1100,17 +1100,16 @@ body,
 }
 
 .product-highlights{
-  margin:8px 0 14px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  margin:12px 0 18px;
   font-size:14px;
-}
-
-.product-highlights span{
-  display:inline-block;
+  color:#555;
 }
 
 .stock-ok{
   color:#16a34a;
   font-weight:700;
 }
-
 
