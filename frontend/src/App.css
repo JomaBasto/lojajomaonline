@@ -1249,3 +1249,34 @@ body { padding-top: 70px; }
   opacity: 0.85;
 }
 
+
+.footer-about {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-top: 15px;
+  max-width: 280px;
+  opacity: 0.85;
+}
+
+.footer-about-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  transition: 0.3s;
+}
+
+.footer-about-link:hover {
+  opacity: 0.7;
+}
+
+
+@media(max-width:768px){
+
+  .footer-about {
+    max-width: 100%;
+  }
+
+}
+

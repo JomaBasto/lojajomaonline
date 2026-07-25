@@ -23,7 +23,7 @@ import {
 } from "react-icons/fa";
 
 export default function App() {
-  // 🔥 STATES
+  // STATES
   const [category, setCategory] = useState("all");
   const [subCategory, setSubCategory] = useState("");
   const [search, setSearch] = useState("");
@@ -115,7 +115,7 @@ const login = async () => {
       return;
     }
 
-    // 🔐 GUARDAR TOKEN
+    // GUARDAR TOKEN
     localStorage.setItem("token", json.token);
     localStorage.setItem("user", JSON.stringify(json.user));
 
@@ -130,10 +130,10 @@ const login = async () => {
   }
 };
 
-  // 👟 TAMANHO
+  // TAMANHO
   const [selectedSize, setSelectedSize] = useState(null);
 
-  // 🛒 CARRINHO
+  // CARRINHO
   const [cart, setCart] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [showFavorites, setShowFavorites] = useState(false);
@@ -204,7 +204,7 @@ const shippingCost = cartTotal >= 70 || cartTotal === 0 ? 0 : 5.95;
 
 const finalTotal = cartTotal + shippingCost;
 
-  // 📝 FORM
+  // FORM
   const [form, setForm] = useState({
   name: "",
   reference: "",
@@ -254,7 +254,7 @@ const handleSave = async () => {
   }
 };
 
-  // 📦 CARREGAR PRODUTOS
+  // CARREGAR PRODUTOS
   useEffect(() => {
   async function loadProducts(retry = 0) {
     try {
@@ -285,7 +285,7 @@ setProducts(data);
   loadProducts();
 }, []);
 
-  // 🗑️ APAGAR PRODUTO
+  // APAGAR PRODUTO
 const deleteProduct = async (id) => {
   if (!window.confirm("Tem a certeza que pretende apagar este produto?")) {
     return;
@@ -316,7 +316,7 @@ const deleteProduct = async (id) => {
   }
 };
 
-  // ✏️ EDITAR PRODUTO
+  // EDITAR PRODUTO
   const editProduct = async (product) => {
     const newName = prompt("Novo nome:", product.name);
     const newPrice = prompt("Novo preço:", product.price);
@@ -376,7 +376,7 @@ console.log("TAMANHOS ESCOLHIDOS:", newSizes);
 ));
   };
 
-  // 📸 UPLOAD IMAGEM CLOUDINARY
+  // UPLOAD IMAGEM CLOUDINARY
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
 
@@ -400,7 +400,7 @@ console.log("TAMANHOS ESCOLHIDOS:", newSizes);
     });
   };
 
-  // ➕ ADICIONAR PRODUTO
+  // ? ADICIONAR PRODUTO
   const addProduct = async () => {
   console.log("MAIN:", form.mainCategory);
   console.log("SUB:", form.subCategory);
@@ -455,7 +455,7 @@ console.log("PRODUCTO A ENVIAR:", productData);
     setShowForm(false);
 
   } catch (error) {
-    console.log("❌ erro ao guardar produto:", error);
+    console.log("? erro ao guardar produto:", error);
   }
 };
 
@@ -465,7 +465,7 @@ console.log("SUBCATEGORY:", subCategory);
 console.log("CATEGORY:", category);
 console.log("SUBCATEGORY:", subCategory);
 
-  // 🔍 FILTRO
+  // FILTRO
   const filteredProducts = Array.isArray(products)
   ? products.filter((p) => {
       const main =
@@ -516,7 +516,7 @@ return matchMain && matchSub && matchSearch;
   if (!selectedProduct) return;
 
   if (!selectedSize) {
-    alert("Escolhe um tamanho primeiro 👟");
+    alert("Escolhe um tamanho primeiro");
     return;
   }
 
@@ -546,14 +546,14 @@ return matchMain && matchSub && matchSearch;
       ];
     }
 
-    // 💾 GUARDAR NO LOCALSTORAGE (IMPORTANTE)
+    // GUARDAR NO LOCALSTORAGE (IMPORTANTE)
     localStorage.setItem("cart", JSON.stringify(updatedCart));
 
     return updatedCart;
   });
 };
 
-  // 💳 CHECKOUT
+  // CHECKOUT
   const checkout = async () => {
   if (cart.length === 0) return;
 
@@ -691,7 +691,7 @@ return matchMain && matchSub && matchSearch;
   className="mobile-menu-btn"
   onClick={() => setMobileMenu(!mobileMenu)}
 >
-  ☰
+  ?
 </button>
 
 {mobileMenu && (
@@ -787,7 +787,7 @@ return matchMain && matchSub && matchSearch;
       <FiUser size={22} />
     </button>
 
-    {/* 👑 ADMIN AQUI */}
+    {/* ADMIN AQUI */}
     {isAdmin && (
       <span style={{ marginLeft: "10px", color: "red" }}>
         ADMIN
@@ -798,7 +798,7 @@ return matchMain && matchSub && matchSearch;
 
           {/* HOMEM */}
           <div className="dropdown">
-            <a onClick={() => setCategory("all")}>Homem ▾</a>
+            <a onClick={() => setCategory("all")}>Homem ?</a>
             <div className="dropdown-menu">
               <a onClick={() => selectCategory("homem-running")}>Running</a>
               <a onClick={() => selectCategory("homem-trail")}>Trail</a>
@@ -816,7 +816,7 @@ return matchMain && matchSub && matchSearch;
 
           {/* MULHER */}
           <div className="dropdown">
-            <a onClick={() => setCategory("all")}>Mulher ▾</a>
+            <a onClick={() => setCategory("all")}>Mulher ?</a>
             <div className="dropdown-menu">
               <a onClick={() => selectCategory("mulher-running")}>Running</a>
               <a onClick={() => selectCategory("mulher-trail")}>Trail</a>
@@ -834,7 +834,7 @@ return matchMain && matchSub && matchSearch;
 
           {/* CRIANÇA */}
           <div className="dropdown">
-            <a onClick={() => setCategory("all")}>Criança ▾</a>
+            <a onClick={() => setCategory("all")}>Criança ?</a>
             <div className="dropdown-menu">
               <a onClick={() => selectCategory("crianca-running")}>Running</a>
               <a onClick={() => selectCategory("crianca-trail")}>Trail</a>
@@ -846,7 +846,7 @@ return matchMain && matchSub && matchSearch;
 
           {/* ACESSÓRIOS */}
           <div className="dropdown">
-            <a onClick={() => setCategory("all")}>Acessórios ▾</a>
+            <a onClick={() => setCategory("all")}>Acessórios ?</a>
             <div className="dropdown-menu">
               <a onClick={() => selectCategory("acessorios-bolas")}>Bolas</a>
               <a onClick={() => selectCategory("acessorios-luvas")}>Luvas</a>
@@ -1161,7 +1161,7 @@ return matchMain && matchSub && matchSearch;
 
 <div className="product-highlights">
   <span className="stock-ok">
-    ✅ Em stock
+    ✓ Em stock
   </span>
 </div>
 
@@ -1175,17 +1175,17 @@ return matchMain && matchSub && matchSearch;
 >
 
             <button onClick={() => toggleFavorite(p)}>
-              ❤️
+              Favorito
             </button>
 
             {isAdmin && (
               <>
                 <button onClick={() => editProduct(p)}>
-                  ✏️ Editar
+                  Editar
                 </button>
 
                 <button onClick={() => deleteProduct(p._id)}>
-                  🗑️ Apagar
+                  Apagar
                 </button>
               </>
             )}
@@ -1198,14 +1198,14 @@ return matchMain && matchSub && matchSearch;
 </div>
 
 <button onClick={() => setShowFavorites(true)}>
-  ❤️ ({favorites.length})
+  Favoritos ({favorites.length})
 </button>
 
 {/* FAVORITOS */}
 {showFavorites && (
   <div className="cart-overlay">
     <div className="cart">
-      <h2>❤️ Favoritos</h2>
+      <h2>Favoritos</h2>
 
       <button onClick={() => setShowFavorites(false)}>
         Fechar
@@ -1244,7 +1244,7 @@ return matchMain && matchSub && matchSearch;
       {cartOpen && (
   <div className="cart-overlay">
     <div className="cart">
-      <h2>🛒 Carrinho</h2>
+      <h2>Carrinho</h2>
 
       <button onClick={() => setCartOpen(false)}>
         Fechar
@@ -1330,7 +1330,7 @@ return matchMain && matchSub && matchSearch;
 
 {cartTotal < 70 && cartTotal > 0 && (
   <p style={{ color: "#e30613", fontSize: "14px" }}>
-    🚚 Faltam {(70 - cartTotal).toFixed(2)} € para ter portes grátis.
+    Faltam {(70 - cartTotal).toFixed(2)} € para ter portes grátis.
   </p>
 )}
 
@@ -1338,7 +1338,7 @@ return matchMain && matchSub && matchSearch;
   </div>
 )}
 
-{/* 📸 GALERIA DO PRODUTO */}
+{/* GALERIA DO PRODUTO */}
 {selectedProduct && (
   <div
     className="cart-overlay"
@@ -1436,11 +1436,11 @@ return matchMain && matchSub && matchSearch;
         ))}
       </div>
 
-      {/* 🛒 BOTÃO ADICIONAR AO CARRINHO */}
+      {/* BOTÃO ADICIONAR AO CARRINHO */}
       <button
         onClick={() => {
           if (!selectedSize) {
-            alert("Escolhe um tamanho 👟");
+            alert("Escolhe um tamanho");
             return;
           }
 
@@ -1466,7 +1466,7 @@ setSelectedSize(null);
         Adicionar ao carrinho
       </button>
 
-      {/* 🔴 FECHAR */}
+      {/* FECHAR */}
       <button
         onClick={() => {
           setSelectedProduct(null);
@@ -1698,3 +1698,8 @@ setSelectedSize(null);
 </div>
 );
 }
+
+
+
+
+
