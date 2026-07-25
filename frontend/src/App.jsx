@@ -148,8 +148,32 @@ useEffect(() => {
 }, [cart]);
   const [cartOpen, setCartOpen] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
-  const selectCategory = (category) => {
+
+const selectCategory = (category) => {
   setCategory(category);
+
+
+const selectMobileCategory = (category, e) => {
+  selectCategory(category);
+
+  const details = e.currentTarget.closest("details");
+
+  if (details) {
+    details.removeAttribute("open");
+  }
+
+  setMobileMenu(false);
+};
+
+const selectMobileCategory = (category, e) => {
+  selectCategory(category);
+
+  const details = e.currentTarget.closest("details");
+
+  if (details) {
+    details.removeAttribute("open");
+  }
+};
 
   setTimeout(() => {
     productsRef.current?.scrollIntoView({
@@ -686,64 +710,64 @@ return matchMain && matchSub && matchSearch;
   <details className="mobile-item">
     <summary>Homem</summary>
 
-    <a onClick={() => selectCategory("homem-running")}>Running</a>
-    <a onClick={() => selectCategory("homem-trail")}>Trail</a>
-    <a onClick={() => selectCategory("homem-futebol")}>Futebol</a>
-    <a onClick={() => selectCategory("homem-futsal")}>Futsal</a>
-    <a onClick={() => selectCategory("homem-andebol")}>Andebol</a>
-    <a onClick={() => selectCategory("homem-voleibol")}>Voleibol</a>
-    <a onClick={() => selectCategory("homem-basquetebol")}>Basquetebol</a>
-    <a onClick={() => selectCategory("homem-tenis")}>Ténis</a>
-    <a onClick={() => selectCategory("homem-padel")}>Padel</a>
-    <a onClick={() => selectCategory("homem-casual")}>Casual</a>
-    <a onClick={() => selectCategory("homem-caminhada")}>Caminhada</a>
+    <a onClick={(e) => selectMobileCategory("homem-running", e)}>Running</a>
+    <a onClick={(e) => selectMobileCategory("homem-trail", e)}>Trail</a>
+    <a onClick={(e) => selectMobileCategory("homem-futebol", e)}>Futebol</a>
+    <a onClick={(e) => selectMobileCategory("homem-futsal", e)}>Futsal</a>
+    <a onClick={(e) => selectMobileCategory("homem-andebol", e)}>Andebol</a>
+    <a onClick={(e) => selectMobileCategory("homem-voleibol", e)}>Voleibol</a>
+    <a onClick={(e) => selectMobileCategory("homem-basquetebol", e)}>Basquetebol</a>
+    <a onClick={(e) => selectMobileCategory("homem-tenis", e)}>Ténis</a>
+    <a onClick={(e) => selectMobileCategory("homem-padel", e)}>Padel</a>
+    <a onClick={(e) => selectMobileCategory("homem-casual", e)}>Casual</a>
+    <a onClick={(e) => selectMobileCategory("homem-caminhada", e)}>Caminhada</a>
   </details>
 
   <details className="mobile-item">
     <summary>Mulher</summary>
 
-    <a onClick={() => selectCategory("mulher-running")}>Running</a>
-    <a onClick={() => selectCategory("mulher-trail")}>Trail</a>
-    <a onClick={() => selectCategory("mulher-futebol")}>Futebol</a>
-    <a onClick={() => selectCategory("mulher-futsal")}>Futsal</a>
-    <a onClick={() => selectCategory("mulher-andebol")}>Andebol</a>
-    <a onClick={() => selectCategory("mulher-voleibol")}>Voleibol</a>
-    <a onClick={() => selectCategory("mulher-basquetebol")}>Basquetebol</a>
-    <a onClick={() => selectCategory("mulher-tenis")}>Ténis</a>
-    <a onClick={() => selectCategory("mulher-padel")}>Padel</a>
-    <a onClick={() => selectCategory("mulher-casual")}>Casual</a>
-    <a onClick={() => selectCategory("mulher-caminhada")}>Caminhada</a>
+    <a onClick={(e) => selectMobileCategory("mulher-running", e)}>Running</a>
+    <a onClick={(e) => selectMobileCategory("mulher-trail", e)}>Trail</a>
+    <a onClick={(e) => selectMobileCategory("mulher-futebol", e)}>Futebol</a>
+    <a onClick={(e) => selectMobileCategory("mulher-futsal", e)}>Futsal</a>
+    <a onClick={(e) => selectMobileCategory("mulher-andebol", e)}>Andebol</a>
+    <a onClick={(e) => selectMobileCategory("mulher-voleibol", e)}>Voleibol</a>
+    <a onClick={(e) => selectMobileCategory("mulher-basquetebol", e)}>Basquetebol</a>
+    <a onClick={(e) => selectMobileCategory("mulher-tenis", e)}>Ténis</a>
+    <a onClick={(e) => selectMobileCategory("mulher-padel", e)}>Padel</a>
+    <a onClick={(e) => selectMobileCategory("mulher-casual", e)}>Casual</a>
+    <a onClick={(e) => selectMobileCategory("mulher-caminhada", e)}>Caminhada</a>
   </details>
 
   <details className="mobile-item">
     <summary>Criança</summary>
 
-    <a onClick={() => selectCategory("crianca-running")}>Running</a>
-    <a onClick={() => selectCategory("crianca-trail")}>Trail</a>
-    <a onClick={() => selectCategory("crianca-futebol")}>Futebol</a>
-    <a onClick={() => selectCategory("crianca-futsal")}>Futsal</a>
-    <a onClick={() => selectCategory("crianca-casual")}>Casual</a>
+    <a onClick={(e) => selectMobileCategory("crianca-running", e)}>Running</a>
+    <a onClick={(e) => selectMobileCategory("crianca-trail", e)}>Trail</a>
+    <a onClick={(e) => selectMobileCategory("crianca-futebol", e)}>Futebol</a>
+    <a onClick={(e) => selectMobileCategory("crianca-futsal", e)}>Futsal</a>
+    <a onClick={(e) => selectMobileCategory("crianca-casual", e)}>Casual</a>
   </details>
 
   <details className="mobile-item">
     <summary>Acessórios</summary>
 
-    <a onClick={() => selectCategory("acessorios-bolas")}>Bolas</a>
-    <a onClick={() => selectCategory("acessorios-luvas")}>Luvas</a>
-    <a onClick={() => selectCategory("acessorios-meias")}>Meias</a>
-    <a onClick={() => selectCategory("acessorios-mochilas")}>Mochilas</a>
-    <a onClick={() => selectCategory("acessorios-bones")}>Bonés</a>
-    <a onClick={() => selectCategory("acessorios-trail-running")}>Trail / Running</a>
-    <a onClick={() => selectCategory("acessorios-verao")}>Verão</a>
-    <a onClick={() => selectCategory("acessorios-outros")}>Outros</a>
+    <a onClick={(e) => selectMobileCategory("acessorios-bolas", e)}>Bolas</a>
+    <a onClick={(e) => selectMobileCategory("acessorios-luvas", e)}>Luvas</a>
+    <a onClick={(e) => selectMobileCategory("acessorios-meias", e)}>Meias</a>
+    <a onClick={(e) => selectMobileCategory("acessorios-mochilas", e)}>Mochilas</a>
+    <a onClick={(e) => selectMobileCategory("acessorios-bones", e)}>Bonés</a>
+    <a onClick={(e) => selectMobileCategory("acessorios-trail-running", e)}>Trail / Running</a>
+    <a onClick={(e) => selectMobileCategory("acessorios-verao", e)}>Verão</a>
+    <a onClick={(e) => selectMobileCategory("acessorios-outros", e)}>Outros</a>
   </details>
 
   <div className="mobile-item">
-    <a onClick={() => selectCategory("outlet")}>Outlet</a>
+    <a onClick={(e) => selectMobileCategory("outlet", e)}>Outlet</a>
   </div>
 
   <div className="mobile-item">
-    <a onClick={() => selectCategory("edicoes-especiais")}>
+    <a onClick={(e) => selectMobileCategory("edicoes-especiais", e)}>
       Edições Especiais
     </a>
   </div>
