@@ -19,7 +19,8 @@ import {
   FaFacebookF,
   FaInstagram,
   FaYoutube,
-  FaTiktok
+  FaTiktok,
+  FaHeart
 } from "react-icons/fa";
 
 export default function App() {
@@ -798,7 +799,7 @@ return matchMain && matchSub && matchSearch;
 
           {/* HOMEM */}
           <div className="dropdown">
-            <a onClick={() => setCategory("all")}>Homem ?</a>
+            <a onClick={() => setCategory("all")}>Homem</a>
             <div className="dropdown-menu">
               <a onClick={() => selectCategory("homem-running")}>Running</a>
               <a onClick={() => selectCategory("homem-trail")}>Trail</a>
@@ -816,7 +817,7 @@ return matchMain && matchSub && matchSearch;
 
           {/* MULHER */}
           <div className="dropdown">
-            <a onClick={() => setCategory("all")}>Mulher ?</a>
+            <a onClick={() => setCategory("all")}>Mulher</a>
             <div className="dropdown-menu">
               <a onClick={() => selectCategory("mulher-running")}>Running</a>
               <a onClick={() => selectCategory("mulher-trail")}>Trail</a>
@@ -834,7 +835,7 @@ return matchMain && matchSub && matchSearch;
 
           {/* CRIANÇA */}
           <div className="dropdown">
-            <a onClick={() => setCategory("all")}>Criança ?</a>
+            <a onClick={() => setCategory("all")}>Criança</a>
             <div className="dropdown-menu">
               <a onClick={() => selectCategory("crianca-running")}>Running</a>
               <a onClick={() => selectCategory("crianca-trail")}>Trail</a>
@@ -846,7 +847,7 @@ return matchMain && matchSub && matchSearch;
 
           {/* ACESSÓRIOS */}
           <div className="dropdown">
-            <a onClick={() => setCategory("all")}>Acessórios ?</a>
+            <a onClick={() => setCategory("all")}>Acessórios</a>
             <div className="dropdown-menu">
               <a onClick={() => selectCategory("acessorios-bolas")}>Bolas</a>
               <a onClick={() => selectCategory("acessorios-luvas")}>Luvas</a>
@@ -1174,8 +1175,8 @@ return matchMain && matchSub && matchSearch;
   }}
 >
 
-            <button onClick={() => toggleFavorite(p)}>
-              Favorito
+            <button onClick={() => toggleFavorite(p)} className="favorite-btn">
+              <FaHeart />
             </button>
 
             {isAdmin && (
@@ -1698,6 +1699,11 @@ setSelectedSize(null);
 </div>
 );
 }
+
+
+
+
+
 
 
 

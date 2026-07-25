@@ -1,4 +1,4 @@
-/* =========================
+Ôªø/* =========================
    RESET
 ========================= */
 * {
@@ -496,7 +496,7 @@ body,
 
 
 
-/* CORRE«√O GRID HORIZONTAL */
+/* CORRE√á√ÉO GRID HORIZONTAL */
 .grid,
 .products-grid {
   display: grid;
@@ -535,7 +535,7 @@ body,
 
 
 
-/* IMAGEM MAIOR SEM SOBREPOSI«√O */
+/* IMAGEM MAIOR SEM SOBREPOSI√á√ÉO */
 .grid .card img,
 .products-grid .card img {
   width: 100%;
@@ -571,7 +571,7 @@ body,
   display: none;
 }
 
-/* Apenas telemÛvel */
+/* Apenas telem√≥vel */
 @media (max-width: 768px) {
 
   .mobile-menu-btn {
@@ -613,7 +613,7 @@ body,
 }
 
 
-/* Mostrar aÁıes apenas no telemÛvel */
+/* Mostrar a√ß√µes apenas no telem√≥vel */
 .only-mobile {
   display: none;
 }
@@ -1278,5 +1278,32 @@ body { padding-top: 70px; }
     max-width: 100%;
   }
 
+}
+
+
+.favorite-btn {
+  background: #ffffff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 6px;
+  transition: transform 0.2s ease;
+}
+
+.favorite-btn svg {
+  color: #000000;
+  font-size: 22px;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.08);
+}
+
+
+
+.favorite-btn svg {
+  color: #e60000;
 }
 
