@@ -1649,6 +1649,7 @@ setSelectedSize(null);
     <div className="footer-links">
   <a href="#">Termos</a>
   <a href="#">Privacidade</a>
+  <a href="/quem-somos">Quem Somos</a>
 </div>
 
 <div className="footer-social">
