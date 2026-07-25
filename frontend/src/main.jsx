@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Success from "./Success.jsx";
 
 import App from "./App.jsx";
+import QuemSomos from "./components/QuemSomos.jsx";
 import Admin from "./Admin.jsx";
 import Checkout from "./Checkout.jsx";
 import AdminOrders from "./AdminOrders.jsx";
@@ -17,7 +18,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/admin/orders" element={<AdminOrders />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/sucesso" element={<Success />} />
+        <Route path="/quem-somos" element={<QuemSomos />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
 );
+

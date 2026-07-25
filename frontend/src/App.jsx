@@ -14,6 +14,7 @@ import {
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Categories from "./components/Categories";
+
 import {
   FaFacebookF,
   FaInstagram,
@@ -1647,9 +1648,9 @@ setSelectedSize(null);
     <span>© {new Date().getFullYear()} JomaBasto</span>
 
     <div className="footer-links">
+      <a href="/quem-somos">Quem Somos</a>
   <a href="#">Termos</a>
   <a href="#">Privacidade</a>
-  <a href="/quem-somos">Quem Somos</a>
 </div>
 
 <div className="footer-social">
