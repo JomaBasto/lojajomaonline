@@ -1,4 +1,4 @@
-Ôªø/* =========================
+/* =========================
    RESET
 ========================= */
 * {
@@ -496,7 +496,7 @@ body,
 
 
 
-/* CORRE√á√ÉO GRID HORIZONTAL */
+/* CORRE«√O GRID HORIZONTAL */
 .grid,
 .products-grid {
   display: grid;
@@ -535,7 +535,7 @@ body,
 
 
 
-/* IMAGEM MAIOR SEM SOBREPOSI√á√ÉO */
+/* IMAGEM MAIOR SEM SOBREPOSI«√O */
 .grid .card img,
 .products-grid .card img {
   width: 100%;
@@ -571,7 +571,7 @@ body,
   display: none;
 }
 
-/* Apenas telem√≥vel */
+/* Apenas telemÛvel */
 @media (max-width: 768px) {
 
   .mobile-menu-btn {
@@ -613,7 +613,7 @@ body,
 }
 
 
-/* Mostrar a√ß√µes apenas no telem√≥vel */
+/* Mostrar aÁıes apenas no telemÛvel */
 .only-mobile {
   display: none;
 }
@@ -656,12 +656,12 @@ body,
 
 .categories {
   background: #ffffff;
-  padding: 80px 8%;
+  padding: 40px 8%;
 }
 
 .categories-title {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 25px;
 }
 
 .categories-title h2 {
@@ -688,7 +688,7 @@ body,
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  margin-top: 40px;
+  margin-top: 0;
 }
 
 .category-card {
