@@ -1,4 +1,4 @@
-ï»¿import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   FiSearch,
   FiHeart,
@@ -262,7 +262,7 @@ const handleSave = async () => {
     try {
       const res = await fetch("https://jomabasto-backend.onrender.com/produtos");
 
-      if (!res.ok) throw new Error("Servidor indisponÃ­vel");
+      if (!res.ok) throw new Error("Servidor indisponível");
 
       const data = await res.json();
 
@@ -314,21 +314,21 @@ const deleteProduct = async (id) => {
     setProducts((prev) => prev.filter((p) => p._id !== id));
   } catch (err) {
     console.error(err);
-    alert("Erro de ligaÃ§Ã£o ao servidor.");
+    alert("Erro de ligação ao servidor.");
   }
 };
 
   // EDITAR PRODUTO
   const editProduct = async (product) => {
     const newName = prompt("Novo nome:", product.name);
-    const newPrice = prompt("Novo preÃ§o:", product.price);
+    const newPrice = prompt("Novo preço:", product.price);
     const newImage = prompt(
   "Nova imagem URL:",
   product.imageUrl || product.images?.[0] || ""
 );
-    const newDescription = prompt("Nova descriÃ§Ã£o:", product.description);
+    const newDescription = prompt("Nova descrição:", product.description);
     const newSizes = prompt(
-  "Tamanhos disponÃ­veis (separados por vÃ­rgula):",
+  "Tamanhos disponíveis (separados por vírgula):",
   product.sizes?.join(", ") || ""
 );
 console.log("TAMANHOS ESCOLHIDOS:", newSizes);
@@ -408,7 +408,7 @@ console.log("TAMANHOS ESCOLHIDOS:", newSizes);
   console.log("SUB:", form.subCategory);
 
   if (!form.name || !form.price || !form.images[0]) {
-  alert("Preencha o nome, preÃ§o e pelo menos uma imagem do produto.");
+  alert("Preencha o nome, preço e pelo menos uma imagem do produto.");
   return;
 }
 
@@ -607,7 +607,7 @@ return matchMain && matchSub && matchSearch;
 
   {logged && user?.name && (
     <span className="mobile-user">
-      OlÃ¡ {user.name.split(" ")[0]}
+      Olá {user.name.split(" ")[0]}
     </span>
   )}
 
@@ -659,7 +659,7 @@ return matchMain && matchSub && matchSearch;
 
     <div className="mobile-user-dropdown">
       <span>
-        OlÃ¡ {user?.name?.split(" ")[0]} 
+        Olá {user?.name?.split(" ")[0]} 
       </span>
 
       <button onClick={handleLogout}>
@@ -709,7 +709,7 @@ return matchMain && matchSub && matchSearch;
     <a onClick={(e) => selectMobileCategory("homem-andebol", e)}>Andebol</a>
     <a onClick={(e) => selectMobileCategory("homem-voleibol", e)}>Voleibol</a>
     <a onClick={(e) => selectMobileCategory("homem-basquetebol", e)}>Basquetebol</a>
-    <a onClick={(e) => selectMobileCategory("homem-tenis", e)}>TÃ©nis</a>
+    <a onClick={(e) => selectMobileCategory("homem-tenis", e)}>Ténis</a>
     <a onClick={(e) => selectMobileCategory("homem-padel", e)}>Padel</a>
     <a onClick={(e) => selectMobileCategory("homem-casual", e)}>Casual</a>
     <a onClick={(e) => selectMobileCategory("homem-caminhada", e)}>Caminhada</a>
@@ -725,14 +725,14 @@ return matchMain && matchSub && matchSearch;
     <a onClick={(e) => selectMobileCategory("mulher-andebol", e)}>Andebol</a>
     <a onClick={(e) => selectMobileCategory("mulher-voleibol", e)}>Voleibol</a>
     <a onClick={(e) => selectMobileCategory("mulher-basquetebol", e)}>Basquetebol</a>
-    <a onClick={(e) => selectMobileCategory("mulher-tenis", e)}>TÃ©nis</a>
+    <a onClick={(e) => selectMobileCategory("mulher-tenis", e)}>Ténis</a>
     <a onClick={(e) => selectMobileCategory("mulher-padel", e)}>Padel</a>
     <a onClick={(e) => selectMobileCategory("mulher-casual", e)}>Casual</a>
     <a onClick={(e) => selectMobileCategory("mulher-caminhada", e)}>Caminhada</a>
   </details>
 
   <details className="mobile-item">
-    <summary>CrianÃ§a</summary>
+    <summary>Criança</summary>
 
     <a onClick={(e) => selectMobileCategory("crianca-running", e)}>Running</a>
     <a onClick={(e) => selectMobileCategory("crianca-trail", e)}>Trail</a>
@@ -742,15 +742,15 @@ return matchMain && matchSub && matchSearch;
   </details>
 
   <details className="mobile-item">
-    <summary>AcessÃ³rios</summary>
+    <summary>Acessórios</summary>
 
     <a onClick={(e) => selectMobileCategory("acessorios-bolas", e)}>Bolas</a>
     <a onClick={(e) => selectMobileCategory("acessorios-luvas", e)}>Luvas</a>
     <a onClick={(e) => selectMobileCategory("acessorios-meias", e)}>Meias</a>
     <a onClick={(e) => selectMobileCategory("acessorios-mochilas", e)}>Mochilas</a>
-    <a onClick={(e) => selectMobileCategory("acessorios-bones", e)}>BonÃ©s</a>
+    <a onClick={(e) => selectMobileCategory("acessorios-bones", e)}>Bonés</a>
     <a onClick={(e) => selectMobileCategory("acessorios-trail-running", e)}>Trail / Running</a>
-    <a onClick={(e) => selectMobileCategory("acessorios-verao", e)}>VerÃ£o</a>
+    <a onClick={(e) => selectMobileCategory("acessorios-verao", e)}>Verão</a>
     <a onClick={(e) => selectMobileCategory("acessorios-outros", e)}>Outros</a>
   </details>
 
@@ -760,7 +760,7 @@ return matchMain && matchSub && matchSearch;
 
   <div className="mobile-item">
     <a onClick={(e) => selectMobileCategory("edicoes-especiais", e)}>
-      EdiÃ§Ãµes Especiais
+      Edições Especiais
     </a>
   </div>
 
@@ -779,7 +779,7 @@ return matchMain && matchSub && matchSearch;
 ) : (
   <>
     <span className="desktop-user">
-      OlÃ¡ {user?.name?.split(" ")[0]}
+      Olá {user?.name?.split(" ")[0]}
     </span>
 
     <button
@@ -809,7 +809,7 @@ return matchMain && matchSub && matchSearch;
               <a onClick={() => selectCategory("homem-andebol")}>Andebol</a>
               <a onClick={() => selectCategory("homem-voleibol")}>Voleibol</a>
               <a onClick={() => selectCategory("homem-basquetebol")}>Basquetebol</a>
-              <a onClick={() => selectCategory("homem-tenis")}>TÃ©nis</a>
+              <a onClick={() => selectCategory("homem-tenis")}>Ténis</a>
               <a onClick={() => selectCategory("homem-padel")}>Padel</a>
               <a onClick={() => selectCategory("homem-casual")}>Casual</a>
               <a onClick={() => selectCategory("homem-caminhada")}>Caminhada</a>
@@ -827,16 +827,16 @@ return matchMain && matchSub && matchSearch;
               <a onClick={() => selectCategory("mulher-andebol")}>Andebol</a>
               <a onClick={() => selectCategory("mulher-voleibol")}>Voleibol</a>
               <a onClick={() => selectCategory("mulher-basquetebol")}>Basquetebol</a>
-              <a onClick={() => selectCategory("mulher-tenis")}>TÃ©nis</a>
+              <a onClick={() => selectCategory("mulher-tenis")}>Ténis</a>
               <a onClick={() => selectCategory("mulher-padel")}>Padel</a>
               <a onClick={() => selectCategory("mulher-casual")}>Casual</a>
               <a onClick={() => selectCategory("mulher-caminhada")}>Caminhada</a>
             </div>
           </div>
 
-          {/* CRIANÃ‡A */}
+          {/* CRIANÇA */}
           <div className="dropdown">
-            <a onClick={() => setCategory("all")}>CrianÃ§a</a>
+            <a onClick={() => setCategory("all")}>Criança</a>
             <div className="dropdown-menu">
               <a onClick={() => selectCategory("crianca-running")}>Running</a>
               <a onClick={() => selectCategory("crianca-trail")}>Trail</a>
@@ -846,17 +846,17 @@ return matchMain && matchSub && matchSearch;
             </div>
           </div>
 
-          {/* ACESSÃ“RIOS */}
+          {/* ACESSÓRIOS */}
           <div className="dropdown">
-            <a onClick={() => setCategory("all")}>AcessÃ³rios</a>
+            <a onClick={() => setCategory("all")}>Acessórios</a>
             <div className="dropdown-menu">
               <a onClick={() => selectCategory("acessorios-bolas")}>Bolas</a>
               <a onClick={() => selectCategory("acessorios-luvas")}>Luvas</a>
               <a onClick={() => selectCategory("acessorios-meias")}>Meias</a>
               <a onClick={() => selectCategory("acessorios-mochilas")}>Mochilas</a>
-              <a onClick={() => selectCategory("acessorios-bones")}>BonÃ©s</a>
+              <a onClick={() => selectCategory("acessorios-bones")}>Bonés</a>
               <a onClick={() => selectCategory("acessorios-trail-running")}>Trail/Running</a>
-              <a onClick={() => selectCategory("acessorios-verao")}>VerÃ£o</a>
+              <a onClick={() => selectCategory("acessorios-verao")}>Verão</a>
               <a onClick={() => selectCategory("acessorios-outros")}>Outros</a>
             </div>
           </div>
@@ -864,9 +864,9 @@ return matchMain && matchSub && matchSearch;
           {/* OUTLET */}
 <a onClick={() => selectCategory("outlet")}>Outlet</a>
 
-{/* EDIÃ‡Ã•ES ESPECIAIS */}
+{/* EDIÇÕES ESPECIAIS */}
 <a onClick={() => selectCategory("edicoes-especiais")}>
-  EdiÃ§Ãµes Especiais
+  Edições Especiais
 </a>
 
 <div className="search-box">
@@ -902,7 +902,7 @@ return matchMain && matchSub && matchSearch;
 
       {/* HERO */}
 <section className="hero">
-  <img src="/trail-background.png" alt="Trail" />
+  <img src="/images/hero-trail.png" alt="Trail" />
 </section>
 
 <Categories
@@ -921,7 +921,7 @@ return matchMain && matchSub && matchSearch;
 {/* FORM */}
      <section ref={productsRef} className="products-section">
 
-        <h2>ColeÃ§Ã£o JomaBasto</h2>
+        <h2>Coleção JomaBasto</h2>
 
         {isAdmin && (
   <button onClick={() => setShowForm(!showForm)}>
@@ -940,7 +940,7 @@ return matchMain && matchSub && matchSearch;
             />
 
             <input
-  placeholder="ReferÃªncia"
+  placeholder="Referência"
   value={form.reference}
   onChange={(e) =>
     setForm({ ...form, reference: e.target.value })
@@ -948,7 +948,7 @@ return matchMain && matchSub && matchSearch;
 />
 
             <input
-              placeholder="PreÃ§o"
+              placeholder="Preço"
               value={form.price}
               onChange={(e) => setForm({ ...form, price: e.target.value })}
             />
@@ -961,11 +961,11 @@ return matchMain && matchSub && matchSearch;
   <option value="">Categoria principal</option>
   <option value="homem">Homem</option>
   <option value="mulher">Mulher</option>
-  <option value="crianca">CrianÃ§a</option>
-  <option value="acessorios">AcessÃ³rios</option>
+  <option value="crianca">Criança</option>
+  <option value="acessorios">Acessórios</option>
   <option value="outlet">Outlet</option>
   <option value="edicoes-especiais">
-    EdiÃ§Ãµes Especiais
+    Edições Especiais
   </option>
 </select>
 {form.mainCategory && (
@@ -986,7 +986,7 @@ return matchMain && matchSub && matchSearch;
         <option value="andebol">Andebol</option>
         <option value="voleibol">Voleibol</option>
         <option value="basquetebol">Basquetebol</option>
-        <option value="tenis">TÃ©nis</option>
+        <option value="tenis">Ténis</option>
         <option value="padel">Padel</option>
         <option value="casual">Casual</option>
         <option value="caminhada">Caminhada</option>
@@ -1004,7 +1004,7 @@ return matchMain && matchSub && matchSearch;
         <option value="andebol">Andebol</option>
         <option value="voleibol">Voleibol</option>
         <option value="basquetebol">Basquetebol</option>
-        <option value="tenis">TÃ©nis</option>
+        <option value="tenis">Ténis</option>
         <option value="padel">Padel</option>
       </>
     )}
@@ -1024,9 +1024,9 @@ return matchMain && matchSub && matchSearch;
         <option value="luvas">Luvas</option>
         <option value="meias">Meias</option>
         <option value="mochilas">Mochilas</option>
-        <option value="bones">BonÃ©s</option>
+        <option value="bones">Bonés</option>
         <option value="trail-running">Trail/Running</option>
-        <option value="verao">VerÃ£o</option>
+        <option value="verao">Verão</option>
         <option value="outros">Outros</option>
       </>
     )}
@@ -1100,7 +1100,7 @@ return matchMain && matchSub && matchSearch;
 />
 
             <textarea
-              placeholder="DescriÃ§Ã£o"
+              placeholder="Descrição"
               value={form.description}
               onChange={(e) =>
                 setForm({ ...form, description: e.target.value })
@@ -1158,12 +1158,12 @@ return matchMain && matchSub && matchSearch;
           <h3>{p.name}</h3>
 
 <p className="product-price">
-  {p.price} â‚¬
+  {p.price} €
 </p>
 
 <div className="product-highlights">
   <span className="stock-ok">
-    âœ“ Em stock
+    ? Em stock
   </span>
 </div>
 
@@ -1233,7 +1233,7 @@ return matchMain && matchSub && matchSearch;
 
     <div className="cart-info">
   <p>{item.name}</p>
-  <p>{item.price} â‚¬</p>
+  <p>{item.price} €</p>
 </div>
 
   </div>
@@ -1267,7 +1267,7 @@ return matchMain && matchSub && matchSearch;
   <div key={index} className="cart-item">
 
     <p>{item.name}</p>
-    <p>{item.price} â‚¬</p>
+    <p>{item.price} €</p>
 
     <p>Tamanho: {item.size}</p>
     <p>Quantidade: {item.qty || 1}</p>
@@ -1316,23 +1316,23 @@ return matchMain && matchSub && matchSearch;
       <hr style={{ margin: "20px 0" }} />
 
 <p>
-  <strong>Subtotal:</strong> {cartTotal.toFixed(2)} â‚¬
+  <strong>Subtotal:</strong> {cartTotal.toFixed(2)} €
 </p>
 
 <p>
   <strong>Portes:</strong>{" "}
   {shippingCost === 0 ? (
-    <span style={{ color: "green" }}>GrÃ¡tis</span>
+    <span style={{ color: "green" }}>Grátis</span>
   ) : (
-    `${shippingCost.toFixed(2)} â‚¬`
+    `${shippingCost.toFixed(2)} €`
   )}
 </p>
 
-<h3>Total: {finalTotal.toFixed(2)} â‚¬</h3>
+<h3>Total: {finalTotal.toFixed(2)} €</h3>
 
 {cartTotal < 70 && cartTotal > 0 && (
   <p style={{ color: "#e30613", fontSize: "14px" }}>
-    Faltam {(70 - cartTotal).toFixed(2)} â‚¬ para ter portes grÃ¡tis.
+    Faltam {(70 - cartTotal).toFixed(2)} € para ter portes grátis.
   </p>
 )}
 
@@ -1367,7 +1367,7 @@ return matchMain && matchSub && matchSearch;
       color: "#666",
     }}
   >
-    ReferÃªncia: {selectedProduct.reference}
+    Referência: {selectedProduct.reference}
   </p>
 )}
 
@@ -1438,7 +1438,7 @@ return matchMain && matchSub && matchSearch;
         ))}
       </div>
 
-      {/* BOTÃƒO ADICIONAR AO CARRINHO */}
+      {/* BOTÃO ADICIONAR AO CARRINHO */}
       <button
         onClick={() => {
           if (!selectedSize) {
@@ -1600,7 +1600,7 @@ setSelectedSize(null);
     <div className="footer-block">
   <FiTruck size={28} />
   <h5>Portes</h5>
-  <p>GrÃ¡tis acima de 70â‚¬</p>
+  <p>Grátis acima de 70€</p>
 </div>
 
 <div className="footer-block">
@@ -1612,7 +1612,7 @@ setSelectedSize(null);
 <div className="footer-block">
   <FiRefreshCw size={28} />
   <h5>Trocas</h5>
-  <p>AtÃ© 15 dias</p>
+  <p>Até 15 dias</p>
 </div>
 
 <div className="footer-block">
@@ -1647,7 +1647,7 @@ setSelectedSize(null);
   </div>
 
   <div className="footer-bottom">
-    <span>Â© {new Date().getFullYear()} JomaBasto</span>
+    <span>© {new Date().getFullYear()} JomaBasto</span>
 
     <div className="footer-links">
       <a href="/quem-somos">Quem Somos</a>
