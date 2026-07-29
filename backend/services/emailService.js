@@ -120,11 +120,21 @@ export async function sendAdminEmail(order) {
 
       <p><strong>Cliente:</strong> ${order.cliente.nome}</p>
 
-      <p><strong>Email:</strong> ${order.cliente.email}</p>
+<p><strong>Email:</strong> ${order.cliente.email}</p>
 
-      <p><strong>Telefone:</strong> ${order.cliente.telefone}</p>
+<p><strong>Telefone:</strong> ${order.cliente.telefone}</p>
 
-      <h3>Produtos</h3>
+<p><strong>Morada:</strong> ${order.cliente.morada}</p>
+
+<p><strong>Código Postal:</strong> ${order.cliente.codigoPostal}</p>
+
+<p><strong>Localidade:</strong> ${order.cliente.localidade}</p>
+
+<p><strong>NIF:</strong> ${order.cliente.nif || "-"}</p>
+
+<p><strong>Observações:</strong> ${order.cliente.observacoes || "Sem observações"}</p>
+
+<h3>Produtos</h3>
 
       <ul>
         ${produtosHtml}
