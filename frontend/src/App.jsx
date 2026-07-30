@@ -813,11 +813,11 @@ return matchMain && matchSub && matchSearch;
     </span>
 
     <button
-      className="icon-btn"
-      onClick={handleLogout}
-    >
-      <FiUser size={22} />
-    </button>
+  className="icon-btn"
+  onClick={() => setShowAccount(true)}
+>
+  <FiUser size={22} />
+</button>
 
     {/* ADMIN AQUI */}
     {isAdmin && (
@@ -1737,20 +1737,75 @@ setSelectedSize(null);
 
 </footer>
 
+{showAccount && (
+  <div
+    style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      background: "rgba(0,0,0,0.6)",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      zIndex: 9999
+    }}
+  >
+
+    <div
+      style={{
+        background:"#fff",
+        padding:"30px",
+        borderRadius:"12px",
+        width:"90%",
+        maxWidth:"500px"
+      }}
+    >
+
+      <h2>A Minha Conta</h2>
+
+      <p>
+        <b>Nome:</b> {user?.name}
+      </p>
+
+      <p>
+        <b>Email:</b> {user?.email}
+      </p>
+
+      <hr />
+
+      <h3>As minhas encomendas</h3>
+
+      {orders.length === 0 ? (
+        <p>Ainda não existem encomendas.</p>
+      ) : (
+        orders.map((order)=>(
+          <div key={order._id}>
+            Encomenda #{order._id}
+            <br/>
+            Estado: {order.estado}
+          </div>
+        ))
+      )}
+
+      <button
+        onClick={() => setShowAccount(false)}
+      >
+        Fechar
+      </button>
+
+      <button
+        onClick={handleLogout}
+      >
+        Terminar sessão
+      </button>
+
+    </div>
+
+  </div>
+)}
+
 </div>
 );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
