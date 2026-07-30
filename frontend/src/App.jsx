@@ -1012,6 +1012,7 @@ return matchMain && matchSub && matchSearch;
     {form.mainCategory === "crianca" && (
       <>
         <option value="running">Running</option>
+        <option value="trail">Trail</option>
         <option value="Futsal">Futsal</option>
         <option value="futebol">Futebol</option>
         <option value="casual">Casual</option>
@@ -1523,6 +1524,15 @@ setSelectedSize(null);
       <button onClick={login}>
         Login
       </button>
+
+      <button
+  onClick={() => {
+    setShowLogin(false);
+    setShowRegister(true);
+  }}
+>
+  Criar conta
+</button>
 
       <button onClick={() => setShowLogin(false)}>
         Fechar
