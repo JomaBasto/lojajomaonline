@@ -1772,7 +1772,7 @@ setSelectedSize(null);
       }}
     >
 
-      <h2>A Minha Conta TESTE MOBILE</h2>
+      <h2>A Minha Conta</h2>
 
       <p>
         <b>Nome:</b> {user?.name}
