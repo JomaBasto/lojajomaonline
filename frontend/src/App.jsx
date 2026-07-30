@@ -39,6 +39,8 @@ export default function App() {
   const [showForm, setShowForm] = useState(false);
   const [logged, setLogged] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const [showAccount, setShowAccount] = useState(false);
+const [orders, setOrders] = useState([]);
   const [activeImage, setActiveImage] = useState(0);
   const handleLogout = () => {
   localStorage.removeItem("token");
@@ -129,6 +131,28 @@ const login = async () => {
   } catch (err) {
     console.error("ERRO LOGIN:", err);
     alert("Erro no login");
+  }
+};
+
+const loadOrders = async () => {
+  try {
+    const token = localStorage.getItem("token");
+
+    const res = await fetch(
+      "https://jomabasto-backend.onrender.com/my-orders",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    const data = await res.json();
+
+    setOrders(data);
+
+  } catch (err) {
+    console.error("Erro encomendas:", err);
   }
 };
 
@@ -662,9 +686,15 @@ return matchMain && matchSub && matchSearch;
         Olá {user?.name?.split(" ")[0]} 
       </span>
 
-      <button onClick={handleLogout}>
-        Logout
-      </button>
+      <button
+  className="icon-btn"
+  onClick={() => {
+    setShowAccount(true);
+    loadOrders();
+  }}
+>
+  <FiUser size={22} />
+</button>
     </div>
   </details>
 )}

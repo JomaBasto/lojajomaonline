@@ -199,6 +199,29 @@ app.post("/encomendas", async (req, res) => {
 });
 
 // ======================
+// MINHAS ENCOMENDAS (CLIENTE)
+// ======================
+
+app.get("/my-orders", verifyToken, async (req, res) => {
+  try {
+    const email = req.user.email;
+
+    const encomendas = await Encomenda.find({
+      "cliente.email": email,
+    }).sort({ createdAt: -1 });
+
+    res.json(encomendas);
+
+  } catch (err) {
+    console.error("Erro ao buscar encomendas:", err);
+
+    res.status(500).json({
+      error: "Erro ao buscar encomendas",
+    });
+  }
+});
+
+// ======================
 // LISTAR ENCOMENDAS
 // ======================
 
