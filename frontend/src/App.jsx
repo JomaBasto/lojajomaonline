@@ -40,11 +40,15 @@ export default function App() {
   const [logged, setLogged] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [showAccount, setShowAccount] = useState(false);
-const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState([]);
   const [activeImage, setActiveImage] = useState(0);
   const handleLogout = () => {
   localStorage.removeItem("token");
-  setLogged(false);
+  localStorage.removeItem("user");
+setLogged(false);
+  setUser(null);
+  setIsAdmin(false);
+  setShowAccount(false);
 };
 const [user, setUser] = useState(null);
 const [isAdmin, setIsAdmin] = useState(false);
@@ -687,13 +691,18 @@ return matchMain && matchSub && matchSearch;
       </span>
 
       <button
-  className="icon-btn"
   onClick={() => {
     setShowAccount(true);
     loadOrders();
   }}
 >
-  <FiUser size={22} />
+  Minha Conta
+</button>
+
+<button
+  onClick={handleLogout}
+>
+  Terminar sessão
 </button>
     </div>
   </details>
