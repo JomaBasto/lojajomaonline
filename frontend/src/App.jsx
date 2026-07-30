@@ -1786,17 +1786,31 @@ setSelectedSize(null);
 
       <h3>As minhas encomendas</h3>
 
-      {orders.length === 0 ? (
-        <p>Ainda não existem encomendas.</p>
-      ) : (
-        orders.map((order)=>(
-          <div key={order._id}>
-            Encomenda #{order._id}
-            <br/>
-            Estado: {order.estado}
-          </div>
-        ))
-      )}
+      <div
+  style={{
+    maxHeight: "250px",
+    overflowY: "auto",
+    marginTop: "10px"
+  }}
+>
+{orders.length === 0 ? (
+  <p>Ainda não existem encomendas.</p>
+) : (
+  orders.map((order)=>(
+    <div
+      key={order._id}
+      style={{
+        borderBottom: "1px solid #ddd",
+        padding: "10px 0"
+      }}
+    >
+      Encomenda #{order._id}
+      <br/>
+      Estado: {order.estado}
+    </div>
+  ))
+)}
+</div>
 
       <button
         onClick={() => setShowAccount(false)}
