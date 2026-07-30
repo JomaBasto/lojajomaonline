@@ -1307,3 +1307,13 @@ body { padding-top: 70px; }
   color: #e60000;
 }
 
+
+@media (max-width: 768px) {
+  .hero {
+    height: 680px;
+  }
+
+  .hero img {
+    object-position: center 35%;
+  }
+}
