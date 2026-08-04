@@ -182,23 +182,48 @@ app.put("/produtos/:id", verifyToken, isAdmin, async (req, res) => {
 app.put("/promocao/:id", verifyToken, isAdmin, async (req, res) => {
   try {
 
+    const produtoAtual = await Produto.findById(req.params.id);
+
+    if (!produtoAtual) {
+      return res.status(404).json({
+        error: "Produto não encontrado"
+      });
+    }
+
+
+    // Se já é promoção, retirar
+    if (produtoAtual.promocao === true) {
+
+      produtoAtual.promocao = false;
+      await produtoAtual.save();
+
+      return res.json(produtoAtual);
+
+    }
+
+
+    // Se não é promoção, retirar dos outros e ativar este
+
     await Produto.updateMany({}, {
       promocao: false
     });
 
-    const produto = await Produto.findByIdAndUpdate(
-      req.params.id,
-      { promocao: true },
-      { new: true }
-    );
 
-    res.json(produto);
+    produtoAtual.promocao = true;
+    await produtoAtual.save();
+
+
+    res.json(produtoAtual);
+
 
   } catch (err) {
+
     console.error(err);
+
     res.status(500).json({
-      error: "Erro ao definir promoção"
+      error: "Erro ao atualizar promoção"
     });
+
   }
 });
 
