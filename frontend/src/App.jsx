@@ -35,9 +35,9 @@ export default function App() {
   const productsRef = useRef(null);
   const firstProductRef = useRef(null);
 
-  const produtoPromocao = products.find(
+  const produtosPromocao = products.filter(
   (p) => p.promocao === true
-);
+).slice(0, 3);
 
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showForm, setShowForm] = useState(false);
@@ -974,27 +974,42 @@ return matchMain && matchSub && matchSearch;
   <img src="/images/hero-trail.png" alt="Trail" />
 </section>
 
-{produtoPromocao && (
-  <section className="promocao-destaque">
+{produtosPromocao.length > 0 && (
+  <section className="promocoes-container">
 
-    <h2>OFERTA DA SEMANA</h2>
+    <h2>OFERTAS DA SEMANA</h2>
 
-    <img
-      src={produtoPromocao.images?.[0]}
-      alt={produtoPromocao.name}
-    />
+    <div className="promocoes-lista">
 
-    <h3>
-      {produtoPromocao.name}
-    </h3>
+      {produtosPromocao.map((produto) => (
 
-    <p>
-      {produtoPromocao.price} €
-    </p>
+        <div
+          className="promocao-destaque"
+          key={produto._id}
+        >
 
-    <button onClick={() => openGallery(produtoPromocao)}>
-      Ver promoção
-    </button>
+          <img
+            src={produto.images?.[0]}
+            alt={produto.name}
+          />
+
+          <h3>
+            {produto.name}
+          </h3>
+
+          <p>
+            {produto.price} €
+          </p>
+
+          <button onClick={() => openGallery(produto)}>
+            Ver promoção
+          </button>
+
+        </div>
+
+      ))}
+
+    </div>
 
   </section>
 )}
