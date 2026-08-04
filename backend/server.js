@@ -216,11 +216,11 @@ app.put("/promocao/:id", verifyToken, isAdmin, async (req, res) => {
     });
 
 
-    // Limite máximo de 3
-    if (totalPromocoes >= 3) {
+    // Limite máximo de 6
+    if (totalPromocoes >= 6) {
 
       return res.status(400).json({
-        error: "Já existem 3 produtos em promoção"
+        error: "Já existem 6 produtos em promoção"
       });
 
     }
