@@ -823,6 +823,15 @@ return matchMain && matchSub && matchSearch;
     <a onClick={(e) => selectMobileCategory("acessorios-outros", e)}>Outros</a>
   </details>
 
+    <details className="mobile-item">
+    <summary>Têxtil</summary>
+
+    <a onClick={(e) => selectMobileCategory("textil-homem", e)}>Homem</a>
+    <a onClick={(e) => selectMobileCategory("textil-mulher", e)}>Mulher</a>
+    <a onClick={(e) => selectMobileCategory("textil-crianca", e)}>Criança</a>
+    <a onClick={(e) => selectMobileCategory("textil-outlet", e)}>Outlet</a>
+  </details>
+
   <div className="mobile-item">
     <a onClick={(e) => selectMobileCategory("outlet", e)}>Outlet</a>
   </div>
