@@ -37,7 +37,7 @@ export default function App() {
 
   const produtosPromocao = products.filter(
   (p) => p.promocao === true
-).slice(0, 3);
+).slice(0, 6);
 
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showForm, setShowForm] = useState(false);
