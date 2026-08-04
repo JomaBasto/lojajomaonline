@@ -977,7 +977,7 @@ return matchMain && matchSub && matchSearch;
 {produtoPromocao && (
   <section className="promocao-destaque">
 
-    <h2>🔥 PROMOÇÃO DA SEMANA 🔥</h2>
+    <h2>OFERTA DA SEMANA</h2>
 
     <img
       src={produtoPromocao.images?.[0]}
