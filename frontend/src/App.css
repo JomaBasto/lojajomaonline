@@ -1317,3 +1317,127 @@ body { padding-top: 70px; }
     object-position: center 35%;
   }
 }
+
+/* ================================
+   DESTAQUE PROMOÇÃO SEMANA
+================================ */
+
+.promocao-destaque {
+  max-width: 600px;
+  margin: 45px auto;
+  padding: 30px;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 22px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.promocao-destaque h2 {
+  font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 25px;
+  color: #111;
+}
+
+.promocao-destaque img {
+  width: 100%;
+  max-width: 380px;
+  height: 320px;
+  object-fit: contain;
+  margin: 0 auto;
+  display: block;
+}
+
+.promocao-destaque h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 20px;
+  color: #222;
+}
+
+.promocao-destaque p {
+  font-size: 34px;
+  font-weight: 900;
+  margin: 15px 0;
+  color: #e11d48;
+}
+
+.promocao-destaque button {
+  margin-top: 15px;
+  background: #1d4ed8;
+  color: white;
+  border: none;
+  padding: 15px 45px;
+  border-radius: 35px;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.promocao-destaque button:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+
+  .promocao-destaque {
+    margin: 25px 12px;
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  .promocao-destaque h2 {
+    font-size: 23px;
+  }
+
+  .promocao-destaque img {
+    height: 240px;
+  }
+
+  .promocao-destaque h3 {
+    font-size: 20px;
+  }
+
+  .promocao-destaque p {
+    font-size: 30px;
+  }
+
+  .promocao-destaque button {
+    width: 100%;
+    padding: 15px;
+  }
+
+}
+
+
+/* ================================
+   AJUSTE PROMOÇÃO MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+  .promocao-destaque {
+    margin: 20px 12px;
+    padding: 18px;
+  }
+
+  .promocao-destaque img {
+    height: 170px;
+    max-width: 240px;
+  }
+
+  .promocao-destaque h2 {
+    font-size: 22px;
+  }
+
+  .promocao-destaque h3 {
+    font-size: 18px;
+  }
+
+  .promocao-destaque p {
+    font-size: 28px;
+  }
+
+}
+
