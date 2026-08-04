@@ -138,6 +138,25 @@ app.get("/produtos", async (req, res) => {
   }
 });
 
+app.get("/promocao", async (req, res) => {
+  try {
+    const produto = await Produto.findOne({ promocao: true });
+
+    if (!produto) {
+      return res.status(404).json({
+        error: "Nenhum produto em promoção"
+      });
+    }
+
+    res.json(produto);
+
+  } catch (err) {
+    res.status(500).json({
+      error: "Erro ao buscar promoção"
+    });
+  }
+});
+
 // EDITAR PRODUTO
 app.put("/produtos/:id", verifyToken, isAdmin, async (req, res) => {
   try {
@@ -157,6 +176,29 @@ app.put("/produtos/:id", verifyToken, isAdmin, async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Erro ao atualizar produto" });
+  }
+});
+
+app.put("/promocao/:id", verifyToken, isAdmin, async (req, res) => {
+  try {
+
+    await Produto.updateMany({}, {
+      promocao: false
+    });
+
+    const produto = await Produto.findByIdAndUpdate(
+      req.params.id,
+      { promocao: true },
+      { new: true }
+    );
+
+    res.json(produto);
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      error: "Erro ao definir promoção"
+    });
   }
 });
 

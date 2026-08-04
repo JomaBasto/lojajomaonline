@@ -406,6 +406,32 @@ console.log("TAMANHOS ESCOLHIDOS:", newSizes);
 ));
   };
 
+  const setPromocao = async (id) => {
+  try {
+
+    const res = await fetch(
+      `https://jomabasto-backend.onrender.com/promocao/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+
+    if (!res.ok) {
+      alert("Erro ao definir promoção.");
+      return;
+    }
+
+    alert("Promoção definida com sucesso!");
+
+  } catch (err) {
+    console.error(err);
+    alert("Erro de ligação ao servidor.");
+  }
+};
+
   // UPLOAD IMAGEM CLOUDINARY
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -1224,6 +1250,10 @@ return matchMain && matchSub && matchSearch;
               <>
                 <button onClick={() => editProduct(p)}>
                   Editar
+                </button>
+
+                <button onClick={() => setPromocao(p._id)}>
+               ⭐ Promoção
                 </button>
 
                 <button onClick={() => deleteProduct(p._id)}>

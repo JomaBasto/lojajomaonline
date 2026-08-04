@@ -1,7 +1,23 @@
-import React from "react";
-import promocaoImagem from "./assets/promocao-tundra.jpg";
+import React, { useEffect, useState } from "react";
 
 export default function Promocao() {
+  const [produto, setProduto] = useState(null);
+
+  useEffect(() => {
+    fetch("https://jomabasto-backend.onrender.com/promocao")
+      .then((res) => res.json())
+      .then((data) => setProduto(data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  if (!produto) {
+    return (
+      <div style={{ textAlign: "center", marginTop: "50px" }}>
+        A carregar promoção...
+      </div>
+    );
+  }
+
   return (
     <div
       style={{
@@ -12,8 +28,8 @@ export default function Promocao() {
       }}
     >
       <img
-        src={promocaoImagem}
-        alt="Promoção JomaBasto"
+        src={produto.images?.[0]}
+        alt={produto.name}
         style={{
           width: "100%",
           maxWidth: "700px",
@@ -21,10 +37,12 @@ export default function Promocao() {
         }}
       />
 
-      <h1>Promoção Especial JomaBasto</h1>
+      <h1>{produto.name}</h1>
+
+      <h2>{produto.price} €</h2>
 
       <p>
-        Aproveita a nossa oferta atual.
+        Aproveita a nossa promoção especial JomaBasto.
       </p>
 
       <a

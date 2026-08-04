@@ -7,7 +7,12 @@ const produtoSchema = new mongoose.Schema({
   images: [String],
   category: String,
   description: String,
-  sizes: [String]
+  sizes: [String],
+
+  promocao: {
+    type: Boolean,
+    default: false
+  }
 });
 
 export default mongoose.model("Produto", produtoSchema);
