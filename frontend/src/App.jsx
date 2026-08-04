@@ -992,7 +992,7 @@ return matchMain && matchSub && matchSearch;
       {produtoPromocao.price} €
     </p>
 
-    <button>
+    <button onClick={() => openGallery(produtoPromocao)}>
       Ver promoção
     </button>
 
