@@ -424,9 +424,11 @@ console.log("TAMANHOS ESCOLHIDOS:", newSizes);
     );
 
     if (!res.ok) {
-      alert("Erro ao definir promoção.");
-      return;
-    }
+  const erro = await res.text();
+  console.log("ERRO BACKEND:", erro);
+  alert("Erro ao definir promoção: " + erro);
+  return;
+}
 
     alert("Promoção definida com sucesso!");
 
@@ -1017,9 +1019,15 @@ return matchMain && matchSub && matchSearch;
             {produto.name}
           </h3>
 
-          <p>
-            {produto.price} €
-          </p>
+          {produto.promocao && (
+  <span className="promo-tag">
+    🔥 PROMOÇÃO
+  </span>
+)}
+
+<p>
+  {produto.price} €
+</p>
 
           <button onClick={() => openGallery(produto)}>
             Ver promoção
@@ -1322,20 +1330,20 @@ return matchMain && matchSub && matchSearch;
             </button>
 
             {isAdmin && (
-              <>
-                <button onClick={() => editProduct(p)}>
-                  Editar
-                </button>
+  <>
+    <button onClick={() => editProduct(p)}>
+      Editar
+    </button>
 
-                <button onClick={() => setPromocao(p._id)}>
-               ⭐ Promoção
-                </button>
+    <button onClick={() => setPromocao(p._id)}>
+      {p.promocao ? "🔥 Remover Promoção" : "⭐ Promoção"}
+    </button>
 
-                <button onClick={() => deleteProduct(p._id)}>
-                  Apagar
-                </button>
-              </>
-            )}
+    <button onClick={() => deleteProduct(p._id)}>
+      Apagar
+    </button>
+  </>
+)}
 
           </div>
 

@@ -1639,3 +1639,15 @@ body { padding-top: 70px; }
 
 }
 
+
+.promo-tag {
+  display: inline-block;
+  background: #e53935;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
