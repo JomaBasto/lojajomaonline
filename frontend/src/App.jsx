@@ -35,6 +35,10 @@ export default function App() {
   const productsRef = useRef(null);
   const firstProductRef = useRef(null);
 
+  const produtoPromocao = products.find(
+  (p) => p.promocao === true
+);
+
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [logged, setLogged] = useState(false);
@@ -969,6 +973,31 @@ return matchMain && matchSub && matchSearch;
 <section className="hero">
   <img src="/images/hero-trail.png" alt="Trail" />
 </section>
+
+{produtoPromocao && (
+  <section className="promocao-destaque">
+
+    <h2>🔥 PROMOÇÃO DA SEMANA 🔥</h2>
+
+    <img
+      src={produtoPromocao.images?.[0]}
+      alt={produtoPromocao.name}
+    />
+
+    <h3>
+      {produtoPromocao.name}
+    </h3>
+
+    <p>
+      {produtoPromocao.price} €
+    </p>
+
+    <button>
+      Ver promoção
+    </button>
+
+  </section>
+)}
 
 <Categories
   onSelect={(sport) => {
