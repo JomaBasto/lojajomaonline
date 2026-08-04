@@ -937,6 +937,7 @@ return matchMain && matchSub && matchSearch;
     <a onClick={() => selectCategory("textil-homem")}>Homem</a>
     <a onClick={() => selectCategory("textil-mulher")}>Mulher</a>
     <a onClick={() => selectCategory("textil-crianca")}>Criança</a>
+    <a onClick={() => selectCategory("textil-outlet")}>Outlet</a>
   </div>
 </div>
 
@@ -1157,6 +1158,7 @@ return matchMain && matchSub && matchSearch;
         <option value="homem">Homem</option>
         <option value="mulher">Mulher</option>
         <option value="crianca">Criança</option>
+        <option value="outlet">Outlet</option>
       </>
     )}
 
