@@ -1613,6 +1613,32 @@ setSelectedSize(null);
         Adicionar ao carrinho
       </button>
 
+      {/* BOTÃO WHATSAPP */}
+<button
+  onClick={() => {
+    const mensagem = `Olá, gostaria de saber se têm disponível o produto ${selectedProduct.name}.
+${selectedProduct.reference ? `Referência: ${selectedProduct.reference}` : ""}
+${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
+
+    window.open(
+      `https://wa.me/351924176159?text=${encodeURIComponent(mensagem)}`,
+      "_blank"
+    );
+  }}
+  style={{
+    marginTop: "10px",
+    padding: "10px 15px",
+    border: "none",
+    background: "#25D366",
+    color: "white",
+    borderRadius: "8px",
+    cursor: "pointer",
+    width: "100%",
+  }}
+>
+  💬 Perguntar no WhatsApp
+</button>
+
       {/* FECHAR */}
       <button
         onClick={() => {
