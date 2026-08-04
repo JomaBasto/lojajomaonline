@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 
 export default function Promocao() {
-  const [produto, setProduto] = useState(null);
+  const [produtos, setProdutos] = useState([]);
 
   useEffect(() => {
     fetch("https://jomabasto-backend.onrender.com/promocao")
       .then((res) => res.json())
-      .then((data) => setProduto(data))
+      .then((data) => setProdutos(data))
       .catch((err) => console.log(err));
   }, []);
 
-  if (!produto) {
+  if (produtos.length === 0) {
     return (
-      <div style={{ textAlign: "center", marginTop: "50px" }}>
-        A carregar promoção...
+      <div style={{ textAlign: "center", marginTop: "60px" }}>
+        A carregar ofertas...
       </div>
     );
   }
@@ -21,44 +21,71 @@ export default function Promocao() {
   return (
     <div
       style={{
-        maxWidth: "900px",
-        margin: "40px auto",
+        maxWidth: "1200px",
+        margin: "50px auto",
         padding: "20px",
         textAlign: "center",
       }}
     >
-      <img
-        src={produto.images?.[0]}
-        alt={produto.name}
-        style={{
-          width: "100%",
-          maxWidth: "700px",
-          borderRadius: "12px",
-        }}
-      />
+      <h1>OFERTAS DA SEMANA</h1>
 
-      <h1>{produto.name}</h1>
-
-      <h2>{produto.price} €</h2>
-
-      <p>
-        Aproveita a nossa promoção especial JomaBasto.
+      <p style={{ marginBottom: "40px", color: "#666" }}>
+        Descubra as promoções selecionadas desta semana.
       </p>
 
-      <a
-        href="/"
+      <div
         style={{
-          display: "inline-block",
-          marginTop: "20px",
-          padding: "12px 25px",
-          background: "black",
-          color: "white",
-          textDecoration: "none",
-          borderRadius: "8px",
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          gap: "25px",
         }}
       >
-        Entrar na loja
-      </a>
+        {produtos.map((produto) => (
+          <div
+            key={produto._id}
+            style={{
+              width: "320px",
+              background: "#fff",
+              borderRadius: "20px",
+              padding: "20px",
+              boxShadow: "0 8px 25px rgba(0,0,0,.10)",
+            }}
+          >
+            <img
+              src={produto.images?.[0]}
+              alt={produto.name}
+              style={{
+                width: "100%",
+                height: "220px",
+                objectFit: "contain",
+              }}
+            />
+
+            <h3>{produto.name}</h3>
+
+            <h2 style={{ color: "#d32f2f" }}>
+              {produto.price} €
+            </h2>
+
+            <a
+              href="/"
+              style={{
+                display: "inline-block",
+                marginTop: "15px",
+                padding: "12px 24px",
+                background: "#1d4ed8",
+                color: "#fff",
+                textDecoration: "none",
+                borderRadius: "30px",
+                fontWeight: "bold",
+              }}
+            >
+              Ver produto
+            </a>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

@@ -975,7 +975,7 @@ return matchMain && matchSub && matchSearch;
 </section>
 
 {produtosPromocao.length > 0 && (
-  <section className="promocoes-container">
+  <section id="ofertas" className="promocoes-container">
 
     <h2>OFERTAS DA SEMANA</h2>
 
