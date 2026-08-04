@@ -1551,3 +1551,91 @@ body { padding-top: 70px; }
 
 }
 
+
+/* ================================
+   PROMOÇÕES - GRELHA RESPONSIVA
+================================ */
+
+.promocoes-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+
+.promocoes-container > h2 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 35px;
+}
+
+
+.promocoes-lista {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  align-items: stretch;
+}
+
+
+.promocao-destaque {
+  flex: 1;
+  max-width: 360px;
+  padding: 25px;
+  background: white;
+  border-radius: 22px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.10);
+}
+
+
+.promocao-destaque img {
+  width: 100%;
+  height: 230px;
+  object-fit: contain;
+}
+
+
+.promocao-destaque h3 {
+  font-size: 20px;
+  margin: 18px 0;
+}
+
+
+.promocao-destaque p {
+  font-size: 30px;
+  font-weight: 900;
+  margin: 15px 0;
+}
+
+
+.promocao-destaque button {
+  width: 100%;
+}
+
+
+/* ================================
+   TELEMÓVEL
+================================ */
+
+@media (max-width: 700px) {
+
+  .promocoes-lista {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+
+  .promocao-destaque {
+    width: 100%;
+    max-width: 420px;
+  }
+
+
+  .promocao-destaque img {
+    height: 200px;
+  }
+
+}
+
