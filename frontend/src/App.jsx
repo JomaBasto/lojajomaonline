@@ -930,6 +930,16 @@ return matchMain && matchSub && matchSearch;
             </div>
           </div>
 
+          {/* TÊXTIL */}
+<div className="dropdown">
+  <a onClick={() => setCategory("all")}>Têxtil</a>
+  <div className="dropdown-menu">
+    <a onClick={() => selectCategory("textil-homem")}>Homem</a>
+    <a onClick={() => selectCategory("textil-mulher")}>Mulher</a>
+    <a onClick={() => selectCategory("textil-crianca")}>Criança</a>
+  </div>
+</div>
+
           {/* OUTLET */}
 <a onClick={() => selectCategory("outlet")}>Outlet</a>
 
@@ -1072,6 +1082,7 @@ return matchMain && matchSub && matchSearch;
   <option value="mulher">Mulher</option>
   <option value="crianca">Criança</option>
   <option value="acessorios">Acessórios</option>
+  <option value="textil">Têxtil</option>
   <option value="outlet">Outlet</option>
   <option value="edicoes-especiais">
     Edições Especiais
@@ -1140,6 +1151,15 @@ return matchMain && matchSub && matchSearch;
         <option value="outros">Outros</option>
       </>
     )}
+
+    {form.mainCategory === "textil" && (
+      <>
+        <option value="homem">Homem</option>
+        <option value="mulher">Mulher</option>
+        <option value="crianca">Criança</option>
+      </>
+    )}
+
   </select>
 )}
 
