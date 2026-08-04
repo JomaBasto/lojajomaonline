@@ -140,20 +140,28 @@ app.get("/produtos", async (req, res) => {
 
 app.get("/promocao", async (req, res) => {
   try {
-    const produto = await Produto.findOne({ promocao: true });
 
-    if (!produto) {
+    const produtos = await Produto.find({
+      promocao: true
+    }).limit(3);
+
+
+    if (!produtos || produtos.length === 0) {
       return res.status(404).json({
         error: "Nenhum produto em promoção"
       });
     }
 
-    res.json(produto);
+
+    res.json(produtos);
+
 
   } catch (err) {
+
     res.status(500).json({
-      error: "Erro ao buscar promoção"
+      error: "Erro ao buscar promoções"
     });
+
   }
 });
 
@@ -191,7 +199,7 @@ app.put("/promocao/:id", verifyToken, isAdmin, async (req, res) => {
     }
 
 
-    // Se já é promoção, retirar
+    // Se já está em promoção, retirar
     if (produtoAtual.promocao === true) {
 
       produtoAtual.promocao = false;
@@ -202,13 +210,23 @@ app.put("/promocao/:id", verifyToken, isAdmin, async (req, res) => {
     }
 
 
-    // Se não é promoção, retirar dos outros e ativar este
-
-    await Produto.updateMany({}, {
-      promocao: false
+    // Ver quantos produtos já estão em promoção
+    const totalPromocoes = await Produto.countDocuments({
+      promocao: true
     });
 
 
+    // Limite máximo de 3
+    if (totalPromocoes >= 3) {
+
+      return res.status(400).json({
+        error: "Já existem 3 produtos em promoção"
+      });
+
+    }
+
+
+    // Adicionar novo produto à promoção
     produtoAtual.promocao = true;
     await produtoAtual.save();
 
