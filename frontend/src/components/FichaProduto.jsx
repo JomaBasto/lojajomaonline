@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+ï»¿import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export default function FichaProduto() {
@@ -65,21 +65,21 @@ export default function FichaProduto() {
                   fontSize: "18px",
                 }}
               >
-                {produto.price.toFixed(2).replace(".", ",")} €
+                {produto.price.toFixed(2).replace(".", ",")} &euro;
               </p>
 
               <h2 style={{ color: "#d32f2f" }}>
-                {produto.promoPrice.toFixed(2).replace(".", ",")} €
+                {produto.promoPrice.toFixed(2).replace(".", ",")} &euro;
               </h2>
             </>
           ) : (
             <h2 style={{ color: "#d32f2f" }}>
-              {produto.price.toFixed(2).replace(".", ",")} €
+              {produto.price.toFixed(2).replace(".", ",")} &euro;
             </h2>
           )}
 
           <p>
-            <strong>Tamanhos disponíveis:</strong>
+            <strong>Tamanhos dispon&iacute;veis:</strong>
           </p>
 
           <p>
@@ -99,3 +99,4 @@ export default function FichaProduto() {
     </div>
   );
 }
+
