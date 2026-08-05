@@ -355,15 +355,17 @@ const deleteProduct = async (id) => {
   const editProduct = async (product) => {
     const newName = prompt("Novo nome:", product.name);
     const newPrice = prompt("Novo preço:", product.price);
-    const newPromoPrice = prompt(
-  "Preço promoção (opcional):",
-  product.promoPrice || ""
-);
     const newImage = prompt(
   "Nova imagem URL:",
   product.imageUrl || product.images?.[0] || ""
 );
     const newDescription = prompt("Nova descrição:", product.description);
+
+const newPromoPrice = prompt(
+  "Preço promocional (deixe vazio se não existir):",
+  product.promoPrice || ""
+);
+
     const newSizes = prompt(
   "Tamanhos disponíveis (separados por vírgula):",
   product.sizes?.join(", ") || ""
@@ -377,6 +379,9 @@ console.log("TAMANHOS ESCOLHIDOS:", newSizes);
   price: newPrice,
   imageUrl: newImage,
   description: newDescription,
+  promoPrice: newPromoPrice
+  ? Number(newPromoPrice)
+  : null,
   sizes: newSizes
     ? newSizes.split(",").map(s => s.trim())
     : []
@@ -391,9 +396,11 @@ console.log("TAMANHOS ESCOLHIDOS:", newSizes);
   body: JSON.stringify({
   name: newName,
   price: Number(newPrice),
-  promoPrice: newPromoPrice ? Number(newPromoPrice) : null,
   imageUrl: newImage,
   description: newDescription,
+  promoPrice: newPromoPrice
+  ? Number(newPromoPrice)
+  : null,
   sizes: newSizes
     ? newSizes.split(",").map(s => s.trim())
     : []
@@ -406,9 +413,11 @@ console.log("TAMANHOS ESCOLHIDOS:", newSizes);
         ...p,
         name: newName,
         price: Number(newPrice),
-promoPrice: newPromoPrice ? Number(newPromoPrice) : null,
         imageUrl: newImage,
         description: newDescription,
+        promoPrice: newPromoPrice
+  ? Number(newPromoPrice)
+  : null,
         sizes: newSizes
           ? newSizes.split(",").map(s => s.trim())
           : []
