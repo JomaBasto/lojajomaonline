@@ -1771,3 +1771,61 @@ body { padding-top: 70px; }
 }
 
 
+
+.promocao-destaque {
+  padding: 15px;
+  min-height: 560px;
+  border-radius: 18px;
+}
+
+
+.promocao-destaque img {
+  height: 150px;
+  width: 100%;
+  object-fit: contain;
+  margin-bottom: 5px;
+}
+
+
+.promocao-destaque h3 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  min-height: 55px;
+  margin: 5px 0 8px;
+  letter-spacing: 0.2px;
+}
+
+
+.promo-tag {
+  margin: 5px 0;
+}
+
+
+.product-price {
+  margin-top: 5px;
+  gap: 4px;
+}
+
+
+.product-price .old-price {
+  font-size: 14px;
+}
+
+
+.product-price .promo-price {
+  font-size: 26px;
+}
+
+
+.discount-badge {
+  margin-top: 5px;
+}
+
+
+.promocao-destaque button {
+  margin-top: auto;
+}
+
+
