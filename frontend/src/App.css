@@ -1829,3 +1829,44 @@ body { padding-top: 70px; }
 }
 
 
+
+.promocao-destaque img {
+  height: 210px;
+  width: 100%;
+  object-fit: contain;
+  transform: scale(1.18);
+  margin-bottom: 15px;
+}
+
+
+.promocao-destaque {
+  padding: 12px;
+}
+
+
+.promocao-destaque h3 {
+  margin-top: 0;
+}
+
+
+
+.promocoes-container {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
+.promocao-destaque {
+  min-height: 580px;
+  padding: 15px;
+}
+
+
+.promocao-destaque img {
+  height: 230px;
+  transform: scale(1.25);
+}
+
+
