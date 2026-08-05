@@ -118,8 +118,8 @@ export default function Promocao() {
 </p>
 
             <a
-              href="/"
-              style={{
+  href={`/produto/${produto.id}`}
+  style={{
                 display: "inline-block",
                 marginTop: "15px",
                 padding: "12px 24px",
