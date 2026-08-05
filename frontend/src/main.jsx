@@ -7,8 +7,9 @@ import App from "./App.jsx";
 import QuemSomos from "./components/QuemSomos.jsx";
 import Admin from "./Admin.jsx";
 import Checkout from "./Checkout.jsx";
-import AdminOrders from "./AdminOrders.jsx";`r`nimport Promocao from "./Promocao.jsx";`r`nimport FichaProduto from "./components/FichaProduto";
+import AdminOrders from "./AdminOrders.jsx";
 import Promocao from "./Promocao.jsx";
+import FichaProduto from "./components/FichaProduto";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -25,6 +26,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </BrowserRouter>
   </React.StrictMode>
 );
+
+
+
+
 
 
 
