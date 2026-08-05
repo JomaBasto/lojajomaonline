@@ -64,9 +64,41 @@ export default function Promocao() {
 
             <h3>{produto.name}</h3>
 
-            <h2 style={{ color: "#d32f2f" }}>
-              {produto.price} €
-            </h2>
+            {produto.promocao && produto.promoPrice ? (
+  <>
+    <p
+      style={{
+        textDecoration: "line-through",
+        color: "#888",
+        margin: "0",
+      }}
+    >
+      {produto.price} €
+    </p>
+
+    <h2
+      style={{
+        color: "#d32f2f",
+        marginTop: "5px",
+      }}
+    >
+      {produto.promoPrice} €
+    </h2>
+
+    <p
+      style={{
+        color: "#16a34a",
+        fontWeight: "bold",
+      }}
+    >
+      🔥 Poupa {(produto.price - produto.promoPrice).toFixed(2).replace(".", ",")} €
+    </p>
+  </>
+) : (
+  <h2 style={{ color: "#d32f2f" }}>
+    {produto.price} €
+  </h2>
+)}
 
             <p
   style={{
