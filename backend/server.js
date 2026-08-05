@@ -143,7 +143,7 @@ app.get("/promocao", async (req, res) => {
 
     const produtos = await Produto.find({
       promocao: true
-    }).limit(3);
+    }).limit(6);
 
 
     if (!produtos || produtos.length === 0) {
