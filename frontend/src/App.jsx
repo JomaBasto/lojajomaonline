@@ -243,6 +243,7 @@ const finalTotal = cartTotal + shippingCost;
   name: "",
   reference: "",
   price: "",
+  promoPrice: "",
   images: ["", "", "", ""],
   category: "homem-running",
   description: "",
@@ -354,6 +355,10 @@ const deleteProduct = async (id) => {
   const editProduct = async (product) => {
     const newName = prompt("Novo nome:", product.name);
     const newPrice = prompt("Novo preço:", product.price);
+    const newPromoPrice = prompt(
+  "Preço promoção (opcional):",
+  product.promoPrice || ""
+);
     const newImage = prompt(
   "Nova imagem URL:",
   product.imageUrl || product.images?.[0] || ""
@@ -399,7 +404,8 @@ console.log("TAMANHOS ESCOLHIDOS:", newSizes);
     ? {
         ...p,
         name: newName,
-        price: newPrice,
+        price: Number(newPrice),
+promoPrice: newPromoPrice ? Number(newPromoPrice) : null,
         imageUrl: newImage,
         description: newDescription,
         sizes: newSizes
@@ -475,11 +481,12 @@ console.log("TAMANHOS ESCOLHIDOS:", newSizes);
   const productData = {
   name: form.name,
   reference: form.reference,
-  price: form.price,
+  price: Number(form.price),
+  promoPrice: form.promoPrice ? Number(form.promoPrice) : null,
   images: form.images,
   category: form.subCategory
-  ? `${form.mainCategory}-${form.subCategory}`.toLowerCase()
-  : form.mainCategory.toLowerCase(),
+    ? `${form.mainCategory}-${form.subCategory}`.toLowerCase()
+    : form.mainCategory.toLowerCase(),
   description: form.description,
   sizes: form.sizes
 };
@@ -1025,9 +1032,31 @@ return matchMain && matchSub && matchSearch;
   </span>
 )}
 
-<p>
-  {produto.price} €
-</p>
+<div className="product-price">
+
+  {produto.promocao && produto.promoPrice ? (
+    <>
+      <p className="old-price">
+        {produto.price} €
+      </p>
+
+      <p className="promo-price">
+        {produto.promoPrice} €
+      </p>
+
+      <span className="discount-badge">
+        🔥 -
+        {Math.round(
+          ((produto.price - produto.promoPrice) / produto.price) * 100
+        )}
+        %
+      </span>
+    </>
+  ) : (
+    <p>{produto.price} €</p>
+  )}
+
+</div>
 
           <button onClick={() => openGallery(produto)}>
             Ver promoção
@@ -1089,6 +1118,26 @@ return matchMain && matchSub && matchSearch;
               value={form.price}
               onChange={(e) => setForm({ ...form, price: e.target.value })}
             />
+
+<input
+  type="number"
+  placeholder="Preço promoção (opcional)"
+  value={form.promoPrice || ""}
+  onChange={(e) =>
+    setForm({
+      ...form,
+      promoPrice: e.target.value
+    })
+  }
+/>
+
+<select
+  value={form.mainCategory}
+  onChange={(e) =>
+    setForm({ ...form, mainCategory: e.target.value, subCategory: "" })
+  }
+></select>
+
             <select
   value={form.mainCategory}
   onChange={(e) =>
@@ -1306,9 +1355,31 @@ return matchMain && matchSub && matchSearch;
 
           <h3>{p.name}</h3>
 
-<p className="product-price">
-  {p.price} €
-</p>
+<div className="product-price">
+
+  {p.promocao && p.promoPrice ? (
+    <>
+      <p className="old-price">
+        {p.price} €
+      </p>
+
+      <p className="promo-price">
+        {p.promoPrice} €
+      </p>
+
+      <span className="discount-badge">
+        🔥 -
+        {Math.round(
+          ((p.price - p.promoPrice) / p.price) * 100
+        )}
+        %
+      </span>
+    </>
+  ) : (
+    <p>{p.price} €</p>
+  )}
+
+</div>
 
 <div className="product-highlights">
   <span className="stock-ok">
