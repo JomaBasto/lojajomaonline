@@ -68,6 +68,23 @@ export default function Promocao() {
               {produto.price} €
             </h2>
 
+            <p
+  style={{
+    color: "#555",
+    fontSize: "14px",
+    lineHeight: "1.6",
+    marginTop: "15px",
+    textAlign: "left",
+  }}
+>
+  {produto.description}
+</p>
+
+<p style={{ marginTop: "15px" }}>
+  <strong>Tamanhos:</strong>{" "}
+  {produto.sizes?.join(", ")}
+</p>
+
             <a
               href="/"
               style={{
