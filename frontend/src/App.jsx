@@ -389,14 +389,15 @@ console.log("TAMANHOS ESCOLHIDOS:", newSizes);
     "Authorization": `Bearer ${localStorage.getItem("token")}`
   },
   body: JSON.stringify({
-    name: newName,
-    price: newPrice,
-    imageUrl: newImage,
-    description: newDescription,
-    sizes: newSizes
-      ? newSizes.split(",").map(s => s.trim())
-      : []
-  })
+  name: newName,
+  price: Number(newPrice),
+  promoPrice: newPromoPrice ? Number(newPromoPrice) : null,
+  imageUrl: newImage,
+  description: newDescription,
+  sizes: newSizes
+    ? newSizes.split(",").map(s => s.trim())
+    : []
+})
 });
 
     setProducts(products.map(p =>
