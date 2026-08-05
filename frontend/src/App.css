@@ -1870,3 +1870,27 @@ body { padding-top: 70px; }
 }
 
 
+
+@media (max-width: 768px) {
+
+  .promocao-destaque {
+    min-height: auto;
+    padding: 15px;
+    overflow: hidden;
+  }
+
+  .promocao-destaque img {
+    height: 240px;
+    width: 100%;
+    object-fit: contain;
+    transform: scale(1.10);
+    margin-bottom: 25px;
+  }
+
+  .promocao-destaque h3 {
+    margin-top: 20px;
+    line-height: 1.3;
+  }
+
+}
+
