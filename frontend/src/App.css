@@ -1684,3 +1684,90 @@ body { padding-top: 70px; }
   gap: 4px;
 }
 
+
+.promocao-destaque {
+  border-radius: 18px;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 620px;
+}
+
+
+.promocao-destaque h3 {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  min-height: 65px;
+  margin: 15px 0 10px;
+  color: #111;
+}
+
+
+.promocao-destaque img {
+  height: 180px;
+  width: 100%;
+  object-fit: contain;
+}
+
+
+.promo-tag {
+  background: #e53935;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin: 8px 0;
+}
+
+
+.product-price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+
+.product-price .old-price {
+  font-size: 15px;
+  color: #888;
+  text-decoration: line-through;
+  font-weight: 400;
+}
+
+
+.product-price .promo-price {
+  font-size: 28px;
+  color: #e53935;
+  font-weight: 700;
+}
+
+
+.discount-badge {
+  background: #e53935;
+  color: white;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+
+.promocao-destaque button {
+  margin-top: auto;
+  width: 90%;
+  border-radius: 30px;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+
