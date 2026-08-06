@@ -1362,8 +1362,15 @@ return matchMain && matchSub && matchSearch;
     margin: "0 auto"
   }}
 />
+          <div className="product-header">
+  <h3>{p.name}</h3>
 
-          <h3>{p.name}</h3>
+  {!p.promocao && (
+    <span className="price-inline">
+      {p.price} €
+    </span>
+  )}
+</div>
 
 <div className="product-price">
 
@@ -1385,33 +1392,26 @@ return matchMain && matchSub && matchSearch;
         %
       </span>
     </>
-  ) : (
-    <p>{p.price} €</p>
-  )}
+  ) : null}
 
 </div>
 
-<div className="product-highlights">
+<div className="stock-favorite">
+
   <span className="stock-ok">
     ✓ Em stock
   </span>
+
+  <button onClick={() => toggleFavorite(p)} className="favorite-btn">
+    <FaHeart />
+  </button>
+
 </div>
 
-<div
-  style={{
-    display: "flex",
-    gap: "10px",
-    flexWrap: "wrap",
-    marginTop: "10px"
-  }}
->
 
-            <button onClick={() => toggleFavorite(p)} className="favorite-btn">
-              <FaHeart />
-            </button>
+{isAdmin && (
+  <div className="product-actions">
 
-            {isAdmin && (
-  <>
     <button onClick={() => editProduct(p)}>
       Editar
     </button>
@@ -1423,10 +1423,9 @@ return matchMain && matchSub && matchSearch;
     <button onClick={() => deleteProduct(p._id)}>
       Apagar
     </button>
-  </>
-)}
 
-          </div>
+  </div>
+)}
 
         </div>
       );
