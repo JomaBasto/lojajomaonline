@@ -2009,7 +2009,7 @@ body { padding-top: 70px; }
   object-fit:contain !important;
   background:#f7f7f7;
   border-radius:12px;
-  margin-bottom:15px !important;
+  margin-bottom:45px !important;
 }
 
 
@@ -2300,86 +2300,13 @@ body { padding-top: 70px; }
 
 @media (min-width:601px){
 
-  .product-image{
-    height:240px !important;
-    overflow:visible;
-  }
-
-  .product-image img{
-    height:230px !important;
-    max-height:none !important;
-    width:auto;
-    object-fit:contain;
-  }
-
-}
-
-
-/* ==================================
-   PRODUTOS - IMAGEM DESKTOP GRANDE
-   MOBILE MANTÉM ORIGINAL
-================================== */
-
-.product-image{
-  width:100%;
-  height:260px !important;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-}
-
-.product-image img{
-  width:auto !important;
-  height:250px !important;
-  max-height:none !important;
-  max-width:100% !important;
-  object-fit:contain;
-}
-
-
-/* MOBILE NÃO ALTERAR */
-@media (max-width:600px){
-
-  .product-image{
-    height:120px !important;
-  }
-
-  .product-image img{
-    height:auto !important;
-    max-height:105px !important;
-  }
-
-}
-
-
-/* ==================================
-   PRODUTOS DESKTOP - IMAGEM MAIOR
-   MOBILE SEM ALTERAÇÃO
-================================== */
-
-@media (min-width:601px){
-
-  .card img{
-    height:300px !important;
-    width:100% !important;
-    object-fit:contain !important;
-  }
-
-}
-
-
-/* ==================================
-   AUMENTAR PRODUTO DENTRO DA CAIXA
-   APENAS DESKTOP
-================================== */
 
 @media (min-width:601px){
 
   .card img{
     height:220px !important;
-    transform:scale(1.25);
     object-fit:contain !important;
+    transform:scale(1.25) !important;
   }
 
 }
