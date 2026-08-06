@@ -1,4 +1,4 @@
-/* =========================
+ï»¿/* =========================
    RESET
 ========================= */
 * {
@@ -192,13 +192,13 @@ body {
 }
 
 .card h3 {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 500;
   margin-top: 10px;
 }
 
 .card p {
-  font-size: 14px;
+  font-size: 20px;
   color: #111;
   margin-top: 5px;
 }
@@ -496,7 +496,7 @@ body,
 
 
 
-/* CORREÇÃO GRID HORIZONTAL */
+/* CORREÃ‡ÃƒO GRID HORIZONTAL */
 .grid,
 .products-grid {
   display: grid;
@@ -535,7 +535,7 @@ body,
 
 
 
-/* IMAGEM MAIOR SEM SOBREPOSIÇÃO */
+/* IMAGEM MAIOR SEM SOBREPOSIÃ‡ÃƒO */
 .grid .card img,
 .products-grid .card img {
   width: 100%;
@@ -571,7 +571,7 @@ body,
   display: none;
 }
 
-/* Apenas telemóvel */
+/* Apenas telemÃ³vel */
 @media (max-width: 768px) {
 
   .mobile-menu-btn {
@@ -613,7 +613,7 @@ body,
 }
 
 
-/* Mostrar ações apenas no telemóvel */
+/* Mostrar aÃ§Ãµes apenas no telemÃ³vel */
 .only-mobile {
   display: none;
 }
@@ -887,7 +887,7 @@ body,
 .footer-block p {
   margin: 6px 0;
   color: #cfcfcf;
-  font-size: 14px;
+  font-size: 20px;
   line-height: 1.6;
 }
 
@@ -900,7 +900,7 @@ body,
   justify-content: space-between;
   align-items: center;
   color: #bfbfbf;
-  font-size: 14px;
+  font-size: 20px;
 }
 
 .footer-links {
@@ -1050,7 +1050,7 @@ body,
 
 .footer-social span {
   color: #d0d0d0;
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 600;
 }
 
@@ -1251,7 +1251,7 @@ body { padding-top: 70px; }
 
 
 .footer-about {
-  font-size: 14px;
+  font-size: 20px;
   line-height: 1.6;
   margin-top: 15px;
   max-width: 280px;
@@ -1319,7 +1319,7 @@ body { padding-top: 70px; }
 }
 
 /* ================================
-   DESTAQUE PROMOÇÃO SEMANA
+   DESTAQUE PROMOÃ‡ÃƒO SEMANA
 ================================ */
 
 .promocao-destaque {
@@ -1412,7 +1412,7 @@ body { padding-top: 70px; }
 
 
 /* ================================
-   AJUSTE PROMOÇÃO MOBILE
+   AJUSTE PROMOÃ‡ÃƒO MOBILE
 ================================ */
 
 @media (max-width: 600px) {
@@ -1443,7 +1443,7 @@ body { padding-top: 70px; }
 
 
 /* ================================
-   PROMOÇÃO SEMANA - DESIGN PREMIUM
+   PROMOÃ‡ÃƒO SEMANA - DESIGN PREMIUM
 ================================ */
 
 .promocao-destaque {
@@ -1553,7 +1553,7 @@ body { padding-top: 70px; }
 
 
 /* ================================
-   PROMOÇÕES - GRELHA RESPONSIVA
+   PROMOÃ‡Ã•ES - GRELHA RESPONSIVA
 ================================ */
 
 .promocoes-container {
@@ -1615,7 +1615,7 @@ body { padding-top: 70px; }
 
 
 /* ================================
-   TELEMÓVEL
+   TELEMÃ“VEL
 ================================ */
 
 @media (max-width: 700px) {
@@ -1655,7 +1655,7 @@ body { padding-top: 70px; }
 .old-price {
   text-decoration: line-through;
   color: #888;
-  font-size: 15px;
+  font-size: 20px;
   margin: 0;
 }
 
@@ -1736,7 +1736,7 @@ body { padding-top: 70px; }
 
 
 .product-price .old-price {
-  font-size: 15px;
+  font-size: 20px;
   color: #888;
   text-decoration: line-through;
   font-weight: 400;
@@ -1766,7 +1766,7 @@ body { padding-top: 70px; }
   width: 90%;
   border-radius: 30px;
   padding: 12px;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 600;
 }
 
@@ -1810,7 +1810,7 @@ body { padding-top: 70px; }
 
 
 .product-price .old-price {
-  font-size: 14px;
+  font-size: 20px;
 }
 
 
@@ -1896,7 +1896,7 @@ body { padding-top: 70px; }
 
 
 /* ==========================
-   CABEÇALHO DO CARTÃO
+   CABEÃ‡ALHO DO CARTÃƒO
 ========================== */
 
 .product-header{
@@ -2033,7 +2033,7 @@ body { padding-top: 70px; }
 }
 
 
-/* PREÇO */
+/* PREÃ‡O */
 
 .price-inline{
   font-size:18px;
@@ -2066,7 +2066,7 @@ body { padding-top: 70px; }
 }
 
 
-/* CORAÇÃO */
+/* CORAÃ‡ÃƒO */
 
 .favorite-btn{
   font-size:24px !important;
@@ -2074,7 +2074,7 @@ body { padding-top: 70px; }
 }
 
 
-/* BOTÕES ADMIN */
+/* BOTÃ•ES ADMIN */
 
 .product-actions{
   margin-top:12px;
@@ -2107,7 +2107,7 @@ body { padding-top: 70px; }
 
 
 /* ===============================
-   AJUSTE FINAL ESPAÇAMENTO CARD
+   AJUSTE FINAL ESPAÃ‡AMENTO CARD
 ================================ */
 
 .card{
@@ -2142,7 +2142,7 @@ body { padding-top: 70px; }
 
 
 /* ===============================
-   AJUSTE PREÇO MAIS ELEGANTE
+   AJUSTE PREÃ‡O MAIS ELEGANTE
 ================================ */
 
 .price-inline{
@@ -2158,7 +2158,7 @@ body { padding-top: 70px; }
 
 
 /* ===============================
-   ALINHAMENTO NOME + PREÇO
+   ALINHAMENTO NOME + PREÃ‡O
 ================================ */
 
 .product-header{
@@ -2184,7 +2184,7 @@ body { padding-top: 70px; }
 
 
 /* ===============================
-   REDUZIR ESPAÇO IMAGEM + NOME
+   REDUZIR ESPAÃ‡O IMAGEM + NOME
 ================================ */
 
 .product-card{
@@ -2219,7 +2219,7 @@ body { padding-top: 70px; }
 }
 
 
-/* Telemóvel */
+/* TelemÃ³vel */
 @media (max-width:600px){
 
   .product-image{

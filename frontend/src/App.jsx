@@ -1055,7 +1055,7 @@ return matchMain && matchSub && matchSearch;
       </p>
 
       <span className="discount-badge">
-        🔥 -
+        🏷️ -
         {Math.round(
           ((produto.price - produto.promoPrice) / produto.price) * 100
         )}
@@ -1374,7 +1374,7 @@ return matchMain && matchSub && matchSearch;
 
 <div className="product-price">
 
-  {p.promocao && p.promoPrice ? (
+  {p.promoPrice ? (
     <>
       <p className="old-price">
         {p.price} €
@@ -1385,7 +1385,7 @@ return matchMain && matchSub && matchSearch;
       </p>
 
       <span className="discount-badge">
-        🔥 -
+        🏷️ -
         {Math.round(
           ((p.price - p.promoPrice) / p.price) * 100
         )}
@@ -1724,7 +1724,7 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
     width: "100%",
   }}
 >
-  💬 Perguntar no WhatsApp
+  ?? Perguntar no WhatsApp
 </button>
 
       {/* FECHAR */}
