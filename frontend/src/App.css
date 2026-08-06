@@ -1894,3 +1894,493 @@ body { padding-top: 70px; }
 
 }
 
+
+/* ==========================
+   CABEÇALHO DO CARTÃO
+========================== */
+
+.product-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+  margin-top:12px;
+}
+
+.product-header h3{
+  margin:0;
+  font-size:15px;
+  font-weight:600;
+  line-height:1.3;
+  flex:1;
+}
+
+.price-inline{
+  font-size:18px;
+  font-weight:700;
+  color:#111;
+  white-space:nowrap;
+}
+
+
+/* ==========================
+   AJUSTE FINAL PRODUTOS
+========================== */
+
+.stock-favorite{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:12px;
+}
+
+.stock-ok{
+  color:#008000;
+  font-weight:600;
+}
+
+
+.favorite-btn{
+  border:none;
+  background:transparent;
+  padding:0;
+  color:red;
+  font-size:22px;
+  cursor:pointer;
+  line-height:1;
+}
+
+.favorite-btn:hover{
+  transform:scale(1.15);
+}
+
+
+.product-actions{
+  display:flex;
+  gap:6px;
+  margin-top:10px;
+  align-items:center;
+}
+
+
+.product-actions button{
+  border:none;
+  background:#f2f2f2;
+  padding:6px 10px;
+  border-radius:6px;
+  font-size:12px;
+  cursor:pointer;
+  white-space:nowrap;
+}
+
+
+.product-actions button:hover{
+  background:#ddd;
+}
+
+
+/* ===============================
+   CARD LOJA PROFISSIONAL
+================================ */
+
+.card{
+  background:white;
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.08);
+  transition:0.25s;
+  display:flex;
+  flex-direction:column;
+  min-height:420px;
+}
+
+
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 8px 25px rgba(0,0,0,0.15);
+}
+
+
+/* IMAGEM */
+
+.card img{
+  width:100% !important;
+  height:220px !important;
+  object-fit:contain !important;
+  background:#f7f7f7;
+  border-radius:12px;
+  margin-bottom:15px !important;
+}
+
+
+
+/* NOME */
+
+.product-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  min-height:55px;
+}
+
+
+.product-header h3{
+  font-size:15px;
+  line-height:1.3;
+  margin:0;
+  font-weight:700;
+  color:#222;
+}
+
+
+/* PREÇO */
+
+.price-inline{
+  font-size:18px;
+  font-weight:800;
+  color:#111;
+  white-space:nowrap;
+}
+
+
+.product-price{
+  min-height:70px;
+}
+
+
+/* STOCK + FAVORITO */
+
+.stock-favorite{
+  margin-top:auto;
+  padding-top:12px;
+  border-top:1px solid #eee;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+
+.stock-ok{
+  color:#129447;
+  font-weight:700;
+}
+
+
+/* CORAÇÃO */
+
+.favorite-btn{
+  font-size:24px !important;
+  color:#e60000 !important;
+}
+
+
+/* BOTÕES ADMIN */
+
+.product-actions{
+  margin-top:12px;
+  display:flex;
+  gap:8px;
+}
+
+
+.product-actions button{
+  flex:1;
+  padding:8px;
+  font-size:12px;
+  border-radius:8px;
+  border:1px solid #ddd;
+  background:#fafafa;
+}
+
+
+.product-actions button:hover{
+  background:#111;
+  color:white;
+}
+
+
+/* GRID */
+
+.products-grid{
+  gap:25px !important;
+}
+
+
+/* ===============================
+   AJUSTE FINAL ESPAÇAMENTO CARD
+================================ */
+
+.card{
+  min-height:340px;
+}
+
+
+.product-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:15px;
+  margin-bottom:10px;
+}
+
+
+.product-price{
+  min-height:25px;
+}
+
+
+.price-inline{
+  font-size:20px;
+}
+
+
+.stock-favorite{
+  margin-top:15px;
+  padding-top:12px;
+  border-top:1px solid #eee;
+}
+
+
+/* ===============================
+   AJUSTE PREÇO MAIS ELEGANTE
+================================ */
+
+.price-inline{
+  font-size:17px;
+  font-weight:700;
+  color:#222;
+  letter-spacing:0;
+}
+
+.product-header{
+  align-items:flex-start;
+}
+
+
+/* ===============================
+   ALINHAMENTO NOME + PREÇO
+================================ */
+
+.product-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  min-height:60px;
+}
+
+
+.product-header h3{
+  flex:1;
+}
+
+
+.price-inline{
+  flex-shrink:0;
+  font-size:17px;
+  font-weight:700;
+  color:#222;
+}
+
+
+/* ===============================
+   REDUZIR ESPAÇO IMAGEM + NOME
+================================ */
+
+.product-card{
+  padding-top:10px;
+}
+
+.product-image{
+  margin-bottom:8px;
+}
+
+.product-header{
+  margin-top:4px;
+}
+
+
+/* ===============================
+   IMAGEM PRODUTO RESPONSIVA
+================================ */
+
+.product-image{
+  height:150px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:5px;
+}
+
+.product-image img{
+  max-height:135px;
+  width:auto;
+  object-fit:contain;
+}
+
+
+/* Telemóvel */
+@media (max-width:600px){
+
+  .product-image{
+    height:120px;
+  }
+
+  .product-image img{
+    max-height:105px;
+  }
+
+  .product-header h3{
+    font-size:13px;
+  }
+
+  .price-inline{
+    font-size:15px;
+  }
+
+}
+
+
+/* ===============================
+   IMAGEM MAIOR APENAS COMPUTADOR
+================================ */
+
+@media (min-width:601px){
+
+  .product-image{
+    height:160px;
+    margin-bottom:3px;
+  }
+
+  .product-image img{
+    max-height:145px;
+  }
+
+}
+
+
+/* ==================================
+   PRODUTO DESKTOP - IMAGEM MAIOR
+   (não altera telemóvel)
+================================== */
+
+@media (min-width:601px){
+
+  .product-image img{
+    max-height:175px;
+    transform:scale(1.12);
+  }
+
+}
+
+
+/* ==================================
+   IMAGEM PRODUTO DESKTOP GRANDE
+   (mantém telemóvel igual)
+================================== */
+
+@media (min-width:601px){
+
+  .product-image{
+    height:190px;
+  }
+
+  .product-image img{
+    max-height:185px;
+    transform:scale(1.35);
+  }
+
+}
+
+
+/* ==================================
+   PRODUTO DESKTOP - IMAGEM EXTRA GRANDE
+   (não altera telemóvel)
+================================== */
+
+@media (min-width:601px){
+
+  .product-image{
+    height:240px !important;
+    overflow:visible;
+  }
+
+  .product-image img{
+    height:230px !important;
+    max-height:none !important;
+    width:auto;
+    object-fit:contain;
+  }
+
+}
+
+
+/* ==================================
+   PRODUTOS - IMAGEM DESKTOP GRANDE
+   MOBILE MANTÉM ORIGINAL
+================================== */
+
+.product-image{
+  width:100%;
+  height:260px !important;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.product-image img{
+  width:auto !important;
+  height:250px !important;
+  max-height:none !important;
+  max-width:100% !important;
+  object-fit:contain;
+}
+
+
+/* MOBILE NÃO ALTERAR */
+@media (max-width:600px){
+
+  .product-image{
+    height:120px !important;
+  }
+
+  .product-image img{
+    height:auto !important;
+    max-height:105px !important;
+  }
+
+}
+
+
+/* ==================================
+   PRODUTOS DESKTOP - IMAGEM MAIOR
+   MOBILE SEM ALTERAÇÃO
+================================== */
+
+@media (min-width:601px){
+
+  .card img{
+    height:300px !important;
+    width:100% !important;
+    object-fit:contain !important;
+  }
+
+}
+
+
+/* ==================================
+   AUMENTAR PRODUTO DENTRO DA CAIXA
+   APENAS DESKTOP
+================================== */
+
+@media (min-width:601px){
+
+  .card img{
+    height:220px !important;
+    transform:scale(1.25);
+    object-fit:contain !important;
+  }
+
+}
+
