@@ -1017,6 +1017,9 @@ return matchMain && matchSub && matchSearch;
   <section id="ofertas" className="promocoes-container">
 
     <h2>OFERTAS DA SEMANA</h2>
+    <p className="offers-subtitle">
+  Ofertas únicas. Produtos selecionados. O momento certo para comprar é agora.
+</p>
 
     <div className="promocoes-lista">
 
