@@ -2241,65 +2241,9 @@ body { padding-top: 70px; }
 }
 
 
-/* ===============================
-   IMAGEM MAIOR APENAS COMPUTADOR
-================================ */
-
-@media (min-width:601px){
-
-  .product-image{
-    height:160px;
-    margin-bottom:3px;
-  }
-
-  .product-image img{
-    max-height:145px;
-  }
-
-}
-
-
 /* ==================================
-   PRODUTO DESKTOP - IMAGEM MAIOR
-   (não altera telemóvel)
+   PRODUTOS DESKTOP
 ================================== */
-
-@media (min-width:601px){
-
-  .product-image img{
-    max-height:175px;
-    transform:scale(1.12);
-  }
-
-}
-
-
-/* ==================================
-   IMAGEM PRODUTO DESKTOP GRANDE
-   (mantém telemóvel igual)
-================================== */
-
-@media (min-width:601px){
-
-  .product-image{
-    height:190px;
-  }
-
-  .product-image img{
-    max-height:185px;
-    transform:scale(1.35);
-  }
-
-}
-
-
-/* ==================================
-   PRODUTO DESKTOP - IMAGEM EXTRA GRANDE
-   (não altera telemóvel)
-================================== */
-
-@media (min-width:601px){
-
 
 @media (min-width:601px){
 
@@ -2307,6 +2251,7 @@ body { padding-top: 70px; }
     height:220px !important;
     object-fit:contain !important;
     transform:scale(1.25) !important;
+    margin-bottom:45px !important;
   }
 
 }
