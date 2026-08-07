@@ -1019,7 +1019,7 @@ return matchMain && matchSub && matchSearch;
 <section className="seo-home">
   <div className="seo-home-container">
 
-    <h2>Loja Oficial Joma em Portugal</h2>
+    <h2>Loja Oficial JomaBasto em Portugal</h2>
 
     <p>
       A <strong>JomaBasto Store</strong> é revendedora oficial da
