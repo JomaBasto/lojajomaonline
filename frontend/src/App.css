@@ -1,4 +1,4 @@
-ï»¿/* =========================
+/* =========================
    RESET
 ========================= */
 * {
@@ -75,7 +75,7 @@ body {
 }
 
 .dropdown-menu a {
-  color: #111;
+  color: #111;`r`n    letter-spacing: -1px;
   padding: 8px;
   text-decoration: none;
 }
@@ -199,7 +199,7 @@ body {
 
 .card p {
   font-size: 20px;
-  color: #111;
+  color: #111;`r`n    letter-spacing: -1px;
   margin-top: 5px;
 }
 
@@ -496,7 +496,7 @@ body,
 
 
 
-/* CORREÃ‡ÃƒO GRID HORIZONTAL */
+/* CORREÇÃO GRID HORIZONTAL */
 .grid,
 .products-grid {
   display: grid;
@@ -535,7 +535,7 @@ body,
 
 
 
-/* IMAGEM MAIOR SEM SOBREPOSIÃ‡ÃƒO */
+/* IMAGEM MAIOR SEM SOBREPOSIÇÃO */
 .grid .card img,
 .products-grid .card img {
   width: 100%;
@@ -571,7 +571,7 @@ body,
   display: none;
 }
 
-/* Apenas telemÃ³vel */
+/* Apenas telemóvel */
 @media (max-width: 768px) {
 
   .mobile-menu-btn {
@@ -613,7 +613,7 @@ body,
 }
 
 
-/* Mostrar aÃ§Ãµes apenas no telemÃ³vel */
+/* Mostrar ações apenas no telemóvel */
 .only-mobile {
   display: none;
 }
@@ -667,7 +667,7 @@ body,
 .categories-title h2 {
   font-size: 42px;
   font-weight: 700;
-  color: #111;
+  color: #111;`r`n    letter-spacing: -1px;
   margin-bottom: 15px;
 }
 
@@ -719,7 +719,7 @@ body,
 
 .category-content h3 {
   font-size: 28px;
-  color: #111;
+  color: #111;`r`n    letter-spacing: -1px;
   margin-bottom: 10px;
 }
 
@@ -848,7 +848,7 @@ body,
   top: 38px;
   right: 0;
   background: white;
-  color: #111;
+  color: #111;`r`n    letter-spacing: -1px;
   border-radius: 10px;
   padding: 12px;
   min-width: 170px;
@@ -1099,7 +1099,7 @@ body,
 .product-price{
   font-size:22px;
   font-weight:700;
-  color:#111;
+  color: #111;`r`n    letter-spacing: -1px;
   margin:10px 0;
 }
 
@@ -1319,7 +1319,7 @@ body { padding-top: 70px; }
 }
 
 /* ================================
-   DESTAQUE PROMOÃ‡ÃƒO SEMANA
+   DESTAQUE PROMOÇÃO SEMANA
 ================================ */
 
 .promocao-destaque {
@@ -1336,7 +1336,7 @@ body { padding-top: 70px; }
   font-size: 30px;
   font-weight: 800;
   margin-bottom: 25px;
-  color: #111;
+  color: #111;`r`n    letter-spacing: -1px;
 }
 
 .promocao-destaque img {
@@ -1412,7 +1412,7 @@ body { padding-top: 70px; }
 
 
 /* ================================
-   AJUSTE PROMOÃ‡ÃƒO MOBILE
+   AJUSTE PROMOÇÃO MOBILE
 ================================ */
 
 @media (max-width: 600px) {
@@ -1443,7 +1443,7 @@ body { padding-top: 70px; }
 
 
 /* ================================
-   PROMOÃ‡ÃƒO SEMANA - DESIGN PREMIUM
+   PROMOÇÃO SEMANA - DESIGN PREMIUM
 ================================ */
 
 .promocao-destaque {
@@ -1482,7 +1482,7 @@ body { padding-top: 70px; }
 .promocao-destaque h3 {
   font-size: 23px;
   font-weight: 700;
-  color: #111;
+  color: #111;`r`n    letter-spacing: -1px;
   margin: 15px 0;
 }
 
@@ -1490,7 +1490,7 @@ body { padding-top: 70px; }
 .promocao-destaque p {
   font-size: 36px;
   font-weight: 900;
-  color: #111;
+  color: #111;`r`n    letter-spacing: -1px;
   margin: 20px 0;
 }
 
@@ -1553,7 +1553,7 @@ body { padding-top: 70px; }
 
 
 /* ================================
-   PROMOÃ‡Ã•ES - GRELHA RESPONSIVA
+   PROMOÇÕES - GRELHA RESPONSIVA
 ================================ */
 
 .promocoes-container {
@@ -1615,7 +1615,7 @@ body { padding-top: 70px; }
 
 
 /* ================================
-   TELEMÃ“VEL
+   TELEMÓVEL
 ================================ */
 
 @media (max-width: 700px) {
@@ -1704,7 +1704,7 @@ body { padding-top: 70px; }
   text-align: center;
   min-height: 65px;
   margin: 15px 0 10px;
-  color: #111;
+  color: #111;`r`n    letter-spacing: -1px;
 }
 
 
@@ -1896,7 +1896,7 @@ body { padding-top: 70px; }
 
 
 /* ==========================
-   CABEÃ‡ALHO DO CARTÃƒO
+   CABEÇALHO DO CARTÃO
 ========================== */
 
 .product-header{
@@ -1918,7 +1918,7 @@ body { padding-top: 70px; }
 .price-inline{
   font-size:18px;
   font-weight:700;
-  color:#111;
+  color: #111;`r`n    letter-spacing: -1px;
   white-space:nowrap;
 }
 
@@ -2033,12 +2033,12 @@ body { padding-top: 70px; }
 }
 
 
-/* PREÃ‡O */
+/* PREÇO */
 
 .price-inline{
   font-size:18px;
   font-weight:800;
-  color:#111;
+  color: #111;`r`n    letter-spacing: -1px;
   white-space:nowrap;
 }
 
@@ -2066,7 +2066,7 @@ body { padding-top: 70px; }
 }
 
 
-/* CORAÃ‡ÃƒO */
+/* CORAÇÃO */
 
 .favorite-btn{
   font-size:24px !important;
@@ -2074,7 +2074,7 @@ body { padding-top: 70px; }
 }
 
 
-/* BOTÃ•ES ADMIN */
+/* BOTÕES ADMIN */
 
 .product-actions{
   margin-top:12px;
@@ -2107,7 +2107,7 @@ body { padding-top: 70px; }
 
 
 /* ===============================
-   AJUSTE FINAL ESPAÃ‡AMENTO CARD
+   AJUSTE FINAL ESPAÇAMENTO CARD
 ================================ */
 
 .card{
@@ -2142,7 +2142,7 @@ body { padding-top: 70px; }
 
 
 /* ===============================
-   AJUSTE PREÃ‡O MAIS ELEGANTE
+   AJUSTE PREÇO MAIS ELEGANTE
 ================================ */
 
 .price-inline{
@@ -2158,7 +2158,7 @@ body { padding-top: 70px; }
 
 
 /* ===============================
-   ALINHAMENTO NOME + PREÃ‡O
+   ALINHAMENTO NOME + PREÇO
 ================================ */
 
 .product-header{
@@ -2184,7 +2184,7 @@ body { padding-top: 70px; }
 
 
 /* ===============================
-   REDUZIR ESPAÃ‡O IMAGEM + NOME
+   REDUZIR ESPAÇO IMAGEM + NOME
 ================================ */
 
 .product-card{
@@ -2219,7 +2219,7 @@ body { padding-top: 70px; }
 }
 
 
-/* TelemÃ³vel */
+/* Telemóvel */
 @media (max-width:600px){
 
   .product-image{
@@ -2293,4 +2293,79 @@ body { padding-top: 70px; }
   color: #333;
   line-height: 1.6;
 }
+
+
+/* ===== SEO HOME ===== */
+
+.seo-home {
+    max-width: 1200px;
+    margin: 40px auto 50px;
+    padding: 0 20px;
+}
+
+.seo-home-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.seo-home-container h2 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #111;`r`n    letter-spacing: -1px;
+    margin-bottom: 20px;
+}
+
+.seo-home-container p {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: #555;
+    margin-bottom: 18px;
+}
+
+
+
+/* ================= FAQ ================= */
+
+.faq-home{
+    max-width:1000px;
+    margin:120px auto 80px;
+    padding:0 20px;
+    clear:both;
+}
+
+.faq-home h2{
+    text-align:center;
+    font-size:2.8rem;
+    font-weight:700;
+    color:#111;
+    margin-bottom:50px;
+}
+
+.faq-item{
+    background:#fff;
+    border-left:5px solid #0047ba;
+    border-radius:12px;
+    padding:25px;
+    margin-bottom:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.06);
+    transition:.3s;
+}
+
+.faq-item:hover{
+    transform:translateY(-3px);
+}
+
+.faq-item h3{
+    color:#0047ba;
+    margin-bottom:10px;
+    font-size:1.2rem;
+}
+
+.faq-item p{
+    color:#555;
+    line-height:1.8;
+    font-size:1rem;
+}
+
 
