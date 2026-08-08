@@ -595,7 +595,8 @@ return matchMain && matchSub && matchSearch;
 }, [search, filteredProducts]);
 
   const addToCart = (product) => {
-  if (!selectedProduct) return;
+  console.log("PRODUTO AO ADICIONAR:", product);
+  if (!product) return;
 
   if (!selectedSize) {
     alert("Escolhe um tamanho primeiro");
@@ -619,13 +620,17 @@ return matchMain && matchSub && matchSearch;
       );
     } else {
       updatedCart = [
-        ...prev,
-        {
-          ...product,
-          size: selectedSize,
-          qty: 1,
-        },
-      ];
+      ...prev,
+      {
+        ...product,
+        price:
+          product.promoPrice != null
+            ? Number(product.promoPrice)
+            : Number(product.price),
+        size: selectedSize,
+        qty: 1,
+      },
+    ];
     }
 
     // GUARDAR NO LOCALSTORAGE (IMPORTANTE)
@@ -1306,7 +1311,6 @@ return matchMain && matchSub && matchSearch;
         <div className="products-grid">
   {Array.isArray(filteredProducts) &&
     filteredProducts.map((p, index) => {
-      console.log("A renderizar produto:", p);
 
       return (
         <div
@@ -1354,7 +1358,7 @@ return matchMain && matchSub && matchSearch;
       </p>
 
       <span className="discount-badge">
-        ??? -
+        🔥 -
         {Math.round(
           ((p.price - p.promoPrice) / p.price) * 100
         )}
@@ -2057,6 +2061,18 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 </div>
 );
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

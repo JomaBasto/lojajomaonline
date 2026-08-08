@@ -360,14 +360,36 @@ app.post("/create-checkout-session", async (req, res) => {
     }
 
     // Guardar a encomenda na MongoDB
-const subtotal = items.reduce(
-  (sum, item) => sum + item.price * (item.qty || 1),
+const itemsComPrecoReal = await Promise.all(
+  items.map(async (item) => {
+    const produto = await Produto.findById(item._id);
+
+    if (!produto) {
+      throw new Error(`Produto não encontrado: ${item._id}`);
+    }
+
+    const precoFinal =
+      produto.promocao && produto.promoPrice
+        ? Number(produto.promoPrice)
+        : Number(produto.price);
+
+    return {
+      ...item,
+      price: precoFinal,
+      promoPrice: produto.promoPrice,
+      promocao: produto.promocao,
+    };
+  })
+);
+
+const subtotal = itemsComPrecoReal.reduce(
+  (sum, item) => sum + Number(item.price) * (item.qty || 1),
   0
 );
 
 const encomenda = new Encomenda({
   cliente,
-  items,
+  items: itemsComPrecoReal,
   total: subtotal + shippingCost,
   estado: "Pendente",
 });
@@ -386,7 +408,9 @@ const session = await stripe.checkout.sessions.create({
       product_data: {
         name: `${item.name} (${item.size})`,
       },
-      unit_amount: Math.round(item.price * 100),
+      unit_amount: Math.round(
+  (item.promocao && item.promoPrice ? item.promoPrice : item.price) * 100
+),
     },
     quantity: item.qty || 1,
   })),
