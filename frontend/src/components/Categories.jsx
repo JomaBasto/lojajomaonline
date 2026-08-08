@@ -1,72 +1,84 @@
 export default function Categories({ onSelect }) {
+  const categories = [
+    {
+      id: "running",
+      name: "Running",
+      desktop: "/images/running-desktop.jpg",
+      mobile: "/images/running-mobile.jpg",
+    },
+    {
+      id: "trail",
+      name: "Trail",
+      desktop: "/images/trail-desktop.jpg",
+      mobile: "/images/trail-mobile.jpg",
+    },
+    {
+      id: "futebol",
+      name: "Futebol",
+      desktop: "/images/futebol-desktop.jpg",
+      mobile: "/images/futebol-mobile.jpg",
+    },
+    {
+      id: "futsal",
+      name: "Futsal",
+      desktop: "/images/futsal-desktop.jpg",
+      mobile: "/images/futsal-mobile.jpg",
+    },
+    {
+      id: "andebol",
+      name: "Andebol",
+      desktop: "/images/andebol-desktop.jpg",
+      mobile: "/images/andebol-mobile.jpg",
+    },
+    {
+      id: "casual",
+      name: "Casual",
+      desktop: "/images/casual-desktop.jpg",
+      mobile: "/images/casual-mobile.jpg",
+    },
+    {
+      id: "promocoes",
+      name: "Ofertas da Semana",
+      desktop: "/images/ofertas-desktop.jpg",
+      mobile: "/images/ofertas-mobile.jpg",
+    },
+    {
+      id: "outlet",
+      name: "Outlet",
+      desktop: "/images/outlet-desktop.jpg",
+      mobile: "/images/outlet-mobile.jpg",
+    },
+  ];
+
   return (
-    <section className="categories">
-      <div className="categories-title">
-        <h2>Encontra a sapatilha perfeita para ti</h2>
+  <section className="categories-section">
+    <div className="categories-grid">
+      {categories.map((category) => (
+        <button
+          key={category.id}
+          type="button"
+          className="category-poster"
+          onClick={() => onSelect(category.id)}
+        >
+          <picture>
+            <source
+              media="(max-width: 768px)"
+              srcSet={category.mobile}
+            />
 
-        <p>
-          Escolhe a coleção que melhor se adapta ao teu estilo.
-        </p>
-      </div>
+            <img
+              src={category.desktop}
+              alt={`Joma ${category.name}`}
+            />
+          </picture>
 
-      <div className="categories-grid">
-        <div className="category-card">
-          <img
-            src="/images/trail.png"
-            alt="Trail"
-          />
-
-          <div className="category-content">
-            <h3>Trail</h3>
-
-            <p>
-              Máxima aderência para qualquer terreno.
-            </p>
-
-            <button onClick={() => onSelect("trail")}>
-              Ver coleção →
-            </button>
-          </div>
-        </div>
-
-        <div className="category-card">
-          <img
-            src="/images/running.png"
-            alt="Running"
-          />
-
-          <div className="category-content">
-            <h3>Running</h3>
-
-            <p>
-              Leveza e desempenho para cada quilómetro.
-            </p>
-
-            <button onClick={() => onSelect("running")}>
-              Ver coleção →
-            </button>
-          </div>
-        </div>
-
-        <div className="category-card">
-          <img
-            src="/images/futsal.png"
-            alt="Futsal"
-          />
-
-          <div className="category-content">
-            <h3>Futsal</h3>
-
-            <p>
-              Controlo, agilidade e precisão em cada jogo.
-            </p>
-
-            <button onClick={() => onSelect("futsal")}>
-              Ver coleção →
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+          <span className="category-poster-title">
+            {category.name.toUpperCase()}
+          </span>
+        </button>
+      ))}
+    </div>
+  </section>
+);
 }
+

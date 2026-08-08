@@ -26,7 +26,9 @@ import {
 
 export default function App() {
   // STATES
-  const [category, setCategory] = useState("all");
+  const [category, setCategory] = useState(
+  new URLSearchParams(window.location.search).get("categoria") || "all"
+);
   const [subCategory, setSubCategory] = useState("");
   const [search, setSearch] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
@@ -564,10 +566,11 @@ const selected = category.toLowerCase();
 
 const matchMain =
   selected === "all" ||
-  mainLower === selected ||
-  (selected === "trail" && mainLower.endsWith("-trail")) ||
-  (selected === "running" && mainLower.endsWith("-running")) ||
-  (selected === "futsal" && mainLower.endsWith("-futsal"));
+  (selected === "promocoes" && p.promocao === true) ||
+  (selected !== "promocoes" &&
+    (mainLower === selected ||
+      mainLower.endsWith(`-${selected}`) ||
+      subLower === selected));
 
 const matchSub =
   !subCategory || subLower === subCategory.toLowerCase();
@@ -1013,7 +1016,7 @@ return matchMain && matchSub && matchSearch;
   <img src="/images/hero-trail.png" alt="Trail" />
 </section>
 
-{produtosPromocao.length > 0 && (
+
   <section id="ofertas" className="promocoes-container">
 
 <section className="seo-home">
@@ -1044,86 +1047,23 @@ return matchMain && matchSub && matchSearch;
   </div>
 </section>
 
-    <h2>OFERTAS DA SEMANA</h2>
-    <p className="offers-subtitle">
-  Ofertas únicas. Produtos selecionados. O momento certo para comprar é agora.
-</p>
-
-    <div className="promocoes-lista">
-
-      {produtosPromocao.map((produto) => (
-
-        <div
-          className="promocao-destaque"
-          key={produto._id}
-        >
-
-          <img
-            src={produto.images?.[0]}
-            alt={produto.name}
-          />
-
-          <h3>
-            {produto.name}
-          </h3>
-
-          {produto.promocao && (
-  <span className="promo-tag">
-    🔥 PROMOÇÃO
-  </span>
-)}
-
-<div className="product-price">
-
-  {produto.promocao && produto.promoPrice ? (
-    <>
-      <p className="old-price">
-        {produto.price} €
-      </p>
-
-      <p className="promo-price">
-        {produto.promoPrice} €
-      </p>
-
-      <span className="discount-badge">
-        🏷️ -
-        {Math.round(
-          ((produto.price - produto.promoPrice) / produto.price) * 100
-        )}
-        %
-      </span>
-    </>
-  ) : (
-    <p>{produto.price} €</p>
-  )}
-
-</div>
-
-          <button onClick={() => openGallery(produto)}>
-            Ver promoção
-          </button>
-
-        </div>
-
-      ))}
-
-    </div>
-
   </section>
-)}
+)
 
-<Categories
-  onSelect={(sport) => {
-    setCategory(sport);
-    setSubCategory("");
 
-    setTimeout(() => {
-      productsRef.current?.scrollIntoView({
-        behavior: "smooth"
-      });
-    }, 100);
-  }}
-/>
+  <Categories
+    onSelect={(sport) => {
+      setCategory(sport);
+      setSubCategory("");
+
+      setTimeout(() => {
+        productsRef.current?.scrollIntoView({
+          behavior: "smooth"
+        });
+      }, 100);
+    }}
+  />
+
 
 {/* FORM */}
      <section ref={productsRef} className="products-section">

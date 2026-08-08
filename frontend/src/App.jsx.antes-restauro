@@ -1067,39 +1067,31 @@ return matchMain && matchSub && matchSearch;
           <h3>
             {produto.name}
           </h3>
-
           {produto.promocao && (
-  <span className="promo-tag">
-    🔥 PROMOÇÃO
-  </span>
-)}
+            <>
+              🔥 PROMOÇÃO
 
-<div className="product-price">
+              {produto.promocao && produto.promoPrice ? (
+                <>
+                  <p className="promo-price">
+                    {produto.promoPrice} €
+                  </p>
 
-  ```jsx
-{produto.promocao && produto.promoPrice ? (
-  <>
-    <p className="promo-price">
-      {produto.promoPrice} €
-    </p>
-
-    <span className="discount-badge">
-      🏷️ -
-      {Math.round(
-        ((produto.price - produto.promoPrice) / produto.price) * 100
-      )}
-      %
-    </span>
-  </>
-) : (
-  <>
-    {produto.price} €
-  </>
-)}
-```
-
-
-</div>
+                  <span className="discount-badge">
+                    🏷️ -
+                    {Math.round(
+                      ((produto.price - produto.promoPrice) / produto.price) * 100
+                    )}
+                    %
+                  </span>
+                </>
+              ) : (
+                <>
+                  {produto.price} €
+                </>
+              )}
+            </>
+          )}
 
           <button onClick={() => openGallery(produto)}>
             Ver promoção
@@ -1108,11 +1100,6 @@ return matchMain && matchSub && matchSearch;
         </div>
 
       ))}
-
-    </div>
-
-  </section>
-)}
 
 <Categories
   onSelect={(sport) => {

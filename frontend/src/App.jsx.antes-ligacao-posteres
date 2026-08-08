@@ -568,7 +568,6 @@ const matchMain =
   (selected === "trail" && mainLower.endsWith("-trail")) ||
   (selected === "running" && mainLower.endsWith("-running")) ||
   (selected === "futsal" && mainLower.endsWith("-futsal"));
-  (selected === "promocoes" && p.promocao === true);
 
 const matchSub =
   !subCategory || subLower === subCategory.toLowerCase();
@@ -1014,7 +1013,7 @@ return matchMain && matchSub && matchSearch;
   <img src="/images/hero-trail.png" alt="Trail" />
 </section>
 
-<></>
+{produtosPromocao.length > 0 && (
   <section id="ofertas" className="promocoes-container">
 
 <section className="seo-home">
@@ -1076,28 +1075,27 @@ return matchMain && matchSub && matchSearch;
 
 <div className="product-price">
 
-  ```jsx
-{produto.promocao && produto.promoPrice ? (
-  <>
-    <p className="promo-price">
-      {produto.promoPrice} €
-    </p>
+  {produto.promocao && produto.promoPrice ? (
+    <>
+      <p className="old-price">
+        {produto.price} €
+      </p>
 
-    <span className="discount-badge">
-      🏷️ -
-      {Math.round(
-        ((produto.price - produto.promoPrice) / produto.price) * 100
-      )}
-      %
-    </span>
-  </>
-) : (
-  <>
-    {produto.price} €
-  </>
-)}
-```
+      <p className="promo-price">
+        {produto.promoPrice} €
+      </p>
 
+      <span className="discount-badge">
+        🏷️ -
+        {Math.round(
+          ((produto.price - produto.promoPrice) / produto.price) * 100
+        )}
+        %
+      </span>
+    </>
+  ) : (
+    <p>{produto.price} €</p>
+  )}
 
 </div>
 
