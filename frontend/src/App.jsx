@@ -1697,7 +1697,7 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
     width: "100%",
   }}
 >
-  ?? Perguntar no WhatsApp
+  Perguntar no WhatsApp
 </button>
 
       {/* FECHAR */}
