@@ -1,4 +1,4 @@
-Ôªøimport { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   FiSearch,
   FiHeart,
@@ -297,7 +297,7 @@ const handleSave = async () => {
     try {
       const res = await fetch("https://jomabasto-backend.onrender.com/produtos");
 
-      if (!res.ok) throw new Error("Servidor indispon√≠vel");
+      if (!res.ok) throw new Error("Servidor indisponÌvel");
 
       const data = await res.json();
 
@@ -349,27 +349,27 @@ const deleteProduct = async (id) => {
     setProducts((prev) => prev.filter((p) => p._id !== id));
   } catch (err) {
     console.error(err);
-    alert("Erro de liga√ß√£o ao servidor.");
+    alert("Erro de ligaÁ„o ao servidor.");
   }
 };
 
   // EDITAR PRODUTO
   const editProduct = async (product) => {
     const newName = prompt("Novo nome:", product.name);
-    const newPrice = prompt("Novo pre√ßo:", product.price);
+    const newPrice = prompt("Novo preÁo:", product.price);
     const newImage = prompt(
   "Nova imagem URL:",
   product.imageUrl || product.images?.[0] || ""
 );
-    const newDescription = prompt("Nova descri√ß√£o:", product.description);
+    const newDescription = prompt("Nova descriÁ„o:", product.description);
 
 const newPromoPrice = prompt(
-  "Pre√ßo promocional (deixe vazio se n√£o existir):",
+  "PreÁo promocional (deixe vazio se n„o existir):",
   product.promoPrice || ""
 );
 
     const newSizes = prompt(
-  "Tamanhos dispon√≠veis (separados por v√≠rgula):",
+  "Tamanhos disponÌveis (separados por vÌrgula):",
   product.sizes?.join(", ") || ""
 );
 console.log("TAMANHOS ESCOLHIDOS:", newSizes);
@@ -444,15 +444,15 @@ console.log("TAMANHOS ESCOLHIDOS:", newSizes);
     if (!res.ok) {
   const erro = await res.text();
   console.log("ERRO BACKEND:", erro);
-  alert("Erro ao definir promo√ß√£o: " + erro);
+  alert("Erro ao definir promoÁ„o: " + erro);
   return;
 }
 
-    alert("Promo√ß√£o definida com sucesso!");
+    alert("PromoÁ„o definida com sucesso!");
 
   } catch (err) {
     console.error(err);
-    alert("Erro de liga√ß√£o ao servidor.");
+    alert("Erro de ligaÁ„o ao servidor.");
   }
 };
 
@@ -486,7 +486,7 @@ console.log("TAMANHOS ESCOLHIDOS:", newSizes);
   console.log("SUB:", form.subCategory);
 
   if (!form.name || !form.price || !form.images[0]) {
-  alert("Preencha o nome, pre√ßo e pelo menos uma imagem do produto.");
+  alert("Preencha o nome, preÁo e pelo menos uma imagem do produto.");
   return;
 }
 
@@ -687,7 +687,7 @@ return matchMain && matchSub && matchSearch;
 
   {logged && user?.name && (
     <span className="mobile-user">
-      Ol√° {user.name.split(" ")[0]}
+      Ol· {user.name.split(" ")[0]}
     </span>
   )}
 
@@ -739,7 +739,7 @@ return matchMain && matchSub && matchSearch;
 
     <div className="mobile-user-dropdown">
       <span>
-        Ol√° {user?.name?.split(" ")[0]} 
+        Ol· {user?.name?.split(" ")[0]} 
       </span>
 
       <button
@@ -754,7 +754,7 @@ return matchMain && matchSub && matchSearch;
 <button
   onClick={handleLogout}
 >
-  Terminar sess√£o
+  Terminar sess„o
 </button>
     </div>
   </details>
@@ -800,7 +800,7 @@ return matchMain && matchSub && matchSearch;
     <a onClick={(e) => selectMobileCategory("homem-andebol", e)}>Andebol</a>
     <a onClick={(e) => selectMobileCategory("homem-voleibol", e)}>Voleibol</a>
     <a onClick={(e) => selectMobileCategory("homem-basquetebol", e)}>Basquetebol</a>
-    <a onClick={(e) => selectMobileCategory("homem-tenis", e)}>T√©nis</a>
+    <a onClick={(e) => selectMobileCategory("homem-tenis", e)}>TÈnis</a>
     <a onClick={(e) => selectMobileCategory("homem-padel", e)}>Padel</a>
     <a onClick={(e) => selectMobileCategory("homem-casual", e)}>Casual</a>
     <a onClick={(e) => selectMobileCategory("homem-caminhada", e)}>Caminhada</a>
@@ -816,14 +816,14 @@ return matchMain && matchSub && matchSearch;
     <a onClick={(e) => selectMobileCategory("mulher-andebol", e)}>Andebol</a>
     <a onClick={(e) => selectMobileCategory("mulher-voleibol", e)}>Voleibol</a>
     <a onClick={(e) => selectMobileCategory("mulher-basquetebol", e)}>Basquetebol</a>
-    <a onClick={(e) => selectMobileCategory("mulher-tenis", e)}>T√©nis</a>
+    <a onClick={(e) => selectMobileCategory("mulher-tenis", e)}>TÈnis</a>
     <a onClick={(e) => selectMobileCategory("mulher-padel", e)}>Padel</a>
     <a onClick={(e) => selectMobileCategory("mulher-casual", e)}>Casual</a>
     <a onClick={(e) => selectMobileCategory("mulher-caminhada", e)}>Caminhada</a>
   </details>
 
   <details className="mobile-item">
-    <summary>Crian√ßa</summary>
+    <summary>CrianÁa</summary>
 
     <a onClick={(e) => selectMobileCategory("crianca-running", e)}>Running</a>
     <a onClick={(e) => selectMobileCategory("crianca-trail", e)}>Trail</a>
@@ -833,24 +833,24 @@ return matchMain && matchSub && matchSearch;
   </details>
 
   <details className="mobile-item">
-    <summary>Acess√≥rios</summary>
+    <summary>AcessÛrios</summary>
 
     <a onClick={(e) => selectMobileCategory("acessorios-bolas", e)}>Bolas</a>
     <a onClick={(e) => selectMobileCategory("acessorios-luvas", e)}>Luvas</a>
     <a onClick={(e) => selectMobileCategory("acessorios-meias", e)}>Meias</a>
     <a onClick={(e) => selectMobileCategory("acessorios-mochilas", e)}>Mochilas</a>
-    <a onClick={(e) => selectMobileCategory("acessorios-bones", e)}>Bon√©s</a>
+    <a onClick={(e) => selectMobileCategory("acessorios-bones", e)}>BonÈs</a>
     <a onClick={(e) => selectMobileCategory("acessorios-trail-running", e)}>Trail / Running</a>
-    <a onClick={(e) => selectMobileCategory("acessorios-verao", e)}>Ver√£o</a>
+    <a onClick={(e) => selectMobileCategory("acessorios-verao", e)}>Ver„o</a>
     <a onClick={(e) => selectMobileCategory("acessorios-outros", e)}>Outros</a>
   </details>
 
     <details className="mobile-item">
-    <summary>T√™xtil</summary>
+    <summary>TÍxtil</summary>
 
     <a onClick={(e) => selectMobileCategory("textil-homem", e)}>Homem</a>
     <a onClick={(e) => selectMobileCategory("textil-mulher", e)}>Mulher</a>
-    <a onClick={(e) => selectMobileCategory("textil-crianca", e)}>Crian√ßa</a>
+    <a onClick={(e) => selectMobileCategory("textil-crianca", e)}>CrianÁa</a>
     <a onClick={(e) => selectMobileCategory("textil-outlet", e)}>Outlet</a>
   </details>
 
@@ -860,7 +860,7 @@ return matchMain && matchSub && matchSearch;
 
   <div className="mobile-item">
     <a onClick={(e) => selectMobileCategory("edicoes-especiais", e)}>
-      Edi√ß√µes Especiais
+      EdiÁıes Especiais
     </a>
   </div>
 
@@ -879,7 +879,7 @@ return matchMain && matchSub && matchSearch;
 ) : (
   <>
     <span className="desktop-user">
-      Ol√° {user?.name?.split(" ")[0]}
+      Ol· {user?.name?.split(" ")[0]}
     </span>
 
     <button
@@ -909,7 +909,7 @@ return matchMain && matchSub && matchSearch;
               <a onClick={() => selectCategory("homem-andebol")}>Andebol</a>
               <a onClick={() => selectCategory("homem-voleibol")}>Voleibol</a>
               <a onClick={() => selectCategory("homem-basquetebol")}>Basquetebol</a>
-              <a onClick={() => selectCategory("homem-tenis")}>T√©nis</a>
+              <a onClick={() => selectCategory("homem-tenis")}>TÈnis</a>
               <a onClick={() => selectCategory("homem-padel")}>Padel</a>
               <a onClick={() => selectCategory("homem-casual")}>Casual</a>
               <a onClick={() => selectCategory("homem-caminhada")}>Caminhada</a>
@@ -927,16 +927,16 @@ return matchMain && matchSub && matchSearch;
               <a onClick={() => selectCategory("mulher-andebol")}>Andebol</a>
               <a onClick={() => selectCategory("mulher-voleibol")}>Voleibol</a>
               <a onClick={() => selectCategory("mulher-basquetebol")}>Basquetebol</a>
-              <a onClick={() => selectCategory("mulher-tenis")}>T√©nis</a>
+              <a onClick={() => selectCategory("mulher-tenis")}>TÈnis</a>
               <a onClick={() => selectCategory("mulher-padel")}>Padel</a>
               <a onClick={() => selectCategory("mulher-casual")}>Casual</a>
               <a onClick={() => selectCategory("mulher-caminhada")}>Caminhada</a>
             </div>
           </div>
 
-          {/* CRIAN√áA */}
+          {/* CRIAN«A */}
           <div className="dropdown">
-            <a onClick={() => setCategory("all")}>Crian√ßa</a>
+            <a onClick={() => setCategory("all")}>CrianÁa</a>
             <div className="dropdown-menu">
               <a onClick={() => selectCategory("crianca-running")}>Running</a>
               <a onClick={() => selectCategory("crianca-trail")}>Trail</a>
@@ -946,28 +946,28 @@ return matchMain && matchSub && matchSearch;
             </div>
           </div>
 
-          {/* ACESS√ìRIOS */}
+          {/* ACESS”RIOS */}
           <div className="dropdown">
-            <a onClick={() => setCategory("all")}>Acess√≥rios</a>
+            <a onClick={() => setCategory("all")}>AcessÛrios</a>
             <div className="dropdown-menu">
               <a onClick={() => selectCategory("acessorios-bolas")}>Bolas</a>
               <a onClick={() => selectCategory("acessorios-luvas")}>Luvas</a>
               <a onClick={() => selectCategory("acessorios-meias")}>Meias</a>
               <a onClick={() => selectCategory("acessorios-mochilas")}>Mochilas</a>
-              <a onClick={() => selectCategory("acessorios-bones")}>Bon√©s</a>
+              <a onClick={() => selectCategory("acessorios-bones")}>BonÈs</a>
               <a onClick={() => selectCategory("acessorios-trail-running")}>Trail/Running</a>
-              <a onClick={() => selectCategory("acessorios-verao")}>Ver√£o</a>
+              <a onClick={() => selectCategory("acessorios-verao")}>Ver„o</a>
               <a onClick={() => selectCategory("acessorios-outros")}>Outros</a>
             </div>
           </div>
 
-          {/* T√äXTIL */}
+          {/* T XTIL */}
 <div className="dropdown">
-  <a onClick={() => setCategory("all")}>T√™xtil</a>
+  <a onClick={() => setCategory("all")}>TÍxtil</a>
   <div className="dropdown-menu">
     <a onClick={() => selectCategory("textil-homem")}>Homem</a>
     <a onClick={() => selectCategory("textil-mulher")}>Mulher</a>
-    <a onClick={() => selectCategory("textil-crianca")}>Crian√ßa</a>
+    <a onClick={() => selectCategory("textil-crianca")}>CrianÁa</a>
     <a onClick={() => selectCategory("textil-outlet")}>Outlet</a>
   </div>
 </div>
@@ -975,9 +975,9 @@ return matchMain && matchSub && matchSearch;
           {/* OUTLET */}
 <a onClick={() => selectCategory("outlet")}>Outlet</a>
 
-{/* EDI√á√ïES ESPECIAIS */}
+{/* EDI«’ES ESPECIAIS */}
 <a onClick={() => selectCategory("edicoes-especiais")}>
-  Edi√ß√µes Especiais
+  EdiÁıes Especiais
 </a>
 
 <div className="search-box">
@@ -1025,11 +1025,11 @@ return matchMain && matchSub && matchSearch;
     <h2>Loja Oficial JomaBasto em Portugal</h2>
 
     <p>
-      A <strong>JomaBasto Store</strong> √© revendedora oficial da
+      A <strong>JomaBasto Store</strong> È revendedora oficial da
       <strong> Joma</strong> em Portugal, especializada em
       <strong> sapatilhas</strong>,
-      <strong> vestu√°rio desportivo</strong> e
-      <strong> acess√≥rios</strong> para
+      <strong> vestu·rio desportivo</strong> e
+      <strong> acessÛrios</strong> para
       <strong> corrida</strong>,
       <strong> trail running</strong>,
       <strong> futebol</strong>,
@@ -1039,7 +1039,7 @@ return matchMain && matchSub && matchSearch;
     </p>
 
     <p>
-      Descobre uma sele√ß√£o de produtos originais Joma com envio r√°pido para todo
+      Descobre uma seleÁ„o de produtos originais Joma com envio r·pido para todo
       Portugal, pagamentos seguros, trocas simples e apoio especializado para
       atletas, clubes e apaixonados pelo desporto.
     </p>
@@ -1068,8 +1068,6 @@ return matchMain && matchSub && matchSearch;
 {/* FORM */}
      <section ref={productsRef} className="products-section">
 
-        <h2>Cole√ß√£o JomaBasto</h2>
-
         {isAdmin && (
   <button onClick={() => setShowForm(!showForm)}>
     {showForm ? "Fechar" : "+ Adicionar Produto"}
@@ -1087,7 +1085,7 @@ return matchMain && matchSub && matchSearch;
             />
 
             <input
-  placeholder="Refer√™ncia"
+  placeholder="ReferÍncia"
   value={form.reference}
   onChange={(e) =>
     setForm({ ...form, reference: e.target.value })
@@ -1095,14 +1093,14 @@ return matchMain && matchSub && matchSearch;
 />
 
             <input
-              placeholder="Pre√ßo"
+              placeholder="PreÁo"
               value={form.price}
               onChange={(e) => setForm({ ...form, price: e.target.value })}
             />
 
 <input
   type="number"
-  placeholder="Pre√ßo promo√ß√£o (opcional)"
+  placeholder="PreÁo promoÁ„o (opcional)"
   value={form.promoPrice || ""}
   onChange={(e) =>
     setForm({
@@ -1128,12 +1126,12 @@ return matchMain && matchSub && matchSearch;
   <option value="">Categoria principal</option>
   <option value="homem">Homem</option>
   <option value="mulher">Mulher</option>
-  <option value="crianca">Crian√ßa</option>
-  <option value="acessorios">Acess√≥rios</option>
-  <option value="textil">T√™xtil</option>
+  <option value="crianca">CrianÁa</option>
+  <option value="acessorios">AcessÛrios</option>
+  <option value="textil">TÍxtil</option>
   <option value="outlet">Outlet</option>
   <option value="edicoes-especiais">
-    Edi√ß√µes Especiais
+    EdiÁıes Especiais
   </option>
 </select>
 {form.mainCategory && (
@@ -1154,7 +1152,7 @@ return matchMain && matchSub && matchSearch;
         <option value="andebol">Andebol</option>
         <option value="voleibol">Voleibol</option>
         <option value="basquetebol">Basquetebol</option>
-        <option value="tenis">T√©nis</option>
+        <option value="tenis">TÈnis</option>
         <option value="padel">Padel</option>
         <option value="casual">Casual</option>
         <option value="caminhada">Caminhada</option>
@@ -1172,7 +1170,7 @@ return matchMain && matchSub && matchSearch;
         <option value="andebol">Andebol</option>
         <option value="voleibol">Voleibol</option>
         <option value="basquetebol">Basquetebol</option>
-        <option value="tenis">T√©nis</option>
+        <option value="tenis">TÈnis</option>
         <option value="padel">Padel</option>
       </>
     )}
@@ -1193,9 +1191,9 @@ return matchMain && matchSub && matchSearch;
         <option value="luvas">Luvas</option>
         <option value="meias">Meias</option>
         <option value="mochilas">Mochilas</option>
-        <option value="bones">Bon√©s</option>
+        <option value="bones">BonÈs</option>
         <option value="trail-running">Trail/Running</option>
-        <option value="verao">Ver√£o</option>
+        <option value="verao">Ver„o</option>
         <option value="outros">Outros</option>
       </>
     )}
@@ -1204,7 +1202,7 @@ return matchMain && matchSub && matchSearch;
       <>
         <option value="homem">Homem</option>
         <option value="mulher">Mulher</option>
-        <option value="crianca">Crian√ßa</option>
+        <option value="crianca">CrianÁa</option>
         <option value="outlet">Outlet</option>
       </>
     )}
@@ -1279,7 +1277,7 @@ return matchMain && matchSub && matchSearch;
 />
 
             <textarea
-              placeholder="Descri√ß√£o"
+              placeholder="DescriÁ„o"
               value={form.description}
               onChange={(e) =>
                 setForm({ ...form, description: e.target.value })
@@ -1338,7 +1336,7 @@ return matchMain && matchSub && matchSearch;
 
   {!p.promocao && (
     <span className="price-inline">
-      {p.price} ‚Ç¨
+      {p.price} Ä
     </span>
   )}
 </div>
@@ -1348,15 +1346,15 @@ return matchMain && matchSub && matchSearch;
   {p.promoPrice ? (
     <>
       <p className="old-price">
-        {p.price} ‚Ç¨
+        {p.price} Ä
       </p>
 
       <p className="promo-price">
-        {p.promoPrice} ‚Ç¨
+        {p.promoPrice} Ä
       </p>
 
       <span className="discount-badge">
-        üè∑Ô∏è -
+        ??? -
         {Math.round(
           ((p.price - p.promoPrice) / p.price) * 100
         )}
@@ -1370,7 +1368,7 @@ return matchMain && matchSub && matchSearch;
 <div className="stock-favorite">
 
   <span className="stock-ok">
-    ‚úì Em stock
+    ? Em stock
   </span>
 
   <button onClick={() => toggleFavorite(p)} className="favorite-btn">
@@ -1388,7 +1386,7 @@ return matchMain && matchSub && matchSearch;
     </button>
 
     <button onClick={() => setPromocao(p._id)}>
-      {p.promocao ? "üî• Remover Promo√ß√£o" : "‚≠ê Promo√ß√£o"}
+      {p.promocao ? "?? Remover PromoÁ„o" : "? PromoÁ„o"}
     </button>
 
     <button onClick={() => deleteProduct(p._id)}>
@@ -1437,7 +1435,7 @@ return matchMain && matchSub && matchSearch;
 
     <div className="cart-info">
   <p>{item.name}</p>
-  <p>{item.price} ‚Ç¨</p>
+  <p>{item.price} Ä</p>
 </div>
 
   </div>
@@ -1471,7 +1469,7 @@ return matchMain && matchSub && matchSearch;
   <div key={index} className="cart-item">
 
     <p>{item.name}</p>
-    <p>{item.price} ‚Ç¨</p>
+    <p>{item.price} Ä</p>
 
     <p>Tamanho: {item.size}</p>
     <p>Quantidade: {item.qty || 1}</p>
@@ -1520,23 +1518,23 @@ return matchMain && matchSub && matchSearch;
       <hr style={{ margin: "20px 0" }} />
 
 <p>
-  <strong>Subtotal:</strong> {cartTotal.toFixed(2)} ‚Ç¨
+  <strong>Subtotal:</strong> {cartTotal.toFixed(2)} Ä
 </p>
 
 <p>
   <strong>Portes:</strong>{" "}
   {shippingCost === 0 ? (
-    <span style={{ color: "green" }}>Gr√°tis</span>
+    <span style={{ color: "green" }}>Gr·tis</span>
   ) : (
-    `${shippingCost.toFixed(2)} ‚Ç¨`
+    `${shippingCost.toFixed(2)} Ä`
   )}
 </p>
 
-<h3>Total: {finalTotal.toFixed(2)} ‚Ç¨</h3>
+<h3>Total: {finalTotal.toFixed(2)} Ä</h3>
 
 {cartTotal < 70 && cartTotal > 0 && (
   <p style={{ color: "#e30613", fontSize: "14px" }}>
-    Faltam {(70 - cartTotal).toFixed(2)} ‚Ç¨ para ter portes gr√°tis.
+    Faltam {(70 - cartTotal).toFixed(2)} Ä para ter portes gr·tis.
   </p>
 )}
 
@@ -1571,7 +1569,7 @@ return matchMain && matchSub && matchSearch;
       color: "#666",
     }}
   >
-    Refer√™ncia: {selectedProduct.reference}
+    ReferÍncia: {selectedProduct.reference}
   </p>
 )}
 
@@ -1642,7 +1640,7 @@ return matchMain && matchSub && matchSearch;
         ))}
       </div>
 
-      {/* BOT√ÉO ADICIONAR AO CARRINHO */}
+      {/* BOT√O ADICIONAR AO CARRINHO */}
       <button
         onClick={() => {
           if (!selectedSize) {
@@ -1672,11 +1670,11 @@ setSelectedSize(null);
         Adicionar ao carrinho
       </button>
 
-      {/* BOT√ÉO WHATSAPP */}
+      {/* BOT√O WHATSAPP */}
 <button
   onClick={() => {
-    const mensagem = `Ol√°, gostaria de saber se t√™m dispon√≠vel o produto ${selectedProduct.name}.
-${selectedProduct.reference ? `Refer√™ncia: ${selectedProduct.reference}` : ""}
+    const mensagem = `Ol·, gostaria de saber se tÍm disponÌvel o produto ${selectedProduct.name}.
+${selectedProduct.reference ? `ReferÍncia: ${selectedProduct.reference}` : ""}
 ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
     window.open(
@@ -1826,9 +1824,9 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
   <h2>Perguntas Frequentes</h2>
 
   <div className="faq-item">
-    <h3>Os produtos Joma s√£o originais?</h3>
+    <h3>Os produtos Joma s„o originais?</h3>
     <p>
-      Sim. A JomaBasto Store √© revendedora oficial da Joma em Portugal e
+      Sim. A JomaBasto Store È revendedora oficial da Joma em Portugal e
       comercializa exclusivamente produtos originais da marca.
     </p>
   </div>
@@ -1836,23 +1834,23 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
   <div className="faq-item">
     <h3>Quanto tempo demora a entrega?</h3>
     <p>
-      As encomendas s√£o expedidas rapidamente atrav√©s dos CTT, com entrega
-      normalmente entre 3 e 5 dias √∫teis em Portugal Continental.
+      As encomendas s„o expedidas rapidamente atravÈs dos CTT, com entrega
+      normalmente entre 3 e 5 dias ˙teis em Portugal Continental.
     </p>
   </div>
 
   <div className="faq-item">
     <h3>Posso trocar ou devolver um artigo?</h3>
     <p>
-      Sim. Disp√µe de at√© 15 dias para solicitar a troca ou devolu√ß√£o, de
-      acordo com a nossa pol√≠tica de trocas.
+      Sim. Dispıe de atÈ 15 dias para solicitar a troca ou devoluÁ„o, de
+      acordo com a nossa polÌtica de trocas.
     </p>
   </div>
 
   <div className="faq-item">
-    <h3>Os portes s√£o gratuitos?</h3>
+    <h3>Os portes s„o gratuitos?</h3>
     <p>
-      Sim. Os portes s√£o gratuitos para encomendas superiores a 70‚Ç¨.
+      Sim. Os portes s„o gratuitos para encomendas superiores a 70Ä.
     </p>
   </div>
 
@@ -1876,7 +1874,7 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
     <div className="footer-block">
   <FiTruck size={28} />
   <h5>Portes</h5>
-  <p>Gr√°tis acima de 70‚Ç¨</p>
+  <p>Gr·tis acima de 70Ä</p>
 </div>
 
 <div className="footer-block">
@@ -1888,7 +1886,7 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 <div className="footer-block">
   <FiRefreshCw size={28} />
   <h5>Trocas</h5>
-  <p>At√© 15 dias</p>
+  <p>AtÈ 15 dias</p>
 </div>
 
 <div className="footer-block">
@@ -1923,7 +1921,7 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
   </div>
 
   <div className="footer-bottom">
-    <span>¬© {new Date().getFullYear()} JomaBasto</span>
+    <span>© {new Date().getFullYear()} JomaBasto</span>
 
     <div className="footer-links">
       <a href="/quem-somos">Quem Somos</a>
@@ -2021,7 +2019,7 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
   }}
 >
 {orders.length === 0 ? (
-  <p>Ainda n√£o existem encomendas.</p>
+  <p>Ainda n„o existem encomendas.</p>
 ) : (
   orders.map((order)=>(
     <div
@@ -2048,7 +2046,7 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
       <button
         onClick={handleLogout}
       >
-        Terminar sess√£o
+        Terminar sess„o
       </button>
 
     </div>
@@ -2059,3 +2057,4 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 </div>
 );
 }
+
