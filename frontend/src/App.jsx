@@ -1024,39 +1024,28 @@ return matchMain && matchSub && matchSearch;
 
   <section id="ofertas" className="promocoes-container">
 
-<section className="seo-home">
-  <div className="seo-home-container">
+  <section className="seo-home">
+    <div className="seo-home-container">
 
-    <h2>Loja Oficial JomaBasto em Portugal</h2>
+      <h2>Loja Oficial JomaBasto em Portugal</h2>
 
-    <p>
-      A <strong>JomaBasto Store</strong> é revendedora oficial da
-      <strong> Joma</strong> em Portugal, especializada em
-      <strong> sapatilhas</strong>,
-      <strong> Vestuário desportivo</strong> e
-      <strong> ACESSÓRIOS</strong> para
-      <strong> corrida</strong>,
-      <strong> trail running</strong>,
-      <strong> futebol</strong>,
-      <strong> futsal</strong>,
-      <strong> padel</strong> e
-      <strong> fitness</strong>.
-    </p>
+      <p>
+        A <strong>JomaBasto Store</strong> é revendedora oficial da <strong>Joma</strong> em Portugal,
+        especializada em <strong>sapatilhas, vestuário desportivo e acessórios</strong> para
+        <strong>corrida, trail running, futebol, futsal, padel e fitness</strong>.
+      </p>
 
-    <p>
-      Descobre uma seleção de produtos originais Joma com envio rápido para todo
-      Portugal, pagamentos seguros, trocas simples e apoio especializado para
-      atletas, clubes e apaixonados pelo desporto.
-    </p>
+      <p>
+        Descobre uma seleção de produtos originais Joma com envio rápido para todo Portugal,
+        pagamentos seguros, trocas simples e apoio especializado para atletas, clubes e
+        apaixonados pelo desporto.
+      </p>
 
-  </div>
-</section>
-
+    </div>
   </section>
-)
 
-
-  <Categories
+</section>
+<Categories
     onSelect={(sport) => {
       setCategory(sport);
       setSubCategory("");
@@ -1847,7 +1836,7 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
     <h3>Posso trocar ou devolver um artigo?</h3>
     <p>
       Sim. Dispõe de até 15 dias para solicitar a troca ou devolução, de
-      acordo com a nossa pOlática de trocas.
+      acordo com a nossa política de trocas.
     </p>
   </div>
 
@@ -2080,6 +2069,11 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
 
 
+
+
+
+
+import './categories-posters.css';
 
 
 

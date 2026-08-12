@@ -1,4 +1,4 @@
-export default function Categories({ onSelect }) {
+﻿export default function Categories({ onSelect }) {
   const categories = [
     {
       id: "running",
@@ -71,14 +71,11 @@ export default function Categories({ onSelect }) {
               alt={`Joma ${category.name}`}
             />
           </picture>
-
-          <span className="category-poster-title">
-            {category.name.toUpperCase()}
-          </span>
         </button>
       ))}
     </div>
   </section>
 );
 }
+
 
