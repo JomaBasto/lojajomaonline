@@ -20,7 +20,7 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 70px;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 10;
 }
@@ -310,7 +310,7 @@ body {
 }
 
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 1000;
   background: #1d4ed8;
@@ -2174,4 +2174,21 @@ body,
     height: auto;
     object-fit: contain;
   }
+}
+
+ 
+/* HEADER FIXO NO TOPO */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 10000;
+  background: #1d4ed8;
+}
+
+/* evita que o conteúdo fique escondido atrás da barra */
+body {
+  padding-top: 70px;
 }
