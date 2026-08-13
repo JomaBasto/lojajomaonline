@@ -2192,3 +2192,8 @@ body,
 body {
   padding-top: 70px;
 }
+
+/* CARRINHO SEMPRE ACIMA DA BARRA FIXA */
+.cart-overlay {
+  z-index: 10001;
+}
