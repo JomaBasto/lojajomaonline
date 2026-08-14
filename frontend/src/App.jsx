@@ -536,7 +536,7 @@ console.log("PRODUCTO A ENVIAR:", productData);
     setShowForm(false);
 
   } catch (error) {
-    console.log("❌ erro ao guardar produto:", error);
+    console.log("? erro ao guardar produto:", error);
   }
 };
 
@@ -569,6 +569,7 @@ const matchMain =
   (selected === "promocoes" && p.promocao === true) ||
   (selected !== "promocoes" &&
     (mainLower === selected ||
+      mainLower.startsWith(`${selected}-`) ||
       mainLower.endsWith(`-${selected}`) ||
       subLower === selected));
 
@@ -1047,7 +1048,8 @@ return matchMain && matchSub && matchSearch;
 </section>
 <Categories
     onSelect={(sport) => {
-      setCategory(sport);
+      const selectedCategory = sport === "casual-textil" ? "textil" : sport;
+      setCategory(selectedCategory);
       setSubCategory("");
 
       setTimeout(() => {
@@ -1347,7 +1349,7 @@ return matchMain && matchSub && matchSearch;
       </p>
 
       <span className="discount-badge">
-        🔥 -
+        -
         {Math.round(
           ((p.price - p.promoPrice) / p.price) * 100
         )}
@@ -1379,7 +1381,7 @@ return matchMain && matchSub && matchSearch;
     </button>
 
     <button onClick={() => setPromocao(p._id)}>
-      {p.promocao ? "❌ Remover PROMOÇÃO" : "🔥 PROMOÇÃO"}
+      {p.promocao ? "Remover PROMOÇÃO" : "PROMOÇÃO"}
     </button>
 
     <button onClick={() => deleteProduct(p._id)}>
@@ -2074,6 +2076,13 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
 
 import './categories-posters.css';
+
+
+
+
+
+
+
 
 
 

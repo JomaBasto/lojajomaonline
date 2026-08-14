@@ -31,7 +31,7 @@
       mobile: "/images/andebol-mobile.jpg",
     },
     {
-      id: "casual",
+      id: "casual-textil",
       name: "Casual",
       desktop: "/images/casual-desktop.jpg",
       mobile: "/images/casual-mobile.jpg",
