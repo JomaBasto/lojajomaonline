@@ -31,6 +31,36 @@
       mobile: "/images/andebol-mobile.jpg",
     },
     {
+      id: "basquetebol",
+      name: "Basquetebol",
+      desktop: "/images/basquetebol-desktop.jpg",
+      mobile: "/images/basquetebol-mobile.jpg",
+    },
+    {
+      id: "tenis",
+      name: "Ténis",
+      desktop: "/images/tenis-desktop.jpg",
+      mobile: "/images/tenis-mobile.jpg",
+    },
+    {
+      id: "padel",
+      name: "Padel",
+      desktop: "/images/padel-desktop.jpg",
+      mobile: "/images/padel-mobile.jpg",
+    },
+    {
+      id: "voleibol",
+      name: "Voleibol",
+      desktop: "/images/voleibol-desktop.jpg",
+      mobile: "/images/voleibol-mobile.jpg",
+    },
+    {
+      id: "ciclismo",
+      name: "Ciclismo",
+      desktop: "/images/ciclismo-desktop.jpg",
+      mobile: "/images/ciclismo-mobile.jpg",
+    },
+    {
       id: "casual-textil",
       name: "Casual",
       desktop: "/images/casual-desktop.jpg",
@@ -51,31 +81,29 @@
   ];
 
   return (
-  <section className="categories-section">
-    <div className="categories-grid">
-      {categories.map((category) => (
-        <button
-          key={category.id}
-          type="button"
-          className="category-poster"
-          onClick={() => onSelect(category.id)}
-        >
-          <picture>
-            <source
-              media="(max-width: 768px)"
-              srcSet={category.mobile}
-            />
+    <section className="categories-section">
+      <div className="categories-grid">
+        {categories.map((category) => (
+          <button
+            key={category.id}
+            type="button"
+            className="category-poster"
+            onClick={() => onSelect(category.id)}
+          >
+            <picture>
+              <source
+                media="(max-width: 768px)"
+                srcSet={category.mobile}
+              />
 
-            <img
-              src={category.desktop}
-              alt={`Joma ${category.name}`}
-            />
-          </picture>
-        </button>
-      ))}
-    </div>
-  </section>
-);
+              <img
+                src={category.desktop}
+                alt={`Joma ${category.name}`}
+              />
+            </picture>
+          </button>
+        ))}
+      </div>
+    </section>
+  );
 }
-
-

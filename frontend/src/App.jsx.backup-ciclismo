@@ -810,7 +810,6 @@ return matchMain && matchSub && matchSearch;
     <a onClick={(e) => selectMobileCategory("homem-padel", e)}>Padel</a>
     <a onClick={(e) => selectMobileCategory("homem-casual", e)}>Casual</a>
     <a onClick={(e) => selectMobileCategory("homem-caminhada", e)}>Caminhada</a>
-    <a onClick={(e) => selectMobileCategory("homem-ciclismo", e)}>Ciclismo</a>
   </details>
 
   <details className="mobile-item">
@@ -827,7 +826,6 @@ return matchMain && matchSub && matchSearch;
     <a onClick={(e) => selectMobileCategory("mulher-padel", e)}>Padel</a>
     <a onClick={(e) => selectMobileCategory("mulher-casual", e)}>Casual</a>
     <a onClick={(e) => selectMobileCategory("mulher-caminhada", e)}>Caminhada</a>
-    <a onClick={(e) => selectMobileCategory("mulher-ciclismo", e)}>Ciclismo</a>
   </details>
 
   <details className="mobile-item">
@@ -921,7 +919,6 @@ return matchMain && matchSub && matchSearch;
               <a onClick={() => selectCategory("homem-padel")}>Padel</a>
               <a onClick={() => selectCategory("homem-casual")}>Casual</a>
               <a onClick={() => selectCategory("homem-caminhada")}>Caminhada</a>
-              <a onClick={() => selectCategory("homem-ciclismo")}>Ciclismo</a>
             </div>
           </div>
 
@@ -940,7 +937,6 @@ return matchMain && matchSub && matchSearch;
               <a onClick={() => selectCategory("mulher-padel")}>Padel</a>
               <a onClick={() => selectCategory("mulher-casual")}>Casual</a>
               <a onClick={() => selectCategory("mulher-caminhada")}>Caminhada</a>
-              <a onClick={() => selectCategory("mulher-ciclismo")}>Ciclismo</a>
             </div>
           </div>
 
@@ -1156,7 +1152,6 @@ return matchMain && matchSub && matchSearch;
         <option value="padel">Padel</option>
         <option value="casual">Casual</option>
         <option value="caminhada">Caminhada</option>
-        <option value="ciclismo">Ciclismo</option>
       </>
     )}
 
@@ -1167,7 +1162,6 @@ return matchMain && matchSub && matchSearch;
         <option value="futebol">Futebol</option>
         <option value="casual">Casual</option>
         <option value="caminhada">Caminhada</option>
-        <option value="ciclismo">Ciclismo</option>
         <option value="futsal">Futsal</option>
         <option value="andebol">Andebol</option>
         <option value="voleibol">Voleibol</option>
@@ -2082,8 +2076,6 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
 
 import './categories-posters.css';
-
-
 
 
 
