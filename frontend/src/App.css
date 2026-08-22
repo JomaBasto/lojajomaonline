@@ -2410,3 +2410,43 @@ body {
   }
 }
 
+/* LAYOUT FINAL DOS 4 POSTERS - DESKTOP */
+@media (min-width: 769px) {
+  .categories-grid > .category-poster:nth-child(10) {
+    grid-area: 1 / 1 / 2 / 2 !important;
+  }
+
+  .categories-grid > .category-poster:nth-child(11) {
+    grid-area: 1 / 2 / 2 / 3 !important;
+  }
+
+  .categories-grid > .category-poster:nth-child(13) {
+    grid-area: 1 / 3 / 2 / 4 !important;
+  }
+
+  .categories-grid > .category-poster:nth-child(12) {
+    grid-area: 2 / 1 / 3 / 4 !important;
+  }
+}
+/* LAYOUT FINAL DOS 4 POSTERS - NO FINAL DA GRELHA */
+@media (min-width: 769px) {
+  .categories-grid > .category-poster:nth-child(10) {
+    grid-column: 1 !important;
+    grid-row: 10 !important;
+  }
+
+  .categories-grid > .category-poster:nth-child(11) {
+    grid-column: 2 !important;
+    grid-row: 10 !important;
+  }
+
+  .categories-grid > .category-poster:nth-child(13) {
+    grid-column: 3 !important;
+    grid-row: 10 !important;
+  }
+
+  .categories-grid > .category-poster:nth-child(12) {
+    grid-column: 1 / -1 !important;
+    grid-row: 11 !important;
+  }
+}
