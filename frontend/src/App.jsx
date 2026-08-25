@@ -1,4 +1,4 @@
-﻿import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   FiSearch,
   FiHeart,
@@ -291,6 +291,10 @@ const handleSave = async () => {
   }
 };
 
+  // PRODUTO ABERTO ATRAVÉS DA URL
+  const productIdFromUrl = window.location.pathname.startsWith("/produto/")
+    ? window.location.pathname.split("/produto/")[1]
+    : null;
   // CARREGAR PRODUTOS
   useEffect(() => {
   async function loadProducts(retry = 0) {
@@ -303,7 +307,20 @@ const handleSave = async () => {
 
       if (Array.isArray(data)) {
         console.log("Primeiro produto:", data[0]);
-setProducts(data);
+        setProducts(data);
+
+        // Abrir automaticamente o produto indicado na URL
+        if (productIdFromUrl) {
+          const produtoUrl = data.find(
+            (p) => String(p._id) === String(productIdFromUrl)
+          );
+
+          if (produtoUrl) {
+            setSelectedProduct(produtoUrl);
+            setActiveImage(0);
+            setSelectedSize(null);
+          }
+        }
       } else {
         setProducts([]);
       }
@@ -1320,7 +1337,7 @@ return matchMain && matchSub && matchSearch;
           <img
   src={p.images?.[0]}
   alt={p.name}
-  onClick={() => openGallery(p)}
+  onClick={() => { window.history.pushState({}, "", `/produto/${p._id}`); openGallery(p); }}
   style={{
     cursor: "pointer",
     width: "160px",
