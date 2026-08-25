@@ -69,14 +69,20 @@
     {
       id: "promocoes",
       name: "Ofertas da Semana",
-      desktop: "/images/ofertas-desktop.jpg",
-      mobile: "/images/ofertas-mobile.jpg",
+      desktop: "/images/ofertas da semana-desktop.jpg",
+      mobile: "/images/ofertas da semana-mobile.jpg",
     },
     {
       id: "outlet",
       name: "Outlet",
       desktop: "/images/outlet-desktop.jpg",
       mobile: "/images/outlet-mobile.jpg",
+    },
+    {
+      id: "acessorios",
+      name: "Acessórios",
+      desktop: "/images/acessorios-desktop.jpg",
+      mobile: "/images/acessorios-mobile.jpg",
     },
   ];
 
@@ -87,7 +93,7 @@
           <button
             key={category.id}
             type="button"
-            className="category-poster"
+            className={`category-poster ${category.id === "promocoes" ? "category-poster-promocoes" : ""}`}
             onClick={() => onSelect(category.id)}
           >
             <picture>
@@ -107,3 +113,8 @@
     </section>
   );
 }
+
+
+
+
+

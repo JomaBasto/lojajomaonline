@@ -1022,8 +1022,8 @@ return matchMain && matchSub && matchSearch;
       </header>
 
       {/* HERO */}
-<section className="hero">
-  <img src="/images/hero-trail.png" alt="Trail" />
+<section className="hero" onClick={() => selectCategory("promocoes")} role="button" tabIndex={0}>
+  <img src="/images/ofertas da semana-desktop.jpg" alt="Ofertas da Semana" />
 </section>
 
 
@@ -2082,6 +2082,10 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
 
 import './categories-posters.css';
+
+
+
+
 
 
 
