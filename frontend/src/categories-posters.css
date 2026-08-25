@@ -1,94 +1,90 @@
-/* =========================
+ï»¿/* =========================
    POSTERS DE CATEGORIAS
+   LAYOUT FINAL
    ========================= */
 
 .categories-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-  margin-top: 0;
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 24px !important;
+  width: 100% !important;
+  margin-top: 0 !important;
 }
 
 .category-poster {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 0;
-  border: 0;
-  border-radius: 18px;
-  overflow: hidden;
-  cursor: pointer;
-  background: #fff;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  aspect-ratio: 2752 / 1536 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  background: #fff !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10) !important;
 }
 
+/* =========================
+   ÃšLTIMA PARTE DA GRELHA
+   ========================= */
+
+/* Voleibol â€” linha 3, coluna 1 */
+.categories-grid > .category-poster:nth-child(9) {
+  grid-column: 1 !important;
+  grid-row: 3 !important;
+}
+
+/* Ciclismo â€” linha 3, coluna 2 */
+.categories-grid > .category-poster:nth-child(10) {
+  grid-column: 2 !important;
+  grid-row: 3 !important;
+}
+
+/* Casual â€” linha 3, coluna 3 */
+.categories-grid > .category-poster:nth-child(11) {
+  grid-column: 3 !important;
+  grid-row: 3 !important;
+}
+
+/* Outlet â€” linha 3, coluna 4 */
+.categories-grid > .category-poster:nth-child(13) {
+  grid-column: 4 !important;
+  grid-row: 3 !important;
+}
+
+/* Ofertas da Semana â€” linha 4, coluna 1
+   IMPORTANTE: nÃ£o ocupa a largura toda */
+.categories-grid > .category-poster:nth-child(12) {
+  grid-column: 1 !important;
+  grid-row: 4 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* =========================
+   IMAGENS
+   ========================= */
+
 .category-poster picture {
-  display: block;
-  width: 100%;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .category-poster img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-.category-poster-title {
-  position: absolute;
-  left: 25px;
-  bottom: 20px;
-  color: #fff;
-  font-size: 34px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
 }
 
 .category-poster:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
-}
-
-/* =========================
-   DESKTOP
-   ========================= */
-
-/* Ciclismo — mantém a dimensão natural */
-.category-poster:nth-child(10) {
-  grid-column: 1;
-}
-
-/* Casual e Outlet ficam ao lado do Ciclismo
-   e acompanham a altura da linha */
-.category-poster:nth-child(11),
-.category-poster:nth-child(13) {
-  align-self: stretch;
-}
-
-/* As imagens de Casual e Outlet mantêm
-   integralmente as suas proporções */
-.category-poster:nth-child(11) picture,
-.category-poster:nth-child(13) picture {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.category-poster:nth-child(11) img,
-.category-poster:nth-child(13) img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-/* Ofertas da Semana fica por baixo
-   e ocupa toda a largura */
-.category-poster:nth-child(12) {
-  grid-column: 1 / -1;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18) !important;
 }
 
 /* =========================
@@ -97,21 +93,29 @@
 
 @media (max-width: 768px) {
   .categories-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
   }
 
-  .category-poster:nth-child(10),
-  .category-poster:nth-child(11),
-  .category-poster:nth-child(12),
-  .category-poster:nth-child(13) {
-    grid-column: auto;
-    align-self: auto;
+  .categories-grid > .category-poster:nth-child(9),
+  .categories-grid > .category-poster:nth-child(10),
+  .categories-grid > .category-poster:nth-child(11),
+  .categories-grid > .category-poster:nth-child(12),
+  .categories-grid > .category-poster:nth-child(13) {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    aspect-ratio: 1536 / 2752 !important;
   }
 
-  .category-poster-title {
-    left: 20px;
-    bottom: 18px;
-    font-size: 30px;
+  .category-poster picture {
+    height: 100% !important;
+  }
+
+  .category-poster img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
   }
 }
