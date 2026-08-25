@@ -2467,3 +2467,19 @@ body {
     content: url("/images/ofertas da semana-mobile.jpg");
   }
 }
+
+/* HERO Ofertas da Semana — imagem própria no telemóvel */
+@media (max-width: 768px) {
+  .hero {
+    height: auto !important;
+    aspect-ratio: auto !important;
+  }
+
+  .hero > img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    content: url("/images/ofertas da semana-mobile.jpg");
+  }
+}
