@@ -78,3 +78,10 @@
     display: none !important;
   }
 }
+
+/* Ofertas da Semana: esconder também no mobile, pois já aparece como HERO */
+@media (max-width: 768px) {
+  .category-poster-promocoes {
+    display: none !important;
+  }
+}
