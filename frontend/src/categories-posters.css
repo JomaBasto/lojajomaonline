@@ -85,3 +85,16 @@
     display: none !important;
   }
 }
+
+/* ACESSÓRIOS — garantir que aparece no telemóvel */
+@media (max-width: 768px) {
+  .category-poster-promocoes {
+    display: none !important;
+  }
+
+  .category-poster {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
