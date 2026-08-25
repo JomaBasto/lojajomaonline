@@ -2424,3 +2424,46 @@ body {
   object-fit: cover !important;
   display: block !important;
 }
+
+/* HERO Ofertas da Semana — desktop/mobile */
+.hero picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero picture img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* HERO — imagem específica para telemóvel */
+@media (max-width: 768px) {
+  .hero picture img {
+    content: url("/images/ofertas da semana-mobile.jpg");
+  }
+}
+
+/* HERO mobile — mostrar a imagem Ofertas da Semana completa */
+@media (max-width: 768px) {
+  .hero {
+    height: auto !important;
+    aspect-ratio: auto !important;
+  }
+
+  .hero picture {
+    width: 100%;
+    height: auto;
+  }
+
+  .hero picture img {
+    width: 100%;
+    height: auto !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    content: url("/images/ofertas da semana-mobile.jpg");
+  }
+}
