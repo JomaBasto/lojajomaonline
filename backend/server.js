@@ -457,6 +457,44 @@ cancel_url: "https://www.jomabasto.com/checkout",
 // TESTE API
 // ======================
 
+app.get("/produto/:id", async (req, res) => {
+  try {
+    const produto = await Produto.findById(req.params.id);
+
+    if (!produto) {
+      return res.status(404).send("Produto não encontrado");
+    }
+
+    const titulo = produto.name || "Produto JomaBasto";
+    const descricao = produto.description || `Produto JomaBasto por ${produto.price} €`;
+    const imagem = produto.images?.[0] || "https://www.jomabasto.com/jomabasto.png";
+    const url = `https://www.jomabasto.com/produto/${produto._id}`;
+
+    res.send(`<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <title>${titulo} | JomaBasto Store</title>
+  <meta property="og:title" content="${titulo}">
+  <meta property="og:description" content="${descricao.replace(/"/g, "&quot;")}">
+  <meta property="og:type" content="product">
+  <meta property="og:url" content="${url}">
+  <meta property="og:image" content="${imagem}">
+  <meta property="og:site_name" content="JomaBasto Store">
+  <meta property="og:locale" content="pt_PT">
+  <meta property="product:price:amount" content="${produto.promoPrice || produto.price}">
+  <meta property="product:price:currency" content="EUR">
+  <meta http-equiv="refresh" content="0;url=${url}">
+</head>
+<body>
+  <p>A abrir ${titulo}...</p>
+</body>
+</html>`);
+  } catch (err) {
+    console.error("ERRO OG PRODUTO:", err);
+    res.status(500).send("Erro ao carregar produto");
+  }
+});
 app.get("/", (req, res) => {
   res.send("API OK");
 });
