@@ -98,3 +98,10 @@
     opacity: 1 !important;
   }
 }
+
+/* MOBILE — remover apenas o poster duplicado Ofertas da Semana */
+@media (max-width: 768px) {
+  .categories-grid .category-poster-promocoes {
+    display: none !important;
+  }
+}
