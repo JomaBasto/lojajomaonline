@@ -1,10 +1,6 @@
 {
   "rewrites": [
     {
-      "source": "/produto/:id",
-      "destination": "https://jomabasto-backend.onrender.com/produto/:id"
-    },
-    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
