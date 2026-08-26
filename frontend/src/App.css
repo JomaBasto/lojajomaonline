@@ -2483,3 +2483,115 @@ body {
     content: url("/images/ofertas da semana-mobile.jpg");
   }
 }
+
+/* =========================================================
+   PÁGINAS LEGAIS
+========================================================= */
+
+.legal-page {
+  min-height: 100vh;
+  padding: 110px 20px 60px;
+  background: #f8fafc;
+  color: #1f2937;
+}
+
+.legal-page-content {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 45px 50px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+}
+
+.legal-page-content h1 {
+  margin: 0 0 30px;
+  color: #1d4ed8;
+  font-size: 36px;
+  line-height: 1.2;
+  font-weight: 700;
+  text-align: center;
+}
+
+.legal-page-content h2 {
+  margin: 38px 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e5e7eb;
+  color: #111827;
+  font-size: 21px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.legal-page-content p {
+  margin: 0 0 18px;
+  color: #4b5563;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.legal-page-content strong {
+  color: #111827;
+}
+
+.legal-page-back {
+  margin-top: 45px;
+  padding-top: 25px;
+  border-top: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+.legal-page-back a {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #1d4ed8;
+  color: #ffffff;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.legal-page-back a:hover {
+  background: #1e40af;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 700px) {
+  .legal-page {
+    padding: 90px 12px 35px;
+  }
+
+  .legal-page-content {
+    padding: 30px 20px;
+    border-radius: 10px;
+  }
+
+  .legal-page-content h1 {
+    margin-bottom: 24px;
+    font-size: 28px;
+  }
+
+  .legal-page-content h2 {
+    margin-top: 30px;
+    font-size: 19px;
+  }
+
+  .legal-page-content p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .legal-page-back {
+    margin-top: 35px;
+  }
+
+  .legal-page-back a {
+    width: 100%;
+    padding: 13px 20px;
+  }
+}
+

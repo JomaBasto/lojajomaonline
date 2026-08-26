@@ -5,6 +5,10 @@ import Success from "./Success.jsx";
 
 import App from "./App.jsx";
 import QuemSomos from "./components/QuemSomos.jsx";
+import CondicoesUtilizacao from "./components/CondicoesUtilizacao.jsx";
+import AvisosLegais from "./components/AvisosLegais.jsx";
+import PoliticaPrivacidade from "./components/PoliticaPrivacidade.jsx";
+import PoliticaCookies from "./components/PoliticaCookies.jsx";
 import Admin from "./Admin.jsx";
 import Checkout from "./Checkout.jsx";
 import AdminOrders from "./AdminOrders.jsx";
@@ -21,7 +25,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/sucesso" element={<Success />} />
         <Route path="/quem-somos" element={<QuemSomos />} />
-        <Route path="/promocao" element={<Promocao />} />`r`n        <Route path="/produto/:id" element={<FichaProduto />} />
+        <Route path="/condicoes-de-utilizacao" element={<CondicoesUtilizacao />} />
+        <Route path="/avisos-legais" element={<AvisosLegais />} />
+        <Route path="/politica-de-privacidade" element={<PoliticaPrivacidade />} />
+        <Route path="/politica-de-cookies" element={<PoliticaCookies />} />
+        <Route path="/promocao" element={<Promocao />} />
+        <Route path="/produto/:id" element={<FichaProduto />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

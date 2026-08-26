@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+﻿import { useEffect, useState, useRef } from "react";
 import {
   FiSearch,
   FiHeart,
@@ -1053,14 +1053,12 @@ return matchMain && matchSub && matchSearch;
 
       <p>
         A <strong>JomaBasto Store</strong> é revendedora oficial da <strong>Joma</strong> em Portugal,
-        especializada em <strong>sapatilhas, vestuário desportivo e acessórios</strong> para
-        <strong>corrida, trail running, futebol, futsal, padel e fitness</strong>.
+        com <strong>sapatilhas, vestuário e acessórios</strong> para
+        <strong>corrida, trail running, futebol, futsal, padel, fitness e outras modalidades</strong>.
       </p>
 
       <p>
-        Descobre uma seleção de produtos originais Joma com envio rápido para todo Portugal,
-        pagamentos seguros, trocas simples e apoio especializado para atletas, clubes e
-        apaixonados pelo desporto.
+        <strong>Produtos originais Joma, envio para todo Portugal, pagamentos seguros e apoio especializado.</strong>
       </p>
 
     </div>
@@ -1939,12 +1937,17 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
   </div>
 
   <div className="footer-bottom">
-    <span>€ {new Date().getFullYear()} JomaBasto</span>
+    <span>Copyright © {new Date().getFullYear()} JomaBasto — Todos os direitos reservados</span>
 
     <div className="footer-links">
       <a href="/quem-somos">Quem Somos</a>
-  <a href="#">Termos</a>
-  <a href="#">Privacidade</a>
+      <a href="/condicoes-de-utilizacao">Condições de utilização</a>
+      <a href="/avisos-legais">Avisos Legais</a>
+      <a href="/politica-de-privacidade">Política de Privacidade</a>
+      <a href="/politica-de-cookies">Política de Cookies</a>
+      <span className="footer-cookie-separator">|</span>
+      <a href="/politica-de-cookies">Alterar as configurações de cookies</a>
+
 </div>
 
 <div className="footer-social">
@@ -2099,6 +2102,7 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
 
 import './categories-posters.css';
+
 
 
 
