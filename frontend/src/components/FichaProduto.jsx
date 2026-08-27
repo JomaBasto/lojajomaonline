@@ -25,6 +25,24 @@ export default function FichaProduto() {
 
     document.title = `${produto.name} | JomaBasto`;
 
+    ReactGA.event("view_item", {
+      currency: "EUR",
+      value:
+        produto.promoPrice != null
+          ? Number(produto.promoPrice)
+          : Number(produto.price),
+      items: [
+        {
+          item_id: produto._id,
+          item_name: produto.name,
+          price:
+            produto.promoPrice != null
+              ? Number(produto.promoPrice)
+              : Number(produto.price),
+        },
+      ],
+    });
+
     const description = produto.description
       ? produto.description.substring(0, 160)
       : `${produto.name} — disponível na JomaBasto.`;
@@ -281,4 +299,5 @@ export default function FichaProduto() {
     </div>
   );
 }
+
 

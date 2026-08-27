@@ -38,7 +38,7 @@ export default function Checkout() {
   const pay = async () => {
     try {
       if (cart.length === 0) {
-        alert("O carrinho estÃ¡ vazio.");
+        alert("O carrinho está vazio.");
         return;
       }
 
@@ -50,7 +50,7 @@ export default function Checkout() {
         !codigoPostal ||
         !localidade
       ) {
-        alert("Preencha todos os campos obrigatÃ³rios.");
+        alert("Preencha todos os campos obrigatórios.");
         return;
       }
 
@@ -81,7 +81,7 @@ export default function Checkout() {
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || "Erro ao criar sessÃ£o Stripe");
+        throw new Error(data.error || "Erro ao criar sessão Stripe");
       }
 
       localStorage.setItem(
@@ -121,7 +121,7 @@ export default function Checkout() {
       <h1>Checkout</h1>
 
       {cart.length === 0 ? (
-        <p>O carrinho estÃ¡ vazio.</p>
+        <p>O carrinho está vazio.</p>
       ) : (
         <>
           <h2>Dados de Entrega</h2>
@@ -160,7 +160,7 @@ export default function Checkout() {
 
           <input
             type="text"
-            placeholder="CÃ³digo Postal *"
+            placeholder="Código Postal *"
             value={codigoPostal}
             onChange={(e) => setCodigoPostal(e.target.value)}
             style={inputStyle}
@@ -183,7 +183,7 @@ export default function Checkout() {
           />
 
           <textarea
-            placeholder="ObservaÃ§Ãµes (opcional)"
+            placeholder="Observações (opcional)"
             value={observacoes}
             onChange={(e) => setObservacoes(e.target.value)}
             style={{
@@ -215,21 +215,21 @@ export default function Checkout() {
               </div>
 
               <div>
-                {(item.price * (item.qty || 1)).toFixed(2)} â‚¬
+                {(item.price * (item.qty || 1)).toFixed(2)} €
               </div>
             </div>
           ))}
 
           <p>
-  Subtotal: {total.toFixed(2)} â‚¬
+  Subtotal: {total.toFixed(2)} €
 </p>
 
 <p>
-  Portes: {shippingCost.toFixed(2)} â‚¬
+  Portes: {shippingCost.toFixed(2)} €
 </p>
 
 <h2 style={{ marginTop: "25px" }}>
-  Total: {(total + shippingCost).toFixed(2)} â‚¬
+  Total: {(total + shippingCost).toFixed(2)} €
 </h2>
 
           <button
@@ -249,7 +249,7 @@ export default function Checkout() {
           >
             {loading
               ? "A redirecionar para o Stripe..."
-              : "Pagar com CartÃ£o"}
+              : "Pagar com Cartão"}
           </button>
         </>
       )}
@@ -266,5 +266,6 @@ const inputStyle = {
   fontSize: "16px",
   boxSizing: "border-box",
 };
+
 
 
