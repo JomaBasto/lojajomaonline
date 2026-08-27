@@ -1,5 +1,6 @@
-import React from "react";
+﻿import React from "react";
 import ReactDOM from "react-dom/client";
+import ReactGA from "react-ga4";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Success from "./Success.jsx";
 
@@ -14,6 +15,8 @@ import Checkout from "./Checkout.jsx";
 import AdminOrders from "./AdminOrders.jsx";
 import Promocao from "./Promocao.jsx";
 import FichaProduto from "./components/FichaProduto";
+
+ReactGA.initialize("G-DZ1NCEKG3B");
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -35,13 +38,3 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </BrowserRouter>
   </React.StrictMode>
 );
-
-
-
-
-
-
-
-
-
-
