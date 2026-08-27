@@ -1,0 +1,13 @@
+﻿{/* HERO */}
+<section className="hero" onClick={() => selectCategory("promocoes")} role="button" tabIndex={0}>
+  <picture>
+    <source
+      media="(max-width: 768px)"
+      srcSet="/images/ofertas da semana-mobile.jpg"
+    />
+    <img
+      src="/images/ofertas da semana-desktop.jpg"
+      alt="Ofertas da Semana"
+    />
+  </picture>
+</section>

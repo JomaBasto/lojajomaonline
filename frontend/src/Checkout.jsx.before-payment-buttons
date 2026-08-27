@@ -309,153 +309,25 @@ const pay = async () => {
   Total: {(total + shippingCost).toFixed(2)} €
 </h2>
 
-          <h2 style={{ marginTop: "30px" }}>
-            Forma de Pagamento
-          </h2>
-
-          <div
+          <button
+            onClick={pay}
+            disabled={loading}
             style={{
-              display: "flex",
-              gap: "10px",
-              marginTop: "15px",
-              flexWrap: "wrap",
+              marginTop: "20px",
+              width: "100%",
+              padding: "15px",
+              background: "#1d4ed8",
+              color: "white",
+              border: "none",
+              borderRadius: "8px",
+              fontSize: "18px",
+              cursor: "pointer",
             }}
           >
-            <button
-              type="button"
-              onClick={() => {
-                setPaymentMethod("stripe");
-                setMultibancoData(null);
-              }}
-              style={{
-                flex: 1,
-                minWidth: "200px",
-                padding: "15px",
-                border: paymentMethod === "stripe"
-                  ? "2px solid #1d4ed8"
-                  : "1px solid #ccc",
-                borderRadius: "8px",
-                background: paymentMethod === "stripe"
-                  ? "#eff6ff"
-                  : "white",
-                cursor: "pointer",
-                fontSize: "16px",
-              }}
-            >
-              💳 Cartão
-            </button>
-
-            <button
-              type="button"
-              onClick={() => {
-                setPaymentMethod("multibanco");
-                setMultibancoData(null);
-              }}
-              style={{
-                flex: 1,
-                minWidth: "200px",
-                padding: "15px",
-                border: paymentMethod === "multibanco"
-                  ? "2px solid #1d4ed8"
-                  : "1px solid #ccc",
-                borderRadius: "8px",
-                background: paymentMethod === "multibanco"
-                  ? "#eff6ff"
-                  : "white",
-                cursor: "pointer",
-                fontSize: "16px",
-              }}
-            >
-              🏧 Multibanco
-            </button>
-          </div>
-
-          {paymentMethod === "stripe" && (
-            <button
-              onClick={pay}
-              disabled={loading}
-              style={{
-                marginTop: "20px",
-                width: "100%",
-                padding: "15px",
-                background: "#1d4ed8",
-                color: "white",
-                border: "none",
-                borderRadius: "8px",
-                fontSize: "18px",
-                cursor: "pointer",
-              }}
-            >
-              {loading
-                ? "A redirecionar para o Stripe..."
-                : "Pagar com Cartão"}
-            </button>
-          )}
-
-          {paymentMethod === "multibanco" && !multibancoData && (
-            <button
-              onClick={payMultibanco}
-              disabled={loading}
-              style={{
-                marginTop: "20px",
-                width: "100%",
-                padding: "15px",
-                background: "#1d4ed8",
-                color: "white",
-                border: "none",
-                borderRadius: "8px",
-                fontSize: "18px",
-                cursor: "pointer",
-              }}
-            >
-              {loading
-                ? "A criar encomenda..."
-                : "Continuar com Multibanco"}
-            </button>
-          )}
-
-          {multibancoData && (
-            <div
-              style={{
-                marginTop: "25px",
-                padding: "25px",
-                border: "2px solid #ddd",
-                borderRadius: "10px",
-                background: "#f8fafc",
-              }}
-            >
-              <h2>🏧 Pagamento por Multibanco</h2>
-
-              <p>
-                A sua encomenda foi criada. Para concluir o pagamento,
-                utilize os seguintes dados:
-              </p>
-
-              <p>
-                <strong>Entidade:</strong>{" "}
-                {multibancoData.entidade}
-              </p>
-
-              <p>
-                <strong>Referência:</strong>{" "}
-                {multibancoData.referencia}
-              </p>
-
-              <p>
-                <strong>Valor:</strong>{" "}
-                {multibancoData.valor} €
-              </p>
-
-              <p>
-                <strong>Estado:</strong> A aguardar pagamento
-              </p>
-
-              <p>
-                Depois de efetuar o pagamento, a encomenda será
-                processada após confirmação do pagamento.
-              </p>
-            </div>
-          )}
+            {loading
+              ? "A redirecionar para o Stripe..."
+              : "Pagar com Cartão"}
+          </button>
         </>
       )}
     </div>
@@ -471,7 +343,6 @@ const inputStyle = {
   fontSize: "16px",
   boxSizing: "border-box",
 };
-
 
 
 
