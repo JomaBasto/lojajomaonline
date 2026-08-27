@@ -1,4 +1,4 @@
-console.log("🔥 SERVER.JS A FUNCIONAR");
+﻿console.log("ðŸ”¥ SERVER.JS A FUNCIONAR");
 
 import express from "express";
 import cors from "cors";
@@ -72,15 +72,15 @@ app.use("/auth", authRoutes);
 
 mongoose
   .connect(process.env.MONGO_URL)
-  .then(() => console.log("✅ MongoDB ligado com sucesso"))
-  .catch((err) => console.log("❌ ERRO MONGO:", err));
+  .then(() => console.log("âœ… MongoDB ligado com sucesso"))
+  .catch((err) => console.log("âŒ ERRO MONGO:", err));
 
 mongoose.connection.on("error", (err) => {
-  console.log("🔥 Mongoose error:", err);
+  console.log("ðŸ”¥ Mongoose error:", err);
 });
 
 // ======================
-// ADMIN AUTOMÁTICO
+// ADMIN AUTOMÃTICO
 // ======================
 
 mongoose.connection.once("open", async () => {
@@ -97,10 +97,10 @@ mongoose.connection.once("open", async () => {
         role: "admin"
       });
 
-      console.log("👤 Admin criado");
+      console.log("ðŸ‘¤ Admin criado");
     }
   } catch (err) {
-    console.log("❌ erro admin:", err);
+    console.log("âŒ erro admin:", err);
   }
 });
 
@@ -148,7 +148,7 @@ app.get("/promocao", async (req, res) => {
 
     if (!produtos || produtos.length === 0) {
       return res.status(404).json({
-        error: "Nenhum produto em promoção"
+        error: "Nenhum produto em promoÃ§Ã£o"
       });
     }
 
@@ -159,7 +159,7 @@ app.get("/promocao", async (req, res) => {
   } catch (err) {
 
     res.status(500).json({
-      error: "Erro ao buscar promoções"
+      error: "Erro ao buscar promoÃ§Ãµes"
     });
 
   }
@@ -176,7 +176,7 @@ app.put("/produtos/:id", verifyToken, isAdmin, async (req, res) => {
     );
 
     if (!produto) {
-      return res.status(404).json({ error: "Produto não encontrado" });
+      return res.status(404).json({ error: "Produto nÃ£o encontrado" });
     }
 
     res.json(produto);
@@ -194,12 +194,12 @@ app.put("/promocao/:id", verifyToken, isAdmin, async (req, res) => {
 
     if (!produtoAtual) {
       return res.status(404).json({
-        error: "Produto não encontrado"
+        error: "Produto nÃ£o encontrado"
       });
     }
 
 
-    // Se já está em promoção, retirar
+    // Se jÃ¡ estÃ¡ em promoÃ§Ã£o, retirar
     if (produtoAtual.promocao === true) {
 
       produtoAtual.promocao = false;
@@ -210,23 +210,23 @@ app.put("/promocao/:id", verifyToken, isAdmin, async (req, res) => {
     }
 
 
-    // Ver quantos produtos já estão em promoção
+    // Ver quantos produtos jÃ¡ estÃ£o em promoÃ§Ã£o
     const totalPromocoes = await Produto.countDocuments({
       promocao: true
     });
 
 
-    // Limite máximo de 6
+    // Limite mÃ¡ximo de 6
     if (totalPromocoes >= 6) {
 
       return res.status(400).json({
-        error: "Já existem 6 produtos em promoção"
+        error: "JÃ¡ existem 6 produtos em promoÃ§Ã£o"
       });
 
     }
 
 
-    // Adicionar novo produto à promoção
+    // Adicionar novo produto Ã  promoÃ§Ã£o
     produtoAtual.promocao = true;
     await produtoAtual.save();
 
@@ -239,7 +239,7 @@ app.put("/promocao/:id", verifyToken, isAdmin, async (req, res) => {
     console.error(err);
 
     res.status(500).json({
-      error: "Erro ao atualizar promoção"
+      error: "Erro ao atualizar promoÃ§Ã£o"
     });
 
   }
@@ -251,7 +251,7 @@ app.delete("/produtos/:id", verifyToken, isAdmin, async (req, res) => {
     const produto = await Produto.findByIdAndDelete(req.params.id);
 
     if (!produto) {
-      return res.status(404).json({ error: "Produto não encontrado" });
+      return res.status(404).json({ error: "Produto nÃ£o encontrado" });
     }
 
     res.json({ message: "Produto apagado com sucesso" });
@@ -344,12 +344,101 @@ app.put("/encomendas/:id", async (req, res) => {
 });
 
 // ======================
+
+// ======================
+// MULTIBANCO PAYMENT
+// ======================
+
+app.post("/create-multibanco-order", async (req, res) => {
+  try {
+    const { items, cliente, shippingCost = 0 } = req.body;
+
+    console.log("MULTIBANCO BODY:", JSON.stringify(req.body));
+    console.log("MULTIBANCO ENTIDADE:", process.env.MULTIBANCO_ENTIDADE);
+    console.log("MULTIBANCO REFERENCIA:", process.env.MULTIBANCO_REFERENCIA);
+
+    if (!items || items.length === 0) {
+      return res.status(400).json({ error: "Carrinho vazio" });
+    }
+
+    if (!cliente) {
+      return res.status(400).json({ error: "Dados do cliente em falta." });
+    }
+
+    console.log("MULTIBANCO: a validar produtos...");
+
+    const itemsComPrecoReal = await Promise.all(
+      items.map(async (item) => {
+        const produto = await Produto.findById(item._id);
+
+        if (!produto) {
+          throw new Error(`Produto não encontrado: ${item._id}`);
+        }
+
+        const precoFinal =
+          produto.promocao && produto.promoPrice
+            ? Number(produto.promoPrice)
+            : Number(produto.price);
+
+        return {
+          ...item,
+          price: precoFinal,
+          promoPrice: produto.promoPrice,
+          promocao: produto.promocao,
+        };
+      })
+    );
+
+    const subtotal = itemsComPrecoReal.reduce(
+      (sum, item) => sum + Number(item.price) * (item.qty || 1),
+      0
+    );
+
+    const totalFinal = subtotal + Number(shippingCost || 0);
+
+    const encomenda = new Encomenda({
+      cliente,
+      items: itemsComPrecoReal,
+      total: totalFinal,
+      estado: "Pendente",
+      metodoPagamento: "multibanco",
+    });
+
+    await encomenda.save();
+
+    console.log("MULTIBANCO: a enviar email para a loja...");
+
+    await sendAdminEmail(encomenda);
+
+    console.log("MULTIBANCO: email enviado.");
+
+    res.json({
+      success: true,
+      orderId: encomenda._id.toString(),
+      entidade: process.env.MULTIBANCO_ENTIDADE,
+      referencia: process.env.MULTIBANCO_REFERENCIA,
+      valor: totalFinal.toFixed(2),
+    });
+
+  } catch (err) {
+    console.error("❌ Erro Multibanco:", err);
+
+    res.status(500).json({
+      error: err.message || "Erro ao criar encomenda Multibanco",
+    });
+  }
+});
+
 // STRIPE PAYMENT
 // ======================
 
 app.post("/create-checkout-session", async (req, res) => {
   try {
     const { items, cliente, shippingCost = 0 } = req.body;
+
+    console.log("MULTIBANCO BODY:", JSON.stringify(req.body));
+    console.log("MULTIBANCO ENTIDADE:", process.env.MULTIBANCO_ENTIDADE);
+    console.log("MULTIBANCO REFERENCIA:", process.env.MULTIBANCO_REFERENCIA);
 
     if (!items || items.length === 0) {
       return res.status(400).json({ error: "Carrinho vazio" });
@@ -365,7 +454,7 @@ const itemsComPrecoReal = await Promise.all(
     const produto = await Produto.findById(item._id);
 
     if (!produto) {
-      throw new Error(`Produto não encontrado: ${item._id}`);
+      throw new Error(`Produto nÃ£o encontrado: ${item._id}`);
     }
 
     const precoFinal =
@@ -396,7 +485,7 @@ const encomenda = new Encomenda({
 
 await encomenda.save();
 
-// Criar sessão Stripe
+// Criar sessÃ£o Stripe
 const session = await stripe.checkout.sessions.create({
   payment_method_types: ["card"],
   mode: "payment",
@@ -437,7 +526,7 @@ cancel_url: "https://www.jomabasto.com/checkout",
   },
 });
 
-    // Guardar o ID da sessão Stripe
+    // Guardar o ID da sessÃ£o Stripe
     encomenda.stripeSessionId = session.id;
     await encomenda.save();
 
@@ -446,9 +535,9 @@ cancel_url: "https://www.jomabasto.com/checkout",
     });
 
   } catch (err) {
-    console.log("❌ Stripe error:", err);
+    console.log("âŒ Stripe error:", err);
     res.status(500).json({
-      error: "Erro ao criar sessão Stripe",
+      error: "Erro ao criar sessÃ£o Stripe",
     });
   }
 });
@@ -462,11 +551,11 @@ app.get("/produto/:id", async (req, res) => {
     const produto = await Produto.findById(req.params.id);
 
     if (!produto) {
-      return res.status(404).send("Produto não encontrado");
+      return res.status(404).send("Produto nÃ£o encontrado");
     }
 
     const titulo = produto.name || "Produto JomaBasto";
-    const descricao = produto.description || `Produto JomaBasto por ${produto.price} €`;
+    const descricao = produto.description || `Produto JomaBasto por ${produto.price} â‚¬`;
     const imagem = produto.images?.[0] || "https://www.jomabasto.com/jomabasto.png";
     const url = `https://www.jomabasto.com/produto/${produto._id}`;
 
@@ -527,7 +616,7 @@ app.post(
         process.env.STRIPE_WEBHOOK_SECRET
       );
     } catch (err) {
-      console.log("❌ Webhook Error:", err.message);
+      console.log("âŒ Webhook Error:", err.message);
       return res.status(400).send(`Webhook Error: ${err.message}`);
     }
 
@@ -535,14 +624,14 @@ app.post(
 
       const session = event.data.object;
 
-      console.log("✅ Pagamento confirmado:", session.id);
+      console.log("âœ… Pagamento confirmado:", session.id);
 
       const encomenda = await Encomenda.findOne({
         stripeSessionId: session.id,
       });
 
       if (!encomenda) {
-        console.log("❌ Encomenda não encontrada");
+        console.log("âŒ Encomenda nÃ£o encontrada");
         return res.json({ received: true });
       }
 
@@ -550,7 +639,7 @@ app.post(
 
       await encomenda.save();
 
-      console.log("✅ Encomenda atualizada para Paga");
+      console.log("âœ… Encomenda atualizada para Paga");
 
       try {
 
@@ -560,18 +649,22 @@ app.post(
 
           await sendCustomerEmail(encomenda);
 
-          console.log("✅ Email enviado ao cliente");
+          console.log("âœ… Email enviado ao cliente");
         }
 
-        await sendAdminEmail(encomenda);
+        console.log("MULTIBANCO: a enviar email para a loja...");
 
-        console.log("✅ Email enviado para a loja");
+    await sendAdminEmail(encomenda);
 
-        console.log("✅ Emails enviados");
+    console.log("MULTIBANCO: email enviado.");
+
+        console.log("âœ… Email enviado para a loja");
+
+        console.log("âœ… Emails enviados");
 
       } catch (err) {
 
-        console.log("❌ Erro ao enviar emails:", err);
+        console.log("âŒ Erro ao enviar emails:", err);
 
       }
     }
@@ -582,5 +675,7 @@ app.post(
 );
 
 app.listen(PORT, () => {
-  console.log("🚀 Servidor a correr na porta", PORT);
+  console.log("ðŸš€ Servidor a correr na porta", PORT);
 });
+
+

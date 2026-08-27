@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+﻿import mongoose from "mongoose";
 
 const EncomendaSchema = new mongoose.Schema(
   {
@@ -31,6 +31,11 @@ const EncomendaSchema = new mongoose.Schema(
     },
 
     stripeSessionId: String,
+
+    metodoPagamento: {
+      type: String,
+      default: "stripe",
+    },
 
     createdAt: {
       type: Date,
