@@ -1,4 +1,5 @@
 ﻿import React, { useEffect, useState } from "react";
+import ReactGA from "react-ga4";
 import { useParams } from "react-router-dom";
 
 export default function FichaProduto() {
@@ -135,6 +136,19 @@ export default function FichaProduto() {
 
     localStorage.setItem("cart", JSON.stringify(updatedCart));
 
+    ReactGA.event("add_to_cart", {
+      currency: "EUR",
+      value: preco,
+      items: [
+        {
+          item_id: produto._id,
+          item_name: produto.name,
+          price: preco,
+          quantity: 1,
+        },
+      ],
+    });
+
     window.location.href = "/checkout";
   };
 
@@ -267,3 +281,4 @@ export default function FichaProduto() {
     </div>
   );
 }
+

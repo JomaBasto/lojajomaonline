@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+﻿import { useEffect } from "react";
+import ReactGA from "react-ga4";
 import { Link } from "react-router-dom";
 
 export default function Success() {
   useEffect(() => {
-    // Limpa o carrinho após pagamento confirmado
+    // Limpa o carrinho apÃ³s pagamento confirmado
     localStorage.removeItem("cart");
   }, []);
 
@@ -25,7 +26,7 @@ export default function Success() {
           marginBottom: "20px",
         }}
       >
-        ✅
+        âœ…
       </div>
 
       <h1 style={{ color: "#16a34a" }}>
@@ -59,19 +60,19 @@ export default function Success() {
           lineHeight: "2",
         }}
       >
-        ✔ A encomenda será preparada.
+        âœ” A encomenda serÃ¡ preparada.
 
         <br />
 
-        ✔ Será enviada o mais rapidamente possível.
+        âœ” SerÃ¡ enviada o mais rapidamente possÃ­vel.
 
         <br />
 
-        ✔ Em breve receberá um email com a confirmação da encomenda.
+        âœ” Em breve receberÃ¡ um email com a confirmaÃ§Ã£o da encomenda.
 
         <br />
 
-        ✔ Se existir código de rastreio, será enviado posteriormente.
+        âœ” Se existir cÃ³digo de rastreio, serÃ¡ enviado posteriormente.
       </div>
 
       <Link to="/">

@@ -1,4 +1,5 @@
-import { useState } from "react";
+﻿import { useState, useEffect } from "react";
+import ReactGA from "react-ga4";
 
 export default function Checkout() {
   const [loading, setLoading] = useState(false);
@@ -23,10 +24,21 @@ export default function Checkout() {
 
   const API_URL = "https://jomabasto-backend.onrender.com";
 
+  ReactGA.event("begin_checkout", {
+    currency: "EUR",
+    value: total + shippingCost,
+    items: cart.map((item) => ({
+      item_id: item._id,
+      item_name: item.name,
+      price: item.price,
+      quantity: item.qty || 1,
+    })),
+  });
+
   const pay = async () => {
     try {
       if (cart.length === 0) {
-        alert("O carrinho está vazio.");
+        alert("O carrinho estÃ¡ vazio.");
         return;
       }
 
@@ -38,7 +50,7 @@ export default function Checkout() {
         !codigoPostal ||
         !localidade
       ) {
-        alert("Preencha todos os campos obrigatórios.");
+        alert("Preencha todos os campos obrigatÃ³rios.");
         return;
       }
 
@@ -69,8 +81,23 @@ export default function Checkout() {
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || "Erro ao criar sessão Stripe");
+        throw new Error(data.error || "Erro ao criar sessÃ£o Stripe");
       }
+
+      localStorage.setItem(
+        "pending_purchase",
+        JSON.stringify({
+          transaction_id: data.sessionId || `order_${Date.now()}`,
+          value: total + shippingCost,
+          currency: "EUR",
+          items: cart.map((item) => ({
+            item_id: item._id,
+            item_name: item.name,
+            price: item.price,
+            quantity: item.qty || 1,
+          })),
+        })
+      );
 
       window.location.href = data.url;
     } catch (err) {
@@ -94,7 +121,7 @@ export default function Checkout() {
       <h1>Checkout</h1>
 
       {cart.length === 0 ? (
-        <p>O carrinho está vazio.</p>
+        <p>O carrinho estÃ¡ vazio.</p>
       ) : (
         <>
           <h2>Dados de Entrega</h2>
@@ -133,7 +160,7 @@ export default function Checkout() {
 
           <input
             type="text"
-            placeholder="Código Postal *"
+            placeholder="CÃ³digo Postal *"
             value={codigoPostal}
             onChange={(e) => setCodigoPostal(e.target.value)}
             style={inputStyle}
@@ -156,7 +183,7 @@ export default function Checkout() {
           />
 
           <textarea
-            placeholder="Observações (opcional)"
+            placeholder="ObservaÃ§Ãµes (opcional)"
             value={observacoes}
             onChange={(e) => setObservacoes(e.target.value)}
             style={{
@@ -188,21 +215,21 @@ export default function Checkout() {
               </div>
 
               <div>
-                {(item.price * (item.qty || 1)).toFixed(2)} €
+                {(item.price * (item.qty || 1)).toFixed(2)} â‚¬
               </div>
             </div>
           ))}
 
           <p>
-  Subtotal: {total.toFixed(2)} €
+  Subtotal: {total.toFixed(2)} â‚¬
 </p>
 
 <p>
-  Portes: {shippingCost.toFixed(2)} €
+  Portes: {shippingCost.toFixed(2)} â‚¬
 </p>
 
 <h2 style={{ marginTop: "25px" }}>
-  Total: {(total + shippingCost).toFixed(2)} €
+  Total: {(total + shippingCost).toFixed(2)} â‚¬
 </h2>
 
           <button
@@ -222,7 +249,7 @@ export default function Checkout() {
           >
             {loading
               ? "A redirecionar para o Stripe..."
-              : "Pagar com Cartão"}
+              : "Pagar com CartÃ£o"}
           </button>
         </>
       )}
@@ -239,3 +266,5 @@ const inputStyle = {
   fontSize: "16px",
   boxSizing: "border-box",
 };
+
+
