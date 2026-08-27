@@ -3,9 +3,39 @@ import ReactGA from "react-ga4";
 import { Link } from "react-router-dom";
 
 export default function Success() {
+
   useEffect(() => {
-    // Limpa o carrinho apÃ³s pagamento confirmado
-    localStorage.removeItem("cart");
+
+    const pending = localStorage.getItem("pending_purchase");
+
+    if (!pending) {
+      console.log("GA4: nenhuma compra pendente encontrada.");
+      return;
+    }
+
+    try {
+
+      const purchase = JSON.parse(pending);
+
+      ReactGA.event("purchase", {
+        transaction_id: purchase.transaction_id,
+        value: Number(purchase.value),
+        currency: purchase.currency || "EUR",
+        items: purchase.items || [],
+      });
+
+      console.log("GA4: purchase enviado", purchase);
+
+      localStorage.removeItem("pending_purchase");
+
+      localStorage.removeItem("cart");
+
+    } catch (error) {
+
+      console.error("Erro ao enviar purchase para GA4:", error);
+
+    }
+
   }, []);
 
   return (
@@ -20,13 +50,14 @@ export default function Success() {
         textAlign: "center",
       }}
     >
+
       <div
         style={{
           fontSize: "70px",
           marginBottom: "20px",
         }}
       >
-        âœ…
+        ✅
       </div>
 
       <h1 style={{ color: "#16a34a" }}>
@@ -60,19 +91,21 @@ export default function Success() {
           lineHeight: "2",
         }}
       >
-        âœ” A encomenda serÃ¡ preparada.
+
+        ✔ A encomenda será preparada.
 
         <br />
 
-        âœ” SerÃ¡ enviada o mais rapidamente possÃ­vel.
+        ✔ Será enviada o mais rapidamente possível.
 
         <br />
 
-        âœ” Em breve receberÃ¡ um email com a confirmaÃ§Ã£o da encomenda.
+        ✔ Em breve receberá um email com a confirmação da encomenda.
 
         <br />
 
-        âœ” Se existir cÃ³digo de rastreio, serÃ¡ enviado posteriormente.
+        ✔ Se existir código de rastreio, será enviado posteriormente.
+
       </div>
 
       <Link to="/">
@@ -91,6 +124,7 @@ export default function Success() {
           Continuar a Comprar
         </button>
       </Link>
+
     </div>
   );
 }

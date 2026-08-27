@@ -1,4 +1,5 @@
 ﻿import { useEffect, useState, useRef } from "react";
+import ReactGA from "react-ga4";
 import {
   FiSearch,
   FiHeart,
@@ -651,8 +652,27 @@ return matchMain && matchSub && matchSearch;
     ];
     }
 
-    // GUARDAR NO LOCALSTORAGE (IMPORTANTE)
+        // GUARDAR NO LOCALSTORAGE (IMPORTANTE)
     localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+    const preco =
+      product.promoPrice != null
+        ? Number(product.promoPrice)
+        : Number(product.price);
+
+    ReactGA.event("add_to_cart", {
+      currency: "EUR",
+      value: preco,
+      items: [
+        {
+          item_id: product._id,
+          item_name: product.name,
+          price: preco,
+          quantity: 1,
+          item_variant: selectedSize,
+        },
+      ],
+    });
 
     return updatedCart;
   });
@@ -2102,6 +2122,9 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
 
 import './categories-posters.css';
+
+
+
 
 
 

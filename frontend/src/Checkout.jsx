@@ -23,19 +23,22 @@ export default function Checkout() {
   const shippingCost = total >= 70 || total === 0 ? 0 : 5.95;
 
   const API_URL = "https://jomabasto-backend.onrender.com";
+  useEffect(() => {
+    if (cart.length === 0) return;
 
-  ReactGA.event("begin_checkout", {
-    currency: "EUR",
-    value: total + shippingCost,
-    items: cart.map((item) => ({
-      item_id: item._id,
-      item_name: item.name,
-      price: item.price,
-      quantity: item.qty || 1,
-    })),
-  });
-
-  const pay = async () => {
+    ReactGA.event("begin_checkout", {
+      currency: "EUR",
+      value: total + shippingCost,
+      items: cart.map((item) => ({
+        item_id: item._id,
+        item_name: item.name,
+        price: Number(item.price),
+        quantity: item.qty || 1,
+        item_variant: item.size,
+      })),
+    });
+  }, [cart.length, total, shippingCost]);
+const pay = async () => {
     try {
       if (cart.length === 0) {
         alert("O carrinho está vazio.");
@@ -266,6 +269,9 @@ const inputStyle = {
   fontSize: "16px",
   boxSizing: "border-box",
 };
+
+
+
 
 
 
