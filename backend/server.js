@@ -1,4 +1,4 @@
-﻿console.log("ðŸ”¥ SERVER.JS A FUNCIONAR");
+console.log("ðŸ”¥ SERVER.JS A FUNCIONAR");
 
 import express from "express";
 import cors from "cors";
@@ -584,6 +584,84 @@ app.get("/produto/:id", async (req, res) => {
     res.status(500).send("Erro ao carregar produto");
   }
 });
+app.get("/google-shopping.xml", async (req, res) => {
+  try {
+    const produtos = await Produto.find().lean();
+
+    const escapeXml = (value = "") =>
+      String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&apos;");
+
+    const items = produtos.map((produto) => {
+      const id = produto.reference || produto._id.toString();
+      const title = produto.name || "";
+      const description = produto.description || "";
+      const link = `https://www.jomabasto.com/produto/${produto._id}`;
+      const imageLink = produto.images?.[0] || "";
+
+      const additionalImages = (produto.images || [])
+        .slice(1)
+        .map(
+          (image) =>
+            `    <g:additional_image_link>${escapeXml(image)}</g:additional_image_link>`
+        )
+        .join("\n");
+
+      const temTamanhos =
+        Array.isArray(produto.sizes) && produto.sizes.length > 0;
+
+      const availability = temTamanhos
+        ? "in_stock"
+        : "out_of_stock";
+
+      const temPromocao =
+        typeof produto.promoPrice === "number" &&
+        produto.promoPrice > 0 &&
+        produto.promoPrice < produto.price;
+
+      const salePrice = temPromocao
+        ? `    <g:sale_price>${produto.promoPrice.toFixed(2)} EUR</g:sale_price>`
+        : "";
+
+      return `  <item>
+    <g:id>${escapeXml(id)}</g:id>
+    <g:title>${escapeXml(title)}</g:title>
+    <g:description>${escapeXml(description)}</g:description>
+    <g:link>${escapeXml(link)}</g:link>
+    <g:image_link>${escapeXml(imageLink)}</g:image_link>
+${additionalImages}
+    <g:availability>${availability}</g:availability>
+    <g:price>${Number(produto.price || 0).toFixed(2)} EUR</g:price>
+${salePrice}
+    <g:brand>Joma</g:brand>
+    <g:condition>new</g:condition>
+  </item>`;
+    });
+
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:g="http://base.google.com/ns/1.0">
+  <channel>
+    <title>JomaBasto</title>
+    <link>https://www.jomabasto.com</link>
+    <description>Produtos JomaBasto</description>
+${items.join("\n")}
+  </channel>
+</rss>`;
+
+    res.set("Content-Type", "application/xml; charset=utf-8");
+    res.send(xml);
+  } catch (err) {
+    console.error("Erro ao gerar feed Google Shopping:", err);
+    res.status(500).send("Erro ao gerar feed Google Shopping");
+  }
+});
+
+
 app.get("/", (req, res) => {
   res.send("API OK");
 });
