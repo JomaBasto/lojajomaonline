@@ -1,4 +1,4 @@
-import fs from "node:fs/promises";
+﻿import fs from "node:fs/promises";
 
 const API_URL = "https://jomabasto-backend.onrender.com/produtos";
 const BASE_URL = "https://jomabasto.com";
@@ -26,6 +26,11 @@ const urlsFixas = [
     loc: `${BASE_URL}/promocao`,
     changefreq: "weekly",
     priority: "0.7",
+  },
+  {
+    loc: `${BASE_URL}/condicoes-de-utilizacao`,
+    changefreq: "yearly",
+    priority: "0.5",
   },
 ];
 
