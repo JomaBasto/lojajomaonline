@@ -1,4 +1,4 @@
-﻿import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import ReactGA from "react-ga4";
 import {
   FiSearch,
@@ -13,7 +13,7 @@ import {
   FiPhone,
   FiMenu
 } from "react-icons/fi";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 import Categories from "./components/Categories";
 
@@ -26,10 +26,26 @@ import {
 } from "react-icons/fa";
 
 export default function App() {
+  const navigate = useNavigate();
+  const isHomePage = window.location.pathname === "/";
   // STATES
-  const [category, setCategory] = useState(
-  new URLSearchParams(window.location.search).get("categoria") || "all"
-);
+  const getCategoryFromUrl = () => {
+    const pathParts = window.location.pathname
+      .split("/")
+      .filter(Boolean);
+
+    if (pathParts.length >= 2) {
+      return `${pathParts[0]}-${pathParts.slice(1).join("-")}`.toLowerCase();
+    }
+
+    if (pathParts.length === 1) {
+      return pathParts[0].toLowerCase();
+    }
+
+    return new URLSearchParams(window.location.search).get("categoria") || "all";
+  };
+
+  const [category, setCategory] = useState(getCategoryFromUrl());
   const [subCategory, setSubCategory] = useState("");
   const [search, setSearch] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
@@ -189,6 +205,11 @@ const [mobileMenu, setMobileMenu] = useState(false);
 
 const selectCategory = (category) => {
   setCategory(category);
+
+  const parts = category.split("-");
+  if (parts.length >= 2) {
+    navigate("/" + parts[0] + "/" + parts.slice(1).join("-"), { replace: false });
+  }
 
   setTimeout(() => {
     productsRef.current?.scrollIntoView({
@@ -1058,34 +1079,34 @@ return matchMain && matchSub && matchSearch;
         </nav>
       </header>
 
-      {/* HERO */}
-<section className="hero" onClick={() => selectCategory("promocoes")} role="button" tabIndex={0}>
-  <img src="/images/ofertas da semana-desktop.jpg" alt="Ofertas da Semana" />
-</section>
+      {isHomePage && (
+  <>
+    {/* HERO */}
+    <section className="hero" onClick={() => selectCategory("promocoes")} role="button" tabIndex={0}>
+      <img src="/images/ofertas da semana-desktop.jpg" alt="Ofertas da Semana" />
+    </section>
 
+    <section id="ofertas" className="promocoes-container">
+      <section className="seo-home">
+        <div className="seo-home-container">
 
-  <section id="ofertas" className="promocoes-container">
+          <h2>Loja Oficial JomaBasto em Portugal</h2>
 
-  <section className="seo-home">
-    <div className="seo-home-container">
+          <p>
+            A <strong>JomaBasto Store</strong> é revendedora oficial da <strong>Joma</strong> em Portugal,
+            com <strong>sapatilhas, vestuário e acessórios</strong> para
+            <strong>corrida, trail running, futebol, futsal, padel, fitness e outras modalidades</strong>.
+          </p>
 
-      <h2>Loja Oficial JomaBasto em Portugal</h2>
+          <p>
+            <strong>Produtos originais Joma, envio para todo Portugal, pagamentos seguros e apoio especializado.</strong>
+          </p>
 
-      <p>
-        A <strong>JomaBasto Store</strong> é revendedora oficial da <strong>Joma</strong> em Portugal,
-        com <strong>sapatilhas, vestuário e acessórios</strong> para
-        <strong>corrida, trail running, futebol, futsal, padel, fitness e outras modalidades</strong>.
-      </p>
+        </div>
+      </section>
+    </section>
 
-      <p>
-        <strong>Produtos originais Joma, envio para todo Portugal, pagamentos seguros e apoio especializado.</strong>
-      </p>
-
-    </div>
-  </section>
-
-</section>
-<Categories
+    <Categories
     onSelect={(sport) => {
       const selectedCategory = sport === "casual-textil" ? "textil" : sport;
       setCategory(selectedCategory);
@@ -1099,6 +1120,9 @@ return matchMain && matchSub && matchSearch;
     }}
   />
 
+
+  </>
+)}
 
 {/* FORM */}
      <section ref={productsRef} className="products-section">
@@ -2122,6 +2146,13 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
 
 import './categories-posters.css';
+
+
+
+
+
+
+
 
 
 
