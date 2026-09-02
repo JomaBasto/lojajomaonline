@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+﻿import { useEffect, useState, useRef } from "react";
 import ReactGA from "react-ga4";
 import {
   FiSearch,
@@ -860,6 +860,7 @@ return matchMain && matchSub && matchSearch;
     <a onClick={(e) => selectMobileCategory("homem-running", e)}>Running</a>
     <a onClick={(e) => selectMobileCategory("homem-trail", e)}>Trail</a>
     <a onClick={(e) => selectMobileCategory("homem-futebol", e)}>Futebol</a>
+      <a onClick={(e) => selectMobileCategory("homem-turf", e)}>Turf</a>
     <a onClick={(e) => selectMobileCategory("homem-futsal", e)}>Futsal</a>
     <a onClick={(e) => selectMobileCategory("homem-andebol", e)}>Andebol</a>
     <a onClick={(e) => selectMobileCategory("homem-voleibol", e)}>Voleibol</a>
@@ -877,6 +878,7 @@ return matchMain && matchSub && matchSearch;
     <a onClick={(e) => selectMobileCategory("mulher-running", e)}>Running</a>
     <a onClick={(e) => selectMobileCategory("mulher-trail", e)}>Trail</a>
     <a onClick={(e) => selectMobileCategory("mulher-futebol", e)}>Futebol</a>
+                    <a onClick={(e) => selectMobileCategory("mulher-turf", e)}>Turf</a>
     <a onClick={(e) => selectMobileCategory("mulher-futsal", e)}>Futsal</a>
     <a onClick={(e) => selectMobileCategory("mulher-andebol", e)}>Andebol</a>
     <a onClick={(e) => selectMobileCategory("mulher-voleibol", e)}>Voleibol</a>
@@ -894,6 +896,7 @@ return matchMain && matchSub && matchSearch;
     <a onClick={(e) => selectMobileCategory("crianca-running", e)}>Running</a>
     <a onClick={(e) => selectMobileCategory("crianca-trail", e)}>Trail</a>
     <a onClick={(e) => selectMobileCategory("crianca-futebol", e)}>Futebol</a>
+                    <a onClick={(e) => selectMobileCategory("crianca-turf", e)}>Turf</a>
     <a onClick={(e) => selectMobileCategory("crianca-futsal", e)}>Futsal</a>
     <a onClick={(e) => selectMobileCategory("crianca-casual", e)}>Casual</a>
   </details>
@@ -971,6 +974,7 @@ return matchMain && matchSub && matchSearch;
               <a onClick={() => selectCategory("homem-running")}>Running</a>
               <a onClick={() => selectCategory("homem-trail")}>Trail</a>
               <a onClick={() => selectCategory("homem-futebol")}>Futebol</a>
+                <a onClick={() => selectCategory("homem-turf")}>Turf</a>
               <a onClick={() => selectCategory("homem-futsal")}>Futsal</a>
               <a onClick={() => selectCategory("homem-andebol")}>Andebol</a>
               <a onClick={() => selectCategory("homem-voleibol")}>Voleibol</a>
@@ -990,6 +994,7 @@ return matchMain && matchSub && matchSearch;
               <a onClick={() => selectCategory("mulher-running")}>Running</a>
               <a onClick={() => selectCategory("mulher-trail")}>Trail</a>
               <a onClick={() => selectCategory("mulher-futebol")}>Futebol</a>
+              <a onClick={() => selectCategory("mulher-turf")}>Turf</a>
               <a onClick={() => selectCategory("mulher-futsal")}>Futsal</a>
               <a onClick={() => selectCategory("mulher-andebol")}>Andebol</a>
               <a onClick={() => selectCategory("mulher-voleibol")}>Voleibol</a>
@@ -1009,6 +1014,7 @@ return matchMain && matchSub && matchSearch;
               <a onClick={() => selectCategory("crianca-running")}>Running</a>
               <a onClick={() => selectCategory("crianca-trail")}>Trail</a>
               <a onClick={() => selectCategory("crianca-futebol")}>Futebol</a>
+              <a onClick={() => selectCategory("crianca-turf")}>Turf</a>
               <a onClick={() => selectCategory("crianca-futsal")}>Futsal</a>
               <a onClick={() => selectCategory("crianca-casual")}>Casual</a>
             </div>
@@ -1207,6 +1213,7 @@ return matchMain && matchSub && matchSearch;
         <option value="running">Running</option>
         <option value="trail">Trail</option>
         <option value="futebol">Futebol</option>
+        <option value="turf">Turf</option>
         <option value="futsal">Futsal</option>
         <option value="andebol">Andebol</option>
         <option value="voleibol">Voleibol</option>
@@ -1224,6 +1231,7 @@ return matchMain && matchSub && matchSearch;
         <option value="running">Running</option>
         <option value="trail">Trail</option>
         <option value="futebol">Futebol</option>
+        <option value="turf">Turf</option>
         <option value="casual">Casual</option>
         <option value="caminhada">Caminhada</option>
         <option value="ciclismo">Ciclismo</option>
@@ -1242,6 +1250,7 @@ return matchMain && matchSub && matchSearch;
         <option value="trail">Trail</option>
         <option value="Futsal">Futsal</option>
         <option value="futebol">Futebol</option>
+        <option value="turf">Turf</option>
         <option value="casual">Casual</option>
       </>
     )}
@@ -2146,6 +2155,12 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
 
 import './categories-posters.css';
+
+
+
+
+
+
 
 
 
