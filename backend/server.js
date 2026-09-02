@@ -376,7 +376,7 @@ app.post("/create-multibanco-order", async (req, res) => {
         }
 
         const precoFinal =
-          produto.promocao && produto.promoPrice
+          produto.promoPrice != null && Number(produto.promoPrice) > 0 && Number(produto.promoPrice) < Number(produto.price)
             ? Number(produto.promoPrice)
             : Number(produto.price);
 
@@ -458,7 +458,7 @@ const itemsComPrecoReal = await Promise.all(
     }
 
     const precoFinal =
-      produto.promocao && produto.promoPrice
+      produto.promoPrice != null && Number(produto.promoPrice) > 0 && Number(produto.promoPrice) < Number(produto.price)
         ? Number(produto.promoPrice)
         : Number(produto.price);
 
