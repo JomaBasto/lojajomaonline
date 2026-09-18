@@ -1998,6 +1998,7 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
       <a href="/avisos-legais">Avisos Legais</a>
       <a href="/politica-de-privacidade">Política de Privacidade</a>
       <a href="/politica-de-cookies">Política de Cookies</a>
+      <a href="/politica-de-devolucoes">Política de Devoluções e Trocas</a>
       <span className="footer-cookie-separator">|</span>
       <a href="/politica-de-cookies">Alterar as configurações de cookies</a>
 
@@ -2155,6 +2156,8 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
 
 import './categories-posters.css';
+
+
 
 
 

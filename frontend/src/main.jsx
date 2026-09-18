@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import ReactDOM from "react-dom/client";
 import ReactGA from "react-ga4";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -10,6 +10,7 @@ import CondicoesUtilizacao from "./components/CondicoesUtilizacao.jsx";
 import AvisosLegais from "./components/AvisosLegais.jsx";
 import PoliticaPrivacidade from "./components/PoliticaPrivacidade.jsx";
 import PoliticaCookies from "./components/PoliticaCookies.jsx";
+import PoliticaDevolucoes from "./components/PoliticaDevolucoes.jsx";
 import Admin from "./Admin.jsx";
 import Checkout from "./Checkout.jsx";
 import AdminOrders from "./AdminOrders.jsx";
@@ -33,10 +34,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/avisos-legais" element={<AvisosLegais />} />
         <Route path="/politica-de-privacidade" element={<PoliticaPrivacidade />} />
         <Route path="/politica-de-cookies" element={<PoliticaCookies />} />
+        <Route path="/politica-de-devolucoes" element={<PoliticaDevolucoes />} />
         <Route path="/promocao" element={<Promocao />} />
         <Route path="/produto/:id" element={<FichaProduto />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
 );
+
 
