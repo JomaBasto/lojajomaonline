@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactGA from "react-ga4";
 import { useParams } from "react-router-dom";
 
@@ -18,6 +18,24 @@ export default function FichaProduto() {
       .catch((err) =>
         console.error("Erro ao carregar produto:", err)
       );
+  }, [id]);
+
+  useEffect(() => {
+    if (!id) return;
+
+    const canonicalUrl = `https://www.jomabasto.com/produto/${id}`;
+
+    let canonical = document.querySelector(
+      'link[rel="canonical"]'
+    );
+
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.rel = "canonical";
+      document.head.appendChild(canonical);
+    }
+
+    canonical.href = canonicalUrl;
   }, [id]);
 
   useEffect(() => {
@@ -80,6 +98,10 @@ export default function FichaProduto() {
       name: produto.name,
       image: produto.images || [],
       description: produto.description || "",
+      brand: {
+        "@type": "Brand",
+        name: "Joma",
+      },
       offers: {
         "@type": "Offer",
         url: canonicalUrl,
@@ -90,6 +112,36 @@ export default function FichaProduto() {
             : produto.price
         ),
         availability: "https://schema.org/InStock",
+        hasMerchantReturnPolicy: {
+          "@type": "MerchantReturnPolicy",
+          applicableCountry: "PT",
+          returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+          merchantReturnDays: 15,
+          returnMethod: "https://schema.org/ReturnByMail",
+          returnFees: "https://schema.org/ReturnFeesCustomerResponsibility",
+        },
+        shippingDetails: {
+          "@type": "OfferShippingDetails",
+          shippingDestination: {
+            "@type": "DefinedRegion",
+            addressCountry: "PT",
+          },
+          deliveryTime: {
+            "@type": "ShippingDeliveryTime",
+            handlingTime: {
+              "@type": "QuantitativeValue",
+              minValue: 0,
+              maxValue: 1,
+              unitCode: "DAY",
+            },
+            transitTime: {
+              "@type": "QuantitativeValue",
+              minValue: 3,
+              maxValue: 5,
+              unitCode: "DAY",
+            },
+          },
+        },
       },
     };
 
@@ -299,5 +351,7 @@ export default function FichaProduto() {
     </div>
   );
 }
+
+
 
 
