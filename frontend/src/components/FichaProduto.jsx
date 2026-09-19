@@ -122,6 +122,7 @@ export default function FichaProduto() {
         },
         shippingDetails: {
           "@type": "OfferShippingDetails",
+          shippingRate: { "@type": "MonetaryAmount", "value": "5.95", "currency": "EUR" },
           shippingDestination: {
             "@type": "DefinedRegion",
             addressCountry: "PT",
