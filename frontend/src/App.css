@@ -2595,3 +2595,79 @@ body {
   }
 }
 
+
+/* Ajuste final — Ofertas da Semana com a mesma proporção do poster antigo */
+@media (min-width: 769px) {
+  .hero {
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+    overflow: hidden !important;
+  }
+
+  .hero picture,
+  .hero picture img,
+  .hero > img {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .hero picture img,
+  .hero > img {
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+}
+
+/* AJUSTE FINAL — Ofertas da Semana */
+@media (min-width: 769px) {
+  .hero {
+    max-width: 1290px !important;
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    aspect-ratio: 1290 / 720 !important;
+    height: auto !important;
+    overflow: hidden !important;
+  }
+
+  .hero img,
+  .hero picture,
+  .hero picture img {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .hero img {
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+}
+
+/* Ofertas da Semana — mostrar o poster novo inteiro */
+@media (min-width: 769px) {
+  .hero img {
+    object-fit: contain !important;
+    object-position: center !important;
+    background: white !important;
+  }
+}
+
+/* Ofertas da Semana — largura total das margens do site */
+@media (min-width: 769px) {
+  .hero {
+    max-width: none !important;
+    width: 100% !important;
+    aspect-ratio: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .hero img,
+  .hero picture img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    display: block !important;
+  }
+}

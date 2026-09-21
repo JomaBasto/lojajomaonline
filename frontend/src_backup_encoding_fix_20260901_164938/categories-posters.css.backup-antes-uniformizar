@@ -1,0 +1,117 @@
+/* =========================
+   POSTERS DE CATEGORIAS
+   ========================= */
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 0;
+}
+
+.category-poster {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #fff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
+}
+
+.category-poster picture {
+  display: block;
+  width: 100%;
+}
+
+.category-poster img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.category-poster-title {
+  position: absolute;
+  left: 25px;
+  bottom: 20px;
+  color: #fff;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+}
+
+.category-poster:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+}
+
+/* =========================
+   DESKTOP
+   ========================= */
+
+/* Ciclismo — mantém a dimensão natural */
+.category-poster:nth-child(10) {
+  grid-column: 1;
+}
+
+/* Casual e Outlet ficam ao lado do Ciclismo
+   e acompanham a altura da linha */
+.category-poster:nth-child(11),
+.category-poster:nth-child(13) {
+  align-self: stretch;
+}
+
+/* As imagens de Casual e Outlet mantêm
+   integralmente as suas proporções */
+.category-poster:nth-child(11) picture,
+.category-poster:nth-child(13) picture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.category-poster:nth-child(11) img,
+.category-poster:nth-child(13) img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Ofertas da Semana fica por baixo
+   e ocupa toda a largura */
+.category-poster:nth-child(12) {
+  grid-column: 1 / -1;
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 768px) {
+  .categories-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .category-poster:nth-child(10),
+  .category-poster:nth-child(11),
+  .category-poster:nth-child(12),
+  .category-poster:nth-child(13) {
+    grid-column: auto;
+    align-self: auto;
+  }
+
+  .category-poster-title {
+    left: 20px;
+    bottom: 18px;
+    font-size: 30px;
+  }
+}

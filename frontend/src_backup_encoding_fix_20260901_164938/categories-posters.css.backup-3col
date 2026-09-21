@@ -1,0 +1,191 @@
+﻿/* =========================
+   POSTERS DE CATEGORIAS
+   LAYOUT DESKTOP — 3 COLUNAS
+   ========================= */
+
+.categories-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 24px !important;
+  width: 100% !important;
+  margin-top: 0 !important;
+}
+
+.category-poster {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  aspect-ratio: 2752 / 1536 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  background: #fff !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10) !important;
+}
+
+.category-poster picture {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.category-poster img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.category-poster:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18) !important;
+}
+
+/* =========================
+   DESKTOP
+   ========================= */
+
+@media (min-width: 769px) {
+
+  /*
+     14 POSTERS
+
+     Linha 1:
+     Running | Trail | Futebol
+
+     Linha 2:
+     Futsal | Andebol | Basquetebol
+
+     Linha 3:
+     Ténis | Padel | Voleibol
+
+     Linha 4:
+     Ciclismo | Casual | Ofertas
+
+     Linha 5:
+     Outlet | Acessórios
+  */
+
+  .categories-grid > .category-poster:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .categories-grid > .category-poster:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .categories-grid > .category-poster:nth-child(3) {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .categories-grid > .category-poster:nth-child(4) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .categories-grid > .category-poster:nth-child(5) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .categories-grid > .category-poster:nth-child(6) {
+    grid-column: 3;
+    grid-row: 2;
+  }
+
+  .categories-grid > .category-poster:nth-child(7) {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .categories-grid > .category-poster:nth-child(8) {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  .categories-grid > .category-poster:nth-child(9) {
+    grid-column: 3;
+    grid-row: 3;
+  }
+
+  .categories-grid > .category-poster:nth-child(10) {
+    grid-column: 1;
+    grid-row: 4;
+  }
+
+  .categories-grid > .category-poster:nth-child(11) {
+    grid-column: 2;
+    grid-row: 4;
+  }
+
+  .categories-grid > .category-poster:nth-child(12) {
+    grid-column: 3;
+    grid-row: 4;
+  }
+
+  /*
+     Última linha:
+     Outlet e Acessórios ficam centrados.
+  */
+
+  .categories-grid > .category-poster:nth-child(13) {
+    grid-column: 1 / 2;
+    grid-row: 5;
+    justify-self: end;
+    width: 100%;
+  }
+
+  .categories-grid > .category-poster:nth-child(14) {
+    grid-column: 2 / 3;
+    grid-row: 5;
+    justify-self: start;
+    width: 100%;
+  }
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 768px) {
+
+  .categories-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+    width: 100% !important;
+    margin-top: 0 !important;
+  }
+
+  .category-poster {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1536 / 2752 !important;
+  }
+
+  .category-poster picture {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .category-poster img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+}

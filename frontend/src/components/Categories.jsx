@@ -1,4 +1,4 @@
-ï»¿export default function Categories({ onSelect }) {
+export default function Categories({ onSelect }) {
   const categories = [
     {
       id: "running",
@@ -38,7 +38,7 @@
     },
     {
       id: "tenis",
-      name: "TÃ©nis",
+      name: "Ténis",
       desktop: "/images/tenis-desktop.jpg",
       mobile: "/images/tenis-mobile.jpg",
     },
@@ -69,7 +69,7 @@
     {
       id: "promocoes",
       name: "Ofertas da Semana",
-      desktop: "/images/ofertas da semana-desktop.jpg",
+      desktop: "/images/ofertas da semana-desktop.png",
       mobile: "/images/ofertas da semana-mobile.jpg",
     },
     {
@@ -80,7 +80,7 @@
     },
     {
       id: "acessorios",
-      name: "AcessÃ³rios",
+      name: "Acessórios",
       desktop: "/images/acessorios-desktop.jpg",
       mobile: "/images/acessorios-mobile.jpg",
     },
@@ -113,6 +113,7 @@
     </section>
   );
 }
+
 
 
 

@@ -1,0 +1,107 @@
+﻿/* =========================
+   POSTERS DE CATEGORIAS
+   3 POR LINHA — TAMANHO UNIFORME
+   ========================= */
+
+.categories-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 24px !important;
+  width: 100% !important;
+  margin-top: 0 !important;
+}
+
+.category-poster {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 2752 / 1536 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  background: #fff !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10) !important;
+}
+
+.category-poster picture {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.category-poster img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.category-poster:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18) !important;
+}
+
+/* =========================
+   MOBILE — 1 POR LINHA
+   ========================= */
+
+@media (max-width: 768px) {
+  .categories-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+  .category-poster {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1536 / 2752 !important;
+  }
+
+  .category-poster img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+}
+
+/* Ofertas da Semana: manter no mobile, esconder apenas no desktop */
+@media (min-width: 769px) {
+  .category-poster-promocoes {
+    display: none !important;
+  }
+}
+
+/* Ofertas da Semana: esconder também no mobile, pois já aparece como HERO */
+@media (max-width: 768px) {
+  .category-poster-promocoes {
+    display: none !important;
+  }
+}
+
+/* ACESSÓRIOS — garantir que aparece no telemóvel */
+@media (max-width: 768px) {
+  .category-poster-promocoes {
+    display: none !important;
+  }
+
+  .category-poster {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+
+/* MOBILE — remover apenas o poster duplicado Ofertas da Semana */
+@media (max-width: 768px) {
+  .categories-grid .category-poster-promocoes {
+    display: none !important;
+  }
+}

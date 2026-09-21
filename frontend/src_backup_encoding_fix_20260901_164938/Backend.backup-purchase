@@ -1,0 +1,50 @@
+const express = require("express");
+const cors = require("cors");
+const Stripe = require("stripe");
+require("dotenv").config();
+
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+// 🔐 Stripe
+const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
+
+// 💳 CHECKOUT
+app.post("/checkout", async (req, res) => {
+  try {
+    const { cart } = req.body;
+
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ["card"],
+
+      line_items: cart.map((item) => ({
+        price_data: {
+          currency: "eur",
+          product_data: {
+            name: item.name,
+          },
+          unit_amount: Math.round(Number(item.price) * 100),
+        },
+        quantity: item.qty,
+      })),
+
+      mode: "payment",
+
+      success_url: "http://localhost:5173/sucesso",
+      cancel_url: "http://localhost:5173/cancelado",
+    });
+
+    res.json({ url: session.url });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// 🚀 SERVER
+app.listen(4242, () => {
+  console.log("🚀 Backend running on http://localhost:4242");
+});

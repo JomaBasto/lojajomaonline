@@ -1,4 +1,4 @@
-﻿import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import ReactGA from "react-ga4";
 import {
   FiSearch,
@@ -1089,7 +1089,7 @@ return matchMain && matchSub && matchSearch;
   <>
     {/* HERO */}
     <section className="hero" onClick={() => selectCategory("promocoes")} role="button" tabIndex={0}>
-      <img src="/images/ofertas da semana-desktop.jpg" alt="Ofertas da Semana" />
+      <img src="/images/ofertas da semana-desktop.png" alt="Ofertas da Semana" />
     </section>
 
     <section id="ofertas" className="promocoes-container">
@@ -2156,6 +2156,9 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
 
 import './categories-posters.css';
+
+
+
 
 
 
