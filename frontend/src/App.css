@@ -1,4 +1,4 @@
-/* =========================
+Ôªø/* =========================
    RESET
 ========================= */
 * {
@@ -1452,7 +1452,7 @@ body,
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
 }
 
-/* TelemÛvel: 1 poster por linha */
+/* Telem√≥vel: 1 poster por linha */
 
 @media (min-width: 769px) {
   .hero {
@@ -1499,7 +1499,7 @@ body,
 
 
 /* =========================================================
-   RESTAURO DO LAYOUT DOS CART’ES DE PRODUTO
+   RESTAURO DO LAYOUT DOS CART√ïES DE PRODUTO
    ========================================================= */
 
 .card {
@@ -1533,7 +1533,7 @@ body,
   transform: none !important;
 }
 
-/* NOME + PRE«O NA MESMA LINHA */
+/* NOME + PRE√áO NA MESMA LINHA */
 .product-header {
   display: flex !important;
   justify-content: space-between !important;
@@ -1590,12 +1590,12 @@ body,
   transform: scale(1.15);
 }
 
-/* PRE«O */
+/* PRE√áO */
 .product-price {
   min-height: 25px;
 }
 
-/* BOT’ES ADMIN */
+/* BOT√ïES ADMIN */
 .product-actions {
   margin-top: 12px;
   display: flex;
@@ -1679,7 +1679,7 @@ body,
 }
 
 
-/* ===== DESCRI«√O DA LOJA ===== */
+/* ===== DESCRI√á√ÉO DA LOJA ===== */
 
 .seo-home {
   width: 100%;
@@ -1803,7 +1803,7 @@ body,
 
 
 /* =========================================================
-   EST…TICA PROFISSIONAL DOS PRE«OS PROMOCIONAIS
+   EST√âTICA PROFISSIONAL DOS PRE√áOS PROMOCIONAIS
    ========================================================= */
 
 .product-price {
@@ -1815,7 +1815,7 @@ body,
   margin: 6px 0 10px;
 }
 
-/* PreÁo antigo */
+/* Pre√ßo antigo */
 .product-price .old-price {
   margin: 0;
   color: #777;
@@ -1825,7 +1825,7 @@ body,
   white-space: nowrap;
 }
 
-/* PreÁo promocional */
+/* Pre√ßo promocional */
 .product-price .promo-price {
   margin: 0;
   color: #111;
@@ -1850,7 +1850,7 @@ body,
   white-space: nowrap;
 }
 
-/* Cartıes normais continuam com o preÁo no cabeÁalho */
+/* Cart√µes normais continuam com o pre√ßo no cabe√ßalho */
 .product-header .price-inline {
   font-size: 17px;
   font-weight: 700;
@@ -1903,7 +1903,7 @@ body,
 }
 
 
-/* AJUSTE FINO ó PROMO«’ES MAIS LEVES E ELEGANTES */
+/* AJUSTE FINO ‚Äî PROMO√á√ïES MAIS LEVES E ELEGANTES */
 
 .product-price .old-price {
   font-size: 13px;
@@ -1928,7 +1928,7 @@ body,
 }
 
 
-/* IMAGENS DOS PRODUTOS ó AJUSTE DESKTOP */
+/* IMAGENS DOS PRODUTOS ‚Äî AJUSTE DESKTOP */
 @media (min-width: 769px) {
   .card img,
   .grid .card img,
@@ -1937,7 +1937,7 @@ body,
   }
 }
 
-/* MOBILE ó MANTER COMO EST¡ */
+/* MOBILE ‚Äî MANTER COMO EST√Å */
 @media (min-width: 769px) {
   .hero {
     height: auto !important;
@@ -1972,7 +1972,7 @@ body,
 }
 
 
-/* ARTIGO VISÕVEL MAIOR ó APENAS DESKTOP */
+/* ARTIGO VIS√çVEL MAIOR ‚Äî APENAS DESKTOP */
 @media (min-width: 769px) {
   .grid .card img,
   .products-grid .card img {
@@ -1981,7 +1981,7 @@ body,
   }
 }
 
-/* MOBILE ó N√O ALTERAR */
+/* MOBILE ‚Äî N√ÉO ALTERAR */
 @media (min-width: 769px) {
   .hero {
     height: auto !important;
@@ -2015,7 +2015,7 @@ body,
 }
 
 
-/* ARTIGO VISÕVEL MAIOR ó DESKTOP */
+/* ARTIGO VIS√çVEL MAIOR ‚Äî DESKTOP */
 @media (min-width: 769px) {
   .grid .card img,
   .products-grid .card img {
@@ -2024,7 +2024,7 @@ body,
   }
 }
 
-/* MOBILE ó MANTER INALTERADO */
+/* MOBILE ‚Äî MANTER INALTERADO */
 @media (min-width: 769px) {
   .hero {
     height: auto !important;
@@ -2059,7 +2059,7 @@ body,
 
 
 /* =========================================================
-   PRODUTO VISÕVEL MAIOR ó DESKTOP
+   PRODUTO VIS√çVEL MAIOR ‚Äî DESKTOP
    ========================================================= */
 
 @media (min-width: 769px) {
@@ -2074,7 +2074,7 @@ body,
   }
 }
 
-/* MOBILE ó N√O ALTERAR */
+/* MOBILE ‚Äî N√ÉO ALTERAR */
 @media (min-width: 769px) {
   .hero {
     height: auto !important;
@@ -2248,7 +2248,7 @@ body,
   background: #1d4ed8;
 }
 
-/* evita que o conte˙do fique escondido atr·s da barra */
+/* evita que o conte√∫do fique escondido atr√°s da barra */
 body {
   padding-top: 70px;
 }
@@ -2311,7 +2311,7 @@ body {
     max-width: 100%;
   }
 
-  /* N„o alterar proporÁ„o das imagens */
+  /* N√£o alterar propor√ß√£o das imagens */
   .categories-grid > .category-poster img {
     display: block;
     width: 100%;
@@ -2320,7 +2320,7 @@ body {
     object-fit: contain;
   }
 
-  /* Casual e Outlet ficam dentro da mesma ·rea
+  /* Casual e Outlet ficam dentro da mesma √°rea
      do Ciclismo, sem esticar as imagens */
   .categories-grid > .category-poster:nth-child(11) img,
   .categories-grid > .category-poster:nth-child(13) img {
@@ -2332,7 +2332,7 @@ body {
 }
 
 /* =========================================================
-   MOBILE ó manter uma coluna
+   MOBILE ‚Äî manter uma coluna
    ========================================================= */
 
 @media (max-width: 768px) {
@@ -2358,7 +2358,7 @@ body {
 
 
 /* =========================================================
-   ⁄LTIMOS 4 POSTERS ó manter no final da grelha
+   √öLTIMOS 4 POSTERS ‚Äî manter no final da grelha
    ========================================================= */
 
 @media (min-width: 769px) {
@@ -2386,7 +2386,7 @@ body {
   }
 
   /*
-   * O bloco final comeÁa depois dos 9 primeiros posters.
+   * O bloco final come√ßa depois dos 9 primeiros posters.
    * Ciclismo, Casual e Outlet ficam na mesma linha.
    */
 
@@ -2411,7 +2411,7 @@ body {
 }
 
 
-/* Ajuste do espaÁo abaixo do hero */
+/* Ajuste do espa√ßo abaixo do hero */
 .hero {
   height: auto !important;
   aspect-ratio: 16 / 9 !important;
@@ -2425,7 +2425,7 @@ body {
   display: block !important;
 }
 
-/* HERO Ofertas da Semana ó desktop/mobile */
+/* HERO Ofertas da Semana ‚Äî desktop/mobile */
 .hero picture {
   display: block;
   width: 100%;
@@ -2440,14 +2440,14 @@ body {
   object-position: center;
 }
 
-/* HERO ó imagem especÌfica para telemÛvel */
+/* HERO ‚Äî imagem espec√≠fica para telem√≥vel */
 @media (max-width: 768px) {
   .hero picture img {
     content: url("/images/ofertas da semana-mobile.jpg");
   }
 }
 
-/* HERO mobile ó mostrar a imagem Ofertas da Semana completa */
+/* HERO mobile ‚Äî mostrar a imagem Ofertas da Semana completa */
 @media (max-width: 768px) {
   .hero {
     height: auto !important;
@@ -2468,7 +2468,7 @@ body {
   }
 }
 
-/* HERO Ofertas da Semana ó imagem prÛpria no telemÛvel */
+/* HERO Ofertas da Semana ‚Äî imagem pr√≥pria no telem√≥vel */
 @media (max-width: 768px) {
   .hero {
     height: auto !important;
@@ -2485,7 +2485,7 @@ body {
 }
 
 /* =========================================================
-   P√ÅGINAS LEGAIS
+   P√É¬ÅGINAS LEGAIS
 ========================================================= */
 
 .legal-page {
@@ -2596,7 +2596,7 @@ body {
 }
 
 
-/* Ajuste final ó Ofertas da Semana com a mesma proporÁ„o do poster antigo */
+/* Ajuste final ‚Äî Ofertas da Semana com a mesma propor√ß√£o do poster antigo */
 @media (min-width: 769px) {
   .hero {
     aspect-ratio: 16 / 9 !important;
@@ -2618,7 +2618,7 @@ body {
   }
 }
 
-/* AJUSTE FINAL ó Ofertas da Semana */
+/* AJUSTE FINAL ‚Äî Ofertas da Semana */
 @media (min-width: 769px) {
   .hero {
     max-width: 1290px !important;
@@ -2643,7 +2643,7 @@ body {
   }
 }
 
-/* Ofertas da Semana ó mostrar o poster novo inteiro */
+/* Ofertas da Semana ‚Äî mostrar o poster novo inteiro */
 @media (min-width: 769px) {
   .hero img {
     object-fit: contain !important;
@@ -2652,7 +2652,7 @@ body {
   }
 }
 
-/* Ofertas da Semana ó largura total das margens do site */
+/* Ofertas da Semana ‚Äî largura total das margens do site */
 @media (min-width: 769px) {
   .hero {
     max-width: none !important;
@@ -2670,4 +2670,1532 @@ body {
     object-position: center !important;
     display: block !important;
   }
+}
+
+
+/* =========================================
+   JOMABASTO ‚Äî HEADER V2
+   Apenas visual ‚Äî n√£o altera funcionalidades
+   ========================================= */
+
+.header {
+  height: 76px !important;
+  padding: 0 28px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 24px !important;
+  background: #ffffff !important;
+  color: #111827 !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  box-shadow: 0 3px 18px rgba(15, 23, 42, 0.10) !important;
+}
+
+.logo {
+  color: #1646b8 !important;
+  font-size: 25px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.7px;
+  flex-shrink: 0;
+}
+
+.nav {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 20px !important;
+  flex: 1 !important;
+  min-width: 0;
+}
+
+.nav > a,
+.nav > .dropdown > a {
+  color: #1f2937 !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.nav > a:hover,
+.nav > .dropdown > a:hover {
+  color: #1646b8 !important;
+  transform: translateY(-1px);
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  top: calc(100% + 18px) !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 12px !important;
+  background: #ffffff !important;
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.16) !important;
+  padding: 8px !important;
+  min-width: 190px;
+}
+
+.dropdown-menu a {
+  display: block;
+  color: #374151 !important;
+  padding: 9px 12px !important;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.dropdown-menu a:hover {
+  background: #eff6ff !important;
+  color: #1646b8 !important;
+}
+
+.search-box {
+  flex-shrink: 1;
+  width: 230px !important;
+  height: 42px !important;
+  margin-left: 4px !important;
+  background: #f8fafc !important;
+  border: 1px solid #dbe1ea !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+}
+
+.search-box:focus-within {
+  background: #ffffff !important;
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10) !important;
+}
+
+.search-icon {
+  color: #64748b !important;
+}
+
+.search-input {
+  color: #111827 !important;
+}
+
+.icon-btn {
+  position: relative;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0 !important;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #1f2937 !important;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.icon-btn:hover {
+  background: #eff6ff !important;
+  color: #1646b8 !important;
+  transform: translateY(-1px);
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #dc2626 !important;
+  color: #ffffff !important;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.desktop-user {
+  color: #374151 !important;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.nav span[style*="color: red"] {
+  color: #dc2626 !important;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+@media (max-width: 768px) {
+  .header {
+    height: 64px !important;
+    padding: 0 12px !important;
+    gap: 8px !important;
+  }
+
+  .logo {
+    font-size: 21px !important;
+  }
+
+  .nav {
+    display: none !important;
+  }
+
+  .mobile-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .mobile-actions .icon-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .mobile-menu-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 50%;
+    background: #eff6ff;
+    color: #1646b8;
+    font-size: 21px;
+  }
+}
+
+
+/* =========================================
+   JOMABASTO ‚Äî HEADER V2.1
+   Corre√ß√£o dos dropdowns desktop
+   ========================================= */
+
+@media (min-width: 769px) {
+
+  .header {
+    overflow: visible !important;
+  }
+
+  .nav {
+    overflow: visible !important;
+  }
+
+  .dropdown {
+    position: relative !important;
+    overflow: visible !important;
+  }
+
+  .dropdown-menu {
+    position: absolute !important;
+    top: 100% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 20000 !important;
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .dropdown:hover .dropdown-menu,
+  .dropdown:focus-within .dropdown-menu {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+
+  .dropdown-menu a {
+    white-space: nowrap !important;
+  }
+}
+
+
+/* =========================================
+   JOMABASTO ‚Äî MOBILE HEADER V2.2
+   Espa√ßamento dos √≠cones mobile
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  .header {
+    height: 64px !important;
+    padding: 0 10px !important;
+    gap: 6px !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+  }
+
+  .logo {
+    flex: 0 1 auto !important;
+    min-width: 0 !important;
+    font-size: 20px !important;
+    white-space: nowrap !important;
+  }
+
+  .mobile-actions {
+    flex: 0 0 auto !important;
+    margin-left: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 2px !important;
+    min-width: 0 !important;
+  }
+
+  .mobile-actions .icon-btn {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    flex: 0 0 34px !important;
+  }
+
+  .mobile-actions .badge {
+    top: -1px !important;
+    right: -1px !important;
+  }
+
+  .mobile-user {
+    max-width: 70px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    font-size: 11px !important;
+  }
+
+  .mobile-menu-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    flex: 0 0 36px !important;
+    margin-left: 5px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 50% !important;
+    background: #eff6ff !important;
+    color: #1646b8 !important;
+    position: relative !important;
+    z-index: 20001 !important;
+  }
+
+  .mobile-user-menu {
+    position: relative !important;
+    z-index: 20002 !important;
+  }
+
+  .mobile-menu {
+    z-index: 20000 !important;
+  }
+}
+
+
+/* =========================================
+   JOMABASTO ‚Äî MOBILE HEADER V2.3
+   Tudo numa √∫nica linha
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  .header {
+    height: 60px !important;
+    padding: 0 7px !important;
+    gap: 3px !important;
+    flex-wrap: nowrap !important;
+  }
+
+  .logo {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    font-size: 18px !important;
+    letter-spacing: -0.6px !important;
+    white-space: nowrap !important;
+  }
+
+  .mobile-actions {
+    flex: 0 0 auto !important;
+    margin-left: 0 !important;
+    gap: 0 !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+  }
+
+  .mobile-actions .icon-btn {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    flex: 0 0 32px !important;
+  }
+
+  .mobile-menu-btn {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    flex: 0 0 34px !important;
+    margin-left: 2px !important;
+  }
+
+  .mobile-user {
+    display: none !important;
+  }
+
+}
+
+
+/* =========================================
+   JOMABASTO ‚Äî MOBILE HEADER V2.4
+   Linha √∫nica: logo + √≠cones + menu
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  .header {
+    height: 60px !important;
+    width: 100% !important;
+    padding: 0 6px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: 0 !important;
+    overflow: visible !important;
+  }
+
+  .header .logo {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 18px !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+  }
+
+  .header .mobile-actions {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: 0 !important;
+  }
+
+  .header .mobile-actions .icon-btn {
+    width: 32px !important;
+    min-width: 32px !important;
+    max-width: 32px !important;
+    height: 32px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: 0 0 32px !important;
+  }
+
+  .header .mobile-actions .mobile-user {
+    display: none !important;
+  }
+
+  .header .mobile-menu-btn {
+    position: static !important;
+    display: inline-flex !important;
+    width: 32px !important;
+    min-width: 32px !important;
+    max-width: 32px !important;
+    height: 32px !important;
+    margin: 0 0 0 3px !important;
+    padding: 0 !important;
+    flex: 0 0 32px !important;
+    box-sizing: border-box !important;
+  }
+
+  .header .mobile-user-menu {
+    flex: 0 0 32px !important;
+    width: 32px !important;
+    min-width: 32px !important;
+    margin: 0 !important;
+  }
+
+  .header .mobile-user-menu summary {
+    width: 32px !important;
+    height: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+}
+
+
+/* =========================================
+   JOMABASTO ‚Äî MOBILE SEARCH V2.1
+   Pesquisa sem cobrir o logo
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  .mobile-search {
+    position: absolute !important;
+    top: 60px !important;
+    left: 8px !important;
+    right: 8px !important;
+    width: auto !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    z-index: 20000 !important;
+    background: #ffffff !important;
+  }
+
+  .mobile-search input {
+    display: block !important;
+    width: 100% !important;
+    height: 42px !important;
+    box-sizing: border-box !important;
+    margin: 8px 0 0 0 !important;
+    padding: 0 16px !important;
+    border: 1px solid #dbe1ea !important;
+    border-radius: 999px !important;
+    background: #f8fafc !important;
+    outline: none !important;
+    font-size: 14px !important;
+  }
+
+  .mobile-search input:focus {
+    border-color: #2563eb !important;
+    background: #ffffff !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10) !important;
+  }
+
+}
+
+
+/* =========================================
+   JOMABASTO ‚Äî MOBILE MENU V2.1
+   Menu abaixo do cabe√ßalho
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  .mobile-menu {
+    position: absolute !important;
+    top: 60px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 10px 12px 18px !important;
+    z-index: 19999 !important;
+    background: #ffffff !important;
+    border-top: 1px solid #e5e7eb !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.14) !important;
+    overflow-y: auto !important;
+    max-height: calc(100vh - 60px) !important;
+  }
+
+  .mobile-menu .mobile-item {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+  }
+
+}
+
+
+/* =========================================
+   JOMABASTO ‚Äî MOBILE SUBCATEGORIES V2.1
+   Garantir texto vis√≠vel
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  .mobile-menu,
+  .mobile-menu .mobile-item,
+  .mobile-menu .mobile-item summary,
+  .mobile-menu .mobile-item a {
+    color: #111827 !important;
+  }
+
+  .mobile-menu .mobile-item a {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    text-decoration: none !important;
+    background: transparent !important;
+    padding: 8px 14px !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+  }
+
+  .mobile-menu .mobile-item summary {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    padding: 11px 10px !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+  }
+
+  .mobile-menu .mobile-item a:hover,
+  .mobile-menu .mobile-item a:active {
+    color: #1646b8 !important;
+  }
+
+}
+
+
+
+
+/* AJUSTE SIMPLES ‚Äî IMAGENS MAIORES + CART√ïES MAIS JUNTOS */
+
+@media (min-width: 769px) {
+  .grid,
+  .products-grid {
+    gap: 10px !important;
+  }
+
+  .grid .card img,
+  .products-grid .card img {
+    height: 200px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid,
+  .products-grid {
+    gap: 8px !important;
+  }
+
+  .grid .card img,
+  .products-grid .card img {
+    height: 165px !important;
+  }
+}
+
+
+/* CORRE√á√ÉO ‚Äî IMAGENS DOS PRODUTOS REALMENTE MAIORES */
+
+@media (min-width: 769px) {
+  .grid .card img,
+  .products-grid .card img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 220px !important;
+    object-fit: contain !important;
+    margin: 0 !important;
+    transform: none !important;
+    display: block !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid .card img,
+  .products-grid .card img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 180px !important;
+    object-fit: contain !important;
+    margin: 0 !important;
+    transform: none !important;
+    display: block !important;
+  }
+}
+
+
+/* AJUSTE ‚Äî IMAGENS DOS PRODUTOS AINDA MAIORES */
+
+@media (min-width: 769px) {
+  .grid .card img,
+  .products-grid .card img {
+    height: 250px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid .card img,
+  .products-grid .card img {
+    height: 205px !important;
+  }
+}
+
+
+/* MELHORIA ‚Äî PRE√áOS E PROMO√á√ïES DOS PRODUTOS */
+
+.grid .card .product-header {
+  align-items: center !important;
+}
+
+.grid .card .price-inline,
+.products-grid .card .price-inline {
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  color: #111827 !important;
+  white-space: nowrap !important;
+}
+
+.grid .card .product-price,
+.products-grid .card .product-price {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 5px 0 4px !important;
+  min-height: 32px !important;
+}
+
+.grid .card .old-price,
+.products-grid .card .old-price {
+  margin: 0 !important;
+  font-size: 14px !important;
+  color: #6b7280 !important;
+  text-decoration: line-through !important;
+  font-weight: 500 !important;
+}
+
+.grid .card .promo-price,
+.products-grid .card .promo-price {
+  margin: 0 !important;
+  font-size: 22px !important;
+  line-height: 1.1 !important;
+  font-weight: 800 !important;
+  color: #dc2626 !important;
+}
+
+.grid .card .discount-badge,
+.products-grid .card .discount-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 4px 7px !important;
+  border-radius: 6px !important;
+  background: #dc2626 !important;
+  color: #ffffff !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
+@media (max-width: 768px) {
+  .grid .card .promo-price,
+  .products-grid .card .promo-price {
+    font-size: 19px !important;
+  }
+
+  .grid .card .price-inline,
+  .products-grid .card .price-inline {
+    font-size: 15px !important;
+  }
+
+  .grid .card .product-price,
+  .products-grid .card .product-price {
+    gap: 6px !important;
+  }
+}
+
+
+/* MELHORIA ‚Äî STOCK E FAVORITOS DOS PRODUTOS */
+
+.grid .card .stock-favorite,
+.products-grid .card .stock-favorite {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  margin-top: 8px !important;
+  min-height: 34px !important;
+}
+
+.grid .card .stock-ok,
+.products-grid .card .stock-ok {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  color: #15803d !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
+}
+
+.grid .card .favorite-btn,
+.products-grid .card .favorite-btn {
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  color: #6b7280 !important;
+  cursor: pointer !important;
+  transition: transform .18s ease, color .18s ease, background .18s ease, border-color .18s ease !important;
+}
+
+.grid .card .favorite-btn:hover,
+.products-grid .card .favorite-btn:hover {
+  color: #dc2626 !important;
+  background: #fff1f2 !important;
+  border-color: #fecdd3 !important;
+  transform: scale(1.08) !important;
+}
+
+.grid .card .favorite-btn svg,
+.products-grid .card .favorite-btn svg {
+  width: 17px !important;
+  height: 17px !important;
+}
+
+@media (max-width: 768px) {
+  .grid .card .stock-ok,
+  .products-grid .card .stock-ok {
+    font-size: 12px !important;
+  }
+
+  .grid .card .favorite-btn,
+  .products-grid .card .favorite-btn {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+  }
+}
+
+
+/* =========================================================
+   MELHORIA ‚Äî ESPA√áAMENTO E HIERARQUIA DA P√ÅGINA INICIAL
+   ========================================================= */
+
+@media (min-width: 769px) {
+
+  /* Espa√ßo depois do banner */
+  .hero {
+    margin-bottom: 34px !important;
+  }
+
+  /* T√≠tulos das sec√ß√µes */
+  .categories-section,
+  .products-section {
+    width: 100% !important;
+  }
+
+  .categories-section h2,
+  .products-section h2 {
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+    font-size: 26px !important;
+    line-height: 1.2 !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.4px !important;
+    color: #111827 !important;
+  }
+
+  /* Espa√ßo entre categorias e produtos */
+  .categories-section {
+    margin-bottom: 48px !important;
+  }
+
+  /* Produtos */
+  .products-section {
+    margin-top: 0 !important;
+  }
+
+  .products-section h2 {
+    margin-bottom: 22px !important;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Espa√ßo depois do banner */
+  .hero {
+    margin-bottom: 24px !important;
+  }
+
+  .categories-section,
+  .products-section {
+    width: 100% !important;
+  }
+
+  .categories-section h2,
+  .products-section h2 {
+    margin-top: 0 !important;
+    margin-bottom: 16px !important;
+    font-size: 21px !important;
+    line-height: 1.2 !important;
+    font-weight: 800 !important;
+    color: #111827 !important;
+  }
+
+  .categories-section {
+    margin-bottom: 34px !important;
+  }
+
+  .products-section h2 {
+    margin-bottom: 18px !important;
+  }
+}
+
+
+/* =========================================================
+   MELHORIA ‚Äî BLOCO INSTITUCIONAL DA P√ÅGINA INICIAL
+   ========================================================= */
+
+.seo-home {
+  width: 100% !important;
+  margin: 0 auto 38px !important;
+  padding: 0 !important;
+}
+
+.seo-home-container {
+  width: 100% !important;
+  max-width: 980px !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
+  box-sizing: border-box !important;
+  text-align: center !important;
+}
+
+.seo-home-container h2 {
+  margin: 0 0 14px !important;
+  font-size: 28px !important;
+  line-height: 1.2 !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.5px !important;
+  color: #111827 !important;
+}
+
+.seo-home-container p {
+  max-width: 900px !important;
+  margin: 0 auto 9px !important;
+  font-size: 15px !important;
+  line-height: 1.65 !important;
+  font-weight: 400 !important;
+  color: #4b5563 !important;
+}
+
+.seo-home-container p:last-child {
+  margin-bottom: 0 !important;
+}
+
+.seo-home-container strong {
+  font-weight: 700 !important;
+  color: #1f2937 !important;
+}
+
+@media (max-width: 768px) {
+
+  .seo-home {
+    margin-bottom: 30px !important;
+  }
+
+  .seo-home-container {
+    max-width: 100% !important;
+    padding: 0 14px !important;
+  }
+
+  .seo-home-container h2 {
+    margin-bottom: 11px !important;
+    font-size: 22px !important;
+    letter-spacing: -0.2px !important;
+  }
+
+  .seo-home-container p {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 8px !important;
+  }
+}
+
+
+/* =========================================================
+   MELHORIA ‚Äî NOMES DOS PRODUTOS
+   ========================================================= */
+
+.grid .card h3,
+.products-grid .card h3 {
+  margin: 12px 0 7px !important;
+  font-size: 15px !important;
+  line-height: 1.35 !important;
+  font-weight: 650 !important;
+  color: #1f2937 !important;
+  letter-spacing: -0.1px !important;
+  text-align: left !important;
+
+  min-height: 41px !important;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+  overflow: hidden !important;
+}
+
+@media (max-width: 768px) {
+  .grid .card h3,
+  .products-grid .card h3 {
+    margin: 9px 0 6px !important;
+    font-size: 14px !important;
+    line-height: 1.35 !important;
+    min-height: 38px !important;
+  }
+}
+
+
+/* =========================================================
+   ACABAMENTO ‚Äî CART√ïES DE PRODUTO
+   ========================================================= */
+
+.grid .card,
+.products-grid .card {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 14px !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.07) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+              border-color 0.2s ease !important;
+}
+
+.grid .card:hover,
+.products-grid .card:hover {
+  transform: translateY(-3px) !important;
+  border-color: #d7dce5 !important;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.11) !important;
+}
+
+@media (max-width: 768px) {
+  .grid .card,
+  .products-grid .card {
+    border-radius: 12px !important;
+    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.06) !important;
+  }
+
+  .grid .card:hover,
+  .products-grid .card:hover {
+    transform: none !important;
+  }
+}
+
+
+/* =========================================================
+   MELHORIA ‚Äî INTERA√á√ÉO DOS POSTERS DE CATEGORIAS
+   ========================================================= */
+
+.category-poster {
+  transition: transform 0.22s ease, box-shadow 0.22s ease !important;
+}
+
+.category-poster img {
+  transition: transform 0.3s ease !important;
+}
+
+.category-poster:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.16) !important;
+}
+
+.category-poster:hover img {
+  transform: scale(1.025) !important;
+}
+
+.category-poster:active {
+  transform: translateY(-1px) !important;
+}
+
+@media (max-width: 768px) {
+  .category-poster:hover {
+    transform: none !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10) !important;
+  }
+
+  .category-poster:hover img {
+    transform: none !important;
+  }
+
+  .category-poster:active {
+    transform: scale(0.99) !important;
+  }
+}
+
+
+/* =========================================================
+   MELHORIA ‚Äî BARRA DE PESQUISA DESKTOP
+   ========================================================= */
+
+@media (min-width: 769px) {
+
+  .header .search-box {
+    width: 260px !important;
+    height: 42px !important;
+    display: flex !important;
+    align-items: center !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+    background: #f8fafc !important;
+    border: 1px solid #dfe4ec !important;
+    border-radius: 999px !important;
+    transition: border-color .2s ease, box-shadow .2s ease,
+                background .2s ease !important;
+  }
+
+  .header .search-box:focus-within {
+    background: #ffffff !important;
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10) !important;
+  }
+
+  .header .search-box .search-icon {
+    flex: 0 0 auto !important;
+    margin-left: 14px !important;
+    margin-right: 8px !important;
+    color: #64748b !important;
+  }
+
+  .header .search-box .search-input {
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    padding: 0 16px 0 0 !important;
+    border: 0 !important;
+    outline: none !important;
+    background: transparent !important;
+    font-size: 14px !important;
+    color: #111827 !important;
+  }
+
+  .header .search-box .search-input::placeholder {
+    color: #94a3b8 !important;
+  }
+}
+
+
+/* =========================================================
+   MELHORIA ‚Äî BOT√ÉO ADICIONAR AO CARRINHO
+   ========================================================= */
+
+.add-to-cart-btn {
+  width: 100% !important;
+  min-height: 48px !important;
+  margin-top: 18px !important;
+  padding: 12px 20px !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  background: #1646b8 !important;
+  color: #ffffff !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  cursor: pointer !important;
+  box-shadow: 0 5px 14px rgba(22, 70, 184, 0.20) !important;
+  transition: transform .18s ease, box-shadow .18s ease,
+              background .18s ease !important;
+}
+
+.add-to-cart-btn:hover {
+  background: #123d9f !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(22, 70, 184, 0.27) !important;
+}
+
+.add-to-cart-btn:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 4px 10px rgba(22, 70, 184, 0.18) !important;
+}
+
+@media (max-width: 768px) {
+  .add-to-cart-btn {
+    min-height: 50px !important;
+    margin-top: 16px !important;
+    font-size: 15px !important;
+    border-radius: 9px !important;
+  }
+
+  .add-to-cart-btn:hover {
+    transform: none !important;
+  }
+}
+
+/* BARRA DE FILTROS DOS PRODUTOS */
+
+.product-filters-bar {
+  width: 100%;
+  margin: 0 0 22px;
+  padding: 14px 16px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+.product-filters-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-btn,
+.sort-btn {
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid #dbe1ea;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #111827;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.filter-btn:hover,
+.sort-btn:hover {
+  background: #f8fafc;
+  border-color: #b9c4d4;
+}
+
+.filter-btn span,
+.sort-btn span {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.sort-btn {
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .product-filters-bar {
+    margin-bottom: 16px;
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .product-filters-left {
+    gap: 8px;
+  }
+
+  .filter-btn,
+  .sort-btn {
+    min-height: 38px;
+    padding: 0 11px;
+    font-size: 13px;
+  }
+}
+
+
+/* MENU TAMANHOS ? ACABAMENTO PROFISSIONAL */
+
+.filter-dropdown-menu {
+  min-width: 360px !important;
+  max-width: 430px !important;
+  padding: 16px !important;
+  display: block !important;
+}
+
+.filter-size-group {
+  width: 100% !important;
+  margin: 0 0 18px !important;
+}
+
+.filter-size-group:last-child {
+  margin-bottom: 0 !important;
+}
+
+.filter-size-group-title {
+  margin: 0 0 10px !important;
+  padding: 0 0 7px !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  color: #111827 !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  letter-spacing: .4px !important;
+  text-transform: uppercase !important;
+}
+
+.filter-size-options {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 8px !important;
+  width: 100% !important;
+}
+
+.filter-size-options .filter-option {
+  min-width: 0 !important;
+  min-height: 42px !important;
+  padding: 7px 5px !important;
+  border: 1px solid #d7dee8 !important;
+  border-radius: 9px !important;
+  background: #ffffff !important;
+  color: #111827 !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  box-sizing: border-box !important;
+  transition: all .16s ease !important;
+}
+
+.filter-size-options .filter-option:hover {
+  background: #f1f5f9 !important;
+  border-color: #1646b8 !important;
+  color: #1646b8 !important;
+}
+
+.filter-size-options .filter-option.active {
+  background: #1646b8 !important;
+  border-color: #1646b8 !important;
+  color: #ffffff !important;
+  box-shadow: 0 3px 8px rgba(22, 70, 184, .20) !important;
+}
+
+@media (max-width: 768px) {
+  .filter-dropdown-menu {
+    min-width: 0 !important;
+    max-width: none !important;
+    padding: 18px !important;
+  }
+
+  .filter-size-group {
+    margin-bottom: 20px !important;
+  }
+
+  .filter-size-options {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 9px !important;
+  }
+
+  .filter-size-options .filter-option {
+    min-height: 44px !important;
+    font-size: 13px !important;
+  }
+}
+
+
+/* MENU PRE?O ? ACABAMENTO PROFISSIONAL */
+
+.price-filter-menu {
+  min-width: 230px !important;
+  max-width: 280px !important;
+  grid-template-columns: 1fr !important;
+  gap: 7px !important;
+}
+
+.price-filter-menu .filter-option {
+  width: 100% !important;
+  min-height: 42px !important;
+  text-align: left !important;
+  padding: 8px 12px !important;
+}
+
+@media (max-width: 768px) {
+  .price-filter-menu {
+    min-width: 0 !important;
+    max-width: none !important;
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  .price-filter-menu .filter-option {
+    min-height: 44px !important;
+    text-align: left !important;
+  }
+}
+
+
+/* PROMO??ES ? ACABAMENTO PROFISSIONAL */
+
+.promo-filter-menu {
+  min-width: 260px !important;
+  max-width: 300px !important;
+  padding: 16px !important;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 8px !important;
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 12px !important;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.14) !important;
+}
+
+.promo-filter-menu .filter-option {
+  width: 100% !important;
+  min-height: 42px !important;
+  padding: 8px 12px !important;
+  box-sizing: border-box !important;
+  border: 1px solid #dbe1ea !important;
+  border-radius: 8px !important;
+  background: #ffffff !important;
+  color: #111827 !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  text-align: left !important;
+  cursor: pointer !important;
+}
+
+.promo-filter-menu .filter-option:hover {
+  background: #f8fafc !important;
+  border-color: #1646b8 !important;
+}
+
+.promo-filter-menu .filter-option.active {
+  background: #1646b8 !important;
+  border-color: #1646b8 !important;
+  color: #ffffff !important;
+}
+
+@media (max-width: 768px) {
+  .promo-filter-menu {
+    min-width: 0 !important;
+    max-width: none !important;
+    padding: 18px !important;
+    gap: 9px !important;
+  }
+
+  .promo-filter-menu .filter-option {
+    min-height: 44px !important;
+    font-size: 14px !important;
+  }
+}
+
+
+/* PRE?O ? ACABAMENTO PROFISSIONAL */
+
+.price-filter-menu {
+  min-width: 260px !important;
+  max-width: 300px !important;
+  padding: 16px !important;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 8px !important;
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 12px !important;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.14) !important;
+}
+
+.price-filter-menu .filter-option {
+  width: 100% !important;
+  min-height: 42px !important;
+  padding: 8px 12px !important;
+  box-sizing: border-box !important;
+  border: 1px solid #dbe1ea !important;
+  border-radius: 8px !important;
+  background: #ffffff !important;
+  color: #111827 !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  text-align: left !important;
+  cursor: pointer !important;
+}
+
+.price-filter-menu .filter-option:hover {
+  background: #f8fafc !important;
+  border-color: #1646b8 !important;
+}
+
+.price-filter-menu .filter-option.active {
+  background: #1646b8 !important;
+  border-color: #1646b8 !important;
+  color: #ffffff !important;
+}
+
+@media (max-width: 768px) {
+  .price-filter-menu {
+    min-width: 0 !important;
+    max-width: none !important;
+    padding: 18px !important;
+    gap: 9px !important;
+  }
+
+  .price-filter-menu .filter-option {
+    min-height: 44px !important;
+    font-size: 14px !important;
+  }
+}
+
+
+/* ORDENAR POR ? ACABAMENTO PROFISSIONAL */
+
+.sort-filter-menu {
+  min-width: 280px !important;
+  max-width: 320px !important;
+  padding: 16px !important;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 8px !important;
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 12px !important;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.14) !important;
+}
+
+.sort-filter-menu .filter-option {
+  width: 100% !important;
+  min-height: 42px !important;
+  padding: 8px 12px !important;
+  box-sizing: border-box !important;
+  border: 1px solid #dbe1ea !important;
+  border-radius: 8px !important;
+  background: #ffffff !important;
+  color: #111827 !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  text-align: left !important;
+  cursor: pointer !important;
+}
+
+.sort-filter-menu .filter-option:hover {
+  background: #f8fafc !important;
+  border-color: #1646b8 !important;
+}
+
+.sort-filter-menu .filter-option.active {
+  background: #1646b8 !important;
+  border-color: #1646b8 !important;
+  color: #ffffff !important;
+}
+
+@media (max-width: 768px) {
+  .sort-filter-menu {
+    min-width: 0 !important;
+    max-width: none !important;
+    padding: 18px !important;
+    gap: 9px !important;
+  }
+
+  .sort-filter-menu .filter-option {
+    min-height: 44px !important;
+    font-size: 14px !important;
+  }
+}
+
+
+/* FUNDO GERAL DA LOJA */
+html,
+body {
+  background: #eef3f9 !important;
 }
