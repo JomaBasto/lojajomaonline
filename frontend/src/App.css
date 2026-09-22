@@ -4199,3 +4199,9 @@ html,
 body {
   background: #eef3f9 !important;
 }
+
+
+/* Espa?amento entre configura??es de cookies e redes sociais */
+.footer-cookie-settings {
+  margin-bottom: 24px !important;
+}

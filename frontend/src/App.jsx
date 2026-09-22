@@ -419,6 +419,10 @@ const [mobileMenu, setMobileMenu] = useState(false);
 const selectCategory = (category) => {
 
   setCategory(category);
+  setSubCategory("");
+  setFilterSize("");
+  setPriceFilter("");
+  setPromoFilter("");
 
 
 
@@ -4500,7 +4504,7 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
       <a href="/politica-de-privacidade">Política de Privacidade</a>
 
-      <a href="/politica-de-cookies">Política de Cookies</a>
+      <a className="footer-cookie-settings" href="/politica-de-cookies">Política de Cookies</a>
 
       <a href="/politica-de-devolucoes">Política de Devoluções e Trocas</a>
 
