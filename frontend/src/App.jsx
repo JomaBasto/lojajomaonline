@@ -1664,7 +1664,7 @@ return (
 
       <header className="header">
 
-        <h1 className="logo">JomaBasto Store</h1>
+        <div className="header-brand"><img src="/jomabasto.png" alt="JomaBasto" className="header-logo" /><span className="header-brand-text">JomaBasto Store</span></div>
 
 
 
@@ -3533,14 +3533,6 @@ return (
     })}
 
 </div>
-
-
-
-<button onClick={() => setShowFavorites(true)}>
-
-  Favoritos ({favorites.length})
-
-</button>
 
 
 

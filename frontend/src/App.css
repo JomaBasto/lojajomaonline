@@ -4975,3 +4975,59 @@ body {
     transform: scale(0.99) !important;
   }
 }
+
+/* HEADER - LOGO JOMABASTO COMPACTO */
+.header-logo {
+  width: 92px !important;
+  height: auto !important;
+  max-height: 38px !important;
+  object-fit: contain !important;
+  display: block !important;
+  flex: 0 0 auto !important;
+}
+
+@media (max-width: 768px) {
+  .header-logo {
+    width: 78px !important;
+    max-height: 32px !important;
+  }
+}
+
+/* HEADER - LOGO + NOME DA LOJA */
+.header-brand {
+  display: flex !important;
+  align-items: center !important;
+  gap: 9px !important;
+  flex: 0 0 auto !important;
+}
+
+.header-logo {
+  width: 52px !important;
+  height: auto !important;
+  max-height: 30px !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+.header-brand-text {
+  color: #1646b8 !important;
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.4px !important;
+  white-space: nowrap !important;
+}
+
+@media (max-width: 768px) {
+  .header-brand {
+    gap: 6px !important;
+  }
+
+  .header-logo {
+    width: 42px !important;
+    max-height: 26px !important;
+  }
+
+  .header-brand-text {
+    font-size: 16px !important;
+  }
+}
