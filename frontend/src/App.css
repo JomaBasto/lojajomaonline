@@ -21,7 +21,7 @@ body {
   align-items: center;
   height: 70px;
   position: fixed;
-  top: 0;
+  top: 32px;
   z-index: 10;
 }
 
@@ -311,7 +311,7 @@ body {
 
 .header {
   position: fixed;
-  top: 0;
+  top: 32px;
   z-index: 1000;
   background: #1d4ed8;
   padding: 10px 20px;
@@ -916,7 +916,7 @@ body,
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
-  margin-top: 0;
+  margin-top: 32px;
 }
 
 /* Desktop: Ciclismo | Casual | Outlet */
@@ -2240,7 +2240,7 @@ body,
 /* HEADER FIXO NO TOPO */
 .header {
   position: fixed;
-  top: 0;
+  top: 32px;
   left: 0;
   right: 0;
   width: 100%;
@@ -2800,7 +2800,7 @@ body {
 
 .badge {
   position: absolute;
-  top: 0;
+  top: 32px;
   right: 0;
   min-width: 17px;
   height: 17px;
@@ -4205,3 +4205,266 @@ body {
 .footer-cookie-settings {
   margin-bottom: 24px !important;
 }
+
+/* =========================================================
+   TOP ANNOUNCEMENT BAR
+   ========================================================= */
+
+.announcement-bar {
+  width: 100%;
+  height: 32px;
+  background: #1d4ed8;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.1px;
+  position: fixed;
+  top: 32px;
+  left: 0;
+  z-index: 1000;
+}
+
+.announcement-desktop {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 42px;
+  white-space: nowrap;
+}
+
+.announcement-mobile {
+  display: none;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .announcement-bar {
+    height: 32px;
+    font-size: 11px;
+  }
+
+  .announcement-desktop {
+    display: none;
+  }
+
+  .announcement-mobile {
+    display: flex;
+    width: 100%;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  top: 0;
+  left: 0;
+  }
+
+  .announcement-mobile span {
+    position: absolute;
+    opacity: 0;
+    white-space: nowrap;
+    animation: announcementRotate 9s infinite;
+  }
+
+  .announcement-mobile span:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  .announcement-mobile span:nth-child(2) {
+    animation-delay: 3s;
+  }
+
+  .announcement-mobile span:nth-child(3) {
+    animation-delay: 6s;
+  }
+}
+
+@keyframes announcementRotate {
+  0%,
+  27% {
+    opacity: 1;
+  }
+
+  33%,
+  94% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   TOP ANNOUNCEMENT BAR
+   ========================================================= */
+
+.announcement-bar {
+  width: 100%;
+  height: 32px;
+  background: #1d4ed8;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.1px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.announcement-desktop {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 42px;
+  white-space: nowrap;
+}
+
+.announcement-mobile {
+  display: none;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .announcement-bar {
+    height: 32px;
+    font-size: 11px;
+  }
+
+  .announcement-desktop {
+    display: none;
+  }
+
+  .announcement-mobile {
+    display: flex;
+    width: 100%;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  top: 0;
+  left: 0;
+  }
+
+  .announcement-mobile span {
+    position: absolute;
+    opacity: 0;
+    white-space: nowrap;
+    animation: announcementRotate 9s infinite;
+  }
+
+  .announcement-mobile span:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  .announcement-mobile span:nth-child(2) {
+    animation-delay: 3s;
+  }
+
+  .announcement-mobile span:nth-child(3) {
+    animation-delay: 6s;
+  }
+}
+
+@keyframes announcementRotate {
+  0%,
+  27% {
+    opacity: 1;
+  }
+
+  33%,
+  94% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+
+/* Espaço reservado para a Top Bar fixa */
+body {
+  padding-top: 32px;
+}
+
+
+
+
+
+/* Ajuste do HERO para Top Bar + Header fixos */
+.hero {
+  margin-top: 102px;
+}
+
+
+/* Ajuste do Hero no mobile */
+@media (max-width: 767px) {
+  .hero {
+    margin-top: 70px;
+  }
+}
+
+
+/* Animação da Top Bar - Desktop e Mobile */
+.announcement-bar {
+  animation: announcementBlink 2.5s ease-in-out infinite;
+}
+
+@keyframes announcementBlink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.65;
+  }
+}
+
+
+/* Top Bar - piscar rápido */
+.announcement-bar {
+  animation: announcementBlink 1.2s ease-in-out infinite;
+}
+
+@keyframes announcementBlink {
+  0%, 45% {
+    opacity: 1;
+  }
+
+  50%, 55% {
+    opacity: 0;
+  }
+
+  60%, 100% {
+    opacity: 1;
+  }
+}
+
+
+/* Top Bar - efeito premium */
+.announcement-bar {
+  animation: announcementPremium 2s ease-in-out infinite;
+}
+
+@keyframes announcementPremium {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.82;
+  }
+}
+

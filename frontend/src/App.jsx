@@ -1645,6 +1645,21 @@ return (
 
   
 
+      {/* TOP ANNOUNCEMENT BAR */}
+      <div className="announcement-bar" aria-label="Informações da loja">
+        <div className="announcement-desktop">
+          <span>ENVIO GRÁTIS A PARTIR DE 70 €</span>
+          <span>TROCAS FÁCEIS</span>
+          <span>PAGAMENTO SEGURO</span>
+        </div>
+
+        <div className="announcement-mobile">
+          <span>ENVIO GRÁTIS A PARTIR DE 70 €</span>
+          <span>TROCAS FÁCEIS</span>
+          <span>PAGAMENTO SEGURO</span>
+        </div>
+      </div>
+
       {/* HEADER + MENU */}
 
       <header className="header">
@@ -4821,6 +4836,9 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
 
 import './categories-posters.css';
+
+
+
 
 
 
