@@ -4495,7 +4495,7 @@ body {
   justify-content: center;
   gap: 10px;
   margin: 0 0 28px 0;
-  padding: 13px 22px;
+  padding: 15px 26px;
   border: none;
   border-radius: 8px;
   background: #0057b8;
@@ -4705,3 +4705,79 @@ body {
 
 
 
+
+/* MOBILE - OFERTAS DA SEMANA */
+.mobile-offer-poster {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hero-top {
+    display: none !important;
+  }
+
+  .mobile-offer-poster {
+    display: block !important;
+    width: 100% !important;
+    margin-top: 70px !important;
+    margin-bottom: 40px !important;
+  }
+
+  .mobile-offer-poster-card {
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    cursor: pointer !important;
+  }
+
+  .mobile-offer-poster-card img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .categories-grid > .category-poster-promocoes {
+    display: none !important;
+  }
+}
+
+
+/* CORREÇÃO - BOTÃO VOLTAR À HOME */
+.product-filters-bar .back-home-button {
+  display: inline-flex !important;
+  width: auto !important;
+  min-width: 190px !important;
+  height: auto !important;
+  min-height: 48px !important;
+  padding: 14px 24px !important;
+  margin: 0 0 0 auto !important;
+  overflow: visible !important;
+  white-space: nowrap !important;
+  color: #ffffff !important;
+  background: #0057b8 !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  text-indent: 0 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  flex: 0 0 auto !important;
+}
+
+/* MOBILE - MOSTRAR NOME DO CLIENTE */
+@media (max-width: 768px) {
+  .header .mobile-actions .mobile-user {
+    display: inline-block !important;
+    max-width: 90px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    font-size: 12px !important;
+    line-height: 1 !important;
+    color: #111827 !important;
+    flex: 0 1 auto !important;
+  }
+}

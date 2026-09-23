@@ -640,7 +640,7 @@ const handleSave = async () => {
 
 
 
-  // PRODUTO ABERTO ATRAVÃ‰S DA URL
+  // PRODUTO ABERTO ATRAVÉS DA URL
 
   const productIdFromUrl = window.location.pathname.startsWith("/produto/")
 
@@ -830,7 +830,7 @@ const newPromoPrice = prompt(
 
     const newSizes = prompt(
 
-  "Tamanhos disponíveis (separados por vÃ­rgula):",
+  "Tamanhos disponíveis (separados por vírgula):",
 
   product.sizes?.join(", ") || ""
 
@@ -980,7 +980,7 @@ console.log("TAMANHOS ESCOLHIDOS:", newSizes);
 
   console.log("ERRO BACKEND:", erro);
 
-  alert("Erro ao definir PROMOÇÃO: " + erro);
+    alert("Erro ao definir PROMOÇÃO: " + erro);
 
   return;
 
@@ -2004,7 +2004,7 @@ return (
 
     <details className="mobile-item">
 
-    <summary>Têxil</summary>
+    <summary>Têxtil</summary>
 
 
 
@@ -2244,11 +2244,11 @@ return (
 
 
 
-          {/* Têxil */}
+          {/* Têxtil */}
 
 <div className="dropdown">
 
-  <a onClick={() => setCategory("all")}>Têxil</a>
+  <a onClick={() => setCategory("all")}>Têxtil</a>
 
   <div className="dropdown-menu">
 
@@ -2272,7 +2272,7 @@ return (
 
 
 
-{/* EDIÃ‡Ã•ES ESPECIAIS */}
+{/* EDIÇÕES ESPECIAIS */}
 
 <a onClick={() => selectCategory("edicoes-especiais")}>
 
@@ -2350,6 +2350,19 @@ return (
 
     {/* HERO */}
 
+    <section className="mobile-offer-poster">
+      <button
+        type="button"
+        className="mobile-offer-poster-card"
+        onClick={() => selectCategory("promocoes")}
+        aria-label="Ver Ofertas da Semana"
+      >
+        <img
+          src="/images/ofertas da semana-mobile.jpg"
+          alt="Ofertas da Semana"
+        />
+      </button>
+    </section>
     <section className="hero-top">
       <button
         type="button"
@@ -2387,6 +2400,11 @@ return (
         </picture>
       </button>
 
+
+    </section>
+
+
+
     <section className="seo-home">
 
         <div className="seo-home-container">
@@ -2420,8 +2438,6 @@ return (
         </div>
 
       </section>
-    </section>
-
     <section id="ofertas" className="promocoes-container">
 
 
@@ -2595,7 +2611,7 @@ return (
 
   <option value="acessorios">ACESSÓRIOS</option>
 
-  <option value="textil">Têxil</option>
+  <option value="textil">Têxtil</option>
 
   <option value="outlet">Outlet</option>
 
@@ -4554,7 +4570,7 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
   <div className="footer-bottom">
 
-  <p>Copyright © {new Date().getFullYear()} JomaBasto — Todos os direitos reservados</p>
+  <p>Copyright © {new Date().getFullYear()} JomaBasto</p>
 
 
 
@@ -4885,6 +4901,16 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
 
 import './categories-posters.css';
+
+
+
+
+
+
+
+
+
+
 
 
 
