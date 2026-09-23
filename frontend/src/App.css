@@ -4486,6 +4486,10 @@ body {
 }
 
 .back-home-button {
+  position: fixed;
+  right: 24px;
+  bottom: 45%;
+  z-index: 1000;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -4494,7 +4498,7 @@ body {
   padding: 13px 22px;
   border: none;
   border-radius: 8px;
-  background: #111;
+  background: #0057b8;
   color: #fff;
   font-size: 15px;
   font-weight: 700;
@@ -4505,7 +4509,7 @@ body {
 }
 
 .back-home-button:hover {
-  background: #333;
+  background: #004494;
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
 }
@@ -4520,6 +4524,22 @@ body {
   margin: 0 0 0 auto;
   flex-shrink: 0;
 }
+
+
+
+
+
+@media (max-width: 768px) {
+  .back-home-button {
+    right: 16px;
+    bottom: 16px;
+    padding: 11px 17px;
+    font-size: 14px;
+  }
+}
+
+
+
 
 
 
