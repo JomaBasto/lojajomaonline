@@ -73,12 +73,6 @@ export default function Categories({ onSelect }) {
       mobile: "/images/ofertas da semana-mobile.jpg",
     },
     {
-      id: "outlet",
-      name: "Outlet",
-      desktop: "/images/outlet-desktop.jpg",
-      mobile: "/images/outlet-mobile.jpg",
-    },
-    {
       id: "acessorios",
       name: "Acessórios",
       desktop: "/images/acessorios-desktop.jpg",
@@ -113,6 +107,7 @@ export default function Categories({ onSelect }) {
     </section>
   );
 }
+
 
 
 

@@ -2374,9 +2374,9 @@ return (
 
             A <strong>JomaBasto Store</strong> é revendedora oficial da <strong>Joma</strong> em Portugal,
 
-            com <strong>sapatilhas, vestuário e acessórios</strong> para
+            com <strong>sapatilhas, vestuário e acessórios</strong> para <strong>Running, Trail, Futebol, Turf, Futsal, Andebol, Voleibol, Basquetebol, Ténis, Padel, Casual, Caminhada e Ciclismo</strong>.
 
-            <strong>corrida, trail running, futebol, futsal, padel, fitness e outras modalidades</strong>.
+
 
           </p>
 
@@ -2436,7 +2436,8 @@ return (
 
 {/* FORM */}
 
-     <section ref={productsRef} className="products-section">
+<section ref={productsRef} className="products-section">
+
 
 
 
@@ -3277,7 +3278,21 @@ return (
   </div>
 </div>
 
-<div className="products-grid">
+  {category !== "all" && (
+    <button
+      type="button"
+      className="back-home-button"
+      onClick={() => {
+        setCategory("all");
+        setSubCategory("");
+        navigate("/");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }}
+    >
+      ← Voltar à Home
+    </button>
+  )}
+<div className={`products-grid ${category === "all" ? "hide-home-products" : ""}`}>
 
   {Array.isArray(sortedProducts) &&
 
@@ -4333,7 +4348,7 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
       As encomendas são expedidas rapidamente através dos CTT, com entrega
 
-      normalmente entre 3 e 5 dias úteis em Portugal Continental.
+      normalmente entre 3 e 8 dias úteis em Portugal Continental.
 
     </p>
 
@@ -4836,6 +4851,18 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
 
 import './categories-posters.css';
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
