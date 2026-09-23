@@ -1,4 +1,4 @@
-ï»¿/* =========================
+/* =========================
    RESET
 ========================= */
 * {
@@ -1452,7 +1452,7 @@ body,
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
 }
 
-/* TelemÃ³vel: 1 poster por linha */
+/* Telemóvel: 1 poster por linha */
 
 @media (min-width: 769px) {
   .hero {
@@ -1499,7 +1499,7 @@ body,
 
 
 /* =========================================================
-   RESTAURO DO LAYOUT DOS CARTÃ•ES DE PRODUTO
+   RESTAURO DO LAYOUT DOS CARTÕES DE PRODUTO
    ========================================================= */
 
 .card {
@@ -1533,7 +1533,7 @@ body,
   transform: none !important;
 }
 
-/* NOME + PREÃ‡O NA MESMA LINHA */
+/* NOME + PREÇO NA MESMA LINHA */
 .product-header {
   display: flex !important;
   justify-content: space-between !important;
@@ -1590,12 +1590,12 @@ body,
   transform: scale(1.15);
 }
 
-/* PREÃ‡O */
+/* PREÇO */
 .product-price {
   min-height: 25px;
 }
 
-/* BOTÃ•ES ADMIN */
+/* BOTÕES ADMIN */
 .product-actions {
   margin-top: 12px;
   display: flex;
@@ -1679,7 +1679,7 @@ body,
 }
 
 
-/* ===== DESCRIÃ‡ÃƒO DA LOJA ===== */
+/* ===== DESCRIÇÃO DA LOJA ===== */
 
 .seo-home {
   width: 100%;
@@ -1803,7 +1803,7 @@ body,
 
 
 /* =========================================================
-   ESTÃ‰TICA PROFISSIONAL DOS PREÃ‡OS PROMOCIONAIS
+   ESTÉTICA PROFISSIONAL DOS PREÇOS PROMOCIONAIS
    ========================================================= */
 
 .product-price {
@@ -1815,7 +1815,7 @@ body,
   margin: 6px 0 10px;
 }
 
-/* PreÃ§o antigo */
+/* Preço antigo */
 .product-price .old-price {
   margin: 0;
   color: #777;
@@ -1825,7 +1825,7 @@ body,
   white-space: nowrap;
 }
 
-/* PreÃ§o promocional */
+/* Preço promocional */
 .product-price .promo-price {
   margin: 0;
   color: #111;
@@ -1850,7 +1850,7 @@ body,
   white-space: nowrap;
 }
 
-/* CartÃµes normais continuam com o preÃ§o no cabeÃ§alho */
+/* Cartões normais continuam com o preço no cabeçalho */
 .product-header .price-inline {
   font-size: 17px;
   font-weight: 700;
@@ -1903,7 +1903,7 @@ body,
 }
 
 
-/* AJUSTE FINO â€” PROMOÃ‡Ã•ES MAIS LEVES E ELEGANTES */
+/* AJUSTE FINO — PROMOÇÕES MAIS LEVES E ELEGANTES */
 
 .product-price .old-price {
   font-size: 13px;
@@ -1928,7 +1928,7 @@ body,
 }
 
 
-/* IMAGENS DOS PRODUTOS â€” AJUSTE DESKTOP */
+/* IMAGENS DOS PRODUTOS — AJUSTE DESKTOP */
 @media (min-width: 769px) {
   .card img,
   .grid .card img,
@@ -1937,7 +1937,7 @@ body,
   }
 }
 
-/* MOBILE â€” MANTER COMO ESTÃ */
+/* MOBILE — MANTER COMO ESTÁ */
 @media (min-width: 769px) {
   .hero {
     height: auto !important;
@@ -1972,7 +1972,7 @@ body,
 }
 
 
-/* ARTIGO VISÃVEL MAIOR â€” APENAS DESKTOP */
+/* ARTIGO VISÍVEL MAIOR — APENAS DESKTOP */
 @media (min-width: 769px) {
   .grid .card img,
   .products-grid .card img {
@@ -1981,7 +1981,7 @@ body,
   }
 }
 
-/* MOBILE â€” NÃƒO ALTERAR */
+/* MOBILE — NÃO ALTERAR */
 @media (min-width: 769px) {
   .hero {
     height: auto !important;
@@ -2015,7 +2015,7 @@ body,
 }
 
 
-/* ARTIGO VISÃVEL MAIOR â€” DESKTOP */
+/* ARTIGO VISÍVEL MAIOR — DESKTOP */
 @media (min-width: 769px) {
   .grid .card img,
   .products-grid .card img {
@@ -2024,7 +2024,7 @@ body,
   }
 }
 
-/* MOBILE â€” MANTER INALTERADO */
+/* MOBILE — MANTER INALTERADO */
 @media (min-width: 769px) {
   .hero {
     height: auto !important;
@@ -2059,7 +2059,7 @@ body,
 
 
 /* =========================================================
-   PRODUTO VISÃVEL MAIOR â€” DESKTOP
+   PRODUTO VISÍVEL MAIOR — DESKTOP
    ========================================================= */
 
 @media (min-width: 769px) {
@@ -2074,7 +2074,7 @@ body,
   }
 }
 
-/* MOBILE â€” NÃƒO ALTERAR */
+/* MOBILE — NÃO ALTERAR */
 @media (min-width: 769px) {
   .hero {
     height: auto !important;
@@ -2248,7 +2248,7 @@ body,
   background: #1d4ed8;
 }
 
-/* evita que o conteÃºdo fique escondido atrÃ¡s da barra */
+/* evita que o conteúdo fique escondido atrás da barra */
 body {
   padding-top: 70px;
 }
@@ -2311,7 +2311,7 @@ body {
     max-width: 100%;
   }
 
-  /* NÃ£o alterar proporÃ§Ã£o das imagens */
+  /* Não alterar proporção das imagens */
   .categories-grid > .category-poster img {
     display: block;
     width: 100%;
@@ -2320,7 +2320,7 @@ body {
     object-fit: contain;
   }
 
-  /* Casual e Outlet ficam dentro da mesma Ã¡rea
+  /* Casual e Outlet ficam dentro da mesma área
      do Ciclismo, sem esticar as imagens */
   .categories-grid > .category-poster:nth-child(11) img,
   .categories-grid > .category-poster:nth-child(13) img {
@@ -2332,7 +2332,7 @@ body {
 }
 
 /* =========================================================
-   MOBILE â€” manter uma coluna
+   MOBILE — manter uma coluna
    ========================================================= */
 
 @media (max-width: 768px) {
@@ -2358,7 +2358,7 @@ body {
 
 
 /* =========================================================
-   ÃšLTIMOS 4 POSTERS â€” manter no final da grelha
+   ÚLTIMOS 4 POSTERS — manter no final da grelha
    ========================================================= */
 
 @media (min-width: 769px) {
@@ -2386,7 +2386,7 @@ body {
   }
 
   /*
-   * O bloco final comeÃ§a depois dos 9 primeiros posters.
+   * O bloco final começa depois dos 9 primeiros posters.
    * Ciclismo, Casual e Outlet ficam na mesma linha.
    */
 
@@ -2411,7 +2411,7 @@ body {
 }
 
 
-/* Ajuste do espaÃ§o abaixo do hero */
+/* Ajuste do espaço abaixo do hero */
 .hero {
   height: auto !important;
   aspect-ratio: 16 / 9 !important;
@@ -2425,7 +2425,7 @@ body {
   display: block !important;
 }
 
-/* HERO Ofertas da Semana â€” desktop/mobile */
+/* HERO Ofertas da Semana — desktop/mobile */
 .hero picture {
   display: block;
   width: 100%;
@@ -2440,14 +2440,14 @@ body {
   object-position: center;
 }
 
-/* HERO â€” imagem especÃ­fica para telemÃ³vel */
+/* HERO — imagem específica para telemóvel */
 @media (max-width: 768px) {
   .hero picture img {
     content: url("/images/ofertas da semana-mobile.jpg");
   }
 }
 
-/* HERO mobile â€” mostrar a imagem Ofertas da Semana completa */
+/* HERO mobile — mostrar a imagem Ofertas da Semana completa */
 @media (max-width: 768px) {
   .hero {
     height: auto !important;
@@ -2468,7 +2468,7 @@ body {
   }
 }
 
-/* HERO Ofertas da Semana â€” imagem prÃ³pria no telemÃ³vel */
+/* HERO Ofertas da Semana — imagem própria no telemóvel */
 @media (max-width: 768px) {
   .hero {
     height: auto !important;
@@ -2485,7 +2485,7 @@ body {
 }
 
 /* =========================================================
-   PÃƒÂGINAS LEGAIS
+   PÃGINAS LEGAIS
 ========================================================= */
 
 .legal-page {
@@ -2596,7 +2596,7 @@ body {
 }
 
 
-/* Ajuste final â€” Ofertas da Semana com a mesma proporÃ§Ã£o do poster antigo */
+/* Ajuste final — Ofertas da Semana com a mesma proporção do poster antigo */
 @media (min-width: 769px) {
   .hero {
     aspect-ratio: 16 / 9 !important;
@@ -2618,7 +2618,7 @@ body {
   }
 }
 
-/* AJUSTE FINAL â€” Ofertas da Semana */
+/* AJUSTE FINAL — Ofertas da Semana */
 @media (min-width: 769px) {
   .hero {
     max-width: 1290px !important;
@@ -2643,7 +2643,7 @@ body {
   }
 }
 
-/* Ofertas da Semana â€” mostrar o poster novo inteiro */
+/* Ofertas da Semana — mostrar o poster novo inteiro */
 @media (min-width: 769px) {
   .hero img {
     object-fit: contain !important;
@@ -2652,7 +2652,7 @@ body {
   }
 }
 
-/* Ofertas da Semana â€” largura total das margens do site */
+/* Ofertas da Semana — largura total das margens do site */
 @media (min-width: 769px) {
   .hero {
     max-width: none !important;
@@ -2674,8 +2674,8 @@ body {
 
 
 /* =========================================
-   JOMABASTO â€” HEADER V2
-   Apenas visual â€” nÃ£o altera funcionalidades
+   JOMABASTO — HEADER V2
+   Apenas visual — não altera funcionalidades
    ========================================= */
 
 .header {
@@ -2872,8 +2872,8 @@ body {
 
 
 /* =========================================
-   JOMABASTO â€” HEADER V2.1
-   CorreÃ§Ã£o dos dropdowns desktop
+   JOMABASTO — HEADER V2.1
+   Correção dos dropdowns desktop
    ========================================= */
 
 @media (min-width: 769px) {
@@ -2919,8 +2919,8 @@ body {
 
 
 /* =========================================
-   JOMABASTO â€” MOBILE HEADER V2.2
-   EspaÃ§amento dos Ã­cones mobile
+   JOMABASTO — MOBILE HEADER V2.2
+   Espaçamento dos ícones mobile
    ========================================= */
 
 @media (max-width: 768px) {
@@ -3000,8 +3000,8 @@ body {
 
 
 /* =========================================
-   JOMABASTO â€” MOBILE HEADER V2.3
-   Tudo numa Ãºnica linha
+   JOMABASTO — MOBILE HEADER V2.3
+   Tudo numa única linha
    ========================================= */
 
 @media (max-width: 768px) {
@@ -3052,8 +3052,8 @@ body {
 
 
 /* =========================================
-   JOMABASTO â€” MOBILE HEADER V2.4
-   Linha Ãºnica: logo + Ã­cones + menu
+   JOMABASTO — MOBILE HEADER V2.4
+   Linha única: logo + ícones + menu
    ========================================= */
 
 @media (max-width: 768px) {
@@ -3141,7 +3141,7 @@ body {
 
 
 /* =========================================
-   JOMABASTO â€” MOBILE SEARCH V2.1
+   JOMABASTO — MOBILE SEARCH V2.1
    Pesquisa sem cobrir o logo
    ========================================= */
 
@@ -3184,8 +3184,8 @@ body {
 
 
 /* =========================================
-   JOMABASTO â€” MOBILE MENU V2.1
-   Menu abaixo do cabeÃ§alho
+   JOMABASTO — MOBILE MENU V2.1
+   Menu abaixo do cabeçalho
    ========================================= */
 
 @media (max-width: 768px) {
@@ -3219,8 +3219,8 @@ body {
 
 
 /* =========================================
-   JOMABASTO â€” MOBILE SUBCATEGORIES V2.1
-   Garantir texto visÃ­vel
+   JOMABASTO — MOBILE SUBCATEGORIES V2.1
+   Garantir texto visível
    ========================================= */
 
 @media (max-width: 768px) {
@@ -3263,7 +3263,7 @@ body {
 
 
 
-/* AJUSTE SIMPLES â€” IMAGENS MAIORES + CARTÃ•ES MAIS JUNTOS */
+/* AJUSTE SIMPLES — IMAGENS MAIORES + CARTÕES MAIS JUNTOS */
 
 @media (min-width: 769px) {
   .grid,
@@ -3290,7 +3290,7 @@ body {
 }
 
 
-/* CORREÃ‡ÃƒO â€” IMAGENS DOS PRODUTOS REALMENTE MAIORES */
+/* CORREÇÃO — IMAGENS DOS PRODUTOS REALMENTE MAIORES */
 
 @media (min-width: 769px) {
   .grid .card img,
@@ -3319,7 +3319,7 @@ body {
 }
 
 
-/* AJUSTE â€” IMAGENS DOS PRODUTOS AINDA MAIORES */
+/* AJUSTE — IMAGENS DOS PRODUTOS AINDA MAIORES */
 
 @media (min-width: 769px) {
   .grid .card img,
@@ -3336,7 +3336,7 @@ body {
 }
 
 
-/* MELHORIA â€” PREÃ‡OS E PROMOÃ‡Ã•ES DOS PRODUTOS */
+/* MELHORIA — PREÇOS E PROMOÇÕES DOS PRODUTOS */
 
 .grid .card .product-header {
   align-items: center !important;
@@ -3410,7 +3410,7 @@ body {
 }
 
 
-/* MELHORIA â€” STOCK E FAVORITOS DOS PRODUTOS */
+/* MELHORIA — STOCK E FAVORITOS DOS PRODUTOS */
 
 .grid .card .stock-favorite,
 .products-grid .card .stock-favorite {
@@ -3481,17 +3481,17 @@ body {
 
 
 /* =========================================================
-   MELHORIA â€” ESPAÃ‡AMENTO E HIERARQUIA DA PÃGINA INICIAL
+   MELHORIA — ESPAÇAMENTO E HIERARQUIA DA PÁGINA INICIAL
    ========================================================= */
 
 @media (min-width: 769px) {
 
-  /* EspaÃ§o depois do banner */
+  /* Espaço depois do banner */
   .hero {
     margin-bottom: 34px !important;
   }
 
-  /* TÃ­tulos das secÃ§Ãµes */
+  /* Títulos das secções */
   .categories-section,
   .products-section {
     width: 100% !important;
@@ -3508,7 +3508,7 @@ body {
     color: #111827 !important;
   }
 
-  /* EspaÃ§o entre categorias e produtos */
+  /* Espaço entre categorias e produtos */
   .categories-section {
     margin-bottom: 48px !important;
   }
@@ -3525,7 +3525,7 @@ body {
 
 @media (max-width: 768px) {
 
-  /* EspaÃ§o depois do banner */
+  /* Espaço depois do banner */
   .hero {
     margin-bottom: 24px !important;
   }
@@ -3556,7 +3556,7 @@ body {
 
 
 /* =========================================================
-   MELHORIA â€” BLOCO INSTITUCIONAL DA PÃGINA INICIAL
+   MELHORIA — BLOCO INSTITUCIONAL DA PÁGINA INICIAL
    ========================================================= */
 
 .seo-home {
@@ -3627,7 +3627,7 @@ body {
 
 
 /* =========================================================
-   MELHORIA â€” NOMES DOS PRODUTOS
+   MELHORIA — NOMES DOS PRODUTOS
    ========================================================= */
 
 .grid .card h3,
@@ -3659,7 +3659,7 @@ body {
 
 
 /* =========================================================
-   ACABAMENTO â€” CARTÃ•ES DE PRODUTO
+   ACABAMENTO — CARTÕES DE PRODUTO
    ========================================================= */
 
 .grid .card,
@@ -3694,7 +3694,7 @@ body {
 
 
 /* =========================================================
-   MELHORIA â€” INTERAÃ‡ÃƒO DOS POSTERS DE CATEGORIAS
+   MELHORIA — INTERAÇÃO DOS POSTERS DE CATEGORIAS
    ========================================================= */
 
 .category-poster {
@@ -3735,7 +3735,7 @@ body {
 
 
 /* =========================================================
-   MELHORIA â€” BARRA DE PESQUISA DESKTOP
+   MELHORIA — BARRA DE PESQUISA DESKTOP
    ========================================================= */
 
 @media (min-width: 769px) {
@@ -3786,7 +3786,7 @@ body {
 
 
 /* =========================================================
-   MELHORIA â€” BOTÃƒO ADICIONAR AO CARRINHO
+   MELHORIA — BOTÃO ADICIONAR AO CARRINHO
    ========================================================= */
 
 .add-to-cart-btn {
@@ -4395,7 +4395,7 @@ body {
 }
 
 
-/* EspaÃ§o reservado para a Top Bar fixa */
+/* Espaço reservado para a Top Bar fixa */
 body {
   padding-top: 32px;
 }
@@ -4418,7 +4418,7 @@ body {
 }
 
 
-/* AnimaÃ§Ã£o da Top Bar - Desktop e Mobile */
+/* Animação da Top Bar - Desktop e Mobile */
 .announcement-bar {
   animation: announcementBlink 2.5s ease-in-out infinite;
 }
@@ -4433,7 +4433,7 @@ body {
 }
 
 
-/* Top Bar - piscar rÃ¡pido */
+/* Top Bar - piscar rápido */
 .announcement-bar {
   animation: announcementBlink 1.2s ease-in-out infinite;
 }
@@ -4480,7 +4480,7 @@ body {
   display: none !important;
 }
 
-/* NÃ£o mostrar produtos automaticamente na homepage */
+/* Não mostrar produtos automaticamente na homepage */
 .hide-home-products {
   display: none !important;
 }
@@ -4626,7 +4626,7 @@ body {
   }
 }
 
-/* CORREÃ‡ÃƒO FINAL - GRELHA COM 12 POSTERS */
+/* CORREÇÃO FINAL - GRELHA COM 12 POSTERS */
 @media (min-width: 769px) {
   .categories-grid {
     display: grid !important;
@@ -4650,7 +4650,7 @@ body {
     object-fit: contain !important;
   }
 
-  /* Ofertas da Semana e Outlet: Ãºltimo par, mesmo tamanho dos restantes */
+  /* Ofertas da Semana e Outlet: último par, mesmo tamanho dos restantes */
   .categories-grid > .category-poster:nth-child(11),
   .categories-grid > .category-poster:nth-child(12) {
     grid-column: auto !important;
@@ -4673,7 +4673,7 @@ body {
   }
 }
 
-/* EspaÃ§o entre Running/Futebol e o texto SEO */
+/* Espaço entre Running/Futebol e o texto SEO */
 .seo-home {
   margin-top: 40px !important;
 }
@@ -4745,7 +4745,7 @@ body {
 }
 
 
-/* CORREÃ‡ÃƒO - BOTÃƒO VOLTAR Ã€ HOME */
+/* CORREÇÃO - BOTÃO VOLTAR À HOME */
 .product-filters-bar .back-home-button {
   display: inline-flex !important;
   width: auto !important;
@@ -4779,5 +4779,199 @@ body {
     line-height: 1 !important;
     color: #111827 !important;
     flex: 0 1 auto !important;
+  }
+}
+
+/* MOBILE - DROPDOWN DO UTILIZADOR DENTRO DO ECRÃ */
+@media (max-width: 768px) {
+  .header .mobile-user-dropdown {
+    right: 0 !important;
+    left: auto !important;
+    width: 190px !important;
+    max-width: calc(100vw - 20px) !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .header .mobile-user-dropdown button {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* MOBILE - MENU DO UTILIZADOR SEM SAIR DO ECRÃ */
+@media (max-width: 768px) {
+  .header .mobile-user-menu {
+    position: relative !important;
+  }
+
+  .header .mobile-user-menu .mobile-user-dropdown {
+    position: fixed !important;
+    top: 80px !important;
+    right: 10px !important;
+    left: auto !important;
+    width: 190px !important;
+    min-width: 190px !important;
+    max-width: calc(100vw - 20px) !important;
+    box-sizing: border-box !important;
+    padding: 12px !important;
+    overflow: visible !important;
+    z-index: 30000 !important;
+  }
+
+  .header .mobile-user-menu .mobile-user-dropdown button {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    white-space: nowrap !important;
+  }
+}
+
+
+
+
+
+/* MOBILE - FILTROS AGRUPADOS E ALINHADOS */
+@media (max-width: 768px) {
+  .product-filters-bar {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    white-space: nowrap !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .product-filters-left {
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    flex: 0 0 auto !important;
+  }
+
+  .product-filters-left .filter-dropdown,
+  .sort-dropdown {
+    flex: 0 0 auto !important;
+  }
+
+  .filter-btn,
+  .sort-btn {
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+  }
+
+  .filters-label {
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* FOOTER - VISUAL MAIS LEVE */
+.footer {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border-top: 1px solid #e5e7eb;
+}
+
+.footer-block {
+  background: #f8fafc !important;
+  color: #111827 !important;
+  border: 1px solid #e5e7eb;
+}
+
+.footer-block h4,
+.footer-block h5 {
+  color: #111827 !important;
+}
+
+.footer-block p {
+  color: #64748b !important;
+}
+
+.footer-block svg {
+  color: #0057b8 !important;
+}
+
+.footer-bottom {
+  border-top: 1px solid #e5e7eb !important;
+  color: #64748b !important;
+}
+
+.footer-links a {
+  color: #475569 !important;
+}
+
+.footer-links a:hover {
+  color: #0057b8 !important;
+}
+
+.footer-social span {
+  color: #64748b !important;
+}
+
+.footer-social a {
+  color: #0057b8 !important;
+}
+
+.footer-contact {
+  color: #475569 !important;
+}
+
+.footer-contact:hover {
+  color: #0057b8 !important;
+}
+
+@media (max-width: 600px) {
+  .footer-content > .footer-block {
+    border-bottom: 1px solid #e5e7eb !important;
+  }
+}
+
+/* TOP - RUNNING + FUTEBOL: HOVER E CANTOS ARREDONDADOS */
+.hero-top-card {
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  transition: transform 0.22s ease, box-shadow 0.22s ease !important;
+}
+
+.hero-top-card img {
+  border-radius: 14px !important;
+  transition: transform 0.3s ease !important;
+}
+
+.hero-top-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.16) !important;
+}
+
+.hero-top-card:hover img {
+  transform: scale(1.025) !important;
+}
+
+.hero-top-card:active {
+  transform: translateY(-1px) !important;
+}
+
+/* No mobile mantém estático */
+@media (max-width: 768px) {
+  .hero-top-card:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .hero-top-card:hover img {
+    transform: none !important;
+  }
+
+  .hero-top-card:active {
+    transform: scale(0.99) !important;
   }
 }
