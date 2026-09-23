@@ -2350,17 +2350,44 @@ return (
 
     {/* HERO */}
 
-    <section className="hero" onClick={() => selectCategory("promocoes")} role="button" tabIndex={0}>
+    <section className="hero-top">
+      <button
+        type="button"
+        className="hero-top-card"
+        onClick={() => selectCategory("running")}
+        aria-label="Ver Running"
+      >
+        <picture>
+          <source
+            media="(max-width: 768px)"
+            srcSet="/images/running-mobile.jpg"
+          />
+          <img
+            src="/images/running-desktop.jpg"
+            alt="Joma Running"
+          />
+        </picture>
+      </button>
 
-      <img src="/images/ofertas da semana-desktop.png" alt="Ofertas da Semana" />
+      <button
+        type="button"
+        className="hero-top-card"
+        onClick={() => selectCategory("futebol")}
+        aria-label="Ver Futebol"
+      >
+        <picture>
+          <source
+            media="(max-width: 768px)"
+            srcSet="/images/futebol-mobile.jpg"
+          />
+          <img
+            src="/images/futebol-desktop.jpg"
+            alt="Joma Futebol"
+          />
+        </picture>
+      </button>
 
-    </section>
-
-
-
-    <section id="ofertas" className="promocoes-container">
-
-      <section className="seo-home">
+    <section className="seo-home">
 
         <div className="seo-home-container">
 
@@ -2393,10 +2420,17 @@ return (
         </div>
 
       </section>
+    </section>
+
+    <section id="ofertas" className="promocoes-container">
+
+
 
     </section>
 
 
+
+  
 
     <Categories
 
@@ -4851,6 +4885,10 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
 
 import './categories-posters.css';
+
+
+
+
 
 
 

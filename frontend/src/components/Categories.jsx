@@ -1,22 +1,10 @@
-export default function Categories({ onSelect }) {
+ï»¿export default function Categories({ onSelect }) {
   const categories = [
-    {
-      id: "running",
-      name: "Running",
-      desktop: "/images/running-desktop.jpg",
-      mobile: "/images/running-mobile.jpg",
-    },
     {
       id: "trail",
       name: "Trail",
       desktop: "/images/trail-desktop.jpg",
       mobile: "/images/trail-mobile.jpg",
-    },
-    {
-      id: "futebol",
-      name: "Futebol",
-      desktop: "/images/futebol-desktop.jpg",
-      mobile: "/images/futebol-mobile.jpg",
     },
     {
       id: "futsal",
@@ -38,7 +26,7 @@ export default function Categories({ onSelect }) {
     },
     {
       id: "tenis",
-      name: "Ténis",
+      name: "TÃ©nis",
       desktop: "/images/tenis-desktop.jpg",
       mobile: "/images/tenis-mobile.jpg",
     },
@@ -67,16 +55,22 @@ export default function Categories({ onSelect }) {
       mobile: "/images/casual-mobile.jpg",
     },
     {
+      id: "acessorios",
+      name: "AcessÃ³rios",
+      desktop: "/images/acessorios-desktop.jpg",
+      mobile: "/images/acessorios-mobile.jpg",
+    },
+    {
       id: "promocoes",
       name: "Ofertas da Semana",
       desktop: "/images/ofertas da semana-desktop.png",
       mobile: "/images/ofertas da semana-mobile.jpg",
     },
     {
-      id: "acessorios",
-      name: "Acessórios",
-      desktop: "/images/acessorios-desktop.jpg",
-      mobile: "/images/acessorios-mobile.jpg",
+      id: "outlet",
+      name: "Outlet",
+      desktop: "/images/outlet-desktop.jpg",
+      mobile: "/images/outlet-mobile.jpg",
     },
   ];
 
@@ -107,10 +101,3 @@ export default function Categories({ onSelect }) {
     </section>
   );
 }
-
-
-
-
-
-
-

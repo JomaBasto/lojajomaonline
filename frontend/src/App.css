@@ -4543,3 +4543,165 @@ body {
 
 
 
+
+/* TOPO - RUNNING + FUTEBOL */
+.hero-top {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 102px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.hero-top-card {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.hero-top-card picture,
+.hero-top-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero-top-card img {
+  object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .hero-top {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 70px;
+  }
+}
+
+/* TOPO - RUNNING + FUTEBOL */
+.hero-top {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 102px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.hero-top-card {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.hero-top-card picture,
+.hero-top-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero-top-card img {
+  object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .hero-top {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 70px;
+  }
+}
+
+/* CORREÇÃO FINAL - GRELHA COM 12 POSTERS */
+@media (min-width: 769px) {
+  .categories-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 24px !important;
+    width: 100% !important;
+  }
+
+  .categories-grid > .category-poster {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block !important;
+  }
+
+  .categories-grid > .category-poster img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+  }
+
+  /* Ofertas da Semana e Outlet: último par, mesmo tamanho dos restantes */
+  .categories-grid > .category-poster:nth-child(11),
+  .categories-grid > .category-poster:nth-child(12) {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .categories-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+  .categories-grid > .category-poster {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    width: 100% !important;
+  }
+}
+
+/* Espaço entre Running/Futebol e o texto SEO */
+.seo-home {
+  margin-top: 40px !important;
+}
+
+
+
+
+/* MOBILE - SEO ENTRE RUNNING E FUTEBOL */
+@media (max-width: 767px) {
+  .hero-top {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero-top-card:nth-child(1) {
+    order: 1 !important;
+  }
+
+  .hero-top-card:nth-child(2) {
+    order: 3 !important;
+  }
+
+  .hero-top + .seo-home {
+    order: 2 !important;
+    margin-top: 40px !important;
+    margin-bottom: 38px !important;
+  }
+}
+
+
+
