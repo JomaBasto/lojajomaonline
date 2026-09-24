@@ -2438,6 +2438,19 @@ return (
         </div>
 
       </section>
+      <section className="mobile-running-poster">
+        <button
+          type="button"
+          onClick={() => selectCategory("running")}
+          aria-label="Ver Running"
+        >
+          <img
+            src="/images/running-mobile.jpg"
+            alt="Joma Running"
+          />
+        </button>
+      </section>
+
     <section id="ofertas" className="promocoes-container">
 
 
