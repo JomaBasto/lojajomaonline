@@ -5168,3 +5168,10 @@ body {
 
 
 
+
+/* Espaçamento entre o vídeo Futebol e os posters no mobile */
+@media (max-width: 768px) {
+  .home-hero-layout .hero-video-futebol {
+    margin-bottom: 30px;
+  }
+}
