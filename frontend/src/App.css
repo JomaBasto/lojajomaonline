@@ -2260,13 +2260,10 @@ body {
 
 
 /* =========================================================
-   LAYOUT FINAL DOS POSTERS DE CATEGORIAS
-   Ciclismo | Casual | Outlet
-   Ofertas da Semana em largura total
+   LAYOUT DOS 12 POSTERS DE CATEGORIAS
    ========================================================= */
 
 @media (min-width: 769px) {
-
   .categories-grid {
     display: grid !important;
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
@@ -2276,42 +2273,13 @@ body {
     align-items: stretch;
   }
 
-  /* Ciclismo */
-  .categories-grid > .category-poster:nth-child(10) {
-    grid-column: 1 !important;
-    grid-row: 1 !important;
-  }
-
-  /* Casual */
-  .categories-grid > .category-poster:nth-child(11) {
-    grid-column: 2 !important;
-    grid-row: 1 !important;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* Outlet */
-  .categories-grid > .category-poster:nth-child(13) {
-    grid-column: 3 !important;
-    grid-row: 1 !important;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* Ofertas da Semana */
-  .categories-grid > .category-poster:nth-child(12) {
-    grid-column: 1 / -1 !important;
-    grid-row: 2 !important;
-
+  .categories-grid > .category-poster {
+    grid-column: auto !important;
+    grid-row: auto !important;
     width: 100%;
     max-width: 100%;
   }
 
-  /* Não alterar proporção das imagens */
   .categories-grid > .category-poster img {
     display: block;
     width: 100%;
@@ -2319,98 +2287,40 @@ body {
     max-width: 100%;
     object-fit: contain;
   }
-
-  /* Casual e Outlet ficam dentro da mesma área
-     do Ciclismo, sem esticar as imagens */
-  .categories-grid > .category-poster:nth-child(11) img,
-  .categories-grid > .category-poster:nth-child(13) img {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    object-fit: contain;
-  }
 }
 
 /* =========================================================
-   MOBILE — manter uma coluna
+   MOBILE — uma coluna, incluindo Ofertas da Semana
    ========================================================= */
 
 @media (max-width: 768px) {
-
   .categories-grid {
     grid-template-columns: 1fr !important;
     gap: 18px !important;
   }
 
-  .categories-grid > .category-poster:nth-child(10),
-  .categories-grid > .category-poster:nth-child(11),
-  .categories-grid > .category-poster:nth-child(12),
-  .categories-grid > .category-poster:nth-child(13) {
+  .categories-grid > .category-poster {
     grid-column: auto !important;
     grid-row: auto !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
   .categories-grid > .category-poster img {
-    width: 100%;
-    height: auto;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+  }
+
+  .categories-grid > .category-poster-promocoes {
+    display: block !important;
+    visibility: visible !important;
+    width: 100% !important;
   }
 }
-
-
-/* =========================================================
-   ÚLTIMOS 4 POSTERS — manter no final da grelha
-   ========================================================= */
-
-@media (min-width: 769px) {
-
-  /* Os 10 primeiros posters continuam na grelha normal */
-
-  .categories-grid > .category-poster:nth-child(10) {
-    grid-column: auto !important;
-    grid-row: auto !important;
-  }
-
-  .categories-grid > .category-poster:nth-child(11) {
-    grid-column: auto !important;
-    grid-row: auto !important;
-  }
-
-  .categories-grid > .category-poster:nth-child(12) {
-    grid-column: auto !important;
-    grid-row: auto !important;
-  }
-
-  .categories-grid > .category-poster:nth-child(13) {
-    grid-column: auto !important;
-    grid-row: auto !important;
-  }
-
-  /*
-   * O bloco final começa depois dos 9 primeiros posters.
-   * Ciclismo, Casual e Outlet ficam na mesma linha.
-   */
-
-  .categories-grid > .category-poster:nth-child(10) {
-    grid-column: 1 !important;
-  }
-
-  .categories-grid > .category-poster:nth-child(11) {
-    grid-column: 2 !important;
-  }
-
-  .categories-grid > .category-poster:nth-child(13) {
-    grid-column: 3 !important;
-  }
-
-  /*
-   * Oferta da Semana ocupa toda a linha seguinte.
-   */
-  .categories-grid > .category-poster:nth-child(12) {
-    grid-column: 1 / -1 !important;
-  }
-}
-
-
 /* Ajuste do espaço abaixo do hero */
 .hero {
   height: auto !important;
