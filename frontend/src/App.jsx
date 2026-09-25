@@ -2349,118 +2349,64 @@ return (
   <>
 
     {/* HERO */}
-
-    <section className="mobile-offer-poster">
-      <button
-        type="button"
-        className="mobile-offer-poster-card"
-        onClick={() => selectCategory("promocoes")}
-        aria-label="Ver Ofertas da Semana"
-      >
-        <img
-          src="/images/ofertas da semana-mobile.jpg"
-          alt="Ofertas da Semana"
-        />
-      </button>
-    </section>
-    <section className="hero-top">
-      <button
-        type="button"
-        className="hero-top-card"
-        onClick={() => selectCategory("running")}
-        aria-label="Ver Running"
-      >
-        <picture>
-          <source
-            media="(max-width: 768px)"
-            srcSet="/images/running-mobile.jpg"
-          />
-          <img
-            src="/images/running-desktop.jpg"
-            alt="Joma Running"
-          />
-        </picture>
-      </button>
-
-      <button
-        type="button"
-        className="hero-top-card"
-        onClick={() => selectCategory("futebol")}
-        aria-label="Ver Futebol"
-      >
-        <picture>
-          <source
-            media="(max-width: 768px)"
-            srcSet="/images/futebol-mobile.jpg"
-          />
-          <img
-            src="/images/futebol-desktop.jpg"
-            alt="Joma Futebol"
-          />
-        </picture>
-      </button>
-
-
-    </section>
-
-
-
-    <section className="seo-home">
-
-        <div className="seo-home-container">
-
-
-
-          <h2>Loja Oficial JomaBasto em Portugal</h2>
-
-
-
-          <p>
-
-            A <strong>JomaBasto Store</strong> é revendedora oficial da <strong>Joma</strong> em Portugal,
-
-            com <strong>sapatilhas, vestuário e acessórios</strong> para <strong>Running, Trail, Futebol, Turf, Futsal, Andebol, Voleibol, Basquetebol, Ténis, Padel, Casual, Caminhada e Ciclismo</strong>.
-
-
-
-          </p>
-
-
-
-          <p>
-
-            <strong>Produtos originais Joma, envio para todo Portugal, pagamentos seguros e apoio especializado.</strong>
-
-          </p>
-
-
-
-        </div>
-
-      </section>
-      <section className="mobile-running-poster">
+    <section className="home-hero-layout">
+      <article className="hero-video-card">
         <button
           type="button"
-          onClick={() => selectCategory("running")}
-          aria-label="Ver Running"
+          className="hero-video-button"
+          onClick={() => selectCategory("padel")}
+          aria-label="Ver Padel"
         >
-          <img
-            src="/images/running-mobile.jpg"
-            alt="Joma Running"
+          <video
+            className="hero-video"
+            src="/videos/21857.mp4"
+            poster="/images/padel-desktop.jpg"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+
           />
         </button>
+      </article>
+
+      <section className="seo-home">
+        <div className="seo-home-container">
+          <h2>Loja Oficial JomaBasto em Portugal</h2>
+
+          <p>
+            A <strong>JomaBasto Store</strong> é revendedora oficial da <strong>Joma</strong> em Portugal,
+            com <strong>sapatilhas, vestuário e acessórios</strong> para <strong>Running, Trail, Futebol, Turf, Futsal, Andebol, Voleibol, Basquetebol, Ténis, Padel, Casual, Caminhada e Ciclismo</strong>.
+          </p>
+
+          <p>
+            <strong>Produtos originais Joma, envio para todo Portugal, pagamentos seguros e apoio especializado.</strong>
+          </p>
+        </div>
       </section>
 
-    <section id="ofertas" className="promocoes-container">
+      <article className="hero-video-card hero-video-futebol">
+        <button
+          type="button"
+          className="hero-video-button"
+          onClick={() => selectCategory("futebol")}
+          aria-label="Ver Futebol"
+        >
+          <video
+            className="hero-video"
+            src="/videos/21854.mp4"
+            poster="/images/futebol-desktop.jpg"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
 
-
-
+          />
+        </button>
+      </article>
     </section>
-
-
-
-  
-
     <Categories
 
     onSelect={(sport) => {
@@ -4906,6 +4852,13 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
 
 import './categories-posters.css';
+
+
+
+
+
+
+
 
 
 

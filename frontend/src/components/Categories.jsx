@@ -1,6 +1,12 @@
 ﻿export default function Categories({ onSelect }) {
   const categories = [
     {
+      id: "running",
+      name: "Running",
+      desktop: "/images/running-desktop.jpg",
+      mobile: "/images/running-mobile.jpg",
+    },
+    {
       id: "trail",
       name: "Trail",
       desktop: "/images/trail-desktop.jpg",
@@ -101,3 +107,4 @@
     </section>
   );
 }
+
