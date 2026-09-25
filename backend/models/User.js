@@ -6,6 +6,12 @@ const userSchema = new mongoose.Schema({
   email: String,
   password: String,
 
+  telefone: String,
+  morada: String,
+  codigoPostal: String,
+  localidade: String,
+  nif: String,
+
   role: {
     type: String,
     default: "user"

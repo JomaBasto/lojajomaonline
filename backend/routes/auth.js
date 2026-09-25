@@ -8,16 +8,25 @@ import User from "../models/User.js";
 const router = express.Router();
 
 // ======================
-// 📝 REGISTO
+// ?? REGISTER
 // ======================
 router.post("/register", async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const {
+      name,
+      email,
+      password,
+      telefone,
+      morada,
+      codigoPostal,
+      localidade,
+      nif
+    } = req.body;
 
     const exists = await User.findOne({ email });
 
     if (exists) {
-      return res.status(400).json({ message: "User já existe" });
+      return res.status(400).json({ message: "User j� existe" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -26,14 +35,19 @@ router.post("/register", async (req, res) => {
       name,
       email,
       password: hashedPassword,
+      telefone,
+      morada,
+      codigoPostal,
+      localidade,
+      nif,
       role: "user"
     });
 
     console.log("REGISTER OK");
 
-return res.status(201).json({
-  message: "Conta criada com sucesso"
-});
+    return res.status(201).json({
+      message: "Conta criada com sucesso"
+    });
 
   } catch (err) {
     console.log(err);
@@ -42,52 +56,7 @@ return res.status(201).json({
 });
 
 // ======================
-// 🔐 LOGIN
-// ======================
-router.post("/login", async (req, res) => {
-  try {
-    const { email, password } = req.body;
-
-    const user = await User.findOne({ email });
-
-    if (!user) {
-      return res.status(401).json({ message: "User não encontrado" });
-    }
-
-    const match = await bcrypt.compare(password, user.password);
-
-    if (!match) {
-      return res.status(401).json({ message: "Password errada" });
-    }
-
-    const token = jwt.sign(
-      {
-        userId: user._id,
-        email: user.email,
-        role: user.role
-      },
-      process.env.JWT_SECRET,
-      { expiresIn: "7d" }
-    );
-
-    return res.json({
-      message: "Login OK",
-      token,
-      user: {
-        name: user.name,
-        email: user.email,
-        role: user.role
-      }
-    });
-
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ message: "Erro no login" });
-  }
-});
-
-// ======================
-// 🔁 FORGOT PASSWORD
+// ?? FORGOT PASSWORD
 // ======================
 router.post("/forgot-password", async (req, res) => {
   const { email } = req.body;
@@ -95,7 +64,7 @@ router.post("/forgot-password", async (req, res) => {
   const user = await User.findOne({ email });
 
   if (!user) {
-    return res.json({ message: "Se existir, receberás email" });
+    return res.json({ message: "Se existir, receber�s email" });
   }
 
   const token = crypto.randomBytes(20).toString("hex");

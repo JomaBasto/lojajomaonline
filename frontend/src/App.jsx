@@ -1,4 +1,4 @@
-﻿import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import ReactGA from "react-ga4";
 
@@ -31,6 +31,7 @@ import {
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 
 import "./App.css";
+import AuthModal from "./components/AuthModal";
 
 import Categories from "./components/Categories";
 
@@ -168,6 +169,16 @@ const [registerEmail, setRegisterEmail] = useState("");
 
 const [registerPassword, setRegisterPassword] = useState("");
 
+const [registerTelefone, setRegisterTelefone] = useState("");
+
+const [registerMorada, setRegisterMorada] = useState("");
+
+const [registerCodigoPostal, setRegisterCodigoPostal] = useState("");
+
+const [registerLocalidade, setRegisterLocalidade] = useState("");
+
+const [registerNif, setRegisterNif] = useState("");
+
 const [email, setEmail] = useState("");
 
 const [password, setPassword] = useState("");
@@ -227,6 +238,16 @@ const register = async () => {
     email: registerEmail,
 
     password: registerPassword,
+
+    telefone: registerTelefone,
+
+    morada: registerMorada,
+
+    codigoPostal: registerCodigoPostal,
+
+    localidade: registerLocalidade,
+
+    nif: registerNif,
 
   }),
 
@@ -4116,6 +4137,60 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 )}
 
 {showLogin && (
+  <AuthModal
+    mode="login"
+    email={email}
+    password={password}
+    registerName={registerName}
+    registerEmail={registerEmail}
+    registerPassword={registerPassword}
+    registerTelefone={registerTelefone}
+    registerMorada={registerMorada}
+    registerCodigoPostal={registerCodigoPostal}
+    registerLocalidade={registerLocalidade}
+    registerNif={registerNif}
+    setEmail={setEmail}
+    setPassword={setPassword}
+    setRegisterName={setRegisterName}
+    setRegisterEmail={setRegisterEmail}
+    setRegisterPassword={setRegisterPassword}
+    login={login}
+    register={register}
+    onClose={() => setShowLogin(false)}
+    onSwitch={() => {
+      setShowLogin(false);
+      setShowRegister(true);
+    }}
+  />
+)}
+{showRegister && (
+  <AuthModal
+    mode="register"
+    email={email}
+    password={password}
+    registerName={registerName}
+    registerEmail={registerEmail}
+    registerPassword={registerPassword}
+    registerTelefone={registerTelefone}
+    registerMorada={registerMorada}
+    registerCodigoPostal={registerCodigoPostal}
+    registerLocalidade={registerLocalidade}
+    registerNif={registerNif}
+    setEmail={setEmail}
+    setPassword={setPassword}
+    setRegisterName={setRegisterName}
+    setRegisterEmail={setRegisterEmail}
+    setRegisterPassword={setRegisterPassword}
+    login={login}
+    register={register}
+    onClose={() => setShowRegister(false)}
+    onSwitch={() => {
+      setShowRegister(false);
+      setShowLogin(true);
+    }}
+  />
+)}
+{showAccount && (
 
   <div
 
@@ -4145,39 +4220,115 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
   >
 
-    <div style={{ background: "white", padding: "20px", borderRadius: "10px" }}>
-
-      
-
-      <h2>Login</h2>
 
 
+    <div
 
-      <input
+      style={{
 
-        placeholder="Email"
+        background:"#fff",
 
-        onChange={(e) => setEmail(e.target.value)}
+        padding:"30px",
 
-      />
+        borderRadius:"12px",
 
+        width:"90%",
 
+        maxWidth:"500px"
 
-      <input
+      }}
 
-        type="password"
-
-        placeholder="Password"
-
-        onChange={(e) => setPassword(e.target.value)}
-
-      />
+    >
 
 
 
-      <button onClick={login}>
+      <h2>A Minha Conta</h2>
 
-        Login
+
+
+      <p>
+
+        <b>Nome:</b> {user?.name}
+
+      </p>
+
+
+
+      <p>
+
+        <b>Email:</b> {user?.email}
+
+      </p>
+
+
+
+      <hr />
+
+
+
+      <h3>As minhas encomendas</h3>
+
+
+
+      <div
+
+  style={{
+
+    maxHeight: "250px",
+
+    overflowY: "auto",
+
+    marginTop: "10px"
+
+  }}
+
+>
+
+{orders.length === 0 ? (
+
+  <p>Ainda Não existem encomendas.</p>
+
+) : (
+
+  orders.map((order)=>(
+
+    <div
+
+      key={order._id}
+
+      style={{
+
+        borderBottom: "1px solid #ddd",
+
+        padding: "10px 0"
+
+      }}
+
+    >
+
+      Encomenda #{order._id}
+
+      <br/>
+
+      Estado: {order.estado}
+
+    </div>
+
+  ))
+
+)}
+
+</div>
+
+
+
+      <button
+
+        onClick={() => setShowAccount(false)}
+
+      >
+
+        Fechar
 
       </button>
 
@@ -4185,25 +4336,11 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
       <button
 
-  onClick={() => {
+        onClick={handleLogout}
 
-    setShowLogin(false);
+      >
 
-    setShowRegister(true);
-
-  }}
-
->
-
-  Criar conta
-
-</button>
-
-
-
-      <button onClick={() => setShowLogin(false)}>
-
-        Fechar
+        Terminar sessão
 
       </button>
 
@@ -4211,187 +4348,13 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
     </div>
 
-  </div>
 
-)}
-
-
-
-{showRegister && (
-
-  <div
-
-    style={{
-
-      position: "fixed",
-
-      top: 0,
-
-      left: 0,
-
-      width: "100%",
-
-      height: "100%",
-
-      background: "rgba(0,0,0,0.6)",
-
-      display: "flex",
-
-      justifyContent: "center",
-
-      alignItems: "center",
-
-      zIndex: 9999
-
-    }}
-
-  >
-
-    <div style={{ background: "white", padding: "20px", borderRadius: "10px" }}>
-
-
-
-      <h2>Registar</h2>
-
-
-
-      <input
-
-        placeholder="Nome"
-
-        value={registerName}
-
-        onChange={(e) => setRegisterName(e.target.value)}
-
-      />
-
-
-
-      <input
-
-        placeholder="Email"
-
-        value={registerEmail}
-
-        onChange={(e) => setRegisterEmail(e.target.value)}
-
-      />
-
-
-
-      <input
-
-        type="password"
-
-        placeholder="Password"
-
-        value={registerPassword}
-
-        onChange={(e) => setRegisterPassword(e.target.value)}
-
-      />
-
-
-
-      <button onClick={register}>
-
-        Criar conta
-
-      </button>
-
-
-
-      <button onClick={() => setShowRegister(false)}>
-
-        Fechar
-
-      </button>
-
-
-
-    </div>
 
   </div>
 
 )}
 
 
-
-<section className="faq-home">
-
-
-
-  <h2>Perguntas Frequentes</h2>
-
-
-
-  <div className="faq-item">
-
-    <h3>Os produtos Joma são originais?</h3>
-
-    <p>
-
-      Sim. A JomaBasto Store é revendedora oficial da Joma em Portugal e
-
-      comercializa exclusivamente produtos originais da marca.
-
-    </p>
-
-  </div>
-
-
-
-  <div className="faq-item">
-
-    <h3>Quanto tempo demora a entrega?</h3>
-
-    <p>
-
-      As encomendas são expedidas rapidamente através dos CTT, com entrega
-
-      normalmente entre 3 e 8 dias úteis em Portugal Continental.
-
-    </p>
-
-  </div>
-
-
-
-  <div className="faq-item">
-
-    <h3>Posso trocar ou devolver um artigo?</h3>
-
-    <p>
-
-      Sim. Dispõe de até 15 dias para solicitar a troca ou devolução, de
-
-      acordo com a nossa política de trocas.
-
-    </p>
-
-  </div>
-
-
-
-  <div className="faq-item">
-
-    <h3>Os portes são gratuitos?</h3>
-
-    <p>
-
-      Sim. Os portes são gratuitos para encomendas superiores a 70 €.
-
-    </p>
-
-  </div>
-
-
-
-</section>
-
-
-
-{/* FOOTER */}
 
 <footer className="footer">
 
@@ -4629,177 +4592,7 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
 
 
-</footer>
-
-
-
-{showAccount && (
-
-  <div
-
-    style={{
-
-      position: "fixed",
-
-      top: 0,
-
-      left: 0,
-
-      width: "100%",
-
-      height: "100%",
-
-      background: "rgba(0,0,0,0.6)",
-
-      display: "flex",
-
-      justifyContent: "center",
-
-      alignItems: "center",
-
-      zIndex: 9999
-
-    }}
-
-  >
-
-
-
-    <div
-
-      style={{
-
-        background:"#fff",
-
-        padding:"30px",
-
-        borderRadius:"12px",
-
-        width:"90%",
-
-        maxWidth:"500px"
-
-      }}
-
-    >
-
-
-
-      <h2>A Minha Conta</h2>
-
-
-
-      <p>
-
-        <b>Nome:</b> {user?.name}
-
-      </p>
-
-
-
-      <p>
-
-        <b>Email:</b> {user?.email}
-
-      </p>
-
-
-
-      <hr />
-
-
-
-      <h3>As minhas encomendas</h3>
-
-
-
-      <div
-
-  style={{
-
-    maxHeight: "250px",
-
-    overflowY: "auto",
-
-    marginTop: "10px"
-
-  }}
-
->
-
-{orders.length === 0 ? (
-
-  <p>Ainda Não existem encomendas.</p>
-
-) : (
-
-  orders.map((order)=>(
-
-    <div
-
-      key={order._id}
-
-      style={{
-
-        borderBottom: "1px solid #ddd",
-
-        padding: "10px 0"
-
-      }}
-
-    >
-
-      Encomenda #{order._id}
-
-      <br/>
-
-      Estado: {order.estado}
-
-    </div>
-
-  ))
-
-)}
-
-</div>
-
-
-
-      <button
-
-        onClick={() => setShowAccount(false)}
-
-      >
-
-        Fechar
-
-      </button>
-
-
-
-      <button
-
-        onClick={handleLogout}
-
-      >
-
-        Terminar sessão
-
-      </button>
-
-
-
-    </div>
-
-
-
-  </div>
-
-)}
-
-
-
-</div>
+</footer></div>
 
 );
 
@@ -4852,6 +4645,12 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
 
 import './categories-posters.css';
+
+
+
+
+
+
 
 
 
