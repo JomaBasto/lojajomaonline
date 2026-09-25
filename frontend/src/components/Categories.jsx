@@ -37,12 +37,6 @@
       mobile: "/images/tenis-mobile.jpg",
     },
     {
-      id: "padel",
-      name: "Padel",
-      desktop: "/images/padel-desktop.jpg",
-      mobile: "/images/padel-mobile.jpg",
-    },
-    {
       id: "voleibol",
       name: "Voleibol",
       desktop: "/images/voleibol-desktop.jpg",
@@ -107,4 +101,5 @@
     </section>
   );
 }
+
 
