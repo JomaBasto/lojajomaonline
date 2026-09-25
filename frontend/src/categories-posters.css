@@ -79,19 +79,8 @@
   }
 }
 
-/* Ofertas da Semana: esconder também no mobile, pois já aparece como HERO */
-@media (max-width: 768px) {
-  .category-poster-promocoes {
-    display: none !important;
-  }
-}
-
 /* ACESSÓRIOS — garantir que aparece no telemóvel */
 @media (max-width: 768px) {
-  .category-poster-promocoes {
-    display: none !important;
-  }
-
   .category-poster {
     display: block !important;
     visibility: visible !important;
@@ -100,8 +89,10 @@
 }
 
 /* MOBILE — remover apenas o poster duplicado Ofertas da Semana */
+
+/* MOBILE — usar o poster mobile correto em Ofertas da Semana */
 @media (max-width: 768px) {
-  .categories-grid .category-poster-promocoes {
-    display: none !important;
+  .category-poster-promocoes picture img {
+    content: url("/images/ofertas da semana-mobile.jpg") !important;
   }
 }
