@@ -74,8 +74,32 @@
     },
   ];
 
+  const ofertasDaSemana = categories.find(
+    (category) => category.id === "promocoes"
+  );
+
   return (
     <section className="categories-section">
+      <div className="mobile-offer-poster">
+        <button
+          type="button"
+          className="category-poster category-poster-promocoes"
+          onClick={() => onSelect(ofertasDaSemana.id)}
+        >
+          <picture>
+            <source
+              media="(max-width: 768px)"
+              srcSet={ofertasDaSemana.mobile}
+            />
+
+            <img
+              src={ofertasDaSemana.desktop}
+              alt={`Joma ${ofertasDaSemana.name}`}
+            />
+          </picture>
+        </button>
+      </div>
+
       <div className="categories-grid">
         {categories.map((category) => (
           <button
@@ -101,5 +125,3 @@
     </section>
   );
 }
-
-
