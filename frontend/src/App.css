@@ -4739,10 +4739,6 @@ body {
     height: auto !important;
     border-radius: 14px !important;
   }
-
-  .categories-grid > .category-poster-promocoes {
-    display: none !important;
-  }
 }
 
 
@@ -5175,3 +5171,4 @@ body {
     margin-bottom: 30px;
   }
 }
+
