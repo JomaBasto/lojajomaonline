@@ -14,7 +14,12 @@ export default function AuthModal({
   setPassword,
   setRegisterName,
   setRegisterEmail,
+  showForgotPassword,
+  forgotPasswordEmail,
+  setForgotPasswordEmail,
   setRegisterPassword,
+  setShowForgotPassword,
+  forgotPassword,
   setRegisterTelefone,
   setRegisterMorada,
   setRegisterCodigoPostal,
@@ -160,6 +165,7 @@ export default function AuthModal({
         </div>
 
         {isLogin ? (
+          <>
           <div style={{ display: "grid", gap: "14px" }}>
             <input
               type="email"
@@ -181,12 +187,56 @@ export default function AuthModal({
 
             <button
               type="button"
+              onClick={() => setShowForgotPassword(true)}
+              style={{
+                border: "none",
+                background: "transparent",
+                padding: "0",
+                color: "#111",
+                fontSize: "13px",
+                textDecoration: "underline",
+                cursor: "pointer",
+                textAlign: "left"
+              }}
+            >
+              Esqueceu-se da palavra-passe?
+            </button>
+
+            <button
+              type="button"
               onClick={login}
               style={{ ...primaryButtonStyle, marginTop: "6px" }}
             >
               ENTRAR
             </button>
           </div>
+
+          {showForgotPassword && (
+            <div style={{ marginTop: "18px", paddingTop: "18px", borderTop: "1px solid #e5e5e5" }}>
+              <div style={{ fontSize: "15px", fontWeight: 700, color: "#111", marginBottom: "8px" }}>
+                Recuperar palavra-passe
+               </div>
+              <div style={{ fontSize: "13px", color: "#666", lineHeight: 1.5, marginBottom: "12px" }}>
+                Introduza o seu email para receber as instruções de recuperação.
+              </div>
+              <input
+                type="email"
+                value={forgotPasswordEmail}
+                onChange={(e) => setForgotPasswordEmail(e.target.value)}
+                placeholder="Email"
+                style={inputStyle}
+                autoComplete="email"
+              />
+              <button
+                type="button"
+                onClick={forgotPassword}
+                style={{ ...primaryButtonStyle, marginTop: "6px" }}
+              >
+                ENVIAR INSTRUÇÕES
+              </button>
+            </div>
+          )}
+          </>
         ) : (
           <div style={{ display: "grid", gap: "14px" }}>
             <input
@@ -288,9 +338,9 @@ export default function AuthModal({
           >
             {isLogin
               ? "Ainda não tem uma conta?"
-              : "Já tem uma conta?"}
-          </p>
-
+              : "Já tem uma conta?"
+              }
+           </p>
           <button
             type="button"
             onClick={onSwitch}

@@ -163,6 +163,10 @@ const [isAdmin, setIsAdmin] = useState(false);
 
 const [showRegister, setShowRegister] = useState(false);
 
+const [showForgotPassword, setShowForgotPassword] = useState(false);
+
+const [forgotPasswordEmail, setForgotPasswordEmail] = useState("");
+
 const [registerName, setRegisterName] = useState("");
 
 const [registerEmail, setRegisterEmail] = useState("");
@@ -352,6 +356,30 @@ const login = async () => {
 };
 
 
+
+const forgotPassword = async () => {
+  try {
+    const res = await fetch("https://jomabasto-backend.onrender.com/auth/forgot-password", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: forgotPasswordEmail }),
+    });
+
+    const json = await res.json();
+
+    if (!res.ok) {
+      alert(json.message || "Erro na recupera??o da palavra-passe");
+      return;
+    }
+
+    alert(json.message || "Verifique o seu email.");
+    setForgotPasswordEmail("");
+    setShowForgotPassword(false);
+  } catch (err) {
+    console.error("ERRO RECUPERA??O:", err);
+    alert("Erro ao pedir recupera??o da palavra-passe");
+  }
+};
 
 const loadOrders = async () => {
 
@@ -4154,6 +4182,11 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
     setRegisterName={setRegisterName}
     setRegisterEmail={setRegisterEmail}
     setRegisterPassword={setRegisterPassword}
+     showForgotPassword={showForgotPassword}
+    setShowForgotPassword={setShowForgotPassword}
+    forgotPassword={forgotPassword}
+    forgotPasswordEmail={forgotPasswordEmail}
+    setForgotPasswordEmail={setForgotPasswordEmail}
     login={login}
     register={register}
     onClose={() => setShowLogin(false)}
