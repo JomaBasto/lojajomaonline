@@ -5004,8 +5004,8 @@ body {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+  aspect-ratio: auto;
+  object-fit: contain;
   border-radius: 14px;
   background: #000;
 }
@@ -5057,7 +5057,8 @@ body {
 
   .hero-video {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    height: auto;
+    aspect-ratio: auto;
     border-radius: 14px;
   }
 }
@@ -5093,3 +5094,19 @@ body {
      order: -1 !important;
    }
  }
+
+/* Desktop — reduzir ligeiramente os vídeos */
+@media (min-width: 769px) {
+  .home-hero-layout .hero-video-card {
+    width: 94%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 769px) {
+  .home-hero-layout .hero-video {
+    max-height: 700px;
+    object-fit: cover;
+  }
+}
