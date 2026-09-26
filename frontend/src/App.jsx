@@ -4398,6 +4398,44 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
 
 
+
+<section className="faq-home">
+
+  <h2>Perguntas Frequentes</h2>
+
+  <div className="faq-item">
+    <h3>Os produtos Joma são originais?</h3>
+    <p>
+      Sim. A JomaBasto Store é revendedora oficial da Joma em Portugal e
+      comercializa exclusivamente produtos originais da marca.
+    </p>
+  </div>
+
+  <div className="faq-item">
+    <h3>Quanto tempo demora a entrega?</h3>
+    <p>
+      As encomendas são expedidas rapidamente através dos CTT, com entrega
+      normalmente entre 3 a 8 dias úteis em Portugal Continental.
+    </p>
+  </div>
+
+  <div className="faq-item">
+    <h3>Posso trocar ou devolver um artigo?</h3>
+    <p>
+      Sim. Dispõe de até 15 dias para solicitar a troca ou devolução, de
+      acordo com a nossa política de trocas.
+    </p>
+  </div>
+
+  <div className="faq-item">
+    <h3>Os portes são gratuitos?</h3>
+    <p>
+      Sim. Os portes são gratuitos para encomendas superiores a 70 €.
+    </p>
+  </div>
+
+</section>
+
 <footer className="footer">
 
 
