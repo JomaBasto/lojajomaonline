@@ -1,4 +1,4 @@
-/* =========================
+﻿/* =========================
    RESET
 ========================= */
 * {
@@ -1452,7 +1452,7 @@ body,
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
 }
 
-/* Telemóvel: 1 poster por linha */
+/* TelemÃ³vel: 1 poster por linha */
 
 @media (min-width: 769px) {
   .hero {
@@ -1499,7 +1499,7 @@ body,
 
 
 /* =========================================================
-   RESTAURO DO LAYOUT DOS CARTÕES DE PRODUTO
+   RESTAURO DO LAYOUT DOS CARTÃ•ES DE PRODUTO
    ========================================================= */
 
 .card {
@@ -1533,7 +1533,7 @@ body,
   transform: none !important;
 }
 
-/* NOME + PREÇO NA MESMA LINHA */
+/* NOME + PREÃ‡O NA MESMA LINHA */
 .product-header {
   display: flex !important;
   justify-content: space-between !important;
@@ -1590,12 +1590,12 @@ body,
   transform: scale(1.15);
 }
 
-/* PREÇO */
+/* PREÃ‡O */
 .product-price {
   min-height: 25px;
 }
 
-/* BOTÕES ADMIN */
+/* BOTÃ•ES ADMIN */
 .product-actions {
   margin-top: 12px;
   display: flex;
@@ -1679,7 +1679,7 @@ body,
 }
 
 
-/* ===== DESCRIÇÃO DA LOJA ===== */
+/* ===== DESCRIÃ‡ÃƒO DA LOJA ===== */
 
 .seo-home {
   width: 100%;
@@ -1803,7 +1803,7 @@ body,
 
 
 /* =========================================================
-   ESTÉTICA PROFISSIONAL DOS PREÇOS PROMOCIONAIS
+   ESTÃ‰TICA PROFISSIONAL DOS PREÃ‡OS PROMOCIONAIS
    ========================================================= */
 
 .product-price {
@@ -1815,7 +1815,7 @@ body,
   margin: 6px 0 10px;
 }
 
-/* Preço antigo */
+/* PreÃ§o antigo */
 .product-price .old-price {
   margin: 0;
   color: #777;
@@ -1825,7 +1825,7 @@ body,
   white-space: nowrap;
 }
 
-/* Preço promocional */
+/* PreÃ§o promocional */
 .product-price .promo-price {
   margin: 0;
   color: #111;
@@ -1850,7 +1850,7 @@ body,
   white-space: nowrap;
 }
 
-/* Cartões normais continuam com o preço no cabeçalho */
+/* CartÃµes normais continuam com o preÃ§o no cabeÃ§alho */
 .product-header .price-inline {
   font-size: 17px;
   font-weight: 700;
@@ -1903,7 +1903,7 @@ body,
 }
 
 
-/* AJUSTE FINO — PROMOÇÕES MAIS LEVES E ELEGANTES */
+/* AJUSTE FINO â€” PROMOÃ‡Ã•ES MAIS LEVES E ELEGANTES */
 
 .product-price .old-price {
   font-size: 13px;
@@ -1928,7 +1928,7 @@ body,
 }
 
 
-/* IMAGENS DOS PRODUTOS — AJUSTE DESKTOP */
+/* IMAGENS DOS PRODUTOS â€” AJUSTE DESKTOP */
 @media (min-width: 769px) {
   .card img,
   .grid .card img,
@@ -1937,7 +1937,7 @@ body,
   }
 }
 
-/* MOBILE — MANTER COMO ESTÁ */
+/* MOBILE â€” MANTER COMO ESTÃ */
 @media (min-width: 769px) {
   .hero {
     height: auto !important;
@@ -1972,7 +1972,7 @@ body,
 }
 
 
-/* ARTIGO VISÍVEL MAIOR — APENAS DESKTOP */
+/* ARTIGO VISÃVEL MAIOR â€” APENAS DESKTOP */
 @media (min-width: 769px) {
   .grid .card img,
   .products-grid .card img {
@@ -1981,7 +1981,7 @@ body,
   }
 }
 
-/* MOBILE — NÃO ALTERAR */
+/* MOBILE â€” NÃƒO ALTERAR */
 @media (min-width: 769px) {
   .hero {
     height: auto !important;
@@ -2015,7 +2015,7 @@ body,
 }
 
 
-/* ARTIGO VISÍVEL MAIOR — DESKTOP */
+/* ARTIGO VISÃVEL MAIOR â€” DESKTOP */
 @media (min-width: 769px) {
   .grid .card img,
   .products-grid .card img {
@@ -2024,7 +2024,7 @@ body,
   }
 }
 
-/* MOBILE — MANTER INALTERADO */
+/* MOBILE â€” MANTER INALTERADO */
 @media (min-width: 769px) {
   .hero {
     height: auto !important;
@@ -2059,7 +2059,7 @@ body,
 
 
 /* =========================================================
-   PRODUTO VISÍVEL MAIOR — DESKTOP
+   PRODUTO VISÃVEL MAIOR â€” DESKTOP
    ========================================================= */
 
 @media (min-width: 769px) {
@@ -2074,7 +2074,7 @@ body,
   }
 }
 
-/* MOBILE — NÃO ALTERAR */
+/* MOBILE â€” NÃƒO ALTERAR */
 @media (min-width: 769px) {
   .hero {
     height: auto !important;
@@ -2248,7 +2248,7 @@ body,
   background: #1d4ed8;
 }
 
-/* evita que o conteúdo fique escondido atrás da barra */
+/* evita que o conteÃºdo fique escondido atrÃ¡s da barra */
 body {
   padding-top: 70px;
 }
@@ -2290,7 +2290,7 @@ body {
 }
 
 /* =========================================================
-   MOBILE — uma coluna, incluindo Ofertas da Semana
+   MOBILE â€” uma coluna, incluindo Ofertas da Semana
    ========================================================= */
 
 @media (max-width: 768px) {
@@ -2321,7 +2321,7 @@ body {
     width: 100% !important;
   }
 }
-/* Ajuste do espaço abaixo do hero */
+/* Ajuste do espaÃ§o abaixo do hero */
 .hero {
   height: auto !important;
   aspect-ratio: 16 / 9 !important;
@@ -2335,7 +2335,7 @@ body {
   display: block !important;
 }
 
-/* HERO Ofertas da Semana — desktop/mobile */
+/* HERO Ofertas da Semana â€” desktop/mobile */
 .hero picture {
   display: block;
   width: 100%;
@@ -2350,14 +2350,14 @@ body {
   object-position: center;
 }
 
-/* HERO — imagem específica para telemóvel */
+/* HERO â€” imagem especÃ­fica para telemÃ³vel */
 @media (max-width: 768px) {
   .hero picture img {
     content: url("/images/ofertas da semana-mobile.jpg");
   }
 }
 
-/* HERO mobile — mostrar a imagem Ofertas da Semana completa */
+/* HERO mobile â€” mostrar a imagem Ofertas da Semana completa */
 @media (max-width: 768px) {
   .hero {
     height: auto !important;
@@ -2378,7 +2378,7 @@ body {
   }
 }
 
-/* HERO Ofertas da Semana — imagem própria no telemóvel */
+/* HERO Ofertas da Semana â€” imagem prÃ³pria no telemÃ³vel */
 @media (max-width: 768px) {
   .hero {
     height: auto !important;
@@ -2395,7 +2395,7 @@ body {
 }
 
 /* =========================================================
-   PÃGINAS LEGAIS
+   PÃƒÂGINAS LEGAIS
 ========================================================= */
 
 .legal-page {
@@ -2506,7 +2506,7 @@ body {
 }
 
 
-/* Ajuste final — Ofertas da Semana com a mesma proporção do poster antigo */
+/* Ajuste final â€” Ofertas da Semana com a mesma proporÃ§Ã£o do poster antigo */
 @media (min-width: 769px) {
   .hero {
     aspect-ratio: 16 / 9 !important;
@@ -2528,7 +2528,7 @@ body {
   }
 }
 
-/* AJUSTE FINAL — Ofertas da Semana */
+/* AJUSTE FINAL â€” Ofertas da Semana */
 @media (min-width: 769px) {
   .hero {
     max-width: 1290px !important;
@@ -2553,7 +2553,7 @@ body {
   }
 }
 
-/* Ofertas da Semana — mostrar o poster novo inteiro */
+/* Ofertas da Semana â€” mostrar o poster novo inteiro */
 @media (min-width: 769px) {
   .hero img {
     object-fit: contain !important;
@@ -2562,7 +2562,7 @@ body {
   }
 }
 
-/* Ofertas da Semana — largura total das margens do site */
+/* Ofertas da Semana â€” largura total das margens do site */
 @media (min-width: 769px) {
   .hero {
     max-width: none !important;
@@ -2584,8 +2584,8 @@ body {
 
 
 /* =========================================
-   JOMABASTO — HEADER V2
-   Apenas visual — não altera funcionalidades
+   JOMABASTO â€” HEADER V2
+   Apenas visual â€” nÃ£o altera funcionalidades
    ========================================= */
 
 .header {
@@ -2782,8 +2782,8 @@ body {
 
 
 /* =========================================
-   JOMABASTO — HEADER V2.1
-   Correção dos dropdowns desktop
+   JOMABASTO â€” HEADER V2.1
+   CorreÃ§Ã£o dos dropdowns desktop
    ========================================= */
 
 @media (min-width: 769px) {
@@ -2829,8 +2829,8 @@ body {
 
 
 /* =========================================
-   JOMABASTO — MOBILE HEADER V2.2
-   Espaçamento dos ícones mobile
+   JOMABASTO â€” MOBILE HEADER V2.2
+   EspaÃ§amento dos Ã­cones mobile
    ========================================= */
 
 @media (max-width: 768px) {
@@ -2910,8 +2910,8 @@ body {
 
 
 /* =========================================
-   JOMABASTO — MOBILE HEADER V2.3
-   Tudo numa única linha
+   JOMABASTO â€” MOBILE HEADER V2.3
+   Tudo numa Ãºnica linha
    ========================================= */
 
 @media (max-width: 768px) {
@@ -2962,8 +2962,8 @@ body {
 
 
 /* =========================================
-   JOMABASTO — MOBILE HEADER V2.4
-   Linha única: logo + ícones + menu
+   JOMABASTO â€” MOBILE HEADER V2.4
+   Linha Ãºnica: logo + Ã­cones + menu
    ========================================= */
 
 @media (max-width: 768px) {
@@ -3051,7 +3051,7 @@ body {
 
 
 /* =========================================
-   JOMABASTO — MOBILE SEARCH V2.1
+   JOMABASTO â€” MOBILE SEARCH V2.1
    Pesquisa sem cobrir o logo
    ========================================= */
 
@@ -3094,8 +3094,8 @@ body {
 
 
 /* =========================================
-   JOMABASTO — MOBILE MENU V2.1
-   Menu abaixo do cabeçalho
+   JOMABASTO â€” MOBILE MENU V2.1
+   Menu abaixo do cabeÃ§alho
    ========================================= */
 
 @media (max-width: 768px) {
@@ -3129,8 +3129,8 @@ body {
 
 
 /* =========================================
-   JOMABASTO — MOBILE SUBCATEGORIES V2.1
-   Garantir texto visível
+   JOMABASTO â€” MOBILE SUBCATEGORIES V2.1
+   Garantir texto visÃ­vel
    ========================================= */
 
 @media (max-width: 768px) {
@@ -3173,7 +3173,7 @@ body {
 
 
 
-/* AJUSTE SIMPLES — IMAGENS MAIORES + CARTÕES MAIS JUNTOS */
+/* AJUSTE SIMPLES â€” IMAGENS MAIORES + CARTÃ•ES MAIS JUNTOS */
 
 @media (min-width: 769px) {
   .grid,
@@ -3200,7 +3200,7 @@ body {
 }
 
 
-/* CORREÇÃO — IMAGENS DOS PRODUTOS REALMENTE MAIORES */
+/* CORREÃ‡ÃƒO â€” IMAGENS DOS PRODUTOS REALMENTE MAIORES */
 
 @media (min-width: 769px) {
   .grid .card img,
@@ -3229,7 +3229,7 @@ body {
 }
 
 
-/* AJUSTE — IMAGENS DOS PRODUTOS AINDA MAIORES */
+/* AJUSTE â€” IMAGENS DOS PRODUTOS AINDA MAIORES */
 
 @media (min-width: 769px) {
   .grid .card img,
@@ -3246,7 +3246,7 @@ body {
 }
 
 
-/* MELHORIA — PREÇOS E PROMOÇÕES DOS PRODUTOS */
+/* MELHORIA â€” PREÃ‡OS E PROMOÃ‡Ã•ES DOS PRODUTOS */
 
 .grid .card .product-header {
   align-items: center !important;
@@ -3320,7 +3320,7 @@ body {
 }
 
 
-/* MELHORIA — STOCK E FAVORITOS DOS PRODUTOS */
+/* MELHORIA â€” STOCK E FAVORITOS DOS PRODUTOS */
 
 .grid .card .stock-favorite,
 .products-grid .card .stock-favorite {
@@ -3391,17 +3391,17 @@ body {
 
 
 /* =========================================================
-   MELHORIA — ESPAÇAMENTO E HIERARQUIA DA PÁGINA INICIAL
+   MELHORIA â€” ESPAÃ‡AMENTO E HIERARQUIA DA PÃGINA INICIAL
    ========================================================= */
 
 @media (min-width: 769px) {
 
-  /* Espaço depois do banner */
+  /* EspaÃ§o depois do banner */
   .hero {
     margin-bottom: 34px !important;
   }
 
-  /* Títulos das secções */
+  /* TÃ­tulos das secÃ§Ãµes */
   .categories-section,
   .products-section {
     width: 100% !important;
@@ -3418,7 +3418,7 @@ body {
     color: #111827 !important;
   }
 
-  /* Espaço entre categorias e produtos */
+  /* EspaÃ§o entre categorias e produtos */
   .categories-section {
     margin-bottom: 48px !important;
   }
@@ -3435,7 +3435,7 @@ body {
 
 @media (max-width: 768px) {
 
-  /* Espaço depois do banner */
+  /* EspaÃ§o depois do banner */
   .hero {
     margin-bottom: 24px !important;
   }
@@ -3466,7 +3466,7 @@ body {
 
 
 /* =========================================================
-   MELHORIA — BLOCO INSTITUCIONAL DA PÁGINA INICIAL
+   MELHORIA â€” BLOCO INSTITUCIONAL DA PÃGINA INICIAL
    ========================================================= */
 
 .seo-home {
@@ -3537,7 +3537,7 @@ body {
 
 
 /* =========================================================
-   MELHORIA — NOMES DOS PRODUTOS
+   MELHORIA â€” NOMES DOS PRODUTOS
    ========================================================= */
 
 .grid .card h3,
@@ -3569,7 +3569,7 @@ body {
 
 
 /* =========================================================
-   ACABAMENTO — CARTÕES DE PRODUTO
+   ACABAMENTO â€” CARTÃ•ES DE PRODUTO
    ========================================================= */
 
 .grid .card,
@@ -3604,7 +3604,7 @@ body {
 
 
 /* =========================================================
-   MELHORIA — INTERAÇÃO DOS POSTERS DE CATEGORIAS
+   MELHORIA â€” INTERAÃ‡ÃƒO DOS POSTERS DE CATEGORIAS
    ========================================================= */
 
 .category-poster {
@@ -3645,7 +3645,7 @@ body {
 
 
 /* =========================================================
-   MELHORIA — BARRA DE PESQUISA DESKTOP
+   MELHORIA â€” BARRA DE PESQUISA DESKTOP
    ========================================================= */
 
 @media (min-width: 769px) {
@@ -3696,7 +3696,7 @@ body {
 
 
 /* =========================================================
-   MELHORIA — BOTÃO ADICIONAR AO CARRINHO
+   MELHORIA â€” BOTÃƒO ADICIONAR AO CARRINHO
    ========================================================= */
 
 .add-to-cart-btn {
@@ -4305,7 +4305,7 @@ body {
 }
 
 
-/* Espaço reservado para a Top Bar fixa */
+/* EspaÃ§o reservado para a Top Bar fixa */
 body {
   padding-top: 32px;
 }
@@ -4328,7 +4328,7 @@ body {
 }
 
 
-/* Animação da Top Bar - Desktop e Mobile */
+/* AnimaÃ§Ã£o da Top Bar - Desktop e Mobile */
 .announcement-bar {
   animation: announcementBlink 2.5s ease-in-out infinite;
 }
@@ -4343,7 +4343,7 @@ body {
 }
 
 
-/* Top Bar - piscar rápido */
+/* Top Bar - piscar rÃ¡pido */
 .announcement-bar {
   animation: announcementBlink 1.2s ease-in-out infinite;
 }
@@ -4390,7 +4390,7 @@ body {
   display: none !important;
 }
 
-/* Não mostrar produtos automaticamente na homepage */
+/* NÃ£o mostrar produtos automaticamente na homepage */
 .hide-home-products {
   display: none !important;
 }
@@ -4536,54 +4536,8 @@ body {
   }
 }
 
-/* CORREÇÃO FINAL - GRELHA COM 12 POSTERS */
-@media (min-width: 769px) {
-  .categories-grid {
-    display: grid !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    gap: 24px !important;
-    width: 100% !important;
-  }
 
-  .categories-grid > .category-poster {
-    grid-column: auto !important;
-    grid-row: auto !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    display: block !important;
-  }
-
-  .categories-grid > .category-poster img {
-    width: 100% !important;
-    height: auto !important;
-    max-width: 100% !important;
-    object-fit: contain !important;
-  }
-
-  /* Ofertas da Semana e Outlet: último par, mesmo tamanho dos restantes */
-  .categories-grid > .category-poster:nth-child(11),
-  .categories-grid > .category-poster:nth-child(12) {
-    grid-column: auto !important;
-    grid-row: auto !important;
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .categories-grid {
-    grid-template-columns: 1fr !important;
-    gap: 18px !important;
-  }
-
-  .categories-grid > .category-poster {
-    grid-column: auto !important;
-    grid-row: auto !important;
-    width: 100% !important;
-  }
-}
-
-/* Espaço entre Running/Futebol e o texto SEO */
+/* EspaÃ§o entre Running/Futebol e o texto SEO */
 .seo-home {
   margin-top: 40px !important;
 }
@@ -4652,7 +4606,7 @@ body {
 }
 
 
-/* CORREÇÃO - BOTÃO VOLTAR À HOME */
+/* CORREÃ‡ÃƒO - BOTÃƒO VOLTAR Ã€ HOME */
 .product-filters-bar .back-home-button {
   display: inline-flex !important;
   width: auto !important;
@@ -4689,7 +4643,7 @@ body {
   }
 }
 
-/* MOBILE - DROPDOWN DO UTILIZADOR DENTRO DO ECRÃ */
+/* MOBILE - DROPDOWN DO UTILIZADOR DENTRO DO ECRÃƒ */
 @media (max-width: 768px) {
   .header .mobile-user-dropdown {
     right: 0 !important;
@@ -4709,7 +4663,7 @@ body {
   }
 }
 
-/* MOBILE - MENU DO UTILIZADOR SEM SAIR DO ECRÃ */
+/* MOBILE - MENU DO UTILIZADOR SEM SAIR DO ECRÃƒ */
 @media (max-width: 768px) {
   .header .mobile-user-menu {
     position: relative !important;
@@ -4868,7 +4822,7 @@ body {
   transform: translateY(-1px) !important;
 }
 
-/* No mobile mantém estático */
+/* No mobile mantÃ©m estÃ¡tico */
 @media (max-width: 768px) {
   .hero-top-card:hover {
     transform: none !important;
@@ -4971,7 +4925,7 @@ body {
 }
 
 /* =========================================================
-   NOVO TOPO - VÍDEOS PADEL + FUTEBOL
+   NOVO TOPO - VÃDEOS PADEL + FUTEBOL
    ========================================================= */
 
 .home-hero-layout {
@@ -5077,7 +5031,7 @@ body {
 
 
 
-/* Espaçamento entre o vídeo Futebol e os posters no mobile */
+/* EspaÃ§amento entre o vÃ­deo Futebol e os posters no mobile */
 @media (max-width: 768px) {
   .home-hero-layout .hero-video-futebol {
     margin-bottom: 30px;
@@ -5087,7 +5041,7 @@ body {
 
 
 
- /* CORREÇÃO FINAL - OFERTAS DA SEMANA NO TOPO MOBILE */
+ /* CORREÃ‡ÃƒO FINAL - OFERTAS DA SEMANA NO TOPO MOBILE */
  @media (max-width: 768px) {
    .categories-grid > .category-poster-promocoes {
      display: block !important;
@@ -5096,7 +5050,7 @@ body {
    }
  }
 
-/* Desktop — reduzir ligeiramente os vídeos */
+/* Desktop â€” reduzir ligeiramente os vÃ­deos */
 @media (min-width: 769px) {
   .home-hero-layout .hero-video-card {
     width: 94%;
@@ -5113,8 +5067,8 @@ body {
 }
 
 /* =========================================================
-   JOMABASTO — REDESIGN VISUAL DO CARRINHO
-   APENAS VISUAL — LOGICA INTACTA
+   JOMABASTO â€” REDESIGN VISUAL DO CARRINHO
+   APENAS VISUAL â€” LOGICA INTACTA
    ========================================================= */
 
 .cart-overlay {
@@ -5163,7 +5117,7 @@ body {
 }
 
 .cart > button:first-of-type::after {
-  content: "×";
+  content: "Ã—";
   font-size: 25px;
   line-height: 1;
 }
@@ -5370,7 +5324,7 @@ body {
 }
 
 
-/* CORREÇÃO — não deixar o redesign do carrinho afetar
+/* CORREÃ‡ÃƒO â€” nÃ£o deixar o redesign do carrinho afetar
    a galeria/detalhe dos produtos */
 
 .cart-overlay:not(:has(.cart)) {
@@ -5380,8 +5334,8 @@ body {
 }
 
 
-/* CORREÇÃO — botão Adicionar ao Carrinho fica dentro do produto,
-   na posição normal, sem barra fixa no topo */
+/* CORREÃ‡ÃƒO â€” botÃ£o Adicionar ao Carrinho fica dentro do produto,
+   na posiÃ§Ã£o normal, sem barra fixa no topo */
 
 .add-to-cart-btn {
   position: static !important;
@@ -5398,7 +5352,7 @@ body {
 
 
 /* =========================================================
-   BOTÕES DO PRODUTO — GRUPO UNIFORME
+   BOTÃ•ES DO PRODUTO â€” GRUPO UNIFORME
    Apenas visual
    ========================================================= */
 
@@ -5414,13 +5368,13 @@ body {
   margin-top: 10px !important;
 }
 
-/* Botões de ação dentro do detalhe do produto */
+/* BotÃµes de aÃ§Ã£o dentro do detalhe do produto */
 .product-modal button,
 .product-detail button {
   box-sizing: border-box;
 }
 
-/* Mantém os botões visualmente juntos e com a mesma dimensão */
+/* MantÃ©m os botÃµes visualmente juntos e com a mesma dimensÃ£o */
 .product-modal .add-to-cart-btn,
 .product-modal button,
 .product-detail .add-to-cart-btn,
@@ -5428,7 +5382,7 @@ body {
   min-height: 48px;
 }
 
-/* Espaçamento compacto entre as ações */
+/* EspaÃ§amento compacto entre as aÃ§Ãµes */
 .product-modal .add-to-cart-btn ~ button,
 .product-detail .add-to-cart-btn ~ button {
   margin-top: 10px !important;
@@ -5436,7 +5390,7 @@ body {
 
 
 /* =========================================================
-   GRUPO DE BOTÕES DO PRODUTO
+   GRUPO DE BOTÃ•ES DO PRODUTO
    ========================================================= */
 
 .add-to-cart-btn,
@@ -5457,15 +5411,15 @@ body {
   margin-top: 0 !important;
 }
 
-/* Evita espaços exagerados entre os três */
+/* Evita espaÃ§os exagerados entre os trÃªs */
 .add-to-cart-btn + button,
 .add-to-cart-btn ~ button {
   margin-top: 8px !important;
 }
 
 
-/* Retira apenas o X visual do botão Fechar que foi transformado em X.
-   O botão continua a funcionar normalmente. */
+/* Retira apenas o X visual do botÃ£o Fechar que foi transformado em X.
+   O botÃ£o continua a funcionar normalmente. */
 .cart > button:first-of-type::after {
   content: none !important;
 }
@@ -5476,8 +5430,8 @@ body {
 
 
 /* =========================================================
-   CARRINHO — PRODUTO COM FOTOGRAFIA GRANDE
-   Apenas apresentação visual
+   CARRINHO â€” PRODUTO COM FOTOGRAFIA GRANDE
+   Apenas apresentaÃ§Ã£o visual
    ========================================================= */
 
 .cart-item {
@@ -5533,7 +5487,7 @@ body {
 
 
 /* =========================================================
-   AJUSTE PREMIUM — ESPAÇAMENTO INTERIOR DO CARRINHO
+   AJUSTE PREMIUM â€” ESPAÃ‡AMENTO INTERIOR DO CARRINHO
    ========================================================= */
 
 .cart {
@@ -5559,7 +5513,7 @@ body {
 }
 
 
-/* ===== CORREÇÕES FINAIS DO CARRINHO ===== */
+/* ===== CORREÃ‡Ã•ES FINAIS DO CARRINHO ===== */
 
 /* X de fechar o carrinho */
 .cart > button:first-of-type {
@@ -5585,7 +5539,7 @@ body {
 }
 
 .cart > button:first-of-type::after {
-  content: "×" !important;
+  content: "Ã—" !important;
   display: block !important;
   font-family: Arial, sans-serif !important;
   font-size: 32px !important;
@@ -5594,7 +5548,7 @@ body {
   color: #111 !important;
 }
 
-/* Botão Adicionar ao carrinho */
+/* BotÃ£o Adicionar ao carrinho */
 .add-to-cart-btn {
   position: static !important;
   display: block !important;
@@ -5612,7 +5566,7 @@ body {
   z-index: 1 !important;
 }
 
-/* Texto do botão */
+/* Texto do botÃ£o */
 .add-to-cart-btn {
   font-size: 16px !important;
   line-height: 1.2 !important;
@@ -5620,7 +5574,7 @@ body {
   white-space: nowrap !important;
 }
 
-/* Mantém os três botões do produto alinhados e iguais */
+/* MantÃ©m os trÃªs botÃµes do produto alinhados e iguais */
 .add-to-cart-btn,
 .add-to-cart-btn + button,
 .add-to-cart-btn ~ button {
@@ -5631,7 +5585,7 @@ body {
   box-sizing: border-box !important;
 }
 
-/* Espaçamento entre os botões */
+/* EspaÃ§amento entre os botÃµes */
 .add-to-cart-btn + button,
 .add-to-cart-btn ~ button {
   margin-top: 8px !important;
@@ -5639,8 +5593,8 @@ body {
 
 
 /* =========================================================
-   CORREÇÃO FINAL — SEPARAR BOTÃO FECHAR DO CARRINHO
-   DO BOTÃO ADICIONAR AO CARRINHO DO PRODUTO
+   CORREÃ‡ÃƒO FINAL â€” SEPARAR BOTÃƒO FECHAR DO CARRINHO
+   DO BOTÃƒO ADICIONAR AO CARRINHO DO PRODUTO
    ========================================================= */
 
 .cart-overlay:not(:has(.cart-item)) .cart > button:first-of-type {
@@ -5688,7 +5642,7 @@ body {
 }
 
 .cart-overlay:has(.cart-item) .cart > button:first-of-type::after {
-  content: "×" !important;
+  content: "Ã—" !important;
   display: block !important;
   font-family: Arial, sans-serif !important;
   font-size: 32px !important;
@@ -5698,7 +5652,7 @@ body {
 }
 
 /* =========================================================
-   CARRINHO — FINALIZAR COMPRA NO RODAPÉ
+   CARRINHO â€” FINALIZAR COMPRA NO RODAPÃ‰
    ========================================================= */
 
 .cart-main {
@@ -5924,19 +5878,19 @@ body {
     right: 10px !important;
   }
 }
-/* FAQ — trocar + por × quando aberta */
+/* FAQ â€” trocar + por Ã— quando aberta */
 .faq-in-filters[open] > summary .faq-toggle {
   font-size: 0 !important;
   transform: none !important;
 }
 
 .faq-in-filters[open] > summary .faq-toggle::after {
-  content: "×" !important;
+  content: "Ã—" !important;
   font-size: 26px !important;
   font-weight: 300 !important;
   line-height: 1 !important;
 }
-/* FAQ — botão fechar dentro da caixa */
+/* FAQ â€” botÃ£o fechar dentro da caixa */
 .faq-in-filters .faq-list {
   position: absolute !important;
 }
@@ -5979,7 +5933,7 @@ body {
   }
 }
 
-/* FAQ MOBILE — camada superior */
+/* FAQ MOBILE â€” camada superior */
 @media (max-width: 768px) {
   .faq-in-filters[open] .faq-list {
     position: fixed !important;
@@ -5992,4 +5946,32 @@ body {
     max-height: 70vh !important;
     overflow-y: auto !important;
   }
+}
+ 
+/* =========================================================
+   JOMABASTO — HERO FINAL
+   ========================================================= */
+
+.home-hero-layout {
+  gap: 8px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.hero-video-card {
+  min-height: 630px !important;
+  width: 100% !important;
+}
+
+.hero-video {
+  width: 100% !important;
+  height: 630px !important;
+}
+
+ /* JOMABASTO — FONTE DO NOME DA LOJA */
+.header-brand-text {
+  font-family: 'Roboto Slab', serif !important;
+  font-weight: 600 !important;
+  font-size: 22px !important;
+  letter-spacing: -0.4px !important;
 }

@@ -1,30 +1,30 @@
-﻿/* =========================
-   POSTERS DE CATEGORIAS
-   3 POR LINHA — TAMANHO UNIFORME
-   ========================= */
+﻿/* =========================================================
+   JOMABASTO — MOSAICO DE CATEGORIAS
+   ========================================================= */
 
 .categories-grid {
   display: grid !important;
-  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  gap: 24px !important;
   width: 100% !important;
-  margin-top: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 10px !important;
 }
 
 .category-poster {
   position: relative !important;
   display: block !important;
   width: 100% !important;
-  max-width: 100% !important;
-  height: auto !important;
-  aspect-ratio: 2752 / 1536 !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
   padding: 0 !important;
+  margin: 0 !important;
   border: 0 !important;
-  border-radius: 18px !important;
+  border-radius: 0 !important;
   overflow: hidden !important;
-  cursor: pointer !important;
   background: #fff !important;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10) !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
 }
 
 .category-poster picture {
@@ -38,61 +38,146 @@
   width: 100% !important;
   height: 100% !important;
   max-width: 100% !important;
-  object-fit: cover !important;
+  object-fit: fill !important;
   object-position: center !important;
 }
 
-.category-poster:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18) !important;
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 769px) {
+
+  .categories-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+    grid-template-rows: 207px 106px 106px 247px 300px 348px !important;
+    align-items: stretch !important;
+  }
+
+  /* 1 — RUNNING */
+  .categories-grid > .category-poster:nth-child(1) {
+    grid-column: 1 / 7 !important;
+    grid-row: 1 / 4 !important;
+  }
+
+  /* 2 — TRAIL */
+  .categories-grid > .category-poster:nth-child(2) {
+    grid-column: 7 / 10 !important;
+    grid-row: 1 !important;
+  }
+
+  /* 3 — FUTSAL */
+  .categories-grid > .category-poster:nth-child(3) {
+    grid-column: 10 / 13 !important;
+    grid-row: 1 / 3 !important;
+  }
+
+  /* 4 — ANDEBOL */
+  .categories-grid > .category-poster:nth-child(4) {
+    grid-column: 7 / 10 !important;
+    grid-row: 2 / 5 !important;
+  }
+
+  /* 5 — BASQUETEBOL */
+  .categories-grid > .category-poster:nth-child(5) {
+    grid-column: 1 / 4 !important;
+    grid-row: 4 !important;
+  }
+
+  /* 6 — TÉNIS */
+  .categories-grid > .category-poster:nth-child(6) {
+    grid-column: 4 / 7 !important;
+    grid-row: 4 !important;
+  }
+
+  /* 7 — VOLEIBOL */
+  .categories-grid > .category-poster:nth-child(7) {
+    grid-column: 1 / 7 !important;
+    grid-row: 5 !important;
+  }
+
+  /* 8 — CICLISMO */
+  .categories-grid > .category-poster:nth-child(8) {
+    grid-column: 10 / 13 !important;
+    grid-row: 3 / 5 !important;
+  }
+
+  /* 9 — CASUAL */
+  .categories-grid > .category-poster:nth-child(9) {
+    grid-column: 7 / 13 !important;
+    grid-row: 5 !important;
+  }
+
+  /* 10 — ACESSÓRIOS */
+  .categories-grid > .category-poster:nth-child(10) {
+    grid-column: 1 / 6 !important;
+    grid-row: 6 !important;
+  }
+
+  /* 11 — OFERTAS */
+  .categories-grid > .category-poster:nth-child(11) {
+    grid-column: 6 / 9 !important;
+    grid-row: 6 !important;
+    display: block !important;
+  }
+
+  /* 12 — OUTLET */
+  .categories-grid > .category-poster:nth-child(12) {
+    grid-column: 9 / 13 !important;
+    grid-row: 6 !important;
+  }
+
+  .category-poster:hover {
+    z-index: 2 !important;
+    filter: brightness(1.03) !important;
+  }
 }
 
-/* =========================
-   MOBILE — 1 POR LINHA
-   ========================= */
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media (max-width: 768px) {
+
   .categories-grid {
+    display: grid !important;
     grid-template-columns: 1fr !important;
+    grid-template-rows: none !important;
     gap: 18px !important;
   }
 
-  .category-poster {
+  .categories-grid > .category-poster {
+    grid-column: auto !important;
+    grid-row: auto !important;
     width: 100% !important;
-    max-width: 100% !important;
     height: auto !important;
-    aspect-ratio: 1536 / 2752 !important;
+    min-height: 0 !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
   }
 
-  .category-poster img {
+  .categories-grid > .category-poster picture {
     width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center !important;
+    height: auto !important;
   }
-}
 
-/* Ofertas da Semana: manter no mobile, esconder apenas no desktop */
-@media (min-width: 769px) {
-  .category-poster-promocoes {
-    display: none !important;
+  .categories-grid > .category-poster img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: fill !important;
   }
-}
 
-/* ACESSÓRIOS — garantir que aparece no telemóvel */
-@media (max-width: 768px) {
-  .category-poster {
+  .categories-grid > .category-poster-promocoes {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
   }
-}
 
-/* MOBILE — remover apenas o poster duplicado Ofertas da Semana */
-
-/* MOBILE — usar o poster mobile correto em Ofertas da Semana */
-@media (max-width: 768px) {
   .category-poster-promocoes picture img {
     content: url("/images/ofertas da semana-mobile.jpg") !important;
   }
 }
+
+
+
+
