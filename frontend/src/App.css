@@ -4717,6 +4717,7 @@ body {
 
   .header .mobile-user-menu .mobile-user-dropdown {
     position: fixed !important;
+    z-index: 99999 !important;
     top: 80px !important;
     right: 10px !important;
     left: auto !important;
@@ -5908,11 +5909,86 @@ body {
 
   .faq-in-filters .faq-list {
     position: fixed !important;
-    top: auto !important;
+    z-index: 99999 !important;
+    top: 80px !important;
     left: 14px !important;
     right: 14px !important;
-    bottom: 14px !important;
-    width: auto !important;
+    bottom: auto !important;
+    width: min(520px, calc(100vw - 28px)) !important;
+    max-height: 70vh !important;
+    overflow-y: auto !important;
+  }
+
+  .faq-in-filters .faq-close {
+    top: 10px !important;
+    right: 10px !important;
+  }
+}
+/* FAQ — trocar + por × quando aberta */
+.faq-in-filters[open] > summary .faq-toggle {
+  font-size: 0 !important;
+  transform: none !important;
+}
+
+.faq-in-filters[open] > summary .faq-toggle::after {
+  content: "×" !important;
+  font-size: 26px !important;
+  font-weight: 300 !important;
+  line-height: 1 !important;
+}
+/* FAQ — botão fechar dentro da caixa */
+.faq-in-filters .faq-list {
+  position: absolute !important;
+}
+
+.faq-in-filters .faq-close {
+  position: absolute !important;
+  top: 10px !important;
+  right: 12px !important;
+  width: 32px !important;
+  height: 32px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #111 !important;
+  font-size: 26px !important;
+  font-weight: 300 !important;
+  line-height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  z-index: 5 !important;
+}
+
+.faq-in-filters .faq-list {
+  padding-top: 48px !important;
+}
+
+@media (max-width: 768px) {
+  .faq-in-filters .faq-list {
+    left: 0 !important;
+    right: auto !important;
+    width: min(520px, calc(100vw - 28px)) !important;
+  }
+
+  .faq-in-filters .faq-close {
+    top: 10px !important;
+    right: 10px !important;
+  }
+}
+
+/* FAQ MOBILE — camada superior */
+@media (max-width: 768px) {
+  .faq-in-filters[open] .faq-list {
+    position: fixed !important;
+    z-index: 999999 !important;
+    top: 80px !important;
+    left: 14px !important;
+    right: 14px !important;
+    bottom: auto !important;
+    width: min(520px, calc(100vw - 28px)) !important;
     max-height: 70vh !important;
     overflow-y: auto !important;
   }

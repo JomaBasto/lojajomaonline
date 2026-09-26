@@ -3343,6 +3343,7 @@ return (
   </summary>
 
   <div className="faq-list">
+    <button type="button" className="faq-close" aria-label="Fechar Perguntas Frequentes" onClick={(e) => { e.currentTarget.closest("details").open = false; }}>×</button>
     <div className="faq-item">
       <h3>Os produtos Joma são originais?</h3>
       <p>
