@@ -3628,7 +3628,7 @@ return (
 
   <div className="cart-overlay">
 
-    <div className="cart">
+    <div className="cart cart-main">
 
       <h2>Carrinho</h2>
 
@@ -3667,6 +3667,15 @@ return (
       {cart.map((item, index) => (
 
   <div key={index} className="cart-item">
+  {item.images?.[0] && (
+    <div className="cart-item-image-wrap">
+      <img
+        src={item.images[0]}
+        alt={item.name}
+        className="cart-item-image"
+      />
+    </div>
+  )}
 
 
 

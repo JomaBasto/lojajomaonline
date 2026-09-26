@@ -1,4 +1,4 @@
-﻿/* =========================
+/* =========================
    RESET
 ========================= */
 * {
@@ -2523,7 +2523,7 @@ body {
 
   .hero picture img,
   .hero > img {
-    object-fit: cover !important;
+    object-fit: contain !important;
     object-position: center !important;
   }
 }
@@ -2548,7 +2548,7 @@ body {
   }
 
   .hero img {
-    object-fit: cover !important;
+    object-fit: contain !important;
     object-position: center !important;
   }
 }
@@ -5109,4 +5109,626 @@ body {
     max-height: 700px;
     object-fit: cover;
   }
+}
+
+/* =========================================================
+   JOMABASTO — REDESIGN VISUAL DO CARRINHO
+   APENAS VISUAL — LOGICA INTACTA
+   ========================================================= */
+
+.cart-overlay {
+  background: rgba(0, 0, 0, 0.62);
+  backdrop-filter: blur(4px);
+  align-items: stretch;
+}
+
+.cart {
+  width: min(520px, 100vw);
+  max-width: 520px;
+  height: 100%;
+  padding: 0;
+  background: #fff;
+  color: #111;
+  box-shadow: -12px 0 40px rgba(0, 0, 0, 0.18);
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.cart > h2 {
+  margin: 0;
+  padding: 26px 26px 10px;
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  color: #111;
+}
+
+.cart > button:first-of-type {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  background: #fff;
+  color: #111;
+  font-size: 0;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.cart > button:first-of-type::after {
+  content: "×";
+  font-size: 25px;
+  line-height: 1;
+}
+
+.cart > button:first-of-type:hover {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 0 26px;
+  padding: 20px 0;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.cart-item p {
+  margin: 0;
+}
+
+.cart-item p:first-child {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111;
+}
+
+.cart-item p:nth-child(2) {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111;
+}
+
+.cart-item p:nth-child(3),
+.cart-item p:nth-child(4) {
+  font-size: 13px;
+  color: #777;
+}
+
+.cart-item > div {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+  width: fit-content;
+  border: 1px solid #d9d9d9;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.cart-item > div button {
+  width: 36px;
+  height: 36px;
+  min-width: 36px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  color: #111 !important;
+  font-size: 18px !important;
+  cursor: pointer;
+}
+
+.cart-item > div button:hover {
+  background: #f2f2f2 !important;
+}
+
+.cart-item > div span {
+  min-width: 34px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.cart-item > button {
+  width: fit-content;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #777 !important;
+  font-size: 12px !important;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.cart-item > button:hover {
+  color: #111 !important;
+}
+
+.cart > hr {
+  margin: 10px 26px 20px !important;
+  border: 0;
+  border-top: 1px solid #ddd;
+}
+
+.cart > p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 26px 12px;
+  font-size: 14px;
+  color: #555;
+}
+
+.cart > p strong {
+  color: #111;
+}
+
+.cart > p span {
+  color: #16803c !important;
+  font-weight: 700;
+}
+
+.cart > h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 26px 10px;
+  padding-top: 18px;
+  border-top: 1px solid #ddd;
+  font-size: 21px;
+  color: #111;
+}
+
+.cart > p[style] {
+  display: block;
+  margin: 12px 26px;
+  padding: 12px 14px;
+  border-radius: 3px;
+  background: #f3f3f3;
+  color: #444 !important;
+  font-size: 12px !important;
+  line-height: 1.4;
+}
+
+.cart > button:nth-of-type(2) {
+  width: calc(100% - 52px);
+  min-height: 54px;
+  margin: 20px 26px 30px;
+  padding: 15px 20px;
+  border: 0;
+  border-radius: 2px;
+  background: #111;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.cart > button:nth-of-type(2):hover {
+  background: #222;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 600px) {
+  .cart {
+    width: 100vw;
+    max-width: 100vw;
+  }
+
+  .cart > h2 {
+    padding: 22px 18px 12px;
+    font-size: 25px;
+  }
+
+  .cart > button:first-of-type {
+    top: 16px;
+    right: 16px;
+  }
+
+  .cart-item {
+    margin: 0 18px;
+    padding: 17px 0;
+  }
+
+  .cart > hr {
+    margin-left: 18px !important;
+    margin-right: 18px !important;
+  }
+
+  .cart > p,
+  .cart > h3 {
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+
+  .cart > p[style] {
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+
+  .cart > button:nth-of-type(2) {
+    width: calc(100% - 36px);
+    margin-left: 18px;
+    margin-right: 18px;
+    min-height: 58px;
+    font-size: 15px;
+  }
+}
+
+
+/* CORREÇÃO — não deixar o redesign do carrinho afetar
+   a galeria/detalhe dos produtos */
+
+.cart-overlay:not(:has(.cart)) {
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: none;
+  align-items: initial;
+}
+
+
+/* CORREÇÃO — botão Adicionar ao Carrinho fica dentro do produto,
+   na posição normal, sem barra fixa no topo */
+
+.add-to-cart-btn {
+  position: static !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  transform: none !important;
+  z-index: auto !important;
+  width: 100% !important;
+  display: block !important;
+  margin-top: 18px !important;
+}
+
+
+/* =========================================================
+   BOTÕES DO PRODUTO — GRUPO UNIFORME
+   Apenas visual
+   ========================================================= */
+
+.add-to-cart-btn {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 10px 0 0 0 !important;
+  min-height: 48px !important;
+  display: block !important;
+}
+
+.add-to-cart-btn + * {
+  margin-top: 10px !important;
+}
+
+/* Botões de ação dentro do detalhe do produto */
+.product-modal button,
+.product-detail button {
+  box-sizing: border-box;
+}
+
+/* Mantém os botões visualmente juntos e com a mesma dimensão */
+.product-modal .add-to-cart-btn,
+.product-modal button,
+.product-detail .add-to-cart-btn,
+.product-detail button {
+  min-height: 48px;
+}
+
+/* Espaçamento compacto entre as ações */
+.product-modal .add-to-cart-btn ~ button,
+.product-detail .add-to-cart-btn ~ button {
+  margin-top: 10px !important;
+}
+
+
+/* =========================================================
+   GRUPO DE BOTÕES DO PRODUTO
+   ========================================================= */
+
+.add-to-cart-btn,
+.add-to-cart-btn + button,
+.add-to-cart-btn ~ button {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 48px !important;
+  height: 48px !important;
+  display: block !important;
+  box-sizing: border-box !important;
+  margin: 10px 0 0 0 !important;
+  position: static !important;
+  transform: none !important;
+}
+
+.add-to-cart-btn {
+  margin-top: 0 !important;
+}
+
+/* Evita espaços exagerados entre os três */
+.add-to-cart-btn + button,
+.add-to-cart-btn ~ button {
+  margin-top: 8px !important;
+}
+
+
+/* Retira apenas o X visual do botão Fechar que foi transformado em X.
+   O botão continua a funcionar normalmente. */
+.cart > button:first-of-type::after {
+  content: none !important;
+}
+
+.cart > button:first-of-type {
+  font-size: 0 !important;
+}
+
+
+/* =========================================================
+   CARRINHO — PRODUTO COM FOTOGRAFIA GRANDE
+   Apenas apresentação visual
+   ========================================================= */
+
+.cart-item {
+  display: grid !important;
+  grid-template-columns: 150px minmax(0, 1fr) !important;
+  gap: 18px !important;
+  align-items: start !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 18px 0 !important;
+  margin: 0 !important;
+  border-bottom: 1px solid #e9e9e9 !important;
+}
+
+.cart-item-image-wrap {
+  width: 150px !important;
+  height: 180px !important;
+  background: #f5f5f5 !important;
+  overflow: hidden !important;
+  border-radius: 2px !important;
+  flex-shrink: 0 !important;
+}
+
+.cart-item-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+.cart-item-info {
+  min-width: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+.cart-item-info p {
+  margin: 0 !important;
+}
+
+@media (max-width: 600px) {
+  .cart-item {
+    grid-template-columns: 110px minmax(0, 1fr) !important;
+    gap: 14px !important;
+  }
+
+  .cart-item-image-wrap {
+    width: 110px !important;
+    height: 140px !important;
+  }
+}
+
+
+/* =========================================================
+   AJUSTE PREMIUM — ESPAÇAMENTO INTERIOR DO CARRINHO
+   ========================================================= */
+
+.cart {
+  padding-left: 28px !important;
+  padding-right: 28px !important;
+}
+
+.cart > h2 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.cart-item {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+@media (max-width: 600px) {
+  .cart {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+}
+
+
+/* ===== CORREÇÕES FINAIS DO CARRINHO ===== */
+
+/* X de fechar o carrinho */
+.cart > button:first-of-type {
+  position: absolute !important;
+  top: 18px !important;
+  right: 20px !important;
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: transparent !important;
+  border: 0 !important;
+  color: #111 !important;
+  font-size: 0 !important;
+  line-height: 1 !important;
+  z-index: 20 !important;
+  cursor: pointer !important;
+}
+
+.cart > button:first-of-type::after {
+  content: "×" !important;
+  display: block !important;
+  font-family: Arial, sans-serif !important;
+  font-size: 32px !important;
+  font-weight: 300 !important;
+  line-height: 1 !important;
+  color: #111 !important;
+}
+
+/* Botão Adicionar ao carrinho */
+.add-to-cart-btn {
+  position: static !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  min-height: 48px !important;
+  height: 48px !important;
+  margin: 0 !important;
+  padding: 12px 20px !important;
+  box-sizing: border-box !important;
+  transform: none !important;
+  z-index: 1 !important;
+}
+
+/* Texto do botão */
+.add-to-cart-btn {
+  font-size: 16px !important;
+  line-height: 1.2 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+/* Mantém os três botões do produto alinhados e iguais */
+.add-to-cart-btn,
+.add-to-cart-btn + button,
+.add-to-cart-btn ~ button {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 48px !important;
+  height: 48px !important;
+  box-sizing: border-box !important;
+}
+
+/* Espaçamento entre os botões */
+.add-to-cart-btn + button,
+.add-to-cart-btn ~ button {
+  margin-top: 8px !important;
+}
+
+
+/* =========================================================
+   CORREÇÃO FINAL — SEPARAR BOTÃO FECHAR DO CARRINHO
+   DO BOTÃO ADICIONAR AO CARRINHO DO PRODUTO
+   ========================================================= */
+
+.cart-overlay:not(:has(.cart-item)) .cart > button:first-of-type {
+  position: static !important;
+  width: 100% !important;
+  height: 48px !important;
+  min-width: 0 !important;
+  min-height: 48px !important;
+  padding: 10px 15px !important;
+  margin: 0 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background: #1d4ed8 !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-size: 16px !important;
+  line-height: 1.2 !important;
+  z-index: auto !important;
+}
+
+.cart-overlay:not(:has(.cart-item)) .cart > button:first-of-type::after {
+  content: none !important;
+}
+
+.cart-overlay:has(.cart-item) .cart > button:first-of-type {
+  position: absolute !important;
+  top: 18px !important;
+  right: 20px !important;
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: transparent !important;
+  border: 0 !important;
+  color: #111 !important;
+  font-size: 0 !important;
+  z-index: 20 !important;
+}
+
+.cart-overlay:has(.cart-item) .cart > button:first-of-type::after {
+  content: "×" !important;
+  display: block !important;
+  font-family: Arial, sans-serif !important;
+  font-size: 32px !important;
+  font-weight: 300 !important;
+  line-height: 1 !important;
+  color: #111 !important;
+}
+
+/* =========================================================
+   CARRINHO — FINALIZAR COMPRA NO RODAPÉ
+   ========================================================= */
+
+.cart-main {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.cart-main > h2 {
+  order: 1 !important;
+}
+
+.cart-main > button:first-of-type {
+  order: 2 !important;
+}
+
+.cart-main > .cart-item {
+  order: 3 !important;
+}
+
+.cart-main > hr {
+  order: 4 !important;
+}
+
+.cart-main > p {
+  order: 5 !important;
+}
+
+.cart-main > h3 {
+  order: 6 !important;
+}
+
+.cart-main > button:nth-of-type(2) {
+  order: 7 !important;
 }
