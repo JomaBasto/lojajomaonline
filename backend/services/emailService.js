@@ -18,7 +18,7 @@ export async function sendTestEmail() {
   try {
     const response = await resend.emails.send({
       from: "Loja JOMA Basto <noreply@send.jomabasto.com>",
-      to: "soniafernande@sapo.pt",
+      to: "apoio@jomabasto.com",
       subject: "Teste JOMA Basto",
       html: `
         <h2>✅ Email de teste</h2>
@@ -110,7 +110,7 @@ export async function sendAdminEmail(order) {
 
       from: "Loja JOMA Basto <noreply@send.jomabasto.com>",
 
-      to: "soniafernande@sapo.pt",
+      to: "apoio@jomabasto.com",
 
       subject: "Nova encomenda recebida",
 
