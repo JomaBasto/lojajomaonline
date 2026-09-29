@@ -1,3 +1,4 @@
+import "dotenv/config";
 import jwt from "jsonwebtoken";
 import express from "express";
 import bcrypt from "bcryptjs";
@@ -58,6 +59,61 @@ router.post("/register", async (req, res) => {
   }
 });
 
+
+// ======================
+// LOGIN
+// ======================
+router.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(401).json({
+        message: "Email ou palavra-passe incorretos"
+      });
+    }
+
+    const passwordOk = await bcrypt.compare(password, user.password);
+
+    if (!passwordOk) {
+      return res.status(401).json({
+        message: "Email ou palavra-passe incorretos"
+      });
+    }
+
+    const token = jwt.sign(
+      {
+        id: user._id,
+        role: user.role
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: "7d" }
+    );
+
+    return res.json({
+      token,
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        telefone: user.telefone,
+        morada: user.morada,
+        codigoPostal: user.codigoPostal,
+        localidade: user.localidade,
+        nif: user.nif,
+        role: user.role
+      }
+    });
+
+  } catch (err) {
+    console.error("LOGIN ERROR:", err);
+    return res.status(500).json({
+      message: "Erro no login"
+    });
+  }
+});
 // ======================
 // ?? FORGOT PASSWORD
 // ======================
