@@ -3388,7 +3388,7 @@ return (
         window.scrollTo({ top: 0, behavior: "smooth" });
       }}
     >
-      ← Voltar à Home
+      ← Voltar à Home Page
     </button>
   )}
 <div className={`products-grid ${category === "all" ? "hide-home-products" : ""}`}>
