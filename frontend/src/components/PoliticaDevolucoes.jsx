@@ -22,7 +22,7 @@ export default function PoliticaDevolucoes() {
         </p>
 
         <p>
-          Email: jomabasto@sapo.pt<br />
+          Email: apoio@jomabasto.com<br />
           Telefone: 924 176 159
         </p>
 
@@ -45,7 +45,7 @@ export default function PoliticaDevolucoes() {
 
         <p>
           Para solicitar uma devolução, o cliente deverá contactar a JomaBasto
-          através do email jomabasto@sapo.pt, indicando o número da encomenda
+          através do email apoio@jomabasto.com, indicando o número da encomenda
           e os produtos que pretende devolver.
         </p>
 
@@ -123,7 +123,7 @@ export default function PoliticaDevolucoes() {
         <p>
           Caso receba um produto com defeito ou que não esteja em conformidade
           com a encomenda, o cliente deverá contactar a JomaBasto através do
-          email jomabasto@sapo.pt, indicando o número da encomenda e,
+          email apoio@jomabasto.com, indicando o número da encomenda e,
           preferencialmente, juntando fotografias ou outras informações que
           permitam analisar a situação.
         </p>
@@ -145,7 +145,7 @@ export default function PoliticaDevolucoes() {
 
         <p>
           <strong>JomaBasto — Sónia Fernandes</strong><br />
-          Email: jomabasto@sapo.pt<br />
+          Email: apoio@jomabasto.com<br />
           Telefone: 924 176 159
         </p>
 
@@ -164,3 +164,4 @@ export default function PoliticaDevolucoes() {
     </div>
   );
 }
+
