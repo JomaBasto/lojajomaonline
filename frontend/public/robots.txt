@@ -1,10 +1,10 @@
-﻿User-agent: *
-Allow: /
-
-User-agent: Googlebot
-Allow: /
+﻿User-agent: Googlebot
+Disallow:
 
 User-agent: Googlebot-Image
-Allow: /
+Disallow:
 
-Sitemap: https://jomabasto.com/sitemap.xml
+User-agent: *
+Disallow:
+
+Sitemap: https://www.jomabasto.com/sitemap.xml
