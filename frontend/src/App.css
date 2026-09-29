@@ -1,4 +1,4 @@
-﻿/* =========================
+/* =========================
    RESET
 ========================= */
 * {
@@ -5117,7 +5117,7 @@ body {
 }
 
 .cart > button:first-of-type::after {
-  content: "Ã—";
+  content: "×";
   font-size: 25px;
   line-height: 1;
 }
@@ -5539,7 +5539,7 @@ body {
 }
 
 .cart > button:first-of-type::after {
-  content: "Ã—" !important;
+  content: "×" !important;
   display: block !important;
   font-family: Arial, sans-serif !important;
   font-size: 32px !important;
@@ -5642,7 +5642,7 @@ body {
 }
 
 .cart-overlay:has(.cart-item) .cart > button:first-of-type::after {
-  content: "Ã—" !important;
+  content: "×" !important;
   display: block !important;
   font-family: Arial, sans-serif !important;
   font-size: 32px !important;
@@ -5878,14 +5878,14 @@ body {
     right: 10px !important;
   }
 }
-/* FAQ â€” trocar + por Ã— quando aberta */
+/* FAQ — trocar + por × quando aberta */
 .faq-in-filters[open] > summary .faq-toggle {
   font-size: 0 !important;
   transform: none !important;
 }
 
 .faq-in-filters[open] > summary .faq-toggle::after {
-  content: "Ã—" !important;
+  content: "×" !important;
   font-size: 26px !important;
   font-weight: 300 !important;
   line-height: 1 !important;
