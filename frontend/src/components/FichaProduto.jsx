@@ -116,7 +116,7 @@ export default function FichaProduto() {
           "@type": "MerchantReturnPolicy",
           applicableCountry: "PT",
           returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
-          merchantReturnDays: 15,
+          merchantReturnDays: 14,
           returnMethod: "https://schema.org/ReturnByMail",
           returnFees: "https://schema.org/ReturnFeesCustomerResponsibility",
         },
