@@ -1,5 +1,11 @@
 import { useEffect, useState, useRef } from "react";
 
+const getHighQualityImage = (url) => {
+  if (typeof url !== "string") return url;
+  return url.replace(/_large\.jpg$/i, ".jpg");
+};
+
+
 import ReactGA from "react-ga4";
 
 import {
@@ -3417,7 +3423,7 @@ return (
 
           <img
 
-  src={p.images?.[0]}
+  src={getHighQualityImage(p.images?.[0])}
 
   alt={p.name}
 
@@ -4004,7 +4010,7 @@ return (
 
       <img
 
-        src={selectedProduct?.images?.[activeImage]}
+        src={getHighQualityImage(selectedProduct?.images?.[activeImage])}
 
         alt=""
 
@@ -4026,7 +4032,7 @@ return (
 
             key={i}
 
-            src={img}
+            src={getHighQualityImage(img)}
 
             className="gallery-image"
 
