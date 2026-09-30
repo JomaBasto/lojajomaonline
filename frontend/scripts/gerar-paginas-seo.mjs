@@ -44,6 +44,8 @@ for (const produto of produtos) {
     name: nome,
     image: produto.images || [image],
     description: produto.description || description,
+    sku: produto.reference || undefined,
+    mpn: produto.reference || undefined,
     brand: {
       "@type": "Brand",
       name: "Joma",
@@ -161,5 +163,7 @@ function escapeHtml(value) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
 }
+
+
 
 

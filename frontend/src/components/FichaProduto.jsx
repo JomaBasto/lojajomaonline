@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+﻿import React, { useEffect, useState } from "react";
 import ReactGA from "react-ga4";
 import { useParams } from "react-router-dom";
 
@@ -63,7 +63,7 @@ export default function FichaProduto() {
 
     const description = produto.description
       ? produto.description.substring(0, 160)
-      : `${produto.name} — disponível na JomaBasto.`;
+      : `${produto.name} â€” disponÃ­vel na JomaBasto.`;
 
     let metaDescription = document.querySelector(
       'meta[name="description"]'
@@ -98,6 +98,8 @@ export default function FichaProduto() {
       name: produto.name,
       image: produto.images || [],
       description: produto.description || "",
+      sku: produto.reference || undefined,
+      mpn: produto.reference || undefined,
       brand: {
         "@type": "Brand",
         name: "Joma",
@@ -270,21 +272,21 @@ export default function FichaProduto() {
                   marginBottom: "5px",
                 }}
               >
-                {Number(produto.price).toFixed(2).replace(".", ",")} €
+                {Number(produto.price).toFixed(2).replace(".", ",")} â‚¬
               </p>
 
               <h2 style={{ color: "#d32f2f", marginTop: 0 }}>
-                {Number(produto.promoPrice).toFixed(2).replace(".", ",")} €
+                {Number(produto.promoPrice).toFixed(2).replace(".", ",")} â‚¬
               </h2>
             </>
           ) : (
             <h2 style={{ color: "#d32f2f" }}>
-              {Number(produto.price).toFixed(2).replace(".", ",")} €
+              {Number(produto.price).toFixed(2).replace(".", ",")} â‚¬
             </h2>
           )}
 
           <p>
-            <strong>Tamanhos disponíveis:</strong>
+            <strong>Tamanhos disponÃ­veis:</strong>
           </p>
 
           <div
@@ -352,6 +354,8 @@ export default function FichaProduto() {
     </div>
   );
 }
+
+
 
 
 
