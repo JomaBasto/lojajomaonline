@@ -5,6 +5,12 @@ const getHighQualityImage = (url) => {
   return url.replace(/_large\.jpg$/i, ".jpg");
 };
 
+const getListingImage = (url) => {
+  if (typeof url !== "string") return url;
+  if (/_large\.jpg$/i.test(url)) return url;
+  return url.replace(/\.jpg$/i, "_large.jpg");
+};
+
 
 import ReactGA from "react-ga4";
 
@@ -3423,9 +3429,11 @@ return (
 
           <img
 
-  src={getHighQualityImage(p.images?.[0])}
+  src={getListingImage(p.images?.[0])}
 
   alt={p.name}
+
+  loading="lazy"
 
   onClick={() => { window.history.pushState({}, "", `/produto/${p._id}`); openGallery(p); }}
 
