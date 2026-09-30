@@ -5060,10 +5060,7 @@ body {
 }
 
 @media (min-width: 769px) {
-  .home-hero-layout .hero-video {
-    max-height: 700px;
-    object-fit: cover;
-  }
+  .home-hero-layout .hero-video { max-height: 850px; object-fit: cover; }
 }
 
 /* =========================================================
@@ -5980,4 +5977,11 @@ body {
   .header-brand-text {
     font-size: 17px !important;
   }
+}
+
+
+/* Desktop — aumentar altura dos vídeos sem alterar o mobile */
+@media (min-width: 769px) {
+  .hero-video-card { min-height: 850px !important; }
+  .hero-video { height: 850px !important; }
 }
