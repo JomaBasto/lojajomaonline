@@ -601,9 +601,21 @@ app.get("/google-shopping.xml", async (req, res) => {
       const title = produto.name || "";
       const description = produto.description || "";
       const link = `https://www.jomabasto.com/produto/${produto._id}`;
-      const imageLink = produto.images?.[0] || "";
+      const imagensValidas = (produto.images || [])
+        .filter(
+          (image) =>
+            typeof image === "string" &&
+            image.trim() !== "" &&
+            image.trim().toLowerCase() !== "null"
+        );
 
-      const additionalImages = (produto.images || [])
+      const imagemOriginal = imagensValidas[0] || "";
+
+      const imageLink = imagemOriginal.endsWith("_large.jpg")
+        ? imagemOriginal.replace("_large.jpg", ".jpg")
+        : imagemOriginal;
+
+      const additionalImages = imagensValidas
         .slice(1)
         .map(
           (image) =>
