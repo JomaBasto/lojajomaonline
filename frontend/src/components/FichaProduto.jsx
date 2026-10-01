@@ -63,7 +63,7 @@ export default function FichaProduto() {
 
     const description = produto.description
       ? produto.description.substring(0, 160)
-      : `${produto.name} â€” disponÃ­vel na JomaBasto.`;
+      : `${produto.name} — disponível na JomaBasto.`;
 
     let metaDescription = document.querySelector(
       'meta[name="description"]'
@@ -272,21 +272,21 @@ export default function FichaProduto() {
                   marginBottom: "5px",
                 }}
               >
-                {Number(produto.price).toFixed(2).replace(".", ",")} â‚¬
+                {Number(produto.price).toFixed(2).replace(".", ",")} €
               </p>
 
               <h2 style={{ color: "#d32f2f", marginTop: 0 }}>
-                {Number(produto.promoPrice).toFixed(2).replace(".", ",")} â‚¬
+                {Number(produto.promoPrice).toFixed(2).replace(".", ",")} €
               </h2>
             </>
           ) : (
             <h2 style={{ color: "#d32f2f" }}>
-              {Number(produto.price).toFixed(2).replace(".", ",")} â‚¬
+              {Number(produto.price).toFixed(2).replace(".", ",")} €
             </h2>
           )}
 
           <p>
-            <strong>Tamanhos disponÃ­veis:</strong>
+            <strong>Tamanhos disponíveis:</strong>
           </p>
 
           <div
@@ -354,6 +354,7 @@ export default function FichaProduto() {
     </div>
   );
 }
+
 
 
 
