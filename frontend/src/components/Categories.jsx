@@ -3,74 +3,26 @@
     {
       id: "running",
       name: "Running",
-      desktop: "/images/running-desktop.jpg",
-      mobile: "/images/running-mobile.jpg",
+      desktop: "/images/running-novo.jpg",
+      mobile: "/images/running-novo.jpg",
     },
     {
       id: "trail",
       name: "Trail",
-      desktop: "/images/trail-desktop.jpg",
-      mobile: "/images/trail-mobile.jpg",
+      desktop: "/images/trail-novo.jpg",
+      mobile: "/images/trail-novo.jpg",
     },
     {
       id: "futsal",
       name: "Futsal",
-      desktop: "/images/futsal-desktop.jpg",
-      mobile: "/images/futsal-mobile.jpg",
-    },
-    {
-      id: "andebol",
-      name: "Andebol",
-      desktop: "/images/andebol-desktop.jpg",
-      mobile: "/images/andebol-mobile.jpg",
-    },
-    {
-      id: "basquetebol",
-      name: "Basquetebol",
-      desktop: "/images/basquetebol-desktop.jpg",
-      mobile: "/images/basquetebol-mobile.jpg",
+      desktop: "/images/futsal-novo.jpg",
+      mobile: "/images/futsal-novo.jpg",
     },
     {
       id: "tenis",
       name: "Ténis",
-      desktop: "/images/tenis-desktop.jpg",
-      mobile: "/images/tenis-mobile.jpg",
-    },
-    {
-      id: "voleibol",
-      name: "Voleibol",
-      desktop: "/images/voleibol-desktop.jpg",
-      mobile: "/images/voleibol-mobile.jpg",
-    },
-    {
-      id: "ciclismo",
-      name: "Ciclismo",
-      desktop: "/images/ciclismo-desktop.jpg",
-      mobile: "/images/ciclismo-mobile.jpg",
-    },
-    {
-      id: "casual-textil",
-      name: "Casual",
-      desktop: "/images/casual-desktop.jpg",
-      mobile: "/images/casual-mobile.jpg",
-    },
-    {
-      id: "acessorios",
-      name: "Acessórios",
-      desktop: "/images/acessorios-desktop.jpg",
-      mobile: "/images/acessorios-mobile.jpg",
-    },
-    {
-      id: "promocoes",
-      name: "Ofertas da Semana",
-      desktop: "/images/ofertas da semana-desktop.png",
-      mobile: "/images/ofertas da semana-mobile.jpg",
-    },
-    {
-      id: "outlet",
-      name: "Outlet",
-      desktop: "/images/outlet-desktop.jpg",
-      mobile: "/images/outlet-mobile.jpg",
+      desktop: "/images/tenis-novo.jpg",
+      mobile: "/images/tenis-novo.jpg",
     },
   ];
 
@@ -101,3 +53,5 @@
     </section>
   );
 }
+
+

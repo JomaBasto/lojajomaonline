@@ -262,7 +262,7 @@ export default function FichaProduto() {
         <div style={{ flex: 1, minWidth: "280px" }}>
           <h1>{produto.name}</h1>
 
-          {produto.promocao && produto.promoPrice ? (
+          {produto.promoPrice != null ? (
             <>
               <p
                 style={{

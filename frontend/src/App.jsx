@@ -2411,28 +2411,82 @@ return (
 
     {/* HERO */}
     <section className="home-hero-layout">
-      <article className="hero-video-card">
+
+      <article className="hero-video-card home-block-trail">
         <button
           type="button"
           className="hero-video-button"
-          onClick={() => selectCategory("padel")}
-          aria-label="Ver Padel"
+          onClick={() => selectCategory("trail")}
+          aria-label="Ver Trail"
         >
-          <video
+          <iframe
             className="hero-video"
-            src="/videos/21857.mp4"
-            poster="/images/padel-desktop.jpg"
+            src="https://player.vimeo.com/video/915072101?autoplay=1&muted=1&loop=1&background=1"
+            title="Trail Joma"
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+          />
+          <video
+            className="hero-video-mobile"
+            src="/videos/futebol-mobile.mp4"
             autoPlay
             muted
             loop
             playsInline
             preload="metadata"
-
+            aria-label="Trail Joma"
           />
         </button>
       </article>
 
-      <section className="seo-home">
+      <div className="home-poster-intro home-block-running">
+        <div>
+          <strong>RUNNING</strong>
+          <small>Corre mais. Vai mais longe.</small>
+        </div>
+        <div>
+          <strong>TRAIL</strong>
+          <small>Aventura sem limites.</small>
+        </div>
+      </div>
+
+      <div className="home-poster-row home-block-running-posters">
+        <button type="button" onClick={() => selectCategory("running")}>
+          <img src="/images/running-novo.jpg" alt="Running Joma" />
+        </button>
+        <button type="button" onClick={() => selectCategory("trail")}>
+          <img src="/images/trail-novo.jpg" alt="Trail Joma" />
+        </button>
+      </div>
+
+      <article className="hero-video-card hero-video-futebol home-block-futebol">
+        <button
+          type="button"
+          className="hero-video-button"
+          onClick={() => selectCategory("futebol")}
+          aria-label="Ver Futebol"
+        >
+          <iframe
+            className="hero-video"
+            src="https://player.vimeo.com/video/1174665657?autoplay=1&muted=1&loop=1&background=1"
+            title="Futebol Joma"
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+          />
+          <video
+            className="hero-video-mobile"
+            src="/videos/trail-mobile.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label="Futebol Joma"
+          />
+        </button>
+      </article>
+
+      <section className="seo-home home-block-seo">
         <div className="seo-home-container">
           <h2>Loja Oficial JomaBasto em Portugal</h2>
 
@@ -2447,58 +2501,83 @@ return (
         </div>
       </section>
 
-      <article className="hero-video-card hero-video-futebol">
+
+
+      <div className="home-poster-intro home-block-futebol-intro">
+        <div>
+          <strong>FUTEBOL</strong>
+          <small>Joga para vencer.</small>
+        </div>
+        <div>
+          <strong>FUTSAL</strong>
+          <small>Velocidade em cada jogada.</small>
+        </div>
+      </div>
+
+      <div className="home-poster-row home-block-futebol-posters">
+        <button type="button" onClick={() => selectCategory("futebol")}>
+          <img src="/images/futebol-novo.jpg" alt="Futebol Joma" />
+        </button>
+        <button type="button" onClick={() => selectCategory("futsal")}>
+          <img src="/images/futsal-novo.jpg" alt="Futsal Joma" />
+        </button>
+      </div>
+
+      <div className="home-section-divider home-block-divider">
+        <strong>JOMA BASTO</strong>
+        <span>DESPORTO · PERFORMANCE · PAIXÃO</span>
+        <small>Equipamento para cada desafio.</small>
+      </div>
+
+      <article className="hero-video-card home-block-tenis">
         <button
           type="button"
           className="hero-video-button"
-          onClick={() => selectCategory("futebol")}
-          aria-label="Ver Futebol"
+          onClick={() => selectCategory("padel")}
+          aria-label="Ver Padel"
         >
-          <video
+          <iframe
             className="hero-video"
-            src="/videos/21854.mp4"
-            poster="/images/futebol-desktop.jpg"
+            src="https://player.vimeo.com/video/1200411324?autoplay=1&muted=1&loop=1&background=1"
+            title="Padel Joma"
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+          />
+          <video
+            className="hero-video-mobile"
+            src="/videos/tenis-mobile.mp4"
             autoPlay
             muted
             loop
             playsInline
             preload="metadata"
-
+            aria-label="Ténis Joma"
           />
         </button>
       </article>
+
+      <div className="home-poster-intro home-block-tenis-intro">
+        <div>
+          <strong>TÉNIS</strong>
+          <small>Precisão em cada ponto.</small>
+        </div>
+        <div>
+          <strong>PADEL</strong>
+          <small>Joga. Mexe-te. Diverte-te.</small>
+        </div>
+      </div>
+
+      <div className="home-poster-row home-block-tenis-posters">
+        <button type="button" onClick={() => selectCategory("tenis")}>
+          <img src="/images/tenis-novo.jpg" alt="Ténis Joma" />
+        </button>
+        <button type="button" onClick={() => selectCategory("padel")}>
+          <img src="/images/padel-novo.jpg" alt="Padel Joma" />
+        </button>
+      </div>
+
     </section>
-    <Categories
-
-    onSelect={(sport) => {
-
-      const selectedCategory = sport === "casual-textil" ? "textil" : sport;
-
-      setCategory(selectedCategory);
-
-      setSubCategory("");
-
-
-
-      setTimeout(() => {
-
-        productsRef.current?.scrollIntoView({
-
-          behavior: "smooth"
-
-        });
-
-      }, 100);
-
-    }}
-
-  />
-
-
-
-
-
-  </>
+</>
 
 )}
 
@@ -3465,7 +3544,7 @@ return (
 
 
 
-  {!p.promocao && (
+  {!p.promoPrice && !p.promocao && (
 
     <span className="price-inline">
 
@@ -4745,6 +4824,23 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
 
 import './categories-posters.css';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

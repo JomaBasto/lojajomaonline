@@ -1,4 +1,4 @@
-/* =========================
+﻿/* =========================
    RESET
 ========================= */
 * {
@@ -1452,7 +1452,7 @@ body,
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
 }
 
-/* TelemÃ³vel: 1 poster por linha */
+/* TelemÃƒÂ³vel: 1 poster por linha */
 
 @media (min-width: 769px) {
   .hero {
@@ -1499,7 +1499,7 @@ body,
 
 
 /* =========================================================
-   RESTAURO DO LAYOUT DOS CARTÃ•ES DE PRODUTO
+   RESTAURO DO LAYOUT DOS CARTÃƒâ€¢ES DE PRODUTO
    ========================================================= */
 
 .card {
@@ -1533,7 +1533,7 @@ body,
   transform: none !important;
 }
 
-/* NOME + PREÃ‡O NA MESMA LINHA */
+/* NOME + PREÃƒâ€¡O NA MESMA LINHA */
 .product-header {
   display: flex !important;
   justify-content: space-between !important;
@@ -1590,12 +1590,12 @@ body,
   transform: scale(1.15);
 }
 
-/* PREÃ‡O */
+/* PREÃƒâ€¡O */
 .product-price {
   min-height: 25px;
 }
 
-/* BOTÃ•ES ADMIN */
+/* BOTÃƒâ€¢ES ADMIN */
 .product-actions {
   margin-top: 12px;
   display: flex;
@@ -1679,7 +1679,7 @@ body,
 }
 
 
-/* ===== DESCRIÃ‡ÃƒO DA LOJA ===== */
+/* ===== DESCRIÃƒâ€¡ÃƒÆ’O DA LOJA ===== */
 
 .seo-home {
   width: 100%;
@@ -1803,7 +1803,7 @@ body,
 
 
 /* =========================================================
-   ESTÃ‰TICA PROFISSIONAL DOS PREÃ‡OS PROMOCIONAIS
+   ESTÃƒâ€°TICA PROFISSIONAL DOS PREÃƒâ€¡OS PROMOCIONAIS
    ========================================================= */
 
 .product-price {
@@ -1815,7 +1815,7 @@ body,
   margin: 6px 0 10px;
 }
 
-/* PreÃ§o antigo */
+/* PreÃƒÂ§o antigo */
 .product-price .old-price {
   margin: 0;
   color: #777;
@@ -1825,7 +1825,7 @@ body,
   white-space: nowrap;
 }
 
-/* PreÃ§o promocional */
+/* PreÃƒÂ§o promocional */
 .product-price .promo-price {
   margin: 0;
   color: #111;
@@ -1850,7 +1850,7 @@ body,
   white-space: nowrap;
 }
 
-/* CartÃµes normais continuam com o preÃ§o no cabeÃ§alho */
+/* CartÃƒÂµes normais continuam com o preÃƒÂ§o no cabeÃƒÂ§alho */
 .product-header .price-inline {
   font-size: 17px;
   font-weight: 700;
@@ -1903,7 +1903,7 @@ body,
 }
 
 
-/* AJUSTE FINO â€” PROMOÃ‡Ã•ES MAIS LEVES E ELEGANTES */
+/* AJUSTE FINO Ã¢â‚¬â€ PROMOÃƒâ€¡Ãƒâ€¢ES MAIS LEVES E ELEGANTES */
 
 .product-price .old-price {
   font-size: 13px;
@@ -1928,7 +1928,7 @@ body,
 }
 
 
-/* IMAGENS DOS PRODUTOS â€” AJUSTE DESKTOP */
+/* IMAGENS DOS PRODUTOS Ã¢â‚¬â€ AJUSTE DESKTOP */
 @media (min-width: 769px) {
   .card img,
   .grid .card img,
@@ -1937,7 +1937,7 @@ body,
   }
 }
 
-/* MOBILE â€” MANTER COMO ESTÃ */
+/* MOBILE Ã¢â‚¬â€ MANTER COMO ESTÃƒÂ */
 @media (min-width: 769px) {
   .hero {
     height: auto !important;
@@ -1972,7 +1972,7 @@ body,
 }
 
 
-/* ARTIGO VISÃVEL MAIOR â€” APENAS DESKTOP */
+/* ARTIGO VISÃƒÂVEL MAIOR Ã¢â‚¬â€ APENAS DESKTOP */
 @media (min-width: 769px) {
   .grid .card img,
   .products-grid .card img {
@@ -1981,7 +1981,7 @@ body,
   }
 }
 
-/* MOBILE â€” NÃƒO ALTERAR */
+/* MOBILE Ã¢â‚¬â€ NÃƒÆ’O ALTERAR */
 @media (min-width: 769px) {
   .hero {
     height: auto !important;
@@ -2015,7 +2015,7 @@ body,
 }
 
 
-/* ARTIGO VISÃVEL MAIOR â€” DESKTOP */
+/* ARTIGO VISÃƒÂVEL MAIOR Ã¢â‚¬â€ DESKTOP */
 @media (min-width: 769px) {
   .grid .card img,
   .products-grid .card img {
@@ -2024,7 +2024,7 @@ body,
   }
 }
 
-/* MOBILE â€” MANTER INALTERADO */
+/* MOBILE Ã¢â‚¬â€ MANTER INALTERADO */
 @media (min-width: 769px) {
   .hero {
     height: auto !important;
@@ -2059,7 +2059,7 @@ body,
 
 
 /* =========================================================
-   PRODUTO VISÃVEL MAIOR â€” DESKTOP
+   PRODUTO VISÃƒÂVEL MAIOR Ã¢â‚¬â€ DESKTOP
    ========================================================= */
 
 @media (min-width: 769px) {
@@ -2074,7 +2074,7 @@ body,
   }
 }
 
-/* MOBILE â€” NÃƒO ALTERAR */
+/* MOBILE Ã¢â‚¬â€ NÃƒÆ’O ALTERAR */
 @media (min-width: 769px) {
   .hero {
     height: auto !important;
@@ -2248,7 +2248,7 @@ body,
   background: #1d4ed8;
 }
 
-/* evita que o conteÃºdo fique escondido atrÃ¡s da barra */
+/* evita que o conteÃƒÂºdo fique escondido atrÃƒÂ¡s da barra */
 body {
   padding-top: 70px;
 }
@@ -2290,7 +2290,7 @@ body {
 }
 
 /* =========================================================
-   MOBILE â€” uma coluna, incluindo Ofertas da Semana
+   MOBILE Ã¢â‚¬â€ uma coluna, incluindo Ofertas da Semana
    ========================================================= */
 
 @media (max-width: 768px) {
@@ -2321,7 +2321,7 @@ body {
     width: 100% !important;
   }
 }
-/* Ajuste do espaÃ§o abaixo do hero */
+/* Ajuste do espaÃƒÂ§o abaixo do hero */
 .hero {
   height: auto !important;
   aspect-ratio: 16 / 9 !important;
@@ -2335,7 +2335,7 @@ body {
   display: block !important;
 }
 
-/* HERO Ofertas da Semana â€” desktop/mobile */
+/* HERO Ofertas da Semana Ã¢â‚¬â€ desktop/mobile */
 .hero picture {
   display: block;
   width: 100%;
@@ -2350,14 +2350,14 @@ body {
   object-position: center;
 }
 
-/* HERO â€” imagem especÃ­fica para telemÃ³vel */
+/* HERO Ã¢â‚¬â€ imagem especÃƒÂ­fica para telemÃƒÂ³vel */
 @media (max-width: 768px) {
   .hero picture img {
     content: url("/images/ofertas da semana-mobile.jpg");
   }
 }
 
-/* HERO mobile â€” mostrar a imagem Ofertas da Semana completa */
+/* HERO mobile Ã¢â‚¬â€ mostrar a imagem Ofertas da Semana completa */
 @media (max-width: 768px) {
   .hero {
     height: auto !important;
@@ -2378,7 +2378,7 @@ body {
   }
 }
 
-/* HERO Ofertas da Semana â€” imagem prÃ³pria no telemÃ³vel */
+/* HERO Ofertas da Semana Ã¢â‚¬â€ imagem prÃƒÂ³pria no telemÃƒÂ³vel */
 @media (max-width: 768px) {
   .hero {
     height: auto !important;
@@ -2395,7 +2395,7 @@ body {
 }
 
 /* =========================================================
-   PÃƒÂGINAS LEGAIS
+   PÃƒÆ’Ã‚ÂGINAS LEGAIS
 ========================================================= */
 
 .legal-page {
@@ -2506,7 +2506,7 @@ body {
 }
 
 
-/* Ajuste final â€” Ofertas da Semana com a mesma proporÃ§Ã£o do poster antigo */
+/* Ajuste final Ã¢â‚¬â€ Ofertas da Semana com a mesma proporÃƒÂ§ÃƒÂ£o do poster antigo */
 @media (min-width: 769px) {
   .hero {
     aspect-ratio: 16 / 9 !important;
@@ -2528,7 +2528,7 @@ body {
   }
 }
 
-/* AJUSTE FINAL â€” Ofertas da Semana */
+/* AJUSTE FINAL Ã¢â‚¬â€ Ofertas da Semana */
 @media (min-width: 769px) {
   .hero {
     max-width: 1290px !important;
@@ -2553,7 +2553,7 @@ body {
   }
 }
 
-/* Ofertas da Semana â€” mostrar o poster novo inteiro */
+/* Ofertas da Semana Ã¢â‚¬â€ mostrar o poster novo inteiro */
 @media (min-width: 769px) {
   .hero img {
     object-fit: contain !important;
@@ -2562,7 +2562,7 @@ body {
   }
 }
 
-/* Ofertas da Semana â€” largura total das margens do site */
+/* Ofertas da Semana Ã¢â‚¬â€ largura total das margens do site */
 @media (min-width: 769px) {
   .hero {
     max-width: none !important;
@@ -2584,8 +2584,8 @@ body {
 
 
 /* =========================================
-   JOMABASTO â€” HEADER V2
-   Apenas visual â€” nÃ£o altera funcionalidades
+   JOMABASTO Ã¢â‚¬â€ HEADER V2
+   Apenas visual Ã¢â‚¬â€ nÃƒÂ£o altera funcionalidades
    ========================================= */
 
 .header {
@@ -2782,8 +2782,8 @@ body {
 
 
 /* =========================================
-   JOMABASTO â€” HEADER V2.1
-   CorreÃ§Ã£o dos dropdowns desktop
+   JOMABASTO Ã¢â‚¬â€ HEADER V2.1
+   CorreÃƒÂ§ÃƒÂ£o dos dropdowns desktop
    ========================================= */
 
 @media (min-width: 769px) {
@@ -2829,8 +2829,8 @@ body {
 
 
 /* =========================================
-   JOMABASTO â€” MOBILE HEADER V2.2
-   EspaÃ§amento dos Ã­cones mobile
+   JOMABASTO Ã¢â‚¬â€ MOBILE HEADER V2.2
+   EspaÃƒÂ§amento dos ÃƒÂ­cones mobile
    ========================================= */
 
 @media (max-width: 768px) {
@@ -2910,8 +2910,8 @@ body {
 
 
 /* =========================================
-   JOMABASTO â€” MOBILE HEADER V2.3
-   Tudo numa Ãºnica linha
+   JOMABASTO Ã¢â‚¬â€ MOBILE HEADER V2.3
+   Tudo numa ÃƒÂºnica linha
    ========================================= */
 
 @media (max-width: 768px) {
@@ -2962,8 +2962,8 @@ body {
 
 
 /* =========================================
-   JOMABASTO â€” MOBILE HEADER V2.4
-   Linha Ãºnica: logo + Ã­cones + menu
+   JOMABASTO Ã¢â‚¬â€ MOBILE HEADER V2.4
+   Linha ÃƒÂºnica: logo + ÃƒÂ­cones + menu
    ========================================= */
 
 @media (max-width: 768px) {
@@ -3051,7 +3051,7 @@ body {
 
 
 /* =========================================
-   JOMABASTO â€” MOBILE SEARCH V2.1
+   JOMABASTO Ã¢â‚¬â€ MOBILE SEARCH V2.1
    Pesquisa sem cobrir o logo
    ========================================= */
 
@@ -3094,8 +3094,8 @@ body {
 
 
 /* =========================================
-   JOMABASTO â€” MOBILE MENU V2.1
-   Menu abaixo do cabeÃ§alho
+   JOMABASTO Ã¢â‚¬â€ MOBILE MENU V2.1
+   Menu abaixo do cabeÃƒÂ§alho
    ========================================= */
 
 @media (max-width: 768px) {
@@ -3129,8 +3129,8 @@ body {
 
 
 /* =========================================
-   JOMABASTO â€” MOBILE SUBCATEGORIES V2.1
-   Garantir texto visÃ­vel
+   JOMABASTO Ã¢â‚¬â€ MOBILE SUBCATEGORIES V2.1
+   Garantir texto visÃƒÂ­vel
    ========================================= */
 
 @media (max-width: 768px) {
@@ -3173,7 +3173,7 @@ body {
 
 
 
-/* AJUSTE SIMPLES â€” IMAGENS MAIORES + CARTÃ•ES MAIS JUNTOS */
+/* AJUSTE SIMPLES Ã¢â‚¬â€ IMAGENS MAIORES + CARTÃƒâ€¢ES MAIS JUNTOS */
 
 @media (min-width: 769px) {
   .grid,
@@ -3200,7 +3200,7 @@ body {
 }
 
 
-/* CORREÃ‡ÃƒO â€” IMAGENS DOS PRODUTOS REALMENTE MAIORES */
+/* CORREÃƒâ€¡ÃƒÆ’O Ã¢â‚¬â€ IMAGENS DOS PRODUTOS REALMENTE MAIORES */
 
 @media (min-width: 769px) {
   .grid .card img,
@@ -3229,7 +3229,7 @@ body {
 }
 
 
-/* AJUSTE â€” IMAGENS DOS PRODUTOS AINDA MAIORES */
+/* AJUSTE Ã¢â‚¬â€ IMAGENS DOS PRODUTOS AINDA MAIORES */
 
 @media (min-width: 769px) {
   .grid .card img,
@@ -3246,7 +3246,7 @@ body {
 }
 
 
-/* MELHORIA â€” PREÃ‡OS E PROMOÃ‡Ã•ES DOS PRODUTOS */
+/* MELHORIA Ã¢â‚¬â€ PREÃƒâ€¡OS E PROMOÃƒâ€¡Ãƒâ€¢ES DOS PRODUTOS */
 
 .grid .card .product-header {
   align-items: center !important;
@@ -3320,7 +3320,7 @@ body {
 }
 
 
-/* MELHORIA â€” STOCK E FAVORITOS DOS PRODUTOS */
+/* MELHORIA Ã¢â‚¬â€ STOCK E FAVORITOS DOS PRODUTOS */
 
 .grid .card .stock-favorite,
 .products-grid .card .stock-favorite {
@@ -3391,17 +3391,17 @@ body {
 
 
 /* =========================================================
-   MELHORIA â€” ESPAÃ‡AMENTO E HIERARQUIA DA PÃGINA INICIAL
+   MELHORIA Ã¢â‚¬â€ ESPAÃƒâ€¡AMENTO E HIERARQUIA DA PÃƒÂGINA INICIAL
    ========================================================= */
 
 @media (min-width: 769px) {
 
-  /* EspaÃ§o depois do banner */
+  /* EspaÃƒÂ§o depois do banner */
   .hero {
     margin-bottom: 34px !important;
   }
 
-  /* TÃ­tulos das secÃ§Ãµes */
+  /* TÃƒÂ­tulos das secÃƒÂ§ÃƒÂµes */
   .categories-section,
   .products-section {
     width: 100% !important;
@@ -3418,7 +3418,7 @@ body {
     color: #111827 !important;
   }
 
-  /* EspaÃ§o entre categorias e produtos */
+  /* EspaÃƒÂ§o entre categorias e produtos */
   .categories-section {
     margin-bottom: 48px !important;
   }
@@ -3435,7 +3435,7 @@ body {
 
 @media (max-width: 768px) {
 
-  /* EspaÃ§o depois do banner */
+  /* EspaÃƒÂ§o depois do banner */
   .hero {
     margin-bottom: 24px !important;
   }
@@ -3466,7 +3466,7 @@ body {
 
 
 /* =========================================================
-   MELHORIA â€” BLOCO INSTITUCIONAL DA PÃGINA INICIAL
+   MELHORIA Ã¢â‚¬â€ BLOCO INSTITUCIONAL DA PÃƒÂGINA INICIAL
    ========================================================= */
 
 .seo-home {
@@ -3537,7 +3537,7 @@ body {
 
 
 /* =========================================================
-   MELHORIA â€” NOMES DOS PRODUTOS
+   MELHORIA Ã¢â‚¬â€ NOMES DOS PRODUTOS
    ========================================================= */
 
 .grid .card h3,
@@ -3569,7 +3569,7 @@ body {
 
 
 /* =========================================================
-   ACABAMENTO â€” CARTÃ•ES DE PRODUTO
+   ACABAMENTO Ã¢â‚¬â€ CARTÃƒâ€¢ES DE PRODUTO
    ========================================================= */
 
 .grid .card,
@@ -3604,7 +3604,7 @@ body {
 
 
 /* =========================================================
-   MELHORIA â€” INTERAÃ‡ÃƒO DOS POSTERS DE CATEGORIAS
+   MELHORIA Ã¢â‚¬â€ INTERAÃƒâ€¡ÃƒÆ’O DOS POSTERS DE CATEGORIAS
    ========================================================= */
 
 .category-poster {
@@ -3645,7 +3645,7 @@ body {
 
 
 /* =========================================================
-   MELHORIA â€” BARRA DE PESQUISA DESKTOP
+   MELHORIA Ã¢â‚¬â€ BARRA DE PESQUISA DESKTOP
    ========================================================= */
 
 @media (min-width: 769px) {
@@ -3696,7 +3696,7 @@ body {
 
 
 /* =========================================================
-   MELHORIA â€” BOTÃƒO ADICIONAR AO CARRINHO
+   MELHORIA Ã¢â‚¬â€ BOTÃƒÆ’O ADICIONAR AO CARRINHO
    ========================================================= */
 
 .add-to-cart-btn {
@@ -4305,7 +4305,7 @@ body {
 }
 
 
-/* EspaÃ§o reservado para a Top Bar fixa */
+/* EspaÃƒÂ§o reservado para a Top Bar fixa */
 body {
   padding-top: 32px;
 }
@@ -4328,7 +4328,7 @@ body {
 }
 
 
-/* AnimaÃ§Ã£o da Top Bar - Desktop e Mobile */
+/* AnimaÃƒÂ§ÃƒÂ£o da Top Bar - Desktop e Mobile */
 .announcement-bar {
   animation: announcementBlink 2.5s ease-in-out infinite;
 }
@@ -4343,7 +4343,7 @@ body {
 }
 
 
-/* Top Bar - piscar rÃ¡pido */
+/* Top Bar - piscar rÃƒÂ¡pido */
 .announcement-bar {
   animation: announcementBlink 1.2s ease-in-out infinite;
 }
@@ -4390,7 +4390,7 @@ body {
   display: none !important;
 }
 
-/* NÃ£o mostrar produtos automaticamente na homepage */
+/* NÃƒÂ£o mostrar produtos automaticamente na homepage */
 .hide-home-products {
   display: none !important;
 }
@@ -4537,7 +4537,7 @@ body {
 }
 
 
-/* EspaÃ§o entre Running/Futebol e o texto SEO */
+/* EspaÃƒÂ§o entre Running/Futebol e o texto SEO */
 .seo-home {
   margin-top: 40px !important;
 }
@@ -4606,7 +4606,7 @@ body {
 }
 
 
-/* CORREÃ‡ÃƒO - BOTÃƒO VOLTAR Ã€ HOME */
+/* CORREÃƒâ€¡ÃƒÆ’O - BOTÃƒÆ’O VOLTAR Ãƒâ‚¬ HOME */
 .product-filters-bar .back-home-button {
   display: inline-flex !important;
   width: auto !important;
@@ -4643,7 +4643,7 @@ body {
   }
 }
 
-/* MOBILE - DROPDOWN DO UTILIZADOR DENTRO DO ECRÃƒ */
+/* MOBILE - DROPDOWN DO UTILIZADOR DENTRO DO ECRÃƒÆ’ */
 @media (max-width: 768px) {
   .header .mobile-user-dropdown {
     right: 0 !important;
@@ -4663,7 +4663,7 @@ body {
   }
 }
 
-/* MOBILE - MENU DO UTILIZADOR SEM SAIR DO ECRÃƒ */
+/* MOBILE - MENU DO UTILIZADOR SEM SAIR DO ECRÃƒÆ’ */
 @media (max-width: 768px) {
   .header .mobile-user-menu {
     position: relative !important;
@@ -4822,7 +4822,7 @@ body {
   transform: translateY(-1px) !important;
 }
 
-/* No mobile mantÃ©m estÃ¡tico */
+/* No mobile mantÃƒÂ©m estÃƒÂ¡tico */
 @media (max-width: 768px) {
   .hero-top-card:hover {
     transform: none !important;
@@ -4925,14 +4925,14 @@ body {
 }
 
 /* =========================================================
-   NOVO TOPO - VÃDEOS PADEL + FUTEBOL
+   NOVO TOPO - VÃƒÂDEOS PADEL + FUTEBOL
    ========================================================= */
 
 .home-hero-layout {
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
   margin-top: 102px;
   padding: 0;
   box-sizing: border-box;
@@ -4959,6 +4959,8 @@ body {
   display: block;
   width: 100%;
   height: auto;
+  min-width: 100%;
+  max-width: none;
   aspect-ratio: auto;
   object-fit: contain;
   border-radius: 14px;
@@ -4981,8 +4983,7 @@ body {
   margin-bottom: 28px !important;
 }
 
-/* Mobile:
-   Padel -> SEO -> Futebol */
+/* Mobile: sequência vertical da homepage */
 @media (max-width: 768px) {
   .home-hero-layout {
     display: flex;
@@ -4991,18 +4992,50 @@ body {
     margin-top: 70px;
   }
 
-  .home-hero-layout .hero-video-card:first-child {
+  .home-block-seo {
     order: 1;
-  }
-
-  .home-hero-layout .seo-home {
-    order: 2;
-    margin-top: 30px !important;
+    margin-top: 0 !important;
     margin-bottom: 30px !important;
   }
 
-  .home-hero-layout .hero-video-card:last-child {
+  .home-block-trail {
+    order: 2;
+  }
+
+  .home-block-running {
     order: 3;
+  }
+
+  .home-block-running-posters {
+    order: 4;
+  }
+
+  .home-block-futebol {
+    order: 5;
+  }
+
+  .home-block-futebol-intro {
+    order: 6;
+  }
+
+  .home-block-futebol-posters {
+    order: 7;
+  }
+
+  .home-block-divider {
+    order: 8;
+  }
+
+  .home-block-tenis {
+    order: 9;
+  }
+
+  .home-block-tenis-intro {
+    order: 10;
+  }
+
+  .home-block-tenis-posters {
+    order: 11;
   }
 
   .hero-video-button:hover {
@@ -5010,11 +5043,29 @@ body {
     box-shadow: none;
   }
 
+  .hero-video-card {
+    width: 100% !important;
+    min-height: 0 !important;
+    overflow: hidden;
+  }
+
+  .hero-video-button {
+    position: relative;
+    width: 100% !important;
+    height: calc(100vw * 1.7778) !important;
+    overflow: hidden;
+    display: block;
+  }
+
   .hero-video {
-    width: 100%;
-    height: auto;
-    aspect-ratio: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(100vw * 3.1605) !important;
+    height: calc(100vw * 1.7778) !important;
+    max-width: none !important;
     border-radius: 14px;
+    transform: translate(-50%, -50%) !important;
   }
 }
 
@@ -5031,7 +5082,7 @@ body {
 
 
 
-/* EspaÃ§amento entre o vÃ­deo Futebol e os posters no mobile */
+/* EspaÃƒÂ§amento entre o vÃƒÂ­deo Futebol e os posters no mobile */
 @media (max-width: 768px) {
   .home-hero-layout .hero-video-futebol {
     margin-bottom: 30px;
@@ -5041,7 +5092,7 @@ body {
 
 
 
- /* CORREÃ‡ÃƒO FINAL - OFERTAS DA SEMANA NO TOPO MOBILE */
+ /* CORREÃƒâ€¡ÃƒÆ’O FINAL - OFERTAS DA SEMANA NO TOPO MOBILE */
  @media (max-width: 768px) {
    .categories-grid > .category-poster-promocoes {
      display: block !important;
@@ -5050,7 +5101,7 @@ body {
    }
  }
 
-/* Desktop â€” reduzir ligeiramente os vÃ­deos */
+/* Desktop Ã¢â‚¬â€ reduzir ligeiramente os vÃƒÂ­deos */
 @media (min-width: 769px) {
   .home-hero-layout .hero-video-card {
     width: 94%;
@@ -5064,8 +5115,8 @@ body {
 }
 
 /* =========================================================
-   JOMABASTO â€” REDESIGN VISUAL DO CARRINHO
-   APENAS VISUAL â€” LOGICA INTACTA
+   JOMABASTO Ã¢â‚¬â€ REDESIGN VISUAL DO CARRINHO
+   APENAS VISUAL Ã¢â‚¬â€ LOGICA INTACTA
    ========================================================= */
 
 .cart-overlay {
@@ -5114,7 +5165,7 @@ body {
 }
 
 .cart > button:first-of-type::after {
-  content: "×";
+  content: "Ã—";
   font-size: 25px;
   line-height: 1;
 }
@@ -5321,7 +5372,7 @@ body {
 }
 
 
-/* CORREÃ‡ÃƒO â€” nÃ£o deixar o redesign do carrinho afetar
+/* CORREÃƒâ€¡ÃƒÆ’O Ã¢â‚¬â€ nÃƒÂ£o deixar o redesign do carrinho afetar
    a galeria/detalhe dos produtos */
 
 .cart-overlay:not(:has(.cart)) {
@@ -5331,8 +5382,8 @@ body {
 }
 
 
-/* CORREÃ‡ÃƒO â€” botÃ£o Adicionar ao Carrinho fica dentro do produto,
-   na posiÃ§Ã£o normal, sem barra fixa no topo */
+/* CORREÃƒâ€¡ÃƒÆ’O Ã¢â‚¬â€ botÃƒÂ£o Adicionar ao Carrinho fica dentro do produto,
+   na posiÃƒÂ§ÃƒÂ£o normal, sem barra fixa no topo */
 
 .add-to-cart-btn {
   position: static !important;
@@ -5349,7 +5400,7 @@ body {
 
 
 /* =========================================================
-   BOTÃ•ES DO PRODUTO â€” GRUPO UNIFORME
+   BOTÃƒâ€¢ES DO PRODUTO Ã¢â‚¬â€ GRUPO UNIFORME
    Apenas visual
    ========================================================= */
 
@@ -5365,13 +5416,13 @@ body {
   margin-top: 10px !important;
 }
 
-/* BotÃµes de aÃ§Ã£o dentro do detalhe do produto */
+/* BotÃƒÂµes de aÃƒÂ§ÃƒÂ£o dentro do detalhe do produto */
 .product-modal button,
 .product-detail button {
   box-sizing: border-box;
 }
 
-/* MantÃ©m os botÃµes visualmente juntos e com a mesma dimensÃ£o */
+/* MantÃƒÂ©m os botÃƒÂµes visualmente juntos e com a mesma dimensÃƒÂ£o */
 .product-modal .add-to-cart-btn,
 .product-modal button,
 .product-detail .add-to-cart-btn,
@@ -5379,7 +5430,7 @@ body {
   min-height: 48px;
 }
 
-/* EspaÃ§amento compacto entre as aÃ§Ãµes */
+/* EspaÃƒÂ§amento compacto entre as aÃƒÂ§ÃƒÂµes */
 .product-modal .add-to-cart-btn ~ button,
 .product-detail .add-to-cart-btn ~ button {
   margin-top: 10px !important;
@@ -5387,7 +5438,7 @@ body {
 
 
 /* =========================================================
-   GRUPO DE BOTÃ•ES DO PRODUTO
+   GRUPO DE BOTÃƒâ€¢ES DO PRODUTO
    ========================================================= */
 
 .add-to-cart-btn,
@@ -5408,15 +5459,15 @@ body {
   margin-top: 0 !important;
 }
 
-/* Evita espaÃ§os exagerados entre os trÃªs */
+/* Evita espaÃƒÂ§os exagerados entre os trÃƒÂªs */
 .add-to-cart-btn + button,
 .add-to-cart-btn ~ button {
   margin-top: 8px !important;
 }
 
 
-/* Retira apenas o X visual do botÃ£o Fechar que foi transformado em X.
-   O botÃ£o continua a funcionar normalmente. */
+/* Retira apenas o X visual do botÃƒÂ£o Fechar que foi transformado em X.
+   O botÃƒÂ£o continua a funcionar normalmente. */
 .cart > button:first-of-type::after {
   content: none !important;
 }
@@ -5427,8 +5478,8 @@ body {
 
 
 /* =========================================================
-   CARRINHO â€” PRODUTO COM FOTOGRAFIA GRANDE
-   Apenas apresentaÃ§Ã£o visual
+   CARRINHO Ã¢â‚¬â€ PRODUTO COM FOTOGRAFIA GRANDE
+   Apenas apresentaÃƒÂ§ÃƒÂ£o visual
    ========================================================= */
 
 .cart-item {
@@ -5484,7 +5535,7 @@ body {
 
 
 /* =========================================================
-   AJUSTE PREMIUM â€” ESPAÃ‡AMENTO INTERIOR DO CARRINHO
+   AJUSTE PREMIUM Ã¢â‚¬â€ ESPAÃƒâ€¡AMENTO INTERIOR DO CARRINHO
    ========================================================= */
 
 .cart {
@@ -5510,7 +5561,7 @@ body {
 }
 
 
-/* ===== CORREÃ‡Ã•ES FINAIS DO CARRINHO ===== */
+/* ===== CORREÃƒâ€¡Ãƒâ€¢ES FINAIS DO CARRINHO ===== */
 
 /* X de fechar o carrinho */
 .cart > button:first-of-type {
@@ -5545,7 +5596,7 @@ body {
   color: #111 !important;
 }
 
-/* BotÃ£o Adicionar ao carrinho */
+/* BotÃƒÂ£o Adicionar ao carrinho */
 .add-to-cart-btn {
   position: static !important;
   display: block !important;
@@ -5563,7 +5614,7 @@ body {
   z-index: 1 !important;
 }
 
-/* Texto do botÃ£o */
+/* Texto do botÃƒÂ£o */
 .add-to-cart-btn {
   font-size: 16px !important;
   line-height: 1.2 !important;
@@ -5571,7 +5622,7 @@ body {
   white-space: nowrap !important;
 }
 
-/* MantÃ©m os trÃªs botÃµes do produto alinhados e iguais */
+/* MantÃƒÂ©m os trÃƒÂªs botÃƒÂµes do produto alinhados e iguais */
 .add-to-cart-btn,
 .add-to-cart-btn + button,
 .add-to-cart-btn ~ button {
@@ -5582,7 +5633,7 @@ body {
   box-sizing: border-box !important;
 }
 
-/* EspaÃ§amento entre os botÃµes */
+/* EspaÃƒÂ§amento entre os botÃƒÂµes */
 .add-to-cart-btn + button,
 .add-to-cart-btn ~ button {
   margin-top: 8px !important;
@@ -5590,8 +5641,8 @@ body {
 
 
 /* =========================================================
-   CORREÃ‡ÃƒO FINAL â€” SEPARAR BOTÃƒO FECHAR DO CARRINHO
-   DO BOTÃƒO ADICIONAR AO CARRINHO DO PRODUTO
+   CORREÃƒâ€¡ÃƒÆ’O FINAL Ã¢â‚¬â€ SEPARAR BOTÃƒÆ’O FECHAR DO CARRINHO
+   DO BOTÃƒÆ’O ADICIONAR AO CARRINHO DO PRODUTO
    ========================================================= */
 
 .cart-overlay:not(:has(.cart-item)) .cart > button:first-of-type {
@@ -5649,7 +5700,7 @@ body {
 }
 
 /* =========================================================
-   CARRINHO â€” FINALIZAR COMPRA NO RODAPÃ‰
+   CARRINHO Ã¢â‚¬â€ FINALIZAR COMPRA NO RODAPÃƒâ€°
    ========================================================= */
 
 .cart-main {
@@ -5875,7 +5926,7 @@ body {
     right: 10px !important;
   }
 }
-/* FAQ — trocar + por × quando aberta */
+/* FAQ â€” trocar + por Ã— quando aberta */
 .faq-in-filters[open] > summary .faq-toggle {
   font-size: 0 !important;
   transform: none !important;
@@ -5887,7 +5938,7 @@ body {
   font-weight: 300 !important;
   line-height: 1 !important;
 }
-/* FAQ â€” botÃ£o fechar dentro da caixa */
+/* FAQ Ã¢â‚¬â€ botÃƒÂ£o fechar dentro da caixa */
 .faq-in-filters .faq-list {
   position: absolute !important;
 }
@@ -5930,7 +5981,7 @@ body {
   }
 }
 
-/* FAQ MOBILE â€” camada superior */
+/* FAQ MOBILE Ã¢â‚¬â€ camada superior */
 @media (max-width: 768px) {
   .faq-in-filters[open] .faq-list {
     position: fixed !important;
@@ -5946,11 +5997,11 @@ body {
 }
  
 /* =========================================================
-   JOMABASTO — HERO FINAL
+   JOMABASTO â€” HERO FINAL
    ========================================================= */
 
 .home-hero-layout {
-  gap: 8px !important;
+  gap: 20px !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
@@ -5965,7 +6016,7 @@ body {
   height: 630px !important;
 }
 
- /* JOMABASTO — FONTE DO NOME DA LOJA */
+ /* JOMABASTO â€” FONTE DO NOME DA LOJA */
 .header-brand-text {
   font-family: 'Roboto Slab', serif !important;
   font-weight: 600 !important;
@@ -5980,8 +6031,644 @@ body {
 }
 
 
-/* Desktop — aumentar altura dos vídeos sem alterar o mobile */
+/* Desktop â€” aumentar altura dos vÃ­deos sem alterar o mobile */
 @media (min-width: 769px) {
-  .hero-video-card { min-height: 850px !important; }
-  .hero-video { height: 850px !important; }
+  .hero-video-card {
+    width: 94%;
+    min-height: 0 !important;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+  }
+
+  .hero-video-button {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    display: block;
+  }
+
+  .hero-video {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 14px;
+    transform: none !important;
+  }
+}
+
+
+
+
+
+
+
+.home-section-divider {
+  width: 90%;
+  margin: 18px auto 4px;
+  padding: 30px 12px;
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.18);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+.home-section-divider strong {
+  display: block;
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.home-section-divider span {
+  display: block;
+  margin-top: 9px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  opacity: 0.65;
+}
+
+.home-section-divider small {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .home-section-divider {
+    width: 90%;
+    margin-top: 14px;
+    padding: 22px 8px;
+  }
+
+  .home-section-divider strong {
+    font-size: 18px;
+  }
+
+  .home-section-divider span {
+    margin-top: 7px;
+    font-size: 8px;
+    letter-spacing: 0.14em;
+  }
+
+  .home-section-divider small {
+    margin-top: 8px;
+    font-size: 12px;
+  }
+}
+
+.home-poster-intro {
+  width: 90%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  text-align: center;
+}
+
+.home-poster-intro > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 8px;
+}
+
+.home-poster-intro strong {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.home-poster-intro small {
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .home-poster-intro {
+    width: 90%;
+    gap: 8px;
+  }
+
+  .home-poster-intro strong {
+    font-size: 17px;
+  }
+
+  .home-poster-intro small {
+    font-size: 12px;
+  }
+}
+
+.home-poster-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.home-poster-row button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.home-poster-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.home-poster-overlay {
+  position: absolute;
+  z-index: 2;
+  left: 5%;
+  right: 5%;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 28px 22px 20px;
+  text-align: left;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.95);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.72),
+    rgba(0, 0, 0, 0)
+  );
+  pointer-events: none;
+}
+
+.home-poster-overlay strong {
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+}
+
+.home-poster-overlay small {
+  margin-top: 7px;
+  font-size: 14px;
+  line-height: 1.25;
+  font-weight: 500;
+}
+
+.home-poster-row img {
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+  height: auto;
+  border-radius: 14px;
+}
+
+@media (max-width: 768px) {
+  .home-poster-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+}
+
+
+
+
+
+
+
+/* =========================================================
+   VÍDEOS MOBILE DA HOME
+   Desktop mantém os vídeos Vimeo originais
+   ========================================================= */
+
+.hero-video-mobile {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .home-block-trail iframe.hero-video,
+  .home-block-futebol iframe.hero-video,
+  .home-block-tenis iframe.hero-video {
+    display: none !important;
+  }
+
+  .home-block-trail .hero-video-mobile,
+  .home-block-futebol .hero-video-mobile,
+  .home-block-tenis .hero-video-mobile {
+    display: block !important;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    object-fit: cover;
+    border-radius: 14px;
+    transform: translate(-50%, -50%) !important;
+  }
+}
+ /* =========================================================
+    ORDEM MOBILE — TRAIL → POSTERS → FUTEBOL
+    Desktop não é alterado
+    ========================================================= */
+
+ @media (max-width: 768px) {
+   .home-hero-layout {
+     display: flex !important;
+     flex-direction: column !important;
+   }
+
+   .home-hero-layout .home-block-trail {
+     order: 1 !important;
+   }
+
+   .home-hero-layout .home-block-running {
+     order: 2 !important;
+   }
+
+   .home-hero-layout .home-block-running-posters {
+     order: 3 !important;
+   }
+
+   .home-hero-layout .home-block-futebol {
+     order: 4 !important;
+   }
+
+   .home-hero-layout .home-block-seo {
+     order: 5 !important;
+   }
+ }
+
+/* =========================================================
+   MOBILE — SEO ENTRE POSTERS E FUTEBOL
+   Desktop não é alterado
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .home-hero-layout .home-block-trail {
+    order: 1 !important;
+  }
+
+  .home-hero-layout .home-block-running {
+    order: 2 !important;
+  }
+
+  .home-hero-layout .home-block-running-posters {
+    order: 3 !important;
+  }
+
+  .home-hero-layout .home-block-seo {
+    order: 4 !important;
+  }
+
+  .home-hero-layout .home-block-futebol {
+    order: 5 !important;
+  }
+}
+
+
+/* =========================================================
+   MOBILE — COMPACTAR ESPAÇAMENTOS DO HERO
+   Desktop não é alterado
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  /* Espaçamento geral do Hero */
+  .home-hero-layout {
+    gap: 0 !important;
+  }
+
+  /* Texto Running / Trail */
+  .home-block-running {
+    margin-top: 10px !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* Posters Running / Trail */
+  .home-block-running-posters {
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* SEO */
+  .home-block-seo {
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* Vídeo Futebol */
+  .home-block-futebol {
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* Evita margens adicionais no vídeo Trail */
+  .home-block-trail {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Espaçamento interno entre os títulos Running / Trail */
+  .home-poster-intro {
+    gap: 6px !important;
+  }
+
+  /* Espaço mínimo entre texto e posters */
+  .home-poster-intro + .home-poster-row {
+    margin-top: 0 !important;
+  }
+}
+
+
+/* =========================================================
+   MOBILE — COMPACTAR TÉNIS/PADEL → FILTROS → RODAPÉ
+   Desktop não é alterado
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  /* Posters Ténis / Padel */
+  .home-block-tenis-posters {
+    margin-bottom: 6px !important;
+  }
+
+  /* Bloco de introdução Ténis / Padel */
+  .home-block-tenis-intro {
+    margin-bottom: 6px !important;
+  }
+
+  /* Barra "Filtrar por" */
+  .product-filters-bar {
+    margin-top: 0 !important;
+    margin-bottom: 6px !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+  }
+
+  /* Aproxima o conteúdo do início do rodapé */
+  .footer-content {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+    gap: 12px !important;
+  }
+
+  /* Menos espaço entre os blocos internos do rodapé */
+  .footer-content > .footer-block {
+    padding-bottom: 10px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .footer-content > .footer-block:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Rodapé inferior mais compacto */
+  .footer-bottom {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    gap: 8px !important;
+  }
+
+  /* Cookie / redes sociais */
+  .footer-cookie-settings {
+    margin-bottom: 10px !important;
+  }
+}
+
+
+/* =========================================================
+   MOBILE — APROXIMAR FILTROS DOS TERMOS / RODAPÉ
+   Desktop não é alterado
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  /* Reduz espaço imediatamente depois da barra de filtros */
+  .product-filters-bar {
+    margin-bottom: 0 !important;
+  }
+
+  /* Aproxima a zona dos termos do conteúdo anterior */
+  .footer {
+    margin-top: 0 !important;
+  }
+
+  /* Remove espaço superior excessivo da área do rodapé */
+  .footer-content {
+    margin-top: 0 !important;
+    padding-top: 10px !important;
+  }
+
+}
+/* AJUSTE FINAL DE ESPAÇAMENTO — DESKTOP */
+@media (min-width: 769px) {
+  .home-hero-layout {
+    gap: 12px !important;
+  }
+
+  .home-hero-layout .seo-home {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+/* ORDEM FINAL — DESKTOP */
+@media (min-width: 769px) {
+  .home-hero-layout {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .home-hero-layout .home-block-trail {
+    order: 1 !important;
+  }
+
+  .home-hero-layout .home-block-running {
+    order: 2 !important;
+  }
+
+  .home-hero-layout .home-block-running-posters {
+    order: 3 !important;
+  }
+
+  .home-hero-layout .home-block-seo {
+    order: 4 !important;
+  }
+
+  .home-hero-layout .home-block-futebol {
+    order: 5 !important;
+  }
+
+  .home-hero-layout .home-block-futebol-intro {
+    order: 6 !important;
+  }
+
+  .home-hero-layout .home-block-futebol-posters {
+    order: 7 !important;
+  }
+
+  .home-hero-layout .home-block-divider {
+    order: 8 !important;
+  }
+
+  .home-hero-layout .home-block-tenis {
+    order: 9 !important;
+  }
+
+  .home-hero-layout .home-block-tenis-intro {
+    order: 10 !important;
+  }
+
+  .home-hero-layout .home-block-tenis-posters {
+    order: 11 !important;
+  }
+}
+/* AJUSTE FINO DOS ESPAÇAMENTOS — DESKTOP */
+@media (min-width: 769px) {
+
+  .home-hero-layout .home-block-seo {
+    margin-bottom: 0 !important;
+  }
+
+  .home-hero-layout .home-block-futebol {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .home-hero-layout .home-block-futebol-intro {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .home-hero-layout .home-block-divider {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .home-hero-layout .home-block-tenis {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .home-hero-layout .home-block-tenis-intro {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .home-hero-layout .home-block-tenis-posters {
+    margin-top: 0 !important;
+  }
+}
+
+
+/* =========================================================
+   HOMEPAGE — ORGANIZAÇÃO DESKTOP
+   Vídeos 16:9 + espaçamento compacto
+   Não altera o mobile
+   ========================================================= */
+@media (min-width: 769px) {
+
+  .home-hero-layout {
+    gap: 12px !important;
+  }
+
+  .home-hero-layout .hero-video-card {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .home-hero-layout .hero-video-button {
+    width: 100% !important;
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+    overflow: hidden !important;
+  }
+
+  .home-hero-layout .hero-video {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    aspect-ratio: 16 / 9 !important;
+    object-fit: cover !important;
+    transform: none !important;
+  }
+
+  .home-hero-layout .seo-home {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .home-hero-layout .home-block-futebol,
+  .home-hero-layout .home-block-futebol-intro,
+  .home-hero-layout .home-block-futebol-posters,
+  .home-hero-layout .home-block-divider,
+  .home-hero-layout .home-block-tenis,
+  .home-hero-layout .home-block-tenis-intro,
+  .home-hero-layout .home-block-tenis-posters {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+
+/* HOMEPAGE — VÍDEOS DESKTOP COM LARGURA TOTAL */
+@media (min-width: 769px) {
+
+  .home-hero-layout .hero-video-card,
+  .home-hero-layout .hero-video-button,
+  .home-hero-layout .hero-video {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .home-hero-layout .hero-video-button {
+    aspect-ratio: 16 / 9 !important;
+  }
+
+  .home-hero-layout .hero-video {
+    height: 100% !important;
+    min-width: 0 !important;
+    object-fit: cover !important;
+  }
+}
+
+
+/* HOMEPAGE — VÍDEOS DESKTOP TODOS IGUAIS */
+@media (min-width: 769px) {
+  .home-hero-layout .home-block-trail .hero-video-button,
+  .home-hero-layout .home-block-futebol .hero-video-button,
+  .home-hero-layout .home-block-tenis .hero-video-button {
+    width: 100% !important;
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+    overflow: hidden !important;
+  }
+
+  .home-hero-layout .home-block-trail .hero-video,
+  .home-hero-layout .home-block-futebol .hero-video,
+  .home-hero-layout .home-block-tenis .hero-video {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    aspect-ratio: 16 / 9 !important;
+    object-fit: cover !important;
+    transform: none !important;
+  }
 }
