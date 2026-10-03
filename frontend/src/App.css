@@ -6672,3 +6672,12 @@ body {
     transform: none !important;
   }
 }
+
+/* Movimento dos posters ao passar o rato */
+.home-poster-row > * {
+  transition: transform 0.3s ease;
+}
+
+.home-poster-row > *:hover {
+  transform: translateY(-5px);
+}
