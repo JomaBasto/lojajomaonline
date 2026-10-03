@@ -2410,6 +2410,107 @@ return (
   <>
 
     {/* HERO */}
+    <div className="ofertas-semana-bar" role="link" tabIndex="0" onClick={() => selectCategory("promocoes")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") selectCategory("promocoes"); }}>
+      <span className="ofertas-semana-text">OFERTAS DA SEMANA</span>
+      <span className="ofertas-semana-cta">VER OFERTAS&nbsp; &#8594;</span>
+    </div>
+
+    <style>{`
+      .ofertas-semana-bar {
+        position: fixed;
+        top: 108px;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        margin: 0;
+        width: 100%;
+        min-height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        box-sizing: border-box;
+        padding: 7px 16px;
+        cursor: pointer;
+        user-select: none;
+        background: #fff;
+        color: #111;
+        overflow: hidden;
+        transition: background-color .25s ease, transform .25s ease;
+      }
+
+      .ofertas-semana-text {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: .08em;
+        animation: ofertasSemanaFade 3.8s ease-in-out infinite;
+      }
+
+      .ofertas-semana-cta {
+        color: #0057d9;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: .06em;
+        opacity: .95;
+        transition: transform .25s ease, opacity .25s ease;
+      }
+
+      .ofertas-semana-bar:hover {
+        background: #f7f7f7;
+        transform: translateY(-1px);
+      }
+
+      .ofertas-semana-bar:hover .ofertas-semana-text {
+        animation-play-state: paused;
+        opacity: 1;
+      }
+
+      .ofertas-semana-bar:hover .ofertas-semana-cta {
+        opacity: 1;
+        transform: translateX(5px);
+      }
+
+      .ofertas-semana-bar:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: -2px;
+      }
+
+      @keyframes ofertasSemanaFade {
+        0%, 18% { opacity: 0; transform: translateY(3px); }
+        32%, 72% { opacity: 1; transform: translateY(0); }
+        86%, 100% { opacity: 0; transform: translateY(-3px); }
+      }
+
+      @media (max-width: 700px) {
+        .ofertas-semana-bar {
+          min-height: 40px;
+          gap: 9px;
+          padding: 6px 10px;
+        }
+
+        .ofertas-semana-text {
+          font-size: 11px;
+          letter-spacing: .055em;
+        }
+
+        .ofertas-semana-cta {
+          font-size: 10px;
+          letter-spacing: .035em;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .ofertas-semana-text {
+          animation: none;
+          opacity: 1;
+        }
+
+        .ofertas-semana-bar,
+        .ofertas-semana-cta {
+          transition: none;
+        }
+      }
+    `}</style>
     <section className="home-hero-layout">
 
       <article className="hero-video-card home-block-trail">
