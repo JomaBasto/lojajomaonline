@@ -1,4 +1,4 @@
-﻿export default async function handler(req, res) {
+export default async function handler(req, res) {
   try {
     const response = await fetch(
       "https://jomabasto-backend.onrender.com/produtos"
@@ -11,7 +11,7 @@
     const products = await response.json();
 
     if (!Array.isArray(products)) {
-      throw new Error("A API não devolveu uma lista de produtos");
+      throw new Error("A API n�o devolveu uma lista de produtos");
     }
 
     const escapeXml = (value) =>
@@ -41,8 +41,8 @@
 
         const availability =
           Array.isArray(product.sizes) && product.sizes.length > 0
-            ? "in stock"
-            : "out of stock";
+            ? "in_stock"
+            : "out_of_stock";
 
         let item = `
     <item>
@@ -93,3 +93,4 @@ ${items}
     );
   }
 }
+
