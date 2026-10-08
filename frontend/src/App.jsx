@@ -751,6 +751,14 @@ const handleSave = async () => {
 
           if (produtoUrl) {
 
+            window.fbq?.("track", "ViewContent", {
+              content_ids: [String(produtoUrl._id)],
+              content_type: "product",
+              content_name: produtoUrl.name,
+              value: Number(produtoUrl.promoPrice ?? produtoUrl.price),
+              currency: "EUR"
+            });
+
             setSelectedProduct(produtoUrl);
 
             setActiveImage(0);
