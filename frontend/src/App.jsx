@@ -539,6 +539,14 @@ const selectMobileCategory = (category, e) => {
 
   const openGallery = (product) => {
 
+    window.fbq?.("track", "ViewContent", {
+      content_ids: [String(product._id)],
+      content_type: "product",
+      content_name: product.name,
+      value: Number(product.promoPrice ?? product.price),
+      currency: "EUR"
+    });
+
     setSelectedProduct(product);
 
     setActiveImage(0);
