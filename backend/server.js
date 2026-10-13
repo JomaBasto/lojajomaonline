@@ -19,12 +19,21 @@ import User from "./models/User.js";
 import Encomenda from "./models/Encomenda.js";
 import { verifyToken, isAdmin } from "./middleware/auth.js";
 import bcrypt from "bcryptjs";
+import { readFileSync } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 // ======================
 // CONFIG
 // ======================
 
 dotenv.config();
+
+const diretorioBackend = path.dirname(fileURLToPath(import.meta.url));
+const mapaImagensGoogle = JSON.parse(
+  readFileSync(path.join(diretorioBackend, "mapa-imagens-google.json"), "utf8")
+);
+const substituirImagemGoogle = (url) => mapaImagensGoogle[url] || url;
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -700,15 +709,16 @@ app.get("/google-shopping.xml", async (req, res) => {
 
       const imagemOriginal = imagensValidas[0] || "";
 
-      const imageLink = imagemOriginal.endsWith("_large.jpg")
+      const imageLinkOriginal = imagemOriginal.endsWith("_large.jpg")
         ? imagemOriginal.replace("_large.jpg", ".jpg")
         : imagemOriginal;
+      const imageLink = substituirImagemGoogle(imageLinkOriginal);
 
       const additionalImages = imagensValidas
         .slice(1)
         .map(
           (image) =>
-            `    <g:additional_image_link>${escapeXml(image)}</g:additional_image_link>`
+            `    <g:additional_image_link>${escapeXml(substituirImagemGoogle(image))}</g:additional_image_link>`
         )
         .join("\n");
 
