@@ -1,4 +1,4 @@
-﻿import fs from "node:fs/promises";
+import fs from "node:fs/promises";
 import path from "node:path";
 
 const API_URL = "https://jomabasto-backend.onrender.com/produtos";
@@ -36,13 +36,13 @@ for (const produto of produtos) {
       ? produto.promoPrice
       : produto.price;
 
-  const image = produto.images?.[0] || `${BASE_URL}/jomabasto.png`;
+  const image = produto.reference === "AGUW2604AG" ? "https://res.cloudinary.com/dboqymkjf/image/upload/v1791966424/AGUW2604AG.jpg" : produto.images?.[0] || `${BASE_URL}/jomabasto.png`;
 
   const schema = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: nome,
-    image: produto.images || [image],
+    image: produto.reference === "AGUW2604AG" ? [image] : (produto.images || [image]),
     description: produto.description || description,
     sku: produto.reference || undefined,
     mpn: produto.reference || undefined,

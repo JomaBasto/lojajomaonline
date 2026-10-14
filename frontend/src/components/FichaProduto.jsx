@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactGA from "react-ga4";
 import { useParams } from "react-router-dom";
 
@@ -96,7 +96,7 @@ export default function FichaProduto() {
       "@context": "https://schema.org",
       "@type": "Product",
       name: produto.name,
-      image: produto.images || [],
+      image: produto.reference === "AGUW2604AG" ? ["https://res.cloudinary.com/dboqymkjf/image/upload/v1791966424/AGUW2604AG.jpg"] : (produto.images || []),
       description: produto.description || "",
       sku: produto.reference || undefined,
       mpn: produto.reference || undefined,
