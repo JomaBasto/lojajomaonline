@@ -152,6 +152,8 @@ const [sizeFilterOpen, setSizeFilterOpen] = useState(false);
   const [orders, setOrders] = useState([]);
 
   const [activeImage, setActiveImage] = useState(0);
+  const [cardImageIndexes, setCardImageIndexes] = useState({});
+  const [mobileThumbnailsOpen, setMobileThumbnailsOpen] = useState({});
 
   const handleLogout = () => {
 
@@ -1753,7 +1755,7 @@ return (
 
     <span className="mobile-user">
 
-      Olá {user.name.split(" ")[0]}
+      Olá
 
     </span>
 
@@ -1857,7 +1859,7 @@ return (
 
       <span>
 
-        Olá {user?.name?.split(" ")[0]} 
+        Olá
 
       </span>
 
@@ -2147,7 +2149,7 @@ return (
 
     <span className="desktop-user">
 
-      Olá {user?.name?.split(" ")[0]}
+      Olá
 
     </span>
 
@@ -3621,41 +3623,36 @@ return (
 
 
 
-          {/* IMAGEM PRINCIPAL APENAS */}
-
-          <img
-
-  src={getListingImage(p.images?.[0])}
-
-  alt={p.name}
-
-  loading="lazy"
-
-  onClick={() => { window.history.pushState({}, "", `/produto/${p._id}`); openGallery(p); }}
-
-  style={{
-
-    cursor: "pointer",
-
-    width: "160px",
-
-    height: "160px",
-
-    maxWidth: "160px",
-
-    objectFit: "cover",
-
-    borderRadius: "8px",
-
-    display: "block",
-
-    margin: "0 auto"
-
-  }}
-
-/>
-
-          <div className="product-header">
+          {/* IMAGEM PRINCIPAL COM ALTERNATIVA AO PASSAR O RATO */}
+          <div className="product-image-hover-gallery">
+            <img
+              className="product-image-primary"
+              src={getListingImage(p.images?.[0])}
+              alt={p.name}
+              loading="lazy"
+              onClick={() => { window.history.pushState({}, "", `/produto/${p._id}`); openGallery(p); }}
+              style={{
+                cursor: "pointer",
+                width: "160px",
+                height: "160px",
+                maxWidth: "160px",
+                objectFit: "cover",
+                borderRadius: "8px",
+                display: "block",
+                margin: "0 auto"
+              }}
+            />
+            {Array.isArray(p.images) && p.images.length > 1 && (
+              <img
+                className="product-image-alternate"
+                src={getHighQualityImage(p.images[1])}
+                alt={`${p.name} - imagem alternativa`}
+                loading="lazy"
+                onClick={() => { window.history.pushState({}, "", `/produto/${p._id}`); openGallery(p); }}
+              />
+            )}
+          </div>
+<div className="product-header">
 
   <h3>{p.name}</h3>
 

@@ -6681,3 +6681,44 @@ body {
 .home-poster-row > *:hover {
   transform: translateY(-5px);
 }
+
+/* Troca da imagem do produto ao passar o rato */
+.products-grid .card .product-image-hover-gallery {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 8px;
+}
+
+.products-grid .card .product-image-hover-gallery .product-image-primary {
+  transition: opacity 0.18s ease;
+}
+
+.products-grid .card .product-image-hover-gallery .product-image-alternate {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  object-fit: cover !important;
+  border-radius: 8px;
+  margin: 0 !important;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+  transition: opacity 0.18s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .products-grid .card .product-image-hover-gallery:hover .product-image-primary {
+    opacity: 0;
+  }
+
+  .products-grid .card .product-image-hover-gallery:hover .product-image-alternate {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
