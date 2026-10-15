@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import Player from "@vimeo/player";
 
 const getHighQualityImage = (url) => {
   if (typeof url !== "string") return url;
@@ -106,6 +107,37 @@ export default function App() {
 
 
   const [category, setCategory] = useState(getCategoryFromUrl());
+  const [trailVideoLoaded, setTrailVideoLoaded] = useState(false);
+  const trailVideoFrameRef = useRef(null);
+
+  useEffect(() => {
+    if (window.matchMedia("(max-width: 768px)").matches) return;
+
+    let active = true;
+    let player;
+
+    const timer = window.setInterval(() => {
+      if (!trailVideoFrameRef.current || player) return;
+
+      player = new Player(trailVideoFrameRef.current);
+
+      player.on("playing", () => {
+        if (active) setTrailVideoLoaded(true);
+      });
+
+      player.on("error", (error) => {
+        console.error("Erro no vídeo Trail do Vimeo:", error);
+      });
+
+      window.clearInterval(timer);
+    }, 250);
+
+    return () => {
+      active = false;
+      window.clearInterval(timer);
+      if (player) player.destroy().catch(() => {});
+    };
+  }, []);
 
   const [subCategory, setSubCategory] = useState("");
 const [filterSize, setFilterSize] = useState("");
@@ -2538,8 +2570,10 @@ return (
           onClick={() => selectCategory("trail")}
           aria-label="Ver Trail"
         >
+          <img className="trail-video-poster" src="https://www.joma-sport.com/blog/wp-content/uploads/2026/02/tamano-blog-72.png" alt="Trail Joma" />
           <iframe
-            className="hero-video"
+            ref={trailVideoFrameRef}
+            className={`hero-video ${trailVideoLoaded ? "trail-video-loaded" : ""}`}
             src="https://player.vimeo.com/video/915072101?autoplay=1&muted=1&loop=1&background=1"
             title="Trail Joma"
             frameBorder="0"

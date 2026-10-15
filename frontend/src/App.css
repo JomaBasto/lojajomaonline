@@ -6722,3 +6722,32 @@ body {
     pointer-events: auto;
   }
 }
+
+/* TRAIL — imagem de capa enquanto o Vimeo carrega (apenas desktop) */
+@media (min-width: 769px) {
+  .home-hero-layout .home-block-trail .hero-video-button {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .home-hero-layout .home-block-trail .trail-video-poster {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+  }
+
+  .home-hero-layout .home-block-trail iframe.hero-video {
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+
+  .home-hero-layout .home-block-trail iframe.hero-video.trail-video-loaded {
+    opacity: 1;
+  }
+}
