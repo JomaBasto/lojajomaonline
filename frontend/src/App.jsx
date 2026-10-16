@@ -508,6 +508,7 @@ useEffect(() => {
   const [cartOpen, setCartOpen] = useState(false);
 
 const [mobileMenu, setMobileMenu] = useState(false);
+  const [seguirOpen, setSeguirOpen] = useState(false);
 
 
 
@@ -2460,10 +2461,19 @@ return (
   <>
 
     {/* HERO */}
-    <div className="ofertas-semana-bar" role="link" tabIndex="0" onClick={() => selectCategory("promocoes")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") selectCategory("promocoes"); }}>
-      <span className="ofertas-semana-text">OFERTAS DA SEMANA</span>
-      <span className="ofertas-semana-cta">VER OFERTAS&nbsp; &#8594;</span>
-    </div>
+<div className="ofertas-semana-bar" role="link" tabIndex="0" onClick={() => selectCategory("promocoes")} onKeyDown={(e) => { if (e.target !== e.currentTarget) return; if (e.key === "Enter" || e.key === " ") selectCategory("promocoes"); }}>
+  <span className="ofertas-semana-text">OFERTAS DA SEMANA</span>
+  <span className="ofertas-semana-cta">VER OFERTAS&nbsp; &#8594;</span>
+  <div style={{ position: "absolute", right: 16, top: "50%", transform: "translateY(-50%)", zIndex: 1001 }} onClick={(e) => e.stopPropagation()} onKeyDown={(e) => e.stopPropagation()}>
+    <button type="button" aria-expanded={seguirOpen} aria-haspopup="true" onClick={(e) => { e.stopPropagation(); setSeguirOpen((open) => !open); }} style={{ background: "#0875E1", color: "#fff", border: "1px solid #0875E1", borderRadius: 20, padding: "8px 16px", fontSize: 12, fontWeight: 700, letterSpacing: "0.04em", cursor: "pointer", boxShadow: "0 2px 6px rgba(0,0,0,.16)" }}>Seguir</button>
+    {seguirOpen && <div style={{ position: "absolute", top: "calc(100% + 8px)", right: 0, zIndex: 99999, minWidth: 145, padding: "5px 0", background: "#fff", border: "1px solid #e5e5e5", borderRadius: 6, boxShadow: "0 5px 18px rgba(0,0,0,.12)" }}>
+      <a href="https://www.instagram.com/jomabasto/" target="_blank" rel="noopener noreferrer" onClick={() => setSeguirOpen(false)} style={{ display: "flex", alignItems: "center", gap: 9, padding: "9px 12px", color: "#111", fontSize: 13, textDecoration: "none" }}><FaInstagram /> Instagram</a>
+      <a href="https://www.tiktok.com/@jomabasto" target="_blank" rel="noopener noreferrer" onClick={() => setSeguirOpen(false)} style={{ display: "flex", alignItems: "center", gap: 9, padding: "9px 12px", color: "#111", fontSize: 13, textDecoration: "none" }}><FaTiktok /> TikTok</a>
+      <a href="https://www.facebook.com/share/14xEqAhX5kr/" target="_blank" rel="noopener noreferrer" onClick={() => setSeguirOpen(false)} style={{ display: "flex", alignItems: "center", gap: 9, padding: "9px 12px", color: "#111", fontSize: 13, textDecoration: "none" }}><FaFacebookF /> Facebook</a>
+    </div>}
+</div>
+
+  </div>
 
     <style>{`
       .ofertas-semana-bar {
@@ -2477,7 +2487,7 @@ return (
         min-height: 42px;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         gap: 14px;
         box-sizing: border-box;
         padding: 7px 16px;
@@ -2485,7 +2495,7 @@ return (
         user-select: none;
         background: #fff;
         color: #111;
-        overflow: hidden;
+        overflow: visible;
         transition: background-color .25s ease, transform .25s ease;
       }
 

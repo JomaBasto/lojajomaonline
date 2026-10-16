@@ -1,4 +1,16 @@
 {
+  "redirects": [
+    {
+      "source": "/produto/6a71d2a1bec7013570a6f49a",
+      "destination": "/produto/6a57a94f53fc3048309c3f3a",
+      "permanent": true
+    },
+    {
+      "source": "/produto/6a7c949713bec294d3d1d98c",
+      "destination": "/produto/6a57a94f53fc3048309c3f3a",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/(.*)",
