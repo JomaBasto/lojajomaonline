@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node ./scripts/gerar-paginas-seo.mjs",
+    "build": "node ./scripts/gerar-sitemap.mjs && vite build && node ./scripts/gerar-paginas-seo.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

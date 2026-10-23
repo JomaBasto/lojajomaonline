@@ -6,10 +6,29 @@ const BASE_URL = "https://www.jomabasto.com";
 
 const distIndex = path.resolve("dist/index.html");
 
-const response = await fetch(API_URL);
+let response;
+let ultimoErro;
 
-if (!response.ok) {
-  throw new Error(`Erro ao carregar produtos: ${response.status}`);
+for (let tentativa = 1; tentativa <= 3; tentativa++) {
+  try {
+    response = await fetch(API_URL);
+    if (response.ok) break;
+    ultimoErro = new Error(`Erro ao carregar produtos: ${response.status}`);
+  } catch (erro) {
+    ultimoErro = erro;
+  }
+
+  if (tentativa < 3) {
+    console.warn(`Tentativa ${tentativa} falhou; nova tentativa em ${tentativa * 2}s.`);
+    await new Promise((resolve) => setTimeout(resolve, tentativa * 2000));
+  }
+}
+
+if (!response?.ok) {
+  throw new Error(
+    `Failed to load products after 3 attempts: ${ultimoErro?.message ?? "unknown error"}`,
+    { cause: ultimoErro }
+  );
 }
 
 const produtos = await response.json();
@@ -18,10 +37,30 @@ let template = await fs.readFile(distIndex, "utf8");
 let criados = 0;
 
 for (const produto of produtos) {
-  if (!produto?._id || !produto?.name) continue;
+  if (!/^[a-f0-9]{24}$/i.test(String(produto?._id ?? "")) || !produto?.name) continue;
 
   const id = produto._id;
-  const nome = produto.name;
+  const nomeOriginal = String(produto.name || "").trim();
+  let nome = nomeOriginal;
+
+  if (/^https?:\/\//i.test(nomeOriginal)) {
+    const match = nomeOriginal.match(/-,([^,]+),-TABELA/i);
+
+    if (match) {
+      try {
+        nome = decodeURIComponent(match[1]).replace(/\s+/g, " ").trim();
+      } catch {
+        nome = "";
+      }
+    } else {
+      nome = "";
+    }
+  }
+
+  if (!nome || /^https?:\/\//i.test(nome)) {
+    console.warn(`Produto ignorado por nome inválido: ${id}`);
+    continue;
+  }
   const url = `${BASE_URL}/produto/${id}`;
   const description = (
     produto.description ||
@@ -138,9 +177,13 @@ for (const produto of produtos) {
     );
   }
 
+  const productSchemaScript =
+    `<script type="application/ld+json">${JSON.stringify(schema).replace(/</g, "\\u003c")}</script>`;
+
+  // Preservar o schema Organization do index.html e acrescentar o schema Product.
   html = html.replace(
-    /<script type="application\/ld\+json">[\s\S]*?<\/script>/,
-    `<script type="application/ld+json">${JSON.stringify(schema)}</script>`
+    "</head>",
+    `  ${productSchemaScript}\n</head>`
   );
 
   const outputDir = path.resolve("dist/produto", id);
