@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import ReactGA from "react-ga4";
 
 export default function Checkout() {
@@ -95,11 +95,24 @@ const pay = async () => {
           transaction_id: data.sessionId || `order_${Date.now()}`,
           value: total + shippingCost,
           currency: "EUR",
+          payment_method: "stripe",
+          subtotal: total,
+          shipping: shippingCost,
+          customer: {
+            nome,
+            email,
+            telefone,
+            morada,
+            codigoPostal,
+            localidade,
+            nif,
+          },
           items: cart.map((item) => ({
             item_id: item._id,
             item_name: item.name,
             price: item.price,
             quantity: item.qty || 1,
+            size: item.size,
           })),
         })
       );
@@ -170,11 +183,23 @@ const pay = async () => {
           value: Number(data.valor),
           currency: "EUR",
           payment_method: "multibanco",
+          subtotal: total,
+          shipping: shippingCost,
+          customer: {
+            nome,
+            email,
+            telefone,
+            morada,
+            codigoPostal,
+            localidade,
+            nif,
+          },
           items: cart.map((item) => ({
             item_id: item._id,
             item_name: item.name,
             price: item.price,
             quantity: item.qty || 1,
+            size: item.size,
           })),
         })
       );
@@ -415,45 +440,140 @@ const pay = async () => {
           )}
 
           {multibancoData && (
-            <div
-              style={{
-                marginTop: "25px",
-                padding: "25px",
-                border: "2px solid #ddd",
-                borderRadius: "10px",
-                background: "#f8fafc",
-              }}
-            >
-              <h2>🏧 Pagamento por Multibanco</h2>
+            <div className="multibanco-print" style={{
+              maxWidth: "720px", margin: "32px auto", padding: "30px",
+              border: "1px solid #dbe2ea", borderRadius: "12px",
+              background: "#fff", color: "#172b3a",
+              fontFamily: "Arial, Helvetica, sans-serif", boxSizing: "border-box"
+            }}>
+              <style>{`
+                @media print {
+                  @page { size: A4 portrait; margin: 8mm; }
+                  body * { visibility: hidden !important; }
+                  .multibanco-print, .multibanco-print * { visibility: visible !important; }
+                  .multibanco-print {
+                    position: absolute !important; left: 0 !important; top: 0 !important;
+                    width: 100% !important; max-width: none !important;
+                    margin: 0 !important; padding: 0 !important;
+                    border: 0 !important; box-shadow: none !important;
+                    border-radius: 0 !important; background: #fff !important;
+                    color: #111 !important;
+                    font-size: 11px !important;
+                    line-height: 1.35 !important;
+                  }
+                  .multibanco-print .no-print { display: none !important; }
+                }
+              `}</style>
 
-              <p>
-                A sua encomenda foi criada. Para concluir o pagamento,
-                utilize os seguintes dados:
+              <header style={{
+                display: "flex", alignItems: "center", gap: "14px",
+                paddingBottom: "18px", borderBottom: "2px solid #173b57",
+                marginBottom: "20px"
+              }}>
+                <div style={{
+                  width: "44px", height: "44px", background: "#173b57",
+                  color: "#fff", display: "flex", alignItems: "center",
+                  justifyContent: "center", borderRadius: "8px",
+                  fontSize: "24px", fontWeight: "bold"
+                }}>J</div>
+                <div>
+                  <div style={{fontSize: "23px", fontWeight: "800", letterSpacing: "0px", color: "#173b57"}}>JOMA BASTO</div>
+                  <div style={{fontSize: "11px", letterSpacing: "0.5px", color: "#64748b", marginTop: "4px"}}>COMPROVATIVO DE PAGAMENTO</div>
+                </div>
+              </header>
+
+              <h2 style={{fontSize: "23px", margin: "0 0 8px", color: "#173b57"}}>Encomenda e pagamento</h2>
+              <p style={{margin: "0 0 20px", color: "#526171", lineHeight: "1.6"}}>
+                A encomenda foi registada. Guarde este documento para concluir o pagamento.
               </p>
 
-              <p>
-                <strong>Entidade:</strong>{" "}
-                {multibancoData.entidade}
-              </p>
+              <section style={{padding: "16px", border: "1px solid #dbe2ea", borderRadius: "8px", marginBottom: "20px"}}>
+                <h3 style={{fontSize: "15px", margin: "0 0 12px", color: "#173b57"}}>IDENTIFICAÇÃO DA ENCOMENDA</h3>
+                <p style={{margin: "6px 0"}}><strong>Número da encomenda:</strong> {multibancoData.orderId || "Não disponível"}</p>
+                <p style={{margin: "6px 0"}}><strong>Nome:</strong> {nome || "Não indicado"}</p>
+                <p style={{margin: "6px 0"}}><strong>Email:</strong> {email || "Não indicado"}</p>
+                <p style={{margin: "6px 0"}}><strong>Telefone:</strong> {telefone || "Não indicado"}</p>
+              </section>
 
-              <p>
-                <strong>Referência:</strong>{" "}
-                {multibancoData.referencia}
-              </p>
+              <section style={{marginBottom: "22px"}}>
+                <h3 style={{fontSize: "16px", color: "#173b57", borderBottom: "1px solid #dbe2ea", paddingBottom: "10px"}}>RESUMO DA ENCOMENDA</h3>
+                {cart.map((item, index) => (
+                  <div key={index} style={{
+                    display: "flex", justifyContent: "space-between", gap: "16px",
+                    padding: "12px 0", borderBottom: "1px solid #e8edf2"
+                  }}>
+                    <div>
+                      <strong>{item.name}</strong>
+                      <div style={{fontSize: "13px", color: "#526171", marginTop: "5px"}}>
+                        Tamanho: {item.size || "N/A"} | Quantidade: {item.qty || 1}
+                      </div>
+                    </div>
+                    <strong style={{whiteSpace: "nowrap"}}>
+                      {(Number(item.price || 0) * (item.qty || 1)).toLocaleString("pt-PT", {style: "currency", currency: "EUR"})}
+                    </strong>
+                  </div>
+                ))}
+                <div style={{marginTop: "14px", fontSize: "14px"}}>
+                  <p style={{display: "flex", justifyContent: "space-between", margin: "8px 0"}}>
+                    <span>Subtotal</span>
+                    <span>{Number(total).toLocaleString("pt-PT", {style: "currency", currency: "EUR"})}</span>
+                  </p>
+                  <p style={{display: "flex", justifyContent: "space-between", margin: "8px 0"}}>
+                    <span>Portes de envio</span>
+                    <span>{Number(shippingCost).toLocaleString("pt-PT", {style: "currency", currency: "EUR"})}</span>
+                  </p>
+                  <div style={{
+                    display: "flex", justifyContent: "space-between", gap: "12px",
+                    marginTop: "14px", padding: "15px", background: "#f0f5f8",
+                    borderRadius: "7px", fontSize: "20px", fontWeight: "800", color: "#173b57"
+                  }}>
+                    <span>Total</span>
+                    <span>{Number(total + shippingCost).toLocaleString("pt-PT", {style: "currency", currency: "EUR"})}</span>
+                  </div>
+                </div>
+              </section>
 
-              <p>
-                <strong>Valor:</strong>{" "}
-                {multibancoData.valor} €
-              </p>
+              <section style={{border: "1px solid #dbe2ea", borderRadius: "9px", padding: "20px", marginBottom: "18px"}}>
+                <h3 style={{margin: "0 0 8px", color: "#173b57", fontSize: "19px"}}>Pagamento por Multibanco</h3>
+                <p style={{fontSize: "13px", color: "#526171", lineHeight: "1.6"}}>
+                  Utilize os dados seguintes para efetuar o pagamento.
+                </p>
+                <div style={{background: "#f3f6f9", borderRadius: "7px", padding: "16px"}}>
+                  <div style={{fontSize: "11px", letterSpacing: "1.5px", color: "#64748b"}}>ENTIDADE</div>
+                  <div style={{fontSize: "27px", fontWeight: "800", color: "#173b57", margin: "5px 0 16px"}}>{multibancoData.entidade}</div>
+                  <div style={{borderTop: "1px solid #d7e0e8", paddingTop: "14px"}}>
+                    <div style={{fontSize: "11px", letterSpacing: "1.5px", color: "#64748b"}}>REFERENCIA</div>
+                    <div style={{fontSize: "25px", fontWeight: "800", color: "#173b57", overflowWrap: "anywhere", margin: "5px 0 16px"}}>{multibancoData.referencia}</div>
+                  </div>
+                  <div style={{borderTop: "1px solid #d7e0e8", paddingTop: "14px"}}>
+                    <div style={{fontSize: "11px", letterSpacing: "1.5px", color: "#64748b"}}>VALOR A PAGAR</div>
+                    <div style={{fontSize: "29px", fontWeight: "800", color: "#173b57", marginTop: "5px"}}>
+                      {Number(multibancoData.valor).toLocaleString("pt-PT", {style: "currency", currency: "EUR"})}
+                    </div>
+                  </div>
+                </div>
+                <p style={{margin: "16px 0 0", fontWeight: "700", color: "#805b12"}}>
+                  Estado: A aguardar pagamento
+                </p>
+              </section>
 
-              <p>
-                <strong>Estado:</strong> A aguardar pagamento
+              <p style={{fontSize: "13px", lineHeight: "1.7", color: "#526171"}}>
+                A encomenda será processada após a confirmação do pagamento. Guarde os dados de pagamento até concluir a operação.
               </p>
+              <footer style={{borderTop: "1px solid #e0e7ee", paddingTop: "12px", marginTop: "18px", fontSize: "12px", color: "#64748b"}}>
+                JOMA BASTO - Obrigado pela sua preferência.
+              </footer>
 
-              <p>
-                Depois de efetuar o pagamento, a encomenda será
-                processada após confirmação do pagamento.
-              </p>
+              <div className="no-print" style={{display: "flex", flexWrap: "wrap", gap: "10px", marginTop: "22px"}}>
+                <button type="button" onClick={() => window.print()} style={{
+                  padding: "12px 20px", background: "#173b57", color: "#fff",
+                  border: "none", borderRadius: "7px", cursor: "pointer", fontWeight: "700"
+                }}>Imprimir / Guardar em PDF</button>
+                <button type="button" onClick={() => { window.location.href = "/"; }} style={{
+                  padding: "12px 20px", background: "#fff", color: "#173b57",
+                  border: "1px solid #cbd5e1", borderRadius: "7px", cursor: "pointer"
+                }}>Voltar a loja</button>
+              </div>
             </div>
           )}
         </>
@@ -471,13 +591,3 @@ const inputStyle = {
   fontSize: "16px",
   boxSizing: "border-box",
 };
-
-
-
-
-
-
-
-
-
-

@@ -1,4 +1,4 @@
-﻿import { useEffect } from "react";
+import { useEffect } from "react";
 import ReactGA from "react-ga4";
 import { Link } from "react-router-dom";
 
@@ -39,7 +39,23 @@ export default function Success() {
   }, []);
 
   return (
+    <>
+      <style>{`
+        @media print {
+          @page { size: A4; margin: 15mm; }
+          body { background: white !important; }
+          .no-print { display: none !important; }
+          .success-card {
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            box-shadow: none !important;
+            border-radius: 0 !important;
+          }
+        }
+      `}</style>
     <div
+      className="success-card"
       style={{
         maxWidth: "800px",
         margin: "60px auto",
@@ -108,7 +124,25 @@ export default function Success() {
 
       </div>
 
-      <Link to="/">
+      <button
+        type="button"
+        className="no-print"
+        onClick={() => window.print()}
+        style={{
+          marginTop: "30px",
+          marginRight: "12px",
+          padding: "15px 25px",
+          background: "#16a34a",
+          color: "white",
+          border: "none",
+          borderRadius: "10px",
+          fontSize: "18px",
+          cursor: "pointer",
+        }}
+      >
+        Imprimir / Guardar em PDF
+      </button>
+      <Link to="/" className="no-print">
         <button
           style={{
             marginTop: "30px",
@@ -126,5 +160,6 @@ export default function Success() {
       </Link>
 
     </div>
+    </>
   );
 }
