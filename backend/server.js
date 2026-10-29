@@ -131,6 +131,15 @@ const Cliente = mongoose.model("Cliente", {
 app.post("/produtos", verifyToken, isAdmin, async (req, res) => {
   try {
     const produto = new Produto(req.body);
+    const jaExisteOrdem = await Produto.exists({
+      ordem: { $exists: true, $ne: null }
+    });
+    if (jaExisteOrdem) {
+      const ultimo = await Produto.findOne({
+        ordem: { $type: "number" }
+      }).sort({ ordem: -1 }).select("ordem");
+      produto.ordem = (ultimo?.ordem ?? -1) + 1;
+    }
     await produto.save();
     res.status(201).json(produto);
   } catch (err) {
@@ -141,6 +150,12 @@ app.post("/produtos", verifyToken, isAdmin, async (req, res) => {
 app.get("/produtos", async (req, res) => {
   try {
     const produtos = await Produto.find();
+    const todosOrdenados = produtos.length > 0 && produtos.every(
+      p => typeof p.ordem === "number" && Number.isFinite(p.ordem)
+    );
+    if (todosOrdenados) {
+      produtos.sort((a, b) => a.ordem - b.ordem);
+    }
     res.json(produtos);
   } catch (err) {
     res.status(500).json({ error: "Erro ao buscar produtos" });
@@ -175,6 +190,46 @@ app.get("/promocao", async (req, res) => {
 });
 
 // EDITAR PRODUTO
+
+// Guardar a ordem manual dos produtos (rota antes de /produtos/:id).
+app.put("/produtos/ordem", verifyToken, isAdmin, async (req, res) => {
+  try {
+    const { ids } = req.body;
+
+    if (
+      !Array.isArray(ids) ||
+      ids.some(id => typeof id !== "string") ||
+      new Set(ids).size !== ids.length
+    ) {
+      return res.status(400).json({ error: "Lista de produtos inválida." });
+    }
+
+    const total = await Produto.countDocuments();
+    if (ids.length !== total) {
+      return res.status(409).json({
+        error: "A lista de produtos mudou. Atualize a página e tente novamente."
+      });
+    }
+
+    const encontrados = await Produto.countDocuments({ _id: { $in: ids } });
+    if (encontrados !== total) {
+      return res.status(400).json({ error: "Existem produtos inválidos na lista." });
+    }
+
+    await Produto.bulkWrite(ids.map((id, ordem) => ({
+      updateOne: {
+        filter: { _id: id },
+        update: { $set: { ordem } }
+      }
+    })));
+
+    res.json({ success: true });
+  } catch (err) {
+    console.error("Erro ao guardar ordem dos produtos:", err);
+    console.error("Detalhes:", err && (err.stack || err.message || err));
+    res.status(500).json({ error: "Erro ao guardar ordem dos produtos." });
+  }
+});
 app.put("/produtos/:id", verifyToken, isAdmin, async (req, res) => {
   try {
     console.log("DADOS RECEBIDOS:", req.body);

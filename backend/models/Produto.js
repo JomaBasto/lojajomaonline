@@ -18,6 +18,7 @@ const produtoSchema = new mongoose.Schema({
   description: String,
   sizes: [String],
 
+  ordem: { type: Number, index: true },
   promocao: {
     type: Boolean,
     default: false
