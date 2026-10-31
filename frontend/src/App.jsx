@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import Player from "@vimeo/player";
 
 const getHighQualityImage = (url) => {
@@ -68,6 +69,25 @@ import {
 
 export default function App() {
 
+  const { t, i18n } = useTranslation();
+
+  const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
+
+  const languageFlags = {
+    pt: <img src="https://flagcdn.com/w40/pt.png" alt="Português" width="24" height="16" />,
+    fr: <img src="https://flagcdn.com/w40/fr.png" alt="Français" width="24" height="16" />,
+    de: <img src="https://flagcdn.com/w40/de.png" alt="Deutsch" width="24" height="16" />,
+    es: <img src="https://flagcdn.com/w40/es.png" alt="Español" width="24" height="16" />,
+    en: <img src="https://flagcdn.com/w40/gb.png" alt="English" width="24" height="16" />
+  };
+
+  const currentLanguage = (i18n.resolvedLanguage || i18n.language || "pt").split("-")[0];
+
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+    setLanguageMenuOpen(false);
+  };
+
   const navigate = useNavigate();
 
   const isHomePage = window.location.pathname === "/";
@@ -107,6 +127,7 @@ export default function App() {
 
 
   const [category, setCategory] = useState(getCategoryFromUrl());
+  const [activeInfoModal, setActiveInfoModal] = useState(null);
   const [trailVideoLoaded, setTrailVideoLoaded] = useState(false);
   const trailVideoFrameRef = useRef(null);
 
@@ -154,6 +175,7 @@ const [sizeFilterOpen, setSizeFilterOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
   const [products, setProducts] = useState([]);
+  const [draggedProductId, setDraggedProductId] = useState(null);
 
 
 
@@ -1481,6 +1503,49 @@ return (
 
   : [];
 
+  const handleProductDrop = async (targetId, sourceId) => {
+    if (!isAdmin || !sourceId || String(sourceId) === String(targetId)) return;
+    if (sortOption && sortOption !== "relevant") return;
+
+    const visiveis = [...filteredProducts];
+    const from = visiveis.findIndex(p => String(p._id) === String(sourceId));
+    const to = visiveis.findIndex(p => String(p._id) === String(targetId));
+    if (from < 0 || to < 0) return;
+
+    const [movido] = visiveis.splice(from, 1);
+    visiveis.splice(to, 0, movido);
+
+    const idsVisiveis = new Set(filteredProducts.map(p => String(p._id)));
+    let indice = 0;
+    const anteriores = products;
+    const reordenados = products.map(p =>
+      idsVisiveis.has(String(p._id)) ? visiveis[indice++] : p
+    );
+
+    setProducts(reordenados);
+    setDraggedProductId(null);
+
+    try {
+      const resposta = await fetch("https://jomabasto-backend.onrender.com/produtos/ordem", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("token")}`
+        },
+        body: JSON.stringify({ ids: reordenados.map(p => String(p._id)) })
+      });
+
+      if (!resposta.ok) {
+        const detalhe = await resposta.text();
+        console.error("Resposta do servidor:", resposta.status, detalhe);
+        throw new Error(`HTTP ${resposta.status}: ${detalhe}`);
+      }
+    } catch (erro) {
+      console.error("Nao foi possivel guardar a ordem dos produtos:", erro);
+      setProducts(anteriores);
+      alert("Nao foi possivel guardar a ordem. A alteracao foi revertida.");
+    }
+  };
   const sortedProducts = [...filteredProducts].sort((a, b) => {
     if (!sortOption || sortOption === "relevant") return 0;
 
@@ -1760,18 +1825,69 @@ return (
       {/* TOP ANNOUNCEMENT BAR */}
       <div className="announcement-bar" aria-label="Informações da loja">
         <div className="announcement-desktop">
-          <span>ENVIO GRÁTIS A PARTIR DE 70 €</span>
-          <span>TROCAS FÁCEIS</span>
-          <span>PAGAMENTO SEGURO</span>
+          <span>{t("freeShipping")}</span>
+          <span>{t("easyReturns")}</span>
+          <span>{t("securePayment")}</span>
+          <div className="announcement-actions">
+            <button type="button" onClick={() => setActiveInfoModal("distribuidores")}>{t("distributors")}</button>
+            <button type="button" onClick={() => setActiveInfoModal("loja")}>{t("storeLocator")}</button>
+            <button type="button" onClick={() => setActiveInfoModal("contacto")}>{t("contact")}</button>
+            <div className="language-selector" aria-label="Selecionar idioma">
+              <button
+                type="button"
+                className="language-flag language-current"
+                onClick={() => setLanguageMenuOpen((open) => !open)}
+                aria-label="Abrir opções de idioma"
+                aria-expanded={languageMenuOpen}
+                title="Selecionar idioma"
+              >
+                {languageFlags[currentLanguage] || languageFlags.pt}
+              </button>
+              {languageMenuOpen && (
+                <div className="language-dropdown">
+                  <button type="button" className="language-flag" onClick={() => changeLanguage("pt")} aria-label="Português" title="Português">{languageFlags.pt}</button>
+                  <button type="button" className="language-flag" onClick={() => changeLanguage("fr")} aria-label="Français" title="Français">{languageFlags.fr}</button>
+                  <button type="button" className="language-flag" onClick={() => changeLanguage("de")} aria-label="Deutsch" title="Deutsch">{languageFlags.de}</button>
+                  <button type="button" className="language-flag" onClick={() => changeLanguage("es")} aria-label="Español" title="Español">{languageFlags.es}</button>
+                  <button type="button" className="language-flag" onClick={() => changeLanguage("en")} aria-label="English" title="English">{languageFlags.en}</button>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
-
         <div className="announcement-mobile">
-          <span>ENVIO GRÁTIS A PARTIR DE 70 €</span>
-          <span>TROCAS FÁCEIS</span>
-          <span>PAGAMENTO SEGURO</span>
+          <span>{t("freeShipping")}</span>
+          <span>{t("easyReturns")}</span>
+          <span>{t("securePayment")}</span>
+          <div className="announcement-mobile-actions">
+            <button type="button" onClick={() => setActiveInfoModal("distribuidores")}>{t("distributors")}</button>
+            <button type="button" onClick={() => setActiveInfoModal("loja")}>{t("storeLocator")}</button>
+            <button type="button" onClick={() => setActiveInfoModal("contacto")}>{t("contact")}</button>
+            <div className="language-selector" aria-label="Selecionar idioma">
+              <button
+                type="button"
+                className="language-flag language-current"
+                onClick={() => setLanguageMenuOpen((open) => !open)}
+                aria-label="Abrir opções de idioma"
+                aria-expanded={languageMenuOpen}
+                title="Selecionar idioma"
+              >
+                {languageFlags[currentLanguage] || languageFlags.pt}
+              </button>
+
+              {languageMenuOpen && (
+                <div className="language-dropdown">
+                  <button type="button" className="language-flag" onClick={() => changeLanguage("pt")} aria-label="Português" title="Português">{languageFlags.pt}</button>
+                  <button type="button" className="language-flag" onClick={() => changeLanguage("fr")} aria-label="Français" title="Français">{languageFlags.fr}</button>
+                  <button type="button" className="language-flag" onClick={() => changeLanguage("de")} aria-label="Deutsch" title="Deutsch">{languageFlags.de}</button>
+                  <button type="button" className="language-flag" onClick={() => changeLanguage("es")} aria-label="Español" title="Español">{languageFlags.es}</button>
+                  <button type="button" className="language-flag" onClick={() => changeLanguage("en")} aria-label="English" title="English">{languageFlags.en}</button>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
-
       {/* HEADER + MENU */}
 
       <header className="header">
@@ -1996,7 +2112,7 @@ return (
 
   <details className="mobile-item">
 
-    <summary>Homem</summary>
+    <summary>{t("men")}</summary>
 
 
 
@@ -2004,27 +2120,27 @@ return (
 
     <a onClick={(e) => selectMobileCategory("homem-trail", e)}>Trail</a>
 
-    <a onClick={(e) => selectMobileCategory("homem-futebol", e)}>Futebol</a>
+    <a onClick={(e) => selectMobileCategory("homem-futebol", e)}>{t("football")}</a>
 
       <a onClick={(e) => selectMobileCategory("homem-turf", e)}>Turf</a>
 
     <a onClick={(e) => selectMobileCategory("homem-futsal", e)}>Futsal</a>
 
-    <a onClick={(e) => selectMobileCategory("homem-andebol", e)}>Andebol</a>
+    <a onClick={(e) => selectMobileCategory("homem-andebol", e)}>{t("handball")}</a>
 
-    <a onClick={(e) => selectMobileCategory("homem-voleibol", e)}>Voleibol</a>
+    <a onClick={(e) => selectMobileCategory("homem-voleibol", e)}>{t("volleyball")}</a>
 
-    <a onClick={(e) => selectMobileCategory("homem-basquetebol", e)}>Basquetebol</a>
+    <a onClick={(e) => selectMobileCategory("homem-basquetebol", e)}>{t("basketball")}</a>
 
-    <a onClick={(e) => selectMobileCategory("homem-tenis", e)}>Ténis</a>
+    <a onClick={(e) => selectMobileCategory("homem-tenis", e)}>{t("tennis")}</a>
 
     <a onClick={(e) => selectMobileCategory("homem-padel", e)}>Padel</a>
 
     <a onClick={(e) => selectMobileCategory("homem-casual", e)}>Casual</a>
 
-    <a onClick={(e) => selectMobileCategory("homem-caminhada", e)}>Caminhada</a>
+    <a onClick={(e) => selectMobileCategory("homem-caminhada", e)}>{t("hiking")}</a>
 
-    <a onClick={(e) => selectMobileCategory("homem-ciclismo", e)}>Ciclismo</a>
+    <a onClick={(e) => selectMobileCategory("homem-ciclismo", e)}>{t("cycling")}</a>
 
   </details>
 
@@ -2032,7 +2148,7 @@ return (
 
   <details className="mobile-item">
 
-    <summary>Mulher</summary>
+    <summary>{t("women")}</summary>
 
 
 
@@ -2040,27 +2156,27 @@ return (
 
     <a onClick={(e) => selectMobileCategory("mulher-trail", e)}>Trail</a>
 
-    <a onClick={(e) => selectMobileCategory("mulher-futebol", e)}>Futebol</a>
+    <a onClick={(e) => selectMobileCategory("mulher-futebol", e)}>{t("football")}</a>
 
                     <a onClick={(e) => selectMobileCategory("mulher-turf", e)}>Turf</a>
 
     <a onClick={(e) => selectMobileCategory("mulher-futsal", e)}>Futsal</a>
 
-    <a onClick={(e) => selectMobileCategory("mulher-andebol", e)}>Andebol</a>
+    <a onClick={(e) => selectMobileCategory("mulher-andebol", e)}>{t("handball")}</a>
 
-    <a onClick={(e) => selectMobileCategory("mulher-voleibol", e)}>Voleibol</a>
+    <a onClick={(e) => selectMobileCategory("mulher-voleibol", e)}>{t("volleyball")}</a>
 
-    <a onClick={(e) => selectMobileCategory("mulher-basquetebol", e)}>Basquetebol</a>
+    <a onClick={(e) => selectMobileCategory("mulher-basquetebol", e)}>{t("basketball")}</a>
 
-    <a onClick={(e) => selectMobileCategory("mulher-tenis", e)}>Ténis</a>
+    <a onClick={(e) => selectMobileCategory("mulher-tenis", e)}>{t("tennis")}</a>
 
     <a onClick={(e) => selectMobileCategory("mulher-padel", e)}>Padel</a>
 
     <a onClick={(e) => selectMobileCategory("mulher-casual", e)}>Casual</a>
 
-    <a onClick={(e) => selectMobileCategory("mulher-caminhada", e)}>Caminhada</a>
+    <a onClick={(e) => selectMobileCategory("mulher-caminhada", e)}>{t("hiking")}</a>
 
-    <a onClick={(e) => selectMobileCategory("mulher-ciclismo", e)}>Ciclismo</a>
+    <a onClick={(e) => selectMobileCategory("mulher-ciclismo", e)}>{t("cycling")}</a>
 
   </details>
 
@@ -2068,7 +2184,7 @@ return (
 
   <details className="mobile-item">
 
-    <summary>Criança</summary>
+    <summary>{t("children")}</summary>
 
 
 
@@ -2076,7 +2192,7 @@ return (
 
     <a onClick={(e) => selectMobileCategory("crianca-trail", e)}>Trail</a>
 
-    <a onClick={(e) => selectMobileCategory("crianca-futebol", e)}>Futebol</a>
+    <a onClick={(e) => selectMobileCategory("crianca-futebol", e)}>{t("football")}</a>
 
                     <a onClick={(e) => selectMobileCategory("crianca-turf", e)}>Turf</a>
 
@@ -2090,25 +2206,25 @@ return (
 
   <details className="mobile-item">
 
-    <summary>ACESSÓRIOS</summary>
+    <summary>{t("accessories")}</summary>
 
 
 
-    <a onClick={(e) => selectMobileCategory("acessorios-bolas", e)}>Bolas</a>
+    <a onClick={(e) => selectMobileCategory("acessorios-bolas", e)}>{t("balls")}</a>
 
-    <a onClick={(e) => selectMobileCategory("acessorios-luvas", e)}>Luvas</a>
+    <a onClick={(e) => selectMobileCategory("acessorios-luvas", e)}>{t("gloves")}</a>
 
-    <a onClick={(e) => selectMobileCategory("acessorios-meias", e)}>Meias</a>
+    <a onClick={(e) => selectMobileCategory("acessorios-meias", e)}>{t("socks")}</a>
 
-    <a onClick={(e) => selectMobileCategory("acessorios-mochilas", e)}>Mochilas</a>
+    <a onClick={(e) => selectMobileCategory("acessorios-mochilas", e)}>{t("backpacks")}</a>
 
-    <a onClick={(e) => selectMobileCategory("acessorios-bones", e)}>Bonés</a>
+    <a onClick={(e) => selectMobileCategory("acessorios-bones", e)}>{t("caps")}</a>
 
     <a onClick={(e) => selectMobileCategory("acessorios-trail-running", e)}>Trail / Running</a>
 
-    <a onClick={(e) => selectMobileCategory("acessorios-verao", e)}>Verão</a>
+    <a onClick={(e) => selectMobileCategory("acessorios-verao", e)}>{t("summer")}</a>
 
-    <a onClick={(e) => selectMobileCategory("acessorios-outros", e)}>Outros</a>
+    <a onClick={(e) => selectMobileCategory("acessorios-outros", e)}>{t("others")}</a>
 
   </details>
 
@@ -2116,7 +2232,7 @@ return (
 
     <details className="mobile-item">
 
-    <summary>Têxtil</summary>
+    <summary>{t("textile")}</summary>
 
 
 
@@ -2224,7 +2340,7 @@ return (
 
           <div className="dropdown">
 
-            <a onClick={() => setCategory("all")}>Homem</a>
+            <a onClick={() => setCategory("all")}>{t("men")}</a>
 
             <div className="dropdown-menu">
 
@@ -2232,27 +2348,27 @@ return (
 
               <a onClick={() => selectCategory("homem-trail")}>Trail</a>
 
-              <a onClick={() => selectCategory("homem-futebol")}>Futebol</a>
+              <a onClick={() => selectCategory("homem-futebol")}>{t("football")}</a>
 
                 <a onClick={() => selectCategory("homem-turf")}>Turf</a>
 
               <a onClick={() => selectCategory("homem-futsal")}>Futsal</a>
 
-              <a onClick={() => selectCategory("homem-andebol")}>Andebol</a>
+              <a onClick={() => selectCategory("homem-andebol")}>{t("handball")}</a>
 
-              <a onClick={() => selectCategory("homem-voleibol")}>Voleibol</a>
+              <a onClick={() => selectCategory("homem-voleibol")}>{t("volleyball")}</a>
 
-              <a onClick={() => selectCategory("homem-basquetebol")}>Basquetebol</a>
+              <a onClick={() => selectCategory("homem-basquetebol")}>{t("basketball")}</a>
 
-              <a onClick={() => selectCategory("homem-tenis")}>Ténis</a>
+              <a onClick={() => selectCategory("homem-tenis")}>{t("tennis")}</a>
 
               <a onClick={() => selectCategory("homem-padel")}>Padel</a>
 
               <a onClick={() => selectCategory("homem-casual")}>Casual</a>
 
-              <a onClick={() => selectCategory("homem-caminhada")}>Caminhada</a>
+              <a onClick={() => selectCategory("homem-caminhada")}>{t("hiking")}</a>
 
-              <a onClick={() => selectCategory("homem-ciclismo")}>Ciclismo</a>
+              <a onClick={() => selectCategory("homem-ciclismo")}>{t("cycling")}</a>
 
             </div>
 
@@ -2264,7 +2380,7 @@ return (
 
           <div className="dropdown">
 
-            <a onClick={() => setCategory("all")}>Mulher</a>
+            <a onClick={() => setCategory("all")}>{t("women")}</a>
 
             <div className="dropdown-menu">
 
@@ -2272,27 +2388,27 @@ return (
 
               <a onClick={() => selectCategory("mulher-trail")}>Trail</a>
 
-              <a onClick={() => selectCategory("mulher-futebol")}>Futebol</a>
+              <a onClick={() => selectCategory("mulher-futebol")}>{t("football")}</a>
 
               <a onClick={() => selectCategory("mulher-turf")}>Turf</a>
 
               <a onClick={() => selectCategory("mulher-futsal")}>Futsal</a>
 
-              <a onClick={() => selectCategory("mulher-andebol")}>Andebol</a>
+              <a onClick={() => selectCategory("mulher-andebol")}>{t("handball")}</a>
 
-              <a onClick={() => selectCategory("mulher-voleibol")}>Voleibol</a>
+              <a onClick={() => selectCategory("mulher-voleibol")}>{t("volleyball")}</a>
 
-              <a onClick={() => selectCategory("mulher-basquetebol")}>Basquetebol</a>
+              <a onClick={() => selectCategory("mulher-basquetebol")}>{t("basketball")}</a>
 
-              <a onClick={() => selectCategory("mulher-tenis")}>Ténis</a>
+              <a onClick={() => selectCategory("mulher-tenis")}>{t("tennis")}</a>
 
               <a onClick={() => selectCategory("mulher-padel")}>Padel</a>
 
               <a onClick={() => selectCategory("mulher-casual")}>Casual</a>
 
-              <a onClick={() => selectCategory("mulher-caminhada")}>Caminhada</a>
+              <a onClick={() => selectCategory("mulher-caminhada")}>{t("hiking")}</a>
 
-              <a onClick={() => selectCategory("mulher-ciclismo")}>Ciclismo</a>
+              <a onClick={() => selectCategory("mulher-ciclismo")}>{t("cycling")}</a>
 
             </div>
 
@@ -2304,7 +2420,7 @@ return (
 
           <div className="dropdown">
 
-            <a onClick={() => setCategory("all")}>Criança</a>
+            <a onClick={() => setCategory("all")}>{t("children")}</a>
 
             <div className="dropdown-menu">
 
@@ -2312,7 +2428,7 @@ return (
 
               <a onClick={() => selectCategory("crianca-trail")}>Trail</a>
 
-              <a onClick={() => selectCategory("crianca-futebol")}>Futebol</a>
+              <a onClick={() => selectCategory("crianca-futebol")}>{t("football")}</a>
 
               <a onClick={() => selectCategory("crianca-turf")}>Turf</a>
 
@@ -2330,25 +2446,25 @@ return (
 
           <div className="dropdown">
 
-            <a onClick={() => setCategory("all")}>ACESSÓRIOS</a>
+            <a onClick={() => setCategory("all")}>{t("accessories")}</a>
 
             <div className="dropdown-menu">
 
-              <a onClick={() => selectCategory("acessorios-bolas")}>Bolas</a>
+              <a onClick={() => selectCategory("acessorios-bolas")}>{t("balls")}</a>
 
-              <a onClick={() => selectCategory("acessorios-luvas")}>Luvas</a>
+              <a onClick={() => selectCategory("acessorios-luvas")}>{t("gloves")}</a>
 
-              <a onClick={() => selectCategory("acessorios-meias")}>Meias</a>
+              <a onClick={() => selectCategory("acessorios-meias")}>{t("socks")}</a>
 
-              <a onClick={() => selectCategory("acessorios-mochilas")}>Mochilas</a>
+              <a onClick={() => selectCategory("acessorios-mochilas")}>{t("backpacks")}</a>
 
-              <a onClick={() => selectCategory("acessorios-bones")}>Bonés</a>
+              <a onClick={() => selectCategory("acessorios-bones")}>{t("caps")}</a>
 
               <a onClick={() => selectCategory("acessorios-trail-running")}>Trail/Running</a>
 
-              <a onClick={() => selectCategory("acessorios-verao")}>Verão</a>
+              <a onClick={() => selectCategory("acessorios-verao")}>{t("summer")}</a>
 
-              <a onClick={() => selectCategory("acessorios-outros")}>Outros</a>
+              <a onClick={() => selectCategory("acessorios-outros")}>{t("others")}</a>
 
             </div>
 
@@ -2360,15 +2476,15 @@ return (
 
 <div className="dropdown">
 
-  <a onClick={() => setCategory("all")}>Têxtil</a>
+  <a onClick={() => setCategory("all")}>{t("textile")}</a>
 
   <div className="dropdown-menu">
 
-    <a onClick={() => selectCategory("textil-homem")}>Homem</a>
+    <a onClick={() => selectCategory("textil-homem")}>{t("men")}</a>
 
-    <a onClick={() => selectCategory("textil-mulher")}>Mulher</a>
+    <a onClick={() => selectCategory("textil-mulher")}>{t("women")}</a>
 
-    <a onClick={() => selectCategory("textil-crianca")}>Criança</a>
+    <a onClick={() => selectCategory("textil-crianca")}>{t("children")}</a>
 
     <a onClick={() => selectCategory("textil-outlet")}>Outlet</a>
 
@@ -3657,7 +3773,30 @@ return (
 
         <div
 
-  className="card"
+  className={`card ${isAdmin && (!sortOption || sortOption === "relevant") ? "admin-draggable-card" : ""}`}
+  draggable={isAdmin && (!sortOption || sortOption === "relevant")}
+  onDragStart={(event) => {
+    if (!isAdmin || (sortOption && sortOption !== "relevant")) return;
+    setDraggedProductId(String(p._id));
+    event.dataTransfer.effectAllowed = "move";
+    event.dataTransfer.setData("text/plain", String(p._id));
+  }}
+  onDragOver={(event) => {
+    if (isAdmin && (!sortOption || sortOption === "relevant")) {
+      event.preventDefault();
+      event.dataTransfer.dropEffect = "move";
+    }
+  }}
+  onDrop={(event) => {
+    event.preventDefault();
+    const sourceId = event.dataTransfer.getData("text/plain") || draggedProductId;
+    handleProductDrop(p._id, sourceId);
+  }}
+  onDragEnd={() => setDraggedProductId(null)}
+  style={{
+    ...(isAdmin && (!sortOption || sortOption === "relevant") ? { cursor: "grab" } : {}),
+    ...(draggedProductId === String(p._id) ? { opacity: 0.55 } : {})
+  }}
 
   key={p._id}
 
@@ -3850,7 +3989,7 @@ return (
 
       <button onClick={() => setShowFavorites(false)}>
 
-        Fechar
+        {t("close")}
 
       </button>
 
@@ -3922,13 +4061,13 @@ return (
 
     <div className="cart cart-main">
 
-      <h2>Carrinho</h2>
+      <h2>{t("cart")}</h2>
 
 
 
       <button onClick={() => setCartOpen(false)}>
 
-        Fechar
+        {t("close")}
 
       </button>
 
@@ -3946,13 +4085,13 @@ return (
 
 >
 
-  Finalizar Compra
+  {t("checkout")}
 
 </button>
 
 
 
-      {cart.length === 0 && <p>Carrinho vazio</p>}
+      {cart.length === 0 && <p>{t("emptyCart")}</p>}
 
 
 
@@ -3977,9 +4116,9 @@ return (
 
 
 
-    <p>Tamanho: {item.size}</p>
+    <p>{t("size")}: {item.size}</p>
 
-    <p>Quantidade: {item.qty || 1}</p>
+    <p>{t("quantity")}: {item.qty || 1}</p>
 
 
 
@@ -4053,7 +4192,7 @@ return (
 
     <button onClick={() => removeFromCart(index)}>
 
-      Remover
+      {t("remove")}
 
     </button>
 
@@ -4071,7 +4210,7 @@ return (
 
 <p>
 
-  <strong>Subtotal:</strong> {cartTotal.toFixed(2)} €
+  <strong>{t("subtotal")}:</strong> {cartTotal.toFixed(2)} €
 
 </p>
 
@@ -4079,11 +4218,11 @@ return (
 
 <p>
 
-  <strong>Portes:</strong>{" "}
+  <strong>{t("shipping")}:</strong>{" "}
 
   {shippingCost === 0 ? (
 
-    <span style={{ color: "green" }}>Grátis</span>
+    <span style={{ color: "green" }}>{t("free")}</span>
 
   ) : (
 
@@ -4095,7 +4234,7 @@ return (
 
 
 
-<h3>Total: {finalTotal.toFixed(2)} €</h3>
+<h3>{t("total")}: {finalTotal.toFixed(2)} €</h3>
 
 
 
@@ -4103,7 +4242,7 @@ return (
 
   <p style={{ color: "#e30613", fontSize: "14px" }}>
 
-    Faltam {(70 - cartTotal).toFixed(2)} € para ter portes Grátis.
+    {t("freeShippingRemaining", { amount: (70 - cartTotal).toFixed(2) })}
 
   </p>
 
@@ -4455,7 +4594,7 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
       >
 
-        Fechar
+        {t("close")}
 
       </button>
 
@@ -4662,7 +4801,7 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
       >
 
-        Fechar
+        {t("close")}
 
       </button>
 
@@ -4929,7 +5068,80 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
 
 
-</footer></div>
+</footer>
+{activeInfoModal && (
+  <div
+    className="info-modal-overlay"
+    onClick={() => setActiveInfoModal(null)}
+  >
+    <section
+      className="info-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="info-modal-title"
+      onClick={(event) => event.stopPropagation()}
+    >
+      <button
+        type="button"
+        className="info-modal-close"
+        onClick={() => setActiveInfoModal(null)}
+        aria-label="Fechar"
+      >
+        ×
+      </button>
+
+      {activeInfoModal === "contacto" && (
+        <>
+          <h2 id="info-modal-title">Contacto</h2>
+          <p>Estamos disponíveis para ajudar com as suas encomendas, produtos e outras questões.</p>
+          <h3>Fale connosco</h3>
+          <p><strong>Email:</strong> <a href="mailto:apoio@jomabasto.com">apoio@jomabasto.com</a></p>
+          <p><strong>Horário de atendimento:</strong> dias úteis, das 09:00 às 18:00.</p>
+          <h3>Perguntas frequentes</h3>
+          <h4>Os produtos Joma são originais?</h4>
+          <p>Sim. A JomaBasto Store é revendedora oficial da Joma em Portugal e comercializa exclusivamente produtos originais da marca.</p>
+
+          <h4>Quanto tempo demora a entrega?</h4>
+          <p>As encomendas são expedidas rapidamente através dos CTT, com entrega normalmente entre 3 a 8 dias úteis em Portugal Continental.</p>
+
+          <h4>Posso trocar ou devolver um artigo?</h4>
+          <p>Sim. Dispõe de até 15 dias para solicitar a troca ou devolução, de acordo com a nossa política de trocas.</p>
+
+          <h4>Os portes são gratuitos?</h4>
+          <p>Sim. Os portes são gratuitos para encomendas superiores a 70 €.</p>
+        </>
+      )}
+
+      {activeInfoModal === "loja" && (
+        <>
+          <h2 id="info-modal-title">Localizador de loja</h2>
+          <p><strong>JomaBasto</strong></p>
+          <p>Avenida da Igreja, Loja 4</p>
+          <p>4880-231 Mondim de Basto, Portugal</p>
+          <p><strong>Telefone:</strong> <a href="tel:+351924176159">924 176 159</a></p>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=JomaBasto%2C+Avenida+da+Igreja%2C+Loja+4%2C+4880-231+Mondim+de+Basto"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Ver localização no mapa
+          </a>
+        </>
+      )}
+
+      {activeInfoModal === "distribuidores" && (
+        <>
+          <h2 id="info-modal-title">Distribuidores</h2>
+          <p>A JomaBasto está disponível para colaborar com clubes, equipas desportivas, empresas e instituições.</p>
+          <p>Se pretende adquirir equipamentos ou conhecer condições de fornecimento para o seu clube ou organização, entre em contacto connosco.</p>
+          <p><strong>Email:</strong> <a href="mailto:apoio@jomabasto.com">apoio@jomabasto.com</a></p>
+          <p><strong>Telefone:</strong> <a href="tel:+351924176159">924 176 159</a></p>
+        </>
+      )}
+    </section>
+  </div>
+)}
+</div>
 
 );
 

@@ -1,4 +1,4 @@
-﻿/* =========================
+/* =========================
    RESET
 ========================= */
 * {
@@ -2969,6 +2969,7 @@ body {
 @media (max-width: 768px) {
 
   .header {
+    top: 64px !important;
     height: 60px !important;
     width: 100% !important;
     padding: 0 6px !important;
@@ -4933,7 +4934,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 28px;
-  margin-top: 102px;
+  margin-top: 55px;
   padding: 0;
   box-sizing: border-box;
 }
@@ -6749,5 +6750,558 @@ body {
 
   .home-hero-layout .home-block-trail iframe.hero-video.trail-video-loaded {
     opacity: 1;
+  }
+}
+
+/* JOMABASTO — ACESSOS NA BARRA SUPERIOR */
+.announcement-desktop {
+  gap: 22px;
+}
+
+.announcement-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  white-space: nowrap;
+}
+
+.announcement-actions button,
+.announcement-mobile-actions button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  padding: 4px 0;
+}
+
+.announcement-actions button:hover,
+.announcement-mobile-actions button:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+  .announcement-bar {
+    height: 32px;
+    justify-content: flex-start;
+  }
+
+  .announcement-mobile {
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+
+  .announcement-mobile::-webkit-scrollbar {
+    display: none;
+  }
+
+  .announcement-mobile span {
+    left: 0;
+  }
+
+  .announcement-mobile-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-left: 205px;
+    padding-right: 16px;
+  }
+
+  .announcement-mobile-actions button {
+    font-size: 11px;
+  }
+}
+/* AJUSTE MOBILE — BARRA SUPERIOR EM DUAS LINHAS */
+@media (max-width: 767px) {
+  .announcement-bar {
+    height: 64px;
+    min-height: 64px;
+    display: block;
+    overflow: hidden;
+  }
+
+  .announcement-mobile {
+    height: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    overflow: visible;
+    position: relative;
+  }
+
+  .announcement-mobile > span {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .announcement-mobile-actions {
+    height: 32px;
+    min-height: 32px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 18px;
+    margin: 32px 0 0;
+    padding: 0 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+  }
+
+  .announcement-mobile-actions::-webkit-scrollbar {
+    display: none;
+  }
+
+  .announcement-mobile-actions button {
+    flex: 0 0 auto;
+    font-size: 11px;
+    letter-spacing: 0.2px;
+  }
+}
+/* CORRECAO FINAL — BARRA MOBILE VISIVEL */
+@media screen and (max-width: 767px) {
+  .announcement-bar {
+    display: block !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 64px !important;
+    min-height: 64px !important;
+    opacity: 1 !important;
+    animation: none !important;
+    overflow: hidden !important;
+    z-index: 10000 !important;
+  }
+
+  .announcement-desktop {
+    display: none !important;
+  }
+
+  .announcement-mobile {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    height: 64px !important;
+    min-height: 64px !important;
+    overflow: hidden !important;
+  }
+
+  .announcement-mobile > span {
+    display: flex !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 32px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+  }
+
+  .announcement-mobile-actions {
+    display: flex !important;
+    position: absolute !important;
+    top: 32px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    box-sizing: border-box !important;
+    align-items: center !important;
+    justify-content: space-evenly !important;
+    gap: 12px !important;
+    margin: 0 !important;
+    padding: 0 12px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scrollbar-width: none !important;
+  }
+
+  .announcement-mobile-actions button {
+    display: inline-block !important;
+    flex: 0 0 auto !important;
+    font-size: 11px !important;
+    white-space: nowrap !important;
+  }
+}
+/* Seletor de idiomas — desktop e mobile */
+.language-selector {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  margin-left: 4px;
+}
+
+.announcement-actions .language-selector,
+.announcement-mobile-actions .language-selector {
+  position: relative;
+}
+
+.announcement-actions .language-flag,
+.announcement-mobile-actions .language-flag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-width: 28px;
+  min-height: 28px;
+  padding: 3px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  font-size: 19px;
+  line-height: 1;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.announcement-actions .language-flag:hover,
+.announcement-mobile-actions .language-flag:hover {
+  text-decoration: none;
+  transform: scale(1.08);
+}
+
+.language-dropdown {
+  position: absolute;
+  z-index: 9999;
+  top: calc(100% + 5px);
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  min-width: 40px;
+  padding: 6px;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
+}
+
+.language-dropdown .language-flag {
+  width: 30px;
+  min-height: 30px;
+  background: transparent;
+}
+
+/* CORREÇÃO: menu de idiomas visível no telemóvel */
+@media (max-width: 767px) {
+  .announcement-bar,
+  .announcement-mobile,
+  .announcement-mobile-actions {
+    overflow: visible !important;
+  }
+
+  .language-dropdown {
+    position: absolute !important;
+    top: calc(100% + 5px) !important;
+    right: 0 !important;
+    z-index: 20000 !important;
+  }
+}
+/* Ajuste do seletor de idiomas */
+.language-current {
+  min-width: 34px !important;
+  min-height: 30px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 22px !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  position: relative !important;
+  z-index: 20001 !important;
+}
+
+.language-dropdown {
+  pointer-events: auto !important;
+}
+
+.language-dropdown .language-flag {
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+
+@media (max-width: 767px) {
+  .announcement-mobile-actions {
+    overflow: visible !important;
+  }
+
+  .announcement-mobile-actions .language-dropdown {
+    position: fixed !important;
+    top: 66px !important;
+    right: 8px !important;
+    z-index: 30000 !important;
+  }
+}
+/* Permitir que o menu de idiomas apareça fora da barra no desktop */
+@media (min-width: 768px) {
+  .announcement-bar {
+    overflow: visible !important;
+  }
+
+  .announcement-desktop {
+    overflow: visible !important;
+  }
+
+  .announcement-actions {
+    overflow: visible !important;
+  }
+
+  .announcement-actions .language-dropdown {
+    position: fixed !important;
+    top: 38px !important;
+    right: 12px !important;
+    z-index: 30000 !important;
+  }
+}
+/* Posicionar o menu de idiomas junto à bandeira no desktop */
+@media (min-width: 768px) {
+  .announcement-actions .language-selector {
+    position: relative !important;
+  }
+
+  .announcement-actions .language-dropdown {
+    position: absolute !important;
+    top: calc(100% + 5px) !important;
+    right: 0 !important;
+    left: auto !important;
+    z-index: 30000 !important;
+  }
+}
+/* Manter a barra superior e o menu de idiomas acima das categorias */
+@media (min-width: 768px) {
+  .announcement-bar {
+    position: relative !important;
+    z-index: 30001 !important;
+  }
+
+  .announcement-actions .language-selector {
+    position: relative !important;
+    z-index: 30002 !important;
+  }
+
+  .announcement-actions .language-dropdown {
+    z-index: 30003 !important;
+  }
+}
+/* Pequeno espaço entre a barra de contactos e as categorias */
+@media (min-width: 769px) {
+  .header {
+    top: 46px !important;
+  }
+}
+
+/* ORGANIZACAO DO TOPO - DESKTOP */
+@media (min-width: 769px) {
+  .announcement-bar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    z-index: 30001 !important;
+  }
+
+  .announcement-desktop {
+    height: 32px !important;
+    min-height: 32px !important;
+  }
+
+  .header {
+    position: fixed !important;
+    top: 32px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 76px !important;
+    min-height: 76px !important;
+    box-sizing: border-box !important;
+    z-index: 30000 !important;
+  }
+
+  body {
+    padding-top: 108px !important;
+  }
+
+  .announcement-actions .language-dropdown {
+    z-index: 30003 !important;
+  }
+}
+/* JANELAS DE INFORMACAO */
+.info-modal-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 40000 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 24px !important;
+  background: rgba(0, 0, 0, 0.6) !important;
+}
+
+.info-modal {
+  position: relative !important;
+  z-index: 40001 !important;
+  width: min(560px, 100%) !important;
+  max-height: 85vh !important;
+  overflow-y: auto !important;
+  box-sizing: border-box !important;
+  padding: 36px !important;
+  border-radius: 12px !important;
+  background: #fff !important;
+  color: #222 !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3) !important;
+}
+
+.info-modal h2 { margin: 0 40px 20px 0 !important; }
+.info-modal h3 { margin: 24px 0 10px !important; }
+.info-modal p { margin: 0 0 12px !important; line-height: 1.6 !important; }
+.info-modal a { color: #c00 !important; text-decoration: underline !important; }
+
+.info-modal-close {
+  position: absolute !important;
+  top: 10px !important;
+  right: 14px !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #222 !important;
+  font-size: 30px !important;
+  cursor: pointer !important;
+}
+
+@media (max-width: 768px) {
+  .info-modal-overlay { padding: 14px !important; }
+  .info-modal { padding: 28px 22px !important; max-height: 85vh !important; }
+}
+
+/* ===== MODAIS JOMABASTO - VISUAL REFINADO ===== */
+.info-modal-overlay {
+  background: rgba(12, 12, 12, 0.68) !important;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  animation: infoOverlayIn 0.22s ease-out both;
+}
+
+.info-modal {
+  width: min(620px, 100%) !important;
+  padding: 42px !important;
+  border-radius: 16px !important;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.24) !important;
+  animation: infoModalIn 0.28s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.info-modal h2 {
+  padding-bottom: 16px;
+  border-bottom: 2px solid #c8102e;
+  color: #171717;
+  font-size: 27px;
+  font-weight: 750;
+  letter-spacing: -0.5px;
+}
+
+.info-modal h3 {
+  color: #222;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.info-modal h4 {
+  margin: 20px 0 7px;
+  color: #222;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.info-modal p {
+  color: #626262;
+  font-size: 14px;
+  line-height: 1.75 !important;
+}
+
+.info-modal-close {
+  top: 17px !important;
+  right: 18px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 25px !important;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.info-modal-close:hover {
+  background: #f3f3f3;
+  color: #c8102e !important;
+  transform: rotate(90deg);
+}
+
+@keyframes infoOverlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes infoModalIn {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 768px) {
+  .info-modal {
+    width: 100% !important;
+    padding: 32px 23px !important;
+    border-radius: 14px !important;
+  }
+
+  .info-modal h2 {
+    font-size: 23px;
+  }
+
+  .info-modal h4 {
+    font-size: 14px;
+  }
+}
+
+/* Garante que o carrinho fica acima da barra de categorias */
+.cart-overlay {
+  z-index: 2147483647 !important;
+}
+
+/* CORRECAO MOBILE — ORDEM DAS BARRAS */
+@media screen and (max-width: 767px) {
+  .announcement-bar { overflow: visible !important; }
+  .announcement-mobile, .announcement-mobile-actions { overflow: visible !important; }
+  .ofertas-semana-bar { top: 132px !important; z-index: 10001 !important; }
+  .header { top: 64px !important; z-index: 10002 !important; }
+  body { padding-top: 172px !important; }
+  .announcement-mobile-actions .language-dropdown { position: fixed !important; top: 66px !important; right: 8px !important; z-index: 30000 !important; }
+}
+
+
+/* MOBILE — APROXIMAR VIDEO TRAIL DA BARRA DE CATEGORIAS */
+@media (max-width: 768px) {
+  .home-hero-layout {
+    margin-top: 12px !important;
   }
 }

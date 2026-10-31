@@ -1,3 +1,4 @@
+import "./i18n/config.js";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import ReactGA from "react-ga4";
