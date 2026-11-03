@@ -603,19 +603,25 @@ const validarCupao = async () => {
                 <div style={{marginTop: "14px", fontSize: "14px"}}>
                   <p style={{display: "flex", justifyContent: "space-between", margin: "8px 0"}}>
                     <span>Subtotal</span>
-                    <span>{Number(total).toLocaleString("pt-PT", {style: "currency", currency: "EUR"})}</span>
+                    <span>{Number(subtotalExibido).toLocaleString("pt-PT", {style: "currency", currency: "EUR"})}</span>
                   </p>
                   <p style={{display: "flex", justifyContent: "space-between", margin: "8px 0"}}>
                     <span>Portes de envio</span>
                     <span>{Number(shippingCost).toLocaleString("pt-PT", {style: "currency", currency: "EUR"})}</span>
                   </p>
+                  {cupaoValidado && (
+                    <p style={{display: "flex", justifyContent: "space-between", margin: "8px 0", color: "#16803c"}}>
+                      <span>Desconto do cupão</span>
+                      <span>-{Number(descontoCupao).toLocaleString("pt-PT", {style: "currency", currency: "EUR"})}</span>
+                    </p>
+                  )}
                   <div style={{
                     display: "flex", justifyContent: "space-between", gap: "12px",
                     marginTop: "14px", padding: "15px", background: "#f0f5f8",
                     borderRadius: "7px", fontSize: "20px", fontWeight: "800", color: "#173b57"
                   }}>
                     <span>Total</span>
-                    <span>{Number(total + shippingCost).toLocaleString("pt-PT", {style: "currency", currency: "EUR"})}</span>
+                    <span>{Number(totalExibido).toLocaleString("pt-PT", {style: "currency", currency: "EUR"})}</span>
                   </div>
                 </div>
               </section>
