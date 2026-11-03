@@ -4317,11 +4317,13 @@ return (
 
 
 
+
 {cupaoValidado && (
   <p style={{ color: "#238636" }}>
     Desconto ({cupaoValidado.percentagem}%): -{cupaoValidado.desconto.toFixed(2)} €
   </p>
 )}
+
 <h3>{t("total")}: {totalComCupao.toFixed(2)} €</h3>
 
 
