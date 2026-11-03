@@ -528,6 +528,20 @@ useEffect(() => {
 }, [cart]);
 
   const [cartOpen, setCartOpen] = useState(false);
+  const [cupaoAtivo, setCupaoAtivo] = useState(false);
+  const [codigoCupao, setCodigoCupao] = useState(() => sessionStorage.getItem("codigoCupao") || "");
+  const [cupaoValidado, setCupaoValidado] = useState(null);
+  const [cupaoErro, setCupaoErro] = useState("");
+  const [aValidarCupao, setAValidarCupao] = useState(false);
+  useEffect(() => {
+    fetch("https://jomabasto-backend.onrender.com/coupon-status")
+      .then((res) => {
+        if (!res.ok) throw new Error("Campanha indisponível");
+        return res.json();
+      })
+      .then((data) => setCupaoAtivo(data.ativo === true))
+      .catch(() => setCupaoAtivo(false));
+  }, []);
 
 const [mobileMenu, setMobileMenu] = useState(false);
   const [seguirOpen, setSeguirOpen] = useState(false);
@@ -661,6 +675,39 @@ const shippingCost = cartTotal >= 70 || cartTotal === 0 ? 0 : 5.95;
 
 
 const finalTotal = cartTotal + shippingCost;
+const validarCupaoCarrinho = async () => {
+  if (!codigoCupao.trim() || cart.length === 0) return;
+
+  setAValidarCupao(true);
+  setCupaoErro("");
+  setCupaoValidado(null);
+
+  try {
+    const res = await fetch("https://jomabasto-backend.onrender.com/validate-coupon", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ items: cart, codigoCupao }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok || !data.valido) {
+      throw new Error(data.error || "Código promocional inválido.");
+    }
+
+    setCupaoValidado(data);
+    sessionStorage.setItem("codigoCupao", data.codigoCupao);
+  } catch (err) {
+    sessionStorage.removeItem("codigoCupao");
+    setCupaoErro(err.message || "Não foi possível validar o cupão.");
+  } finally {
+    setAValidarCupao(false);
+  }
+};
+
+const totalComCupao = cupaoValidado
+  ? cartTotal - cupaoValidado.desconto + shippingCost
+  : finalTotal;
 
 
 
@@ -4208,6 +4255,42 @@ return (
 
 
 
+{cupaoAtivo && (
+  <div style={{ margin: "16px 0", padding: "12px", border: "1px solid #ddd", borderRadius: "8px" }}>
+    <label htmlFor="cupao-carrinho" style={{ display: "block", marginBottom: "8px", fontWeight: "bold" }}>
+      Código promocional
+    </label>
+    <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+      <input
+        id="cupao-carrinho"
+        type="text"
+        value={codigoCupao}
+        placeholder="Introduza o código"
+        onChange={(e) => {
+          setCodigoCupao(e.target.value);
+          setCupaoValidado(null);
+          setCupaoErro("");
+          sessionStorage.removeItem("codigoCupao");
+        }}
+        style={{ flex: "1", minWidth: "150px", padding: "10px" }}
+      />
+      <button
+        type="button"
+        onClick={validarCupaoCarrinho}
+        disabled={aValidarCupao || !codigoCupao.trim()}
+      >
+        {aValidarCupao ? "A validar..." : "Validar cupão"}
+      </button>
+    </div>
+    {cupaoErro && <p style={{ color: "#c62828" }}>{cupaoErro}</p>}
+    {cupaoValidado && (
+      <p style={{ color: "#238636" }}>
+        Cupão aplicado! Desconto de {cupaoValidado.percentagem}%.
+      </p>
+    )}
+  </div>
+)}
+
 <p>
 
   <strong>{t("subtotal")}:</strong> {cartTotal.toFixed(2)} €
@@ -4234,7 +4317,12 @@ return (
 
 
 
-<h3>{t("total")}: {finalTotal.toFixed(2)} €</h3>
+{cupaoValidado && (
+  <p style={{ color: "#238636" }}>
+    Desconto ({cupaoValidado.percentagem}%): -{cupaoValidado.desconto.toFixed(2)} €
+  </p>
+)}
+<h3>{t("total")}: {totalComCupao.toFixed(2)} €</h3>
 
 
 

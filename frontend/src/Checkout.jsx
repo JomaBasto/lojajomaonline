@@ -5,6 +5,11 @@ export default function Checkout() {
   const [loading, setLoading] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState("stripe");
   const [multibancoData, setMultibancoData] = useState(null);
+  const [cupaoAtivo, setCupaoAtivo] = useState(false);
+  const [codigoCupao, setCodigoCupao] = useState(() => sessionStorage.getItem("codigoCupao") || "");
+  const [cupaoValidado, setCupaoValidado] = useState(null);
+  const [cupaoErro, setCupaoErro] = useState("");
+  const [aValidarCupao, setAValidarCupao] = useState(false);
 
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
@@ -23,8 +28,21 @@ export default function Checkout() {
   );
 
   const shippingCost = total >= 70 || total === 0 ? 0 : 5.95;
+  const subtotalExibido = cupaoValidado ? cupaoValidado.subtotal : total;
+  const descontoCupao = cupaoValidado ? cupaoValidado.desconto : 0;
+  const totalExibido = subtotalExibido - descontoCupao + shippingCost;
 
   const API_URL = "https://jomabasto-backend.onrender.com";
+
+  useEffect(() => {
+    fetch(`${API_URL}/coupon-status`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Não foi possível consultar a campanha.");
+        return res.json();
+      })
+      .then((data) => setCupaoAtivo(data.ativo === true))
+      .catch(() => setCupaoAtivo(false));
+  }, []);
   useEffect(() => {
     if (cart.length === 0) return;
 
@@ -40,7 +58,37 @@ export default function Checkout() {
       })),
     });
   }, [cart.length, total, shippingCost]);
-const pay = async () => {
+const validarCupao = async () => {
+    setAValidarCupao(true);
+    setCupaoErro("");
+    setCupaoValidado(null);
+
+    try {
+      const res = await fetch(`${API_URL}/validate-coupon`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items: cart, codigoCupao }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.valido) {
+        throw new Error(data.error || "Código promocional inválido.");
+      }
+
+      setCupaoValidado(data);
+    } catch (err) {
+      setCupaoErro(err.message || "Não foi possível validar o cupão.");
+    } finally {
+      setAValidarCupao(false);
+    }
+  };
+
+  useEffect(() => {
+    if (cupaoAtivo && codigoCupao.trim() && cart.length > 0) validarCupao();
+  }, [cupaoAtivo]);
+
+  const pay = async () => {
     try {
       if (cart.length === 0) {
         alert("O carrinho está vazio.");
@@ -69,6 +117,7 @@ const pay = async () => {
         body: JSON.stringify({
           items: cart,
           shippingCost,
+          ...(cupaoValidado ? { codigoCupao: cupaoValidado.codigoCupao } : {}),
 
           cliente: {
             nome,
@@ -154,6 +203,7 @@ const pay = async () => {
         body: JSON.stringify({
           items: cart,
           shippingCost,
+          ...(cupaoValidado ? { codigoCupao: cupaoValidado.codigoCupao } : {}),
           cliente: {
             nome,
             email,
@@ -322,16 +372,53 @@ const pay = async () => {
             </div>
           ))}
 
+          {cupaoAtivo && (
+            <div style={{ marginTop: "25px", marginBottom: "20px" }}>
+              <h3>Código promocional</h3>
+              <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                <input
+                  type="text"
+                  placeholder="Introduza o código"
+                  value={codigoCupao}
+                  onChange={(e) => {
+                    setCodigoCupao(e.target.value);
+                    setCupaoValidado(null);
+                    setCupaoErro("");
+                  }}
+                  style={{ ...inputStyle, flex: "1", minWidth: "180px" }}
+                />
+                <button
+                  type="button"
+                  onClick={validarCupao}
+                  disabled={aValidarCupao || !codigoCupao.trim()}
+                >
+                  {aValidarCupao ? "A validar..." : "Validar cupão"}
+                </button>
+              </div>
+              {cupaoErro && <p style={{ color: "#c62828" }}>{cupaoErro}</p>}
+              {cupaoValidado && (
+                <p style={{ color: "#238636" }}>
+                  Cupão aplicado! Desconto de {cupaoValidado.percentagem}%.
+                </p>
+              )}
+            </div>
+          )}
+
           <p>
-  Subtotal: {total.toFixed(2)} €
-</p>
+            Subtotal: {subtotalExibido.toFixed(2)} €
+          </p>
 
 <p>
   Portes: {shippingCost.toFixed(2)} €
 </p>
+{cupaoValidado && (
+  <p style={{ color: "#238636" }}>
+    Desconto ({cupaoValidado.percentagem}%): -{descontoCupao.toFixed(2)} €
+  </p>
+)}
 
 <h2 style={{ marginTop: "25px" }}>
-  Total: {(total + shippingCost).toFixed(2)} €
+  Total: {totalExibido.toFixed(2)} €
 </h2>
 
           <h2 style={{ marginTop: "30px" }}>
