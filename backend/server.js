@@ -410,12 +410,93 @@ app.put("/encomendas/:id", async (req, res) => {
 // ======================
 
 // ======================
+async function calcularCupao(items, codigoCupao) {
+  const ativo = String(process.env.CUPAO_ATIVO || "false").toLowerCase() === "true";
+  const codigoConfigurado = String(process.env.CUPAO_CODIGO || "").trim().toUpperCase();
+  const codigoIntroduzido = String(codigoCupao || "").trim().toUpperCase();
+  const percentagem = Number(process.env.CUPAO_DESCONTO_PERCENTAGEM || 0);
+
+  if (!ativo || !codigoConfigurado || !codigoIntroduzido || codigoIntroduzido !== codigoConfigurado) {
+    throw new Error("Código promocional inválido ou campanha inativa.");
+  }
+
+  if (!Number.isFinite(percentagem) || percentagem <= 0 || percentagem > 100) {
+    throw new Error("A percentagem do cupão está mal configurada.");
+  }
+
+  let itemsComPrecoReal = await Promise.all(items.map(async (item) => {
+    const produto = await Produto.findById(item._id);
+    if (!produto) throw new Error(`Produto não encontrado: ${item._id}`);
+
+    const precoFinal =
+      produto.promoPrice != null &&
+      Number(produto.promoPrice) > 0 &&
+      Number(produto.promoPrice) < Number(produto.price)
+        ? Number(produto.promoPrice)
+        : Number(produto.price);
+
+    const quantidade = Math.max(1, Math.floor(Number(item.qty) || 1));
+
+    return {
+      ...item,
+      price: precoFinal,
+      qty: quantidade,
+      promoPrice: produto.promoPrice,
+      promocao: produto.promocao,
+    };
+  }));
+
+  const subtotalCentimos = itemsComPrecoReal.reduce(
+    (sum, item) => sum + Math.round(Number(item.price) * 100) * item.qty,
+    0
+  );
+
+  const descontoCentimos = Math.round(subtotalCentimos * percentagem / 100);
+
+  return {
+    itemsComPrecoReal,
+    subtotal: subtotalCentimos / 100,
+    desconto: descontoCentimos / 100,
+    percentagem,
+    codigoCupao: String(codigoCupao).trim(),
+  };
+}
 // MULTIBANCO PAYMENT
 // ======================
 
+app.get("/coupon-status", (req, res) => {
+  const ativo = String(process.env.CUPAO_ATIVO || "false").toLowerCase() === "true";
+  res.json({ ativo });
+});
+
+app.post("/validate-coupon", async (req, res) => {
+  try {
+    const { items, codigoCupao } = req.body;
+
+    if (!Array.isArray(items) || items.length === 0) {
+      return res.status(400).json({ error: "Carrinho vazio." });
+    }
+
+    const resultado = await calcularCupao(items, codigoCupao);
+
+    res.json({
+      valido: true,
+      codigoCupao: resultado.codigoCupao,
+      percentagem: resultado.percentagem,
+      subtotal: resultado.subtotal,
+      desconto: resultado.desconto,
+      totalProdutos: resultado.subtotal - resultado.desconto,
+    });
+  } catch (err) {
+    res.status(400).json({
+      valido: false,
+      error: err.message || "Não foi possível validar o cupão.",
+    });
+  }
+});
 app.post("/create-multibanco-order", async (req, res) => {
   try {
-    const { items, cliente, shippingCost = 0 } = req.body;
+    const { items, cliente, shippingCost = 0, codigoCupao } = req.body;
 
     console.log("MULTIBANCO BODY:", JSON.stringify(req.body));
     console.log("MULTIBANCO ENTIDADE:", process.env.MULTIBANCO_ENTIDADE);
@@ -431,7 +512,7 @@ app.post("/create-multibanco-order", async (req, res) => {
 
     console.log("MULTIBANCO: a validar produtos...");
 
-    const itemsComPrecoReal = await Promise.all(
+    let itemsComPrecoReal = await Promise.all(
       items.map(async (item) => {
         const produto = await Produto.findById(item._id);
 
@@ -453,17 +534,30 @@ app.post("/create-multibanco-order", async (req, res) => {
       })
     );
 
-    const subtotal = itemsComPrecoReal.reduce(
+    let subtotal = itemsComPrecoReal.reduce(
       (sum, item) => sum + Number(item.price) * (item.qty || 1),
       0
     );
 
-    const totalFinal = subtotal + Number(shippingCost || 0);
+    let desconto = 0;
+    let codigoCupaoAplicado = null;
+
+    if (codigoCupao && String(codigoCupao).trim()) {
+      const resultadoCupao = await calcularCupao(items, codigoCupao);
+      itemsComPrecoReal = resultadoCupao.itemsComPrecoReal;
+      subtotal = resultadoCupao.subtotal;
+      desconto = resultadoCupao.desconto;
+      codigoCupaoAplicado = resultadoCupao.codigoCupao;
+    }
+
+    const totalFinal = subtotal - desconto + Number(shippingCost || 0);
 
     const encomenda = new Encomenda({
       cliente,
       items: itemsComPrecoReal,
       total: totalFinal,
+      codigoCupao: codigoCupaoAplicado,
+      desconto,
       estado: "Pendente",
       metodoPagamento: "multibanco",
     });
@@ -498,7 +592,7 @@ app.post("/create-multibanco-order", async (req, res) => {
 
 app.post("/create-checkout-session", async (req, res) => {
   try {
-    const { items, cliente, shippingCost = 0 } = req.body;
+    const { items, cliente, shippingCost = 0, codigoCupao } = req.body;
 
     console.log("MULTIBANCO BODY:", JSON.stringify(req.body));
     console.log("MULTIBANCO ENTIDADE:", process.env.MULTIBANCO_ENTIDADE);
@@ -513,7 +607,7 @@ app.post("/create-checkout-session", async (req, res) => {
     }
 
     // Guardar a encomenda na MongoDB
-const itemsComPrecoReal = await Promise.all(
+let itemsComPrecoReal = await Promise.all(
   items.map(async (item) => {
     const produto = await Produto.findById(item._id);
 
@@ -535,38 +629,78 @@ const itemsComPrecoReal = await Promise.all(
   })
 );
 
-const subtotal = itemsComPrecoReal.reduce(
-  (sum, item) => sum + Number(item.price) * (item.qty || 1),
+let subtotal = itemsComPrecoReal.reduce(
+  (sum, item) => sum + Math.round(Number(item.price) * 100) * (Math.max(1, Math.floor(Number(item.qty) || 1))),
   0
-);
+) / 100;
+
+let desconto = 0;
+let codigoCupaoAplicado = null;
+let percentagemCupao = 0;
+
+if (codigoCupao && String(codigoCupao).trim()) {
+  const resultadoCupao = await calcularCupao(items, codigoCupao);
+  itemsComPrecoReal = resultadoCupao.itemsComPrecoReal;
+  subtotal = resultadoCupao.subtotal;
+  desconto = resultadoCupao.desconto;
+  codigoCupaoAplicado = resultadoCupao.codigoCupao;
+  percentagemCupao = resultadoCupao.percentagem;
+}
+
+const totalFinal = subtotal - desconto + Number(shippingCost || 0);
 
 const encomenda = new Encomenda({
   cliente,
   items: itemsComPrecoReal,
-  total: subtotal + shippingCost,
+  total: totalFinal,
+  codigoCupao: codigoCupaoAplicado,
+  desconto,
   estado: "Pendente",
 });
 
 await encomenda.save();
 
+const linhasComDesconto = itemsComPrecoReal.map((item, index) => {
+  const quantidade = Math.max(1, Math.floor(Number(item.qty) || 1));
+  const valorCentimos = Math.round(Number(item.price) * 100) * quantidade;
+  return { item, index, quantidade, valorCentimos, descontoCentimos: 0, resto: 0 };
+});
+
+if (desconto > 0 && subtotal > 0) {
+  const descontoTotalCentimos = Math.round(desconto * 100);
+  const subtotalCentimos = linhasComDesconto.reduce((soma, linha) => soma + linha.valorCentimos, 0);
+
+  let descontoDistribuido = 0;
+  linhasComDesconto.forEach((linha) => {
+    const quota = linha.valorCentimos * descontoTotalCentimos / subtotalCentimos;
+    linha.descontoCentimos = Math.floor(quota);
+    linha.resto = quota - linha.descontoCentimos;
+    descontoDistribuido += linha.descontoCentimos;
+  });
+
+  const ordemRestos = [...linhasComDesconto].sort((a, b) => b.resto - a.resto);
+  for (let i = 0; i < descontoTotalCentimos - descontoDistribuido; i++) {
+    ordemRestos[i % ordemRestos.length].descontoCentimos++;
+  }
+}
+
+const lineItemsStripe = linhasComDesconto.map((linha) => ({
+  price_data: {
+    currency: "eur",
+    product_data: {
+      name: `${linha.item.name} (${linha.item.size})${desconto > 0 ? " - desconto incluido" : ""}`,
+    },
+    unit_amount: linha.valorCentimos - linha.descontoCentimos,
+  },
+  quantity: 1,
+}));
 // Criar sessÃ£o Stripe
 const session = await stripe.checkout.sessions.create({
   payment_method_types: ["card"],
   mode: "payment",
 
   line_items: [
-  ...items.map((item) => ({
-    price_data: {
-      currency: "eur",
-      product_data: {
-        name: `${item.name} (${item.size})`,
-      },
-      unit_amount: Math.round(
-  (item.promocao && item.promoPrice ? item.promoPrice : item.price) * 100
-),
-    },
-    quantity: item.qty || 1,
-  })),
+    ...lineItemsStripe,
 
   ...(shippingCost > 0
     ? [{
@@ -921,5 +1055,3 @@ app.post(
 app.listen(PORT, () => {
   console.log("ðŸš€ Servidor a correr na porta", PORT);
 });
-
-

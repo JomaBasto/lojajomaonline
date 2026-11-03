@@ -25,6 +25,9 @@ const EncomendaSchema = new mongoose.Schema(
 
     total: Number,
 
+    codigoCupao: { type: String, default: null },
+    desconto: { type: Number, default: 0 },
+
     estado: {
       type: String,
       default: "Pendente",
