@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import ReactGA from "react-ga4";
 
 export default function Checkout() {
@@ -397,8 +397,10 @@ const validarCupao = async () => {
               </div>
               {cupaoErro && <p style={{ color: "#c62828" }}>{cupaoErro}</p>}
               {cupaoValidado && (
-                <p style={{ color: "#238636" }}>
-                  Cupão aplicado! Desconto de {cupaoValidado.percentagem}%.
+                <p style={{ color: Number(cupaoValidado.desconto) > 0 ? "#238636" : "#c62828" }}>
+                  {Number(cupaoValidado.desconto) > 0
+                    ? `Cupão aplicado! Desconto de ${cupaoValidado.percentagem}%.`
+                    : "Este cupão não é aplicável aos artigos do carrinho."}
                 </p>
               )}
             </div>
@@ -411,7 +413,7 @@ const validarCupao = async () => {
 <p>
   Portes: {shippingCost.toFixed(2)} €
 </p>
-{cupaoValidado && (
+{cupaoValidado && Number(descontoCupao) > 0 && (
   <p style={{ color: "#238636" }}>
     Desconto ({cupaoValidado.percentagem}%): -{descontoCupao.toFixed(2)} €
   </p>
