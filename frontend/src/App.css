@@ -7488,3 +7488,33 @@ body {
     transform: translateX(-12px);
   }
 }
+
+/* AJUSTE FINAL - BARRA SUPERIOR JOMABASTO */
+@media (min-width: 769px) {
+  .announcement-bar {
+    height: 52px !important;
+    min-height: 52px !important;
+  }
+
+  .announcement-desktop {
+    height: 52px !important;
+    min-height: 52px !important;
+    font-family: 'Roboto Slab', serif !important;
+  }
+
+  .announcement-center,
+  .announcement-center button,
+  .announcement-offers,
+  .announcement-follow > button {
+    font-family: 'Roboto Slab', serif !important;
+    font-size: 12px !important;
+  }
+
+  .header {
+    top: 52px !important;
+  }
+
+  body {
+    padding-top: 128px !important;
+  }
+}

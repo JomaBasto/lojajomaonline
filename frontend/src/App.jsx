@@ -1,4 +1,4 @@
-﻿import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import Player from "@vimeo/player";
 
@@ -1872,8 +1872,7 @@ return (
       {/* TOP ANNOUNCEMENT BAR */}
       <div className="announcement-bar" aria-label="Informações da loja">
         <div className="announcement-desktop">
-  {isHomePage && (
-    <div
+  <div
       className="announcement-offers"
       role="link"
       tabIndex="0"
@@ -1887,10 +1886,7 @@ return (
     >
       <span>OFERTAS DA SEMANA</span>
       <strong>VER OFERTAS →</strong>
-    </div>
-  )}
-
-  <div className="announcement-center">
+    </div><div className="announcement-center">
     <span>{t("freeShipping")}</span>
     <span>{t("easyReturns")}</span>
     <span>{t("securePayment")}</span>
@@ -1925,8 +1921,7 @@ return (
     </div>
   </div>
 
-  {isHomePage && (
-    <div className="announcement-follow">
+  <div className="announcement-follow">
       <button
         type="button"
         aria-expanded={seguirOpen}
@@ -1949,9 +1944,7 @@ return (
           </a>
         </div>
       )}
-    </div>
-  )}
-</div>
+    </div></div>
 <div className="announcement-mobile">
           <span>{t("freeShipping")}</span>
           <span>{t("easyReturns")}</span>
