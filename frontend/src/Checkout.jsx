@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect } from "react";
 import ReactGA from "react-ga4";
 
 export default function Checkout() {
@@ -549,6 +549,98 @@ const validarCupao = async () => {
                     line-height: 1.35 !important;
                   }
                   .multibanco-print .no-print { display: none !important; }
+
+                  /* Compactar comprovativo para uma folha A4 */
+                  .multibanco-print {
+                    font-size: 9px !important;
+                    line-height: 1.15 !important;
+                  }
+
+                  .multibanco-print header {
+                    gap: 8px !important;
+                    padding-bottom: 7px !important;
+                    margin-bottom: 9px !important;
+                  }
+
+                  .multibanco-print header > div:first-child {
+                    width: 32px !important;
+                    height: 32px !important;
+                    font-size: 18px !important;
+                  }
+
+                  .multibanco-print header > div:last-child > div:first-child {
+                    font-size: 18px !important;
+                  }
+
+                  .multibanco-print h2 {
+                    font-size: 17px !important;
+                    margin: 0 0 4px !important;
+                  }
+
+                  .multibanco-print h3 {
+                    font-size: 12px !important;
+                    margin: 0 0 5px !important;
+                    padding-bottom: 4px !important;
+                  }
+
+                  .multibanco-print p {
+                    font-size: 9px !important;
+                    line-height: 1.2 !important;
+                    margin: 4px 0 !important;
+                  }
+
+                  .multibanco-print section {
+                    padding: 8px !important;
+                    margin-bottom: 9px !important;
+                    break-inside: avoid !important;
+                    page-break-inside: avoid !important;
+                  }
+
+                  .multibanco-print section > div[style*="display: flex"] {
+                    padding: 5px 0 !important;
+                    gap: 8px !important;
+                  }
+
+                  .multibanco-print section > div[style*="display: flex"] > div > div {
+                    font-size: 9px !important;
+                    margin-top: 2px !important;
+                  }
+
+                  .multibanco-print section > div[style*="font-size: 14px"] {
+                    margin-top: 5px !important;
+                    font-size: 10px !important;
+                  }
+
+                  .multibanco-print section > div[style*="font-size: 14px"] p {
+                    margin: 3px 0 !important;
+                  }
+
+                  .multibanco-print section > div[style*="font-size: 20px"] {
+                    margin-top: 6px !important;
+                    padding: 7px !important;
+                    font-size: 15px !important;
+                  }
+
+                  .multibanco-print section:last-of-type > div {
+                    padding: 8px !important;
+                  }
+
+                  .multibanco-print section:last-of-type > div > div {
+                    font-size: 9px !important;
+                  }
+
+                  .multibanco-print section:last-of-type > div > div:nth-child(2),
+                  .multibanco-print section:last-of-type > div > div:nth-child(3) > div:last-child,
+                  .multibanco-print section:last-of-type > div > div:nth-child(4) {
+                    font-size: 19px !important;
+                    margin: 3px 0 5px !important;
+                  }
+
+                  .multibanco-print footer {
+                    padding-top: 6px !important;
+                    margin-top: 8px !important;
+                    font-size: 9px !important;
+                  }
                 }
               `}</style>
 

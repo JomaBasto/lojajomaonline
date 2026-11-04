@@ -7312,3 +7312,179 @@ body {
     z-index: 30001 !important;
   }
 }
+
+/* NOVO CABECALHO DESKTOP - JOMABASTO */
+@media (min-width: 768px) {
+  .announcement-bar {
+    overflow: visible !important;
+  }
+
+  .announcement-desktop {
+    display: grid !important;
+    grid-template-columns: minmax(180px, 1fr) auto minmax(90px, 1fr);
+    align-items: center;
+    width: 100%;
+    height: 32px !important;
+    min-height: 32px !important;
+    padding: 0 14px;
+    gap: 12px;
+    overflow: visible !important;
+    white-space: nowrap;
+  }
+
+  .announcement-offers {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .announcement-offers strong {
+    font-weight: 800;
+  }
+
+  .announcement-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    min-width: 0;
+    color: #fff;
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .announcement-center > span {
+    white-space: nowrap;
+  }
+
+  .announcement-center .announcement-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+  }
+
+  .announcement-center .announcement-actions button {
+    white-space: nowrap;
+  }
+
+  .announcement-follow {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 30005;
+  }
+
+  .announcement-follow > button {
+    padding: 4px 12px;
+    border: 1px solid rgba(255,255,255,.85);
+    border-radius: 4px;
+    background: transparent;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .announcement-follow > button:hover {
+    background: #fff;
+    color: #1d4ed8;
+  }
+
+  .announcement-follow-dropdown {
+    position: absolute;
+    top: calc(100% + 7px);
+    right: 0;
+    z-index: 30010;
+    display: flex;
+    flex-direction: column;
+    min-width: 145px;
+    padding: 6px 0;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    box-shadow: 0 5px 18px rgba(0,0,0,.18);
+  }
+
+  .announcement-follow-dropdown a {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 12px;
+    color: #222;
+    font-size: 12px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .announcement-follow-dropdown a:hover {
+    background: #f3f4f6;
+  }
+
+  /* A barra antiga continua disponivel no telemovel */
+  .ofertas-semana-bar {
+    display: none !important;
+  }
+}
+
+/* AJUSTES FINAIS DO CABECALHO DESKTOP */
+@media (min-width: 768px) {
+  .announcement-bar {
+    height: 40px !important;
+    min-height: 40px !important;
+  }
+
+  .announcement-desktop {
+    height: 40px !important;
+    min-height: 40px !important;
+  }
+
+  .header {
+    top: 40px !important;
+  }
+
+  body {
+    padding-top: 116px !important;
+  }
+
+  /* Recuperar a animacao original das ofertas */
+  .announcement-offers > span {
+    animation: ofertasSemanaFade 3.8s ease-in-out infinite;
+  }
+
+  .announcement-offers strong::before {
+    content: "·";
+    margin-right: 8px;
+  }
+}
+
+
+/* AJUSTE DE ESPACAMENTO - CABECALHO E VIDEOS DESKTOP */
+@media (min-width: 769px) {
+  .announcement-desktop {
+    padding-left: 28px !important;
+    padding-right: 28px !important;
+  }
+
+  .home-hero-layout {
+    margin-top: 0 !important;
+  }
+}
+
+/* AJUSTE FINO DAS LATERAIS - DESKTOP */
+@media (min-width: 769px) {
+  .announcement-offers {
+    transform: translateX(12px);
+  }
+
+  .announcement-follow {
+    transform: translateX(-12px);
+  }
+}

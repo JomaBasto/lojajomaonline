@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+﻿import { useEffect, useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import Player from "@vimeo/player";
 
@@ -1872,37 +1872,87 @@ return (
       {/* TOP ANNOUNCEMENT BAR */}
       <div className="announcement-bar" aria-label="Informações da loja">
         <div className="announcement-desktop">
-          <span>{t("freeShipping")}</span>
-          <span>{t("easyReturns")}</span>
-          <span>{t("securePayment")}</span>
-          <div className="announcement-actions">
-            <button type="button" onClick={() => setActiveInfoModal("distribuidores")}>{t("distributors")}</button>
-            <button type="button" onClick={() => setActiveInfoModal("loja")}>{t("storeLocator")}</button>
-            <button type="button" onClick={() => setActiveInfoModal("contacto")}>{t("contact")}</button>
-            <div className="language-selector" aria-label="Selecionar idioma">
-              <button
-                type="button"
-                className="language-flag language-current"
-                onClick={() => setLanguageMenuOpen((open) => !open)}
-                aria-label="Abrir opções de idioma"
-                aria-expanded={languageMenuOpen}
-                title="Selecionar idioma"
-              >
-                {languageFlags[currentLanguage] || languageFlags.pt}
-              </button>
-              {languageMenuOpen && (
-                <div className="language-dropdown">
-                  <button type="button" className="language-flag" onClick={() => changeLanguage("pt")} aria-label="Português" title="Português">{languageFlags.pt}</button>
-                  <button type="button" className="language-flag" onClick={() => changeLanguage("fr")} aria-label="Français" title="Français">{languageFlags.fr}</button>
-                  <button type="button" className="language-flag" onClick={() => changeLanguage("de")} aria-label="Deutsch" title="Deutsch">{languageFlags.de}</button>
-                  <button type="button" className="language-flag" onClick={() => changeLanguage("es")} aria-label="Español" title="Español">{languageFlags.es}</button>
-                  <button type="button" className="language-flag" onClick={() => changeLanguage("en")} aria-label="English" title="English">{languageFlags.en}</button>
-                </div>
-              )}
-            </div>
+  {isHomePage && (
+    <div
+      className="announcement-offers"
+      role="link"
+      tabIndex="0"
+      onClick={() => selectCategory("promocoes")}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          selectCategory("promocoes");
+        }
+      }}
+    >
+      <span>OFERTAS DA SEMANA</span>
+      <strong>VER OFERTAS →</strong>
+    </div>
+  )}
+
+  <div className="announcement-center">
+    <span>{t("freeShipping")}</span>
+    <span>{t("easyReturns")}</span>
+    <span>{t("securePayment")}</span>
+
+    <div className="announcement-actions">
+      <button type="button" onClick={() => setActiveInfoModal("distribuidores")}>{t("distributors")}</button>
+      <button type="button" onClick={() => setActiveInfoModal("loja")}>{t("storeLocator")}</button>
+      <button type="button" onClick={() => setActiveInfoModal("contacto")}>{t("contact")}</button>
+
+      <div className="language-selector" aria-label="Selecionar idioma">
+        <button
+          type="button"
+          className="language-flag language-current"
+          onClick={() => setLanguageMenuOpen((open) => !open)}
+          aria-label="Abrir opções de idioma"
+          aria-expanded={languageMenuOpen}
+          title="Selecionar idioma"
+        >
+          {languageFlags[currentLanguage] || languageFlags.pt}
+        </button>
+
+        {languageMenuOpen && (
+          <div className="language-dropdown">
+            <button type="button" className="language-flag" onClick={() => changeLanguage("pt")} aria-label="Português">{languageFlags.pt}</button>
+            <button type="button" className="language-flag" onClick={() => changeLanguage("fr")} aria-label="Francês">{languageFlags.fr}</button>
+            <button type="button" className="language-flag" onClick={() => changeLanguage("de")} aria-label="Alemão">{languageFlags.de}</button>
+            <button type="button" className="language-flag" onClick={() => changeLanguage("es")} aria-label="Espanhol">{languageFlags.es}</button>
+            <button type="button" className="language-flag" onClick={() => changeLanguage("en")} aria-label="Inglês">{languageFlags.en}</button>
           </div>
+        )}
+      </div>
+    </div>
+  </div>
+
+  {isHomePage && (
+    <div className="announcement-follow">
+      <button
+        type="button"
+        aria-expanded={seguirOpen}
+        aria-haspopup="true"
+        onClick={() => setSeguirOpen((open) => !open)}
+      >
+        Seguir
+      </button>
+
+      {seguirOpen && (
+        <div className="announcement-follow-dropdown">
+          <a href="https://www.instagram.com/jomabasto/" target="_blank" rel="noopener noreferrer" onClick={() => setSeguirOpen(false)}>
+            <FaInstagram size={16} /> Instagram
+          </a>
+          <a href="https://www.tiktok.com/@jomabasto" target="_blank" rel="noopener noreferrer" onClick={() => setSeguirOpen(false)}>
+            <FaTiktok size={18} /> TikTok
+          </a>
+          <a href="https://www.facebook.com/share/14xEqAhX5kr/" target="_blank" rel="noopener noreferrer" onClick={() => setSeguirOpen(false)}>
+            <FaFacebookF size={16} /> Facebook
+          </a>
         </div>
-        <div className="announcement-mobile">
+      )}
+    </div>
+  )}
+</div>
+<div className="announcement-mobile">
           <span>{t("freeShipping")}</span>
           <span>{t("easyReturns")}</span>
           <span>{t("securePayment")}</span>
@@ -5284,149 +5334,3 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 
 
 import './categories-posters.css';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
