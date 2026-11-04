@@ -424,8 +424,9 @@ async function calcularCupao(items, codigoCupao) {
     throw new Error("A percentagem do cupão está mal configurada.");
   }
 
-  let itemsComPrecoReal = await Promise.all(items.map(async (item) => {
+  const itemsComPrecoReal = await Promise.all(items.map(async (item) => {
     const produto = await Produto.findById(item._id);
+
     if (!produto) throw new Error(`Produto não encontrado: ${item._id}`);
 
     const precoFinal =
@@ -436,6 +437,12 @@ async function calcularCupao(items, codigoCupao) {
         : Number(produto.price);
 
     const quantidade = Math.max(1, Math.floor(Number(item.qty) || 1));
+    const categoria = String(produto.category || "").trim().toLowerCase();
+
+    const cupaoElegivel =
+      categoria !== "outlet" &&
+      categoria !== "textil-outlet" &&
+      produto.promocao !== true;
 
     return {
       ...item,
@@ -443,6 +450,8 @@ async function calcularCupao(items, codigoCupao) {
       qty: quantidade,
       promoPrice: produto.promoPrice,
       promocao: produto.promocao,
+      category: produto.category,
+      cupaoElegivel,
     };
   }));
 
@@ -451,7 +460,16 @@ async function calcularCupao(items, codigoCupao) {
     0
   );
 
-  const descontoCentimos = Math.round(subtotalCentimos * percentagem / 100);
+  const subtotalElegivelCentimos = itemsComPrecoReal
+    .filter((item) => item.cupaoElegivel)
+    .reduce(
+      (sum, item) => sum + Math.round(Number(item.price) * 100) * item.qty,
+      0
+    );
+
+  const descontoCentimos = Math.round(
+    subtotalElegivelCentimos * percentagem / 100
+  );
 
   return {
     itemsComPrecoReal,
@@ -667,23 +685,36 @@ const linhasComDesconto = itemsComPrecoReal.map((item, index) => {
 });
 
 if (desconto > 0 && subtotal > 0) {
+  const linhasElegiveis = linhasComDesconto.filter(
+    (linha) => linha.item.cupaoElegivel === true
+  );
+
   const descontoTotalCentimos = Math.round(desconto * 100);
-  const subtotalCentimos = linhasComDesconto.reduce((soma, linha) => soma + linha.valorCentimos, 0);
 
-  let descontoDistribuido = 0;
-  linhasComDesconto.forEach((linha) => {
-    const quota = linha.valorCentimos * descontoTotalCentimos / subtotalCentimos;
-    linha.descontoCentimos = Math.floor(quota);
-    linha.resto = quota - linha.descontoCentimos;
-    descontoDistribuido += linha.descontoCentimos;
-  });
+  const subtotalElegivelCentimos = linhasElegiveis.reduce(
+    (soma, linha) => soma + linha.valorCentimos,
+    0
+  );
 
-  const ordemRestos = [...linhasComDesconto].sort((a, b) => b.resto - a.resto);
-  for (let i = 0; i < descontoTotalCentimos - descontoDistribuido; i++) {
-    ordemRestos[i % ordemRestos.length].descontoCentimos++;
+  if (subtotalElegivelCentimos > 0) {
+    let descontoDistribuido = 0;
+
+    linhasElegiveis.forEach((linha) => {
+      const quota = linha.valorCentimos * descontoTotalCentimos / subtotalElegivelCentimos;
+      linha.descontoCentimos = Math.floor(quota);
+      linha.resto = quota - linha.descontoCentimos;
+      descontoDistribuido += linha.descontoCentimos;
+    });
+
+    const ordemRestos = [...linhasElegiveis].sort(
+      (a, b) => b.resto - a.resto
+    );
+
+    for (let i = 0; i < descontoTotalCentimos - descontoDistribuido; i++) {
+      ordemRestos[i % ordemRestos.length].descontoCentimos++;
+    }
   }
 }
-
 const lineItemsStripe = linhasComDesconto.map((linha) => ({
   price_data: {
     currency: "eur",
