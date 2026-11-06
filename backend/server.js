@@ -411,14 +411,30 @@ app.put("/encomendas/:id", async (req, res) => {
 
 // ======================
 async function calcularCupao(items, codigoCupao) {
-  const ativo = String(process.env.CUPAO_ATIVO || "false").toLowerCase() === "true";
-  const codigoConfigurado = String(process.env.CUPAO_CODIGO || "").trim().toUpperCase();
   const codigoIntroduzido = String(codigoCupao || "").trim().toUpperCase();
-  const percentagem = Number(process.env.CUPAO_DESCONTO_PERCENTAGEM || 0);
 
-  if (!ativo || !codigoConfigurado || !codigoIntroduzido || codigoIntroduzido !== codigoConfigurado) {
+  const cupoes = [
+    {
+      ativo: String(process.env.CUPAO_ATIVO || "false").toLowerCase() === "true",
+      codigo: String(process.env.CUPAO_CODIGO || "").trim().toUpperCase(),
+      percentagem: Number(process.env.CUPAO_DESCONTO_PERCENTAGEM || 0),
+    },
+    {
+      ativo: String(process.env.CUPAO_PRIVADO_ATIVO || "false").toLowerCase() === "true",
+      codigo: String(process.env.CUPAO_PRIVADO_CODIGO || "").trim().toUpperCase(),
+      percentagem: Number(process.env.CUPAO_PRIVADO_DESCONTO_PERCENTAGEM || 0),
+    },
+  ];
+
+  const cupao = cupoes.find(
+    (c) => c.ativo && c.codigo && c.codigo === codigoIntroduzido
+  );
+
+  if (!cupao) {
     throw new Error("Código promocional inválido ou campanha inativa.");
   }
+
+  const percentagem = cupao.percentagem;
 
   if (!Number.isFinite(percentagem) || percentagem <= 0 || percentagem > 100) {
     throw new Error("A percentagem do cupão está mal configurada.");
@@ -483,10 +499,14 @@ async function calcularCupao(items, codigoCupao) {
 // ======================
 
 app.get("/coupon-status", (req, res) => {
-  const ativo = String(process.env.CUPAO_ATIVO || "false").toLowerCase() === "true";
-  res.json({ ativo });
-});
+  const publicoAtivo =
+    String(process.env.CUPAO_ATIVO || "false").toLowerCase() === "true";
 
+  const privadoAtivo =
+    String(process.env.CUPAO_PRIVADO_ATIVO || "false").toLowerCase() === "true";
+
+  res.json({ ativo: publicoAtivo || privadoAtivo });
+});
 app.post("/validate-coupon", async (req, res) => {
   try {
     const { items, codigoCupao } = req.body;
