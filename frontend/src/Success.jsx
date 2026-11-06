@@ -377,6 +377,13 @@ export default function Success() {
                   <span>{formatPrice(purchase.subtotal)}</span>
                 </div>
 
+                {Number(purchase.discount || 0) > 0 && (
+                  <div className="order-total-row">
+                    <span>Desconto do cupão</span>
+                    <span>-{formatPrice(Number(purchase.discount))}</span>
+                  </div>
+                )}
+
                 <div className="order-total-row">
                   <span>Portes de envio</span>
                   <span>{formatPrice(purchase.shipping)}</span>

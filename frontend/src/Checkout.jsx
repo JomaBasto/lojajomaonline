@@ -142,10 +142,11 @@ const validarCupao = async () => {
         "pending_purchase",
         JSON.stringify({
           transaction_id: data.sessionId || `order_${Date.now()}`,
-          value: total + shippingCost,
+          value: totalExibido,
           currency: "EUR",
           payment_method: "stripe",
-          subtotal: total,
+          subtotal: subtotalExibido,
+          discount: descontoCupao,
           shipping: shippingCost,
           customer: {
             nome,
@@ -233,7 +234,8 @@ const validarCupao = async () => {
           value: Number(data.valor),
           currency: "EUR",
           payment_method: "multibanco",
-          subtotal: total,
+          subtotal: subtotalExibido,
+          discount: descontoCupao,
           shipping: shippingCost,
           customer: {
             nome,
