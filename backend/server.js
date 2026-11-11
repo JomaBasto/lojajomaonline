@@ -853,6 +853,12 @@ app.post("/create-multibanco-order", async (req, res) => {
 
     console.log("MULTIBANCO: email enviado.");
 
+    if (encomenda.cliente?.email) {
+      console.log("MULTIBANCO: a enviar confirmação ao cliente...");
+      await sendCustomerEmail(encomenda);
+      console.log("MULTIBANCO: tentativa de confirmação ao cliente concluída.");
+    }
+
     res.json({
       success: true,
       orderId: encomenda._id.toString(),
