@@ -15,6 +15,7 @@ import {
   sendCustomerEmail,
   sendAdminEmail,
   sendReviewInvitationEmail,
+  sendOrderStatusEmail,
 } from "./services/emailService.js";
 import Produto from "./models/Produto.js";
 import User from "./models/User.js";
@@ -390,21 +391,72 @@ app.get("/encomendas", async (req, res) => {
   }
 });
 
-app.put("/encomendas/:id", async (req, res) => {
+app.put("/encomendas/:id", verifyToken, isAdmin, async (req, res) => {
   try {
-    const { estado } = req.body;
-    const encomenda = await Encomenda.findByIdAndUpdate(
-      req.params.id,
-      { estado },
-      { new: true }
-    );
+    const {
+      estado,
+      estadoEnvio,
+      transportadora,
+      codigoSeguimento,
+      linkSeguimento
+    } = req.body || {};
+
+    const estadosValidos = ["Pendente", "Pago", "Paga", "Enviado", "Entregue", "Cancelado"];
+    const estadosEnvioValidos = ["Em preparação", "Enviada", "Entregue"];
+
+    if (estado !== undefined && !estadosValidos.includes(estado)) {
+      return res.status(400).json({ error: "Estado da encomenda inválido." });
+    }
+
+    if (estadoEnvio !== undefined && !estadosEnvioValidos.includes(estadoEnvio)) {
+      return res.status(400).json({ error: "Estado de envio inválido." });
+    }
+
+    for (const campo of ["transportadora", "codigoSeguimento", "linkSeguimento"]) {
+      if (req.body[campo] !== undefined && typeof req.body[campo] !== "string") {
+        return res.status(400).json({ error: "Dados de envio inválidos." });
+      }
+    }
+
+    const encomenda = await Encomenda.findById(req.params.id);
 
     if (!encomenda) {
       return res.status(404).json({ error: "Encomenda não encontrada" });
     }
 
+    const estadoAnterior = encomenda.estado;
+    const estadoEnvioAnterior = encomenda.estadoEnvio || "Em preparação";
+
+    const estadoMudou = typeof estado === "string" && estado !== estadoAnterior;
+    const estadoEnvioMudou = typeof estadoEnvio === "string" && estadoEnvio !== estadoEnvioAnterior;
+
+    if (typeof estado === "string") encomenda.estado = estado;
+    if (typeof estadoEnvio === "string") encomenda.estadoEnvio = estadoEnvio;
+    if (typeof transportadora === "string") encomenda.transportadora = transportadora;
+    if (typeof codigoSeguimento === "string") encomenda.codigoSeguimento = codigoSeguimento;
+    if (typeof linkSeguimento === "string") encomenda.linkSeguimento = linkSeguimento;
+
+    await encomenda.save();
+
+    // Uma unica notificacao por atualizacao; a confirmacao de pagamento ja existe.
+    const estadoParaNotificar = estadoEnvioMudou
+      ? estadoEnvio
+      : estadoMudou && !["Pago", "Paga"].includes(estado)
+        ? estado
+        : null;
+
+    if (estadoParaNotificar && process.env.DISABLE_EMAILS !== "true") {
+      try {
+        await sendOrderStatusEmail(encomenda, estadoParaNotificar);
+      } catch (emailErr) {
+        console.error("Falha no email de atualizacao da encomenda:", emailErr.message);
+      }
+    }
+
+    // Convite de avaliacao: preservar o mecanismo de protecao contra duplicacoes.
     if (
-      estado === "Entregue" &&
+      ((estadoMudou && estado === "Entregue") ||
+       (estadoEnvioMudou && estadoEnvio === "Entregue")) &&
       process.env.DISABLE_EMAILS !== "true"
     ) {
       const token = randomBytes(32).toString("hex");
@@ -470,12 +522,9 @@ app.put("/encomendas/:id", async (req, res) => {
     }
 
     res.json(encomenda);
-
   } catch (err) {
     console.log(err);
-    res.status(500).json({
-      error: "Erro ao atualizar encomenda",
-    });
+    res.status(500).json({ error: "Erro ao atualizar encomenda" });
   }
 });
 

@@ -34,6 +34,14 @@ const EncomendaSchema = new mongoose.Schema(
       default: "Pendente",
     },
 
+    estadoEnvio: {
+      type: String,
+      enum: ["Em preparação", "Enviada", "Entregue"],
+      default: "Em preparação",
+    },
+    transportadora: { type: String, default: "" },
+    codigoSeguimento: { type: String, default: "" },
+    linkSeguimento: { type: String, default: "" },
     reviewInviteStatus: {
       type: String,
       enum: ["nao_enviado", "a_enviar", "enviado", "falhou"],

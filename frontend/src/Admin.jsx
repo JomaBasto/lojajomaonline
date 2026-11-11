@@ -69,10 +69,12 @@ export default function Admin() {
   }
   async function changeStatus(id, estado) {
     try {
+      const token = localStorage.getItem("token");
       await fetch(`${API_URL}/encomendas/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({ estado }),
       });

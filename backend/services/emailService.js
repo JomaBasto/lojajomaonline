@@ -211,3 +211,66 @@ export async function sendReviewInvitationEmail(order, token) {
 
   return response;
 }
+
+// ================================
+// EMAIL DE ATUALIZACAO DA ENCOMENDA
+// ================================
+
+export async function sendOrderStatusEmail(order, status) {
+  if (process.env.DISABLE_EMAILS === "true") {
+    return { skipped: true };
+  }
+
+  const email = order?.cliente?.email;
+  if (!email) {
+    throw new Error("A encomenda nao tem email de cliente.");
+  }
+
+  const escapar = valor => String(valor ?? "").replace(/[&<>"']/g, caracter => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[caracter]);
+
+  const nome = escapar(order.cliente.nome || "Cliente");
+  const estado = escapar(status);
+  const transportadora = escapar(order.transportadora);
+  const codigo = escapar(order.codigoSeguimento);
+
+  let linkHtml = "";
+  try {
+    const url = new URL(order.linkSeguimento || "");
+    if (url.protocol === "https:") {
+      linkHtml = `<p><a href="${escapar(url.href)}">Acompanhar envio</a></p>`;
+    }
+  } catch {
+    // Link ausente ou invalido: nao incluir ligacao no email.
+  }
+
+  const detalhesEnvio = [
+    transportadora ? `<p><strong>Transportadora:</strong> ${transportadora}</p>` : "",
+    codigo ? `<p><strong>Codigo de seguimento:</strong> ${codigo}</p>` : "",
+    linkHtml
+  ].join("");
+
+  const response = await resend.emails.send({
+    from: "Loja JOMA Basto <noreply@send.jomabasto.com>",
+    to: email,
+    subject: `Atualizacao da sua encomenda: ${status}`,
+    html: `
+      <h2>Atualizacao da encomenda</h2>
+      <p>Ola <strong>${nome}</strong>,</p>
+      <p>O estado da sua encomenda foi atualizado para: <strong>${estado}</strong>.</p>
+      ${detalhesEnvio}
+      <p>Obrigado por comprar na JOMA Basto.</p>
+    `
+  });
+
+  if (response?.error) {
+    throw new Error("Nao foi possivel enviar o email de atualizacao.");
+  }
+
+  return response;
+}
