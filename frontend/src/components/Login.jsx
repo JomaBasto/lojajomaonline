@@ -1,6 +1,6 @@
 const login = async () => {
   try {
-    const res = await fetch("https://lojajomaonline-1.onrender.com/auth/login", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL || "https://lojajomaonline-1.onrender.com"}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),

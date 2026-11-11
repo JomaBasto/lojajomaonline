@@ -20,6 +20,7 @@ const EncomendaSchema = new mongoose.Schema(
         qty: Number,
         price: Number,
         image: String,
+        produtoId: { type: mongoose.Schema.Types.ObjectId, ref: "Produto", default: null },
       },
     ],
 
@@ -33,6 +34,16 @@ const EncomendaSchema = new mongoose.Schema(
       default: "Pendente",
     },
 
+    reviewInviteStatus: {
+      type: String,
+      enum: ["nao_enviado", "a_enviar", "enviado", "falhou"],
+      default: "nao_enviado",
+    },
+    reviewInviteTokenHash: { type: String, select: false },
+    reviewInviteExpiresAt: Date,
+    reviewInviteSentAt: Date,
+    reviewInviteSendingAt: Date,
+    reviewInviteError: String,
     stripeSessionId: String,
 
     metodoPagamento: {

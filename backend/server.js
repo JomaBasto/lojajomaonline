@@ -7,16 +7,19 @@ import mongoose from "mongoose";
 import dns from "dns";
 import jwt from "jsonwebtoken";
 import Stripe from "stripe";
+import { randomBytes, createHash } from "node:crypto";
 
 import authRoutes from "./routes/auth.js";
 import {
   sendTestEmail,
   sendCustomerEmail,
   sendAdminEmail,
+  sendReviewInvitationEmail,
 } from "./services/emailService.js";
 import Produto from "./models/Produto.js";
 import User from "./models/User.js";
 import Encomenda from "./models/Encomenda.js";
+import Avaliacao from "./models/Avaliacao.js";
 import { verifyToken, isAdmin } from "./middleware/auth.js";
 import bcrypt from "bcryptjs";
 import { readFileSync } from "node:fs";
@@ -63,7 +66,7 @@ const allowedOrigins = [
 app.use(cors({
   origin: allowedOrigins,
   credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
@@ -390,12 +393,81 @@ app.get("/encomendas", async (req, res) => {
 app.put("/encomendas/:id", async (req, res) => {
   try {
     const { estado } = req.body;
-
     const encomenda = await Encomenda.findByIdAndUpdate(
       req.params.id,
       { estado },
       { new: true }
     );
+
+    if (!encomenda) {
+      return res.status(404).json({ error: "Encomenda não encontrada" });
+    }
+
+    if (
+      estado === "Entregue" &&
+      process.env.DISABLE_EMAILS !== "true"
+    ) {
+      const token = randomBytes(32).toString("hex");
+      const tokenHash = createHash("sha256").update(token).digest("hex");
+
+      const reserva = await Encomenda.findOneAndUpdate(
+        {
+          _id: req.params.id,
+          $or: [
+            { reviewInviteStatus: "nao_enviado" },
+            { reviewInviteStatus: "falhou" },
+            { reviewInviteStatus: { $exists: false } }
+          ]
+        },
+        {
+          $set: {
+            reviewInviteStatus: "a_enviar",
+            reviewInviteTokenHash: tokenHash,
+            reviewInviteExpiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+            reviewInviteSendingAt: new Date(),
+            reviewInviteError: null
+          }
+        },
+        { new: true }
+      );
+
+      if (reserva) {
+        try {
+          const resultado = await sendReviewInvitationEmail(reserva, token);
+
+          if (!resultado?.skipped) {
+            await Encomenda.updateOne(
+              { _id: reserva._id, reviewInviteStatus: "a_enviar" },
+              {
+                $set: {
+                  reviewInviteStatus: "enviado",
+                  reviewInviteSentAt: new Date(),
+                  reviewInviteSendingAt: null,
+                  reviewInviteError: null
+                }
+              }
+            );
+          }
+        } catch (emailErr) {
+          try {
+            await Encomenda.updateOne(
+              { _id: reserva._id, reviewInviteStatus: "a_enviar" },
+              {
+                $set: {
+                  reviewInviteStatus: "falhou",
+                  reviewInviteSendingAt: null,
+                  reviewInviteError: "Não foi possível enviar o convite."
+                }
+              }
+            );
+          } catch (registoErr) {
+            console.error("Não foi possível registar a falha do convite.");
+          }
+
+          console.error("Falha no envio do convite de avaliação:", emailErr.message);
+        }
+      }
+    }
 
     res.json(encomenda);
 
@@ -462,6 +534,7 @@ async function calcularCupao(items, codigoCupao) {
 
     return {
       ...item,
+      produtoId: produto._id,
       price: precoFinal,
       qty: quantidade,
       promoPrice: produto.promoPrice,
@@ -498,6 +571,177 @@ async function calcularCupao(items, codigoCupao) {
 // MULTIBANCO PAYMENT
 // ======================
 
+app.get("/avaliacoes/convite/:token", async (req, res) => {
+  try {
+    const token = req.params.token;
+    if (!/^[a-f0-9]{64}$/.test(token)) {
+      return res.status(400).json({ error: "Este convite é inválido ou expirou." });
+    }
+
+    const tokenHash = createHash("sha256").update(token).digest("hex");
+    const encomenda = await Encomenda.findOne({
+      reviewInviteTokenHash: tokenHash,
+      reviewInviteStatus: "enviado",
+      reviewInviteExpiresAt: { $gt: new Date() }
+    }).lean();
+
+    if (!encomenda) {
+      return res.status(404).json({ error: "Este convite é inválido ou expirou." });
+    }
+
+    const itens = encomenda.items || encomenda.itens || encomenda.produtos || [];
+    const produtos = itens
+      .filter(item => item.produtoId)
+      .map(item => ({
+        produtoId: String(item.produtoId),
+        name: item.name || item.nome || "Produto",
+        image: item.image || item.imagem || "",
+        qty: item.qty || item.quantidade || 1
+      }));
+
+    return res.json({ produtos });
+  } catch (err) {
+    console.error("Erro ao validar convite de avaliação:", err.message);
+    return res.status(500).json({ error: "Não foi possível validar o convite." });
+  }
+});
+
+app.post("/avaliacoes/convite/:token", async (req, res) => {
+  try {
+    const token = req.params.token;
+    const { produtoId, classificacao, comentario = "" } = req.body;
+
+    if (!/^[a-f0-9]{64}$/.test(token)) {
+      return res.status(400).json({ error: "Este convite é inválido ou expirou." });
+    }
+
+    if (!mongoose.Types.ObjectId.isValid(produtoId)) {
+      return res.status(400).json({ error: "Produto inválido." });
+    }
+
+    const rating = Number(classificacao);
+    if (!Number.isInteger(rating) || rating < 1 || rating > 5) {
+      return res.status(400).json({ error: "A classificação deve ser entre 1 e 5 estrelas." });
+    }
+
+    if (typeof comentario !== "string" || comentario.length > 2000) {
+      return res.status(400).json({ error: "O comentário não pode ultrapassar 2000 caracteres." });
+    }
+
+    const tokenHash = createHash("sha256").update(token).digest("hex");
+    const encomenda = await Encomenda.findOne({
+      reviewInviteTokenHash: tokenHash,
+      reviewInviteStatus: "enviado",
+      reviewInviteExpiresAt: { $gt: new Date() }
+    });
+
+    if (!encomenda) {
+      return res.status(404).json({ error: "Este convite é inválido ou expirou." });
+    }
+
+    const itens = encomenda.items || encomenda.itens || encomenda.produtos || [];
+    const comprado = itens.some(item =>
+      item.produtoId && String(item.produtoId) === String(produtoId)
+    );
+
+    if (!comprado) {
+      return res.status(403).json({ error: "Só pode avaliar produtos incluídos nesta encomenda." });
+    }
+
+    const duplicada = await Avaliacao.findOne({
+      produtoId,
+      encomendaId: encomenda._id
+    }).select("_id").lean();
+
+    if (duplicada) {
+      return res.status(409).json({
+        error: "\u004a\u00e1 existe uma avalia\u00e7\u00e3o deste produto nesta encomenda."
+      });
+    }
+
+    await Avaliacao.create({
+
+      produtoId,
+      encomendaId: encomenda._id,
+      classificacao: rating,
+      comentario: comentario.trim(),
+      compraVerificada: true,
+      estado: "Pendente"
+    });
+
+    return res.status(201).json({ message: "A avaliação foi recebida e aguarda aprovação." });
+  } catch (err) {
+    if (err.code === 11000) {
+      return res.status(409).json({ error: "Já foi enviada uma avaliação deste produto nesta encomenda." });
+    }
+    console.error("Erro ao guardar avaliação:", err.message);
+    return res.status(500).json({ error: "Não foi possível guardar a avaliação." });
+  }
+});
+
+app.get("/avaliacoes/admin", verifyToken, isAdmin, async (req, res) => {
+  try {
+    const avaliacoes = await Avaliacao.find()
+      .sort({ createdAt: -1 })
+      .lean();
+
+    return res.json({ avaliacoes });
+  } catch (err) {
+    console.error("Erro ao listar avaliações:", err.message);
+    return res.status(500).json({ error: "Não foi possível carregar as avaliações." });
+  }
+});
+
+app.patch("/avaliacoes/admin/:id", verifyToken, isAdmin, async (req, res) => {
+  try {
+    const { estado } = req.body;
+
+    if (!["Aprovada", "Rejeitada"].includes(estado)) {
+      return res.status(400).json({ error: "Estado de moderação inválido." });
+    }
+
+    const avaliacao = await Avaliacao.findByIdAndUpdate(
+      req.params.id,
+      { estado },
+      { new: true, runValidators: true }
+    );
+
+    if (!avaliacao) {
+      return res.status(404).json({ error: "Avaliação não encontrada." });
+    }
+
+    return res.json({ message: estado === "Aprovada" ? "Avaliação aprovada com sucesso." : "Avaliação rejeitada.", avaliacao });
+  } catch (err) {
+    console.error("Erro ao moderar avaliação:", err.message);
+    return res.status(500).json({ error: "Não foi possível atualizar a avaliação." });
+  }
+});
+
+app.get("/avaliacoes/produto/:id", async (req, res) => {
+  try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ error: "Produto inválido." });
+    }
+
+    const avaliacoes = await Avaliacao.find({
+      produtoId: req.params.id,
+      estado: "Aprovada"
+    })
+      .select("classificacao comentario compraVerificada createdAt")
+      .sort({ createdAt: -1 })
+      .lean();
+
+    const total = avaliacoes.length;
+    const media = total
+      ? Number((avaliacoes.reduce((soma, item) => soma + item.classificacao, 0) / total).toFixed(1))
+      : 0;
+
+    return res.json({ avaliacoes, total, media });
+  } catch (err) {
+    console.error("Erro ao carregar avaliações do produto:", err.message);
+    return res.status(500).json({ error: "Não foi possível carregar as avaliações." });
+  }
+});
 app.get("/coupon-status", (req, res) => {
   const publicoAtivo =
     String(process.env.CUPAO_ATIVO || "false").toLowerCase() === "true";
@@ -565,6 +809,7 @@ app.post("/create-multibanco-order", async (req, res) => {
 
         return {
           ...item,
+          produtoId: produto._id,
           price: precoFinal,
           promoPrice: produto.promoPrice,
           promocao: produto.promocao,
@@ -660,6 +905,7 @@ let itemsComPrecoReal = await Promise.all(
 
     return {
       ...item,
+      produtoId: produto._id,
       price: precoFinal,
       promoPrice: produto.promoPrice,
       promocao: produto.promocao,

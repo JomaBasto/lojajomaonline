@@ -7,9 +7,12 @@ export default function FichaProduto() {
 
   const [produto, setProduto] = useState(null);
   const [selectedSize, setSelectedSize] = useState(null);
+  const [avaliacoes, setAvaliacoes] = useState([]);
+  const [mediaAvaliacoes, setMediaAvaliacoes] = useState(0);
+  const [totalAvaliacoes, setTotalAvaliacoes] = useState(0);
 
   useEffect(() => {
-    fetch("https://jomabasto-backend.onrender.com/produtos")
+    fetch(`${import.meta.env.VITE_API_URL || "https://jomabasto-backend.onrender.com"}/produtos`)
       .then((res) => res.json())
       .then((data) => {
         const encontrado = data.find((p) => p._id === id);
@@ -20,6 +23,21 @@ export default function FichaProduto() {
       );
   }, [id]);
 
+  useEffect(() => {
+    if (!id) return;
+
+    fetch(`${import.meta.env.VITE_API_URL || "https://jomabasto-backend.onrender.com"}/avaliacoes/produto/${id}`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Erro ao carregar avaliacoes");
+        return res.json();
+      })
+      .then((data) => {
+        setAvaliacoes(Array.isArray(data.avaliacoes) ? data.avaliacoes : []);
+        setMediaAvaliacoes(Number(data.media) || 0);
+        setTotalAvaliacoes(Number(data.total) || 0);
+      })
+      .catch((err) => console.error("Erro ao carregar avaliacoes:", err));
+  }, [id]);
   useEffect(() => {
     if (!id) return;
 
@@ -351,6 +369,27 @@ export default function FichaProduto() {
           </p>
         </div>
       </div>
+      <section style={{ marginTop: "40px", paddingTop: "25px", borderTop: "1px solid #ddd" }}>
+        <h2>Avaliacoes de clientes</h2>
+        {totalAvaliacoes > 0 ? (
+          <p><strong>{mediaAvaliacoes.toFixed(1)} / 5</strong> - {totalAvaliacoes} avaliacao(oes)</p>
+        ) : (
+          <p>Ainda nao existem avaliacoes aprovadas para este produto.</p>
+        )}
+
+        {avaliacoes.map((avaliacao) => (
+          <article key={avaliacao._id} style={{ padding: "16px 0", borderTop: "1px solid #eee" }}>
+            <p style={{ color: "#d69e00", fontSize: "20px" }}>
+              {"★".repeat(avaliacao.classificacao)}{"☆".repeat(5 - avaliacao.classificacao)}
+            </p>
+            {avaliacao.comentario && <p>{avaliacao.comentario}</p>}
+            <p style={{ color: "#666", fontSize: "13px" }}>
+              {avaliacao.compraVerificada ? "Compra verificada" : ""}
+              {avaliacao.createdAt ? ` - ${new Date(avaliacao.createdAt).toLocaleDateString("pt-PT")}` : ""}
+            </p>
+          </article>
+        ))}
+      </section>
     </div>
   );
 }

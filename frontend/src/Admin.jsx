@@ -3,11 +3,14 @@ import { useEffect, useState } from "react";
 export default function Admin() {
 
   const [orders, setOrders] = useState([]);
+  const [avaliacoes, setAvaliacoes] = useState([]);
+  const [erroAvaliacoes, setErroAvaliacoes] = useState("");
 
-  const API_URL = "https://jomabasto-backend.onrender.com";
+  const API_URL = import.meta.env.VITE_API_URL || "https://jomabasto-backend.onrender.com";
 
   useEffect(() => {
     loadOrders();
+    loadAvaliacoes();
   }, []);
 
   async function loadOrders() {
@@ -23,6 +26,47 @@ export default function Admin() {
     }
   }
 
+  async function loadAvaliacoes() {
+    try {
+      const token = localStorage.getItem("token");
+      const res = await fetch(`${API_URL}/avaliacoes/admin`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Não foi possível carregar as avaliações.");
+      }
+
+      setAvaliacoes(Array.isArray(data.avaliacoes) ? data.avaliacoes : []);
+      setErroAvaliacoes("");
+    } catch (err) {
+      setErroAvaliacoes(err.message);
+    }
+  }
+
+  async function moderarAvaliacao(id, estado) {
+    try {
+      const token = localStorage.getItem("token");
+      const res = await fetch(`${API_URL}/avaliacoes/admin/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ estado }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Não foi possível atualizar a avaliação.");
+      }
+
+      await loadAvaliacoes();
+    } catch (err) {
+      setErroAvaliacoes(err.message);
+    }
+  }
   async function changeStatus(id, estado) {
     try {
       await fetch(`${API_URL}/encomendas/${id}`, {
@@ -34,6 +78,7 @@ export default function Admin() {
       });
 
       loadOrders();
+    loadAvaliacoes();
     } catch (err) {
       console.log(err);
     }
@@ -98,6 +143,46 @@ export default function Admin() {
         />
       </div>
 
+      <section style={{
+        background: "#fff",
+        padding: 25,
+        marginBottom: 35,
+        borderRadius: 12,
+        boxShadow: "0 5px 20px rgba(0,0,0,.08)",
+      }}>
+        <h2>⭐ Moderação de Avaliações ({avaliacoes.filter(a => a.estado === "Pendente").length} pendentes)</h2>
+
+        {erroAvaliacoes && (
+          <p style={{ color: "#b91c1c" }}>{erroAvaliacoes}</p>
+        )}
+
+        {avaliacoes.filter(a => a.estado === "Pendente").length === 0 ? (
+          <p>Não existem avaliações pendentes.</p>
+        ) : avaliacoes.filter(a => a.estado === "Pendente").map(avaliacao => (
+          <div key={avaliacao._id} style={{
+            borderTop: "1px solid #eee",
+            padding: "18px 0",
+          }}>
+            <p><strong>Produto:</strong> {avaliacao.produtoId}</p>
+            <p><strong>Classificação:</strong> {"★".repeat(avaliacao.classificacao)} ({avaliacao.classificacao}/5)</p>
+            <p><strong>Comentário:</strong> {avaliacao.comentario || "Sem comentário."}</p>
+            <p><strong>Compra verificada:</strong> {avaliacao.compraVerificada ? "Sim" : "Não"}</p>
+            <p><strong>Data:</strong> {avaliacao.createdAt ? new Date(avaliacao.createdAt).toLocaleString("pt-PT") : "-"}</p>
+            <button
+              onClick={() => moderarAvaliacao(avaliacao._id, "Aprovada")}
+              style={{ padding: 10, marginRight: 10, cursor: "pointer" }}
+            >
+              Aprovar
+            </button>
+            <button
+              onClick={() => moderarAvaliacao(avaliacao._id, "Rejeitada")}
+              style={{ padding: 10, cursor: "pointer" }}
+            >
+              Rejeitar
+            </button>
+          </div>
+        ))}
+      </section>
       {orders.map((order) => (
         <div
           key={order._id}

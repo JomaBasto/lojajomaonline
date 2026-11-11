@@ -1446,11 +1446,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.jomabasto.com/produto/6a6dce1943943c5ae32210db</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.jomabasto.com/produto/6ae308758bc03fc2d7177ffe</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1936,7 +1931,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.jomabasto.com/produto/6a6dcd8743943c5ae32210d6</loc>
+    <loc>https://www.jomabasto.com/produto/6a74a9f41be945203d89bca7</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -3621,7 +3616,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.jomabasto.com/produto/6a74a9f41be945203d89bca7</loc>
+    <loc>https://www.jomabasto.com/produto/6a6dcd8743943c5ae32210d6</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -3731,7 +3726,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.jomabasto.com/produto/6a75c2c4282fb67a87caf828</loc>
+    <loc>https://www.jomabasto.com/produto/6ae307d68bc03fc2d7177ffb</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -4206,7 +4201,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.jomabasto.com/produto/6ae307d68bc03fc2d7177ffb</loc>
+    <loc>https://www.jomabasto.com/produto/6ae307428bc03fc2d7177ff9</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -4331,11 +4326,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.jomabasto.com/produto/6ae307428bc03fc2d7177ff9</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.jomabasto.com/produto/6aaa6a96a3f3a338b515396a</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -4361,12 +4351,22 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.jomabasto.com/produto/6aeb46db189a7e1791574f80</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.jomabasto.com/produto/6a9a8d71f3b83e844e68c223</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.jomabasto.com/produto/6a57a2ac53fc3048309c3f1c</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jomabasto.com/produto/6a75c2c4282fb67a87caf828</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -4391,11 +4391,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.jomabasto.com/produto/6a8f01fc5b576e402d4f1237</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.jomabasto.com/produto/6abbebfe1fcc4f1eb04668d4</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -4406,17 +4401,17 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.jomabasto.com/produto/6a8f01fc5b576e402d4f1237</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.jomabasto.com/produto/6a8f02885b576e402d4f1239</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.jomabasto.com/produto/6a63a16751266fba97f66a8e</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.jomabasto.com/produto/6a57a43953fc3048309c3f24</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -4896,7 +4891,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.jomabasto.com/produto/6a57a49353fc3048309c3f26</loc>
+    <loc>https://www.jomabasto.com/produto/6a57a43953fc3048309c3f24</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -5131,7 +5126,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.jomabasto.com/produto/6a57a50653fc3048309c3f28</loc>
+    <loc>https://www.jomabasto.com/produto/6a57a49353fc3048309c3f26</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -5211,6 +5206,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.jomabasto.com/produto/6a57a50653fc3048309c3f28</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.jomabasto.com/produto/6a8f043b5b576e402d4f123e</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -5222,11 +5222,6 @@
   </url>
   <url>
     <loc>https://www.jomabasto.com/produto/6a5b35631a281cce7a4faacd</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.jomabasto.com/produto/6a5b35b21a281cce7a4faacf</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -5356,7 +5351,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.jomabasto.com/produto/6a5b36791a281cce7a4faad1</loc>
+    <loc>https://www.jomabasto.com/produto/6a5b35b21a281cce7a4faacf</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -5471,6 +5466,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.jomabasto.com/produto/6a5b36791a281cce7a4faad1</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.jomabasto.com/produto/6a8f03865b576e402d4f123c</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -5481,17 +5481,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.jomabasto.com/produto/6a69db7c009c958b2714d400</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.jomabasto.com/produto/6a63976251266fba97f66a71</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.jomabasto.com/produto/6a57a39053fc3048309c3f20</loc>
+    <loc>https://www.jomabasto.com/produto/6a69db7c009c958b2714d400</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -5587,6 +5582,11 @@
   </url>
   <url>
     <loc>https://www.jomabasto.com/produto/6ae87f5ac0fcf083efd99f25</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jomabasto.com/produto/6a57a39053fc3048309c3f20</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

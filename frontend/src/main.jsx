@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 import ReactGA from "react-ga4";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Success from "./Success.jsx";
+import ReviewPage from "./ReviewPage.jsx";
 
 import App from "./App.jsx";
 import QuemSomos from "./components/QuemSomos.jsx";
@@ -37,6 +38,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/politica-de-cookies" element={<PoliticaCookies />} />
         <Route path="/politica-de-devolucoes" element={<PoliticaDevolucoes />} />
         <Route path="/promocao" element={<Promocao />} />
+        <Route path="/avaliar/:token" element={<ReviewPage />} />
         <Route path="/produto/:id" element={<FichaProduto />} />
       </Routes>
     </BrowserRouter>

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 
-const API_URL = "https://jomabasto-backend.onrender.com";
+import API_URL_CONFIG from "./api";
+
+const API_URL = API_URL_CONFIG || "https://jomabasto-backend.onrender.com";
 
 export default function AdminOrders() {
   const [orders, setOrders] = useState([]);
@@ -28,6 +30,42 @@ export default function AdminOrders() {
       }
     } catch (err) {
       console.log(err);
+    }
+  }
+
+  async function saveShipping(event, orderId) {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+
+    const payload = {
+      estadoEnvio: formData.get("estadoEnvio"),
+      transportadora: formData.get("transportadora"),
+      codigoSeguimento: formData.get("codigoSeguimento"),
+      linkSeguimento: formData.get("linkSeguimento"),
+    };
+
+    try {
+      const token = localStorage.getItem("token");
+      const res = await fetch(API_URL + "/encomendas/" + orderId, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        throw new Error(data.error || "Erro ao guardar a expedicao.");
+      }
+
+      alert("Dados de expedicao guardados.");
+      await loadOrders();
+    } catch (err) {
+      alert(err.message || "Erro ao guardar a expedicao.");
     }
   }
 
@@ -119,6 +157,44 @@ export default function AdminOrders() {
               <strong>Estado:</strong>{" "}
               {order.estado}
             </p>
+
+            <hr />
+
+            <h3>Gestão de expedição</h3>
+
+            <form onSubmit={(event) => saveShipping(event, order._id)}>
+              <label>
+                Estado de expedição
+                <select
+                  name="estadoEnvio"
+                  defaultValue={order.estadoEnvio || "Em preparação"}
+                  style={{ display: "block", width: "100%", padding: 8, margin: "6px 0 12px" }}
+                >
+                  <option value="Em preparação">Em preparação</option>
+                  <option value="Enviada">Enviada</option>
+                  <option value="Entregue">Entregue</option>
+                </select>
+              </label>
+
+              <label>
+                Transportadora
+                <input name="transportadora" defaultValue={order.transportadora || ""} placeholder="Ex.: CTT" style={{ display: "block", width: "100%", padding: 8, margin: "6px 0 12px" }} />
+              </label>
+
+              <label>
+                Código de seguimento
+                <input name="codigoSeguimento" defaultValue={order.codigoSeguimento || ""} style={{ display: "block", width: "100%", padding: 8, margin: "6px 0 12px" }} />
+              </label>
+
+              <label>
+                Link de seguimento
+                <input name="linkSeguimento" type="url" defaultValue={order.linkSeguimento || ""} placeholder="https://..." style={{ display: "block", width: "100%", padding: 8, margin: "6px 0 12px" }} />
+              </label>
+
+              <button type="submit" style={{ padding: "10px 18px", cursor: "pointer" }}>
+                Guardar expedição
+              </button>
+            </form>
 
             <p>
               <strong>Data:</strong>{" "}

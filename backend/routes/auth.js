@@ -6,7 +6,8 @@ import crypto from "crypto";
 import nodemailer from "nodemailer";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const emailDesativado = process.env.DISABLE_EMAILS === "true";
+const resend = emailDesativado ? null : new Resend(process.env.RESEND_API_KEY);
 import User from "../models/User.js";
 
 const router = express.Router();
@@ -136,6 +137,11 @@ router.post("/forgot-password", async (req, res) => {
   const resetUrl = `https://jomabasto.pt/reset-password?token=${token}`;
 
   try {
+    if (emailDesativado) {
+      console.log("[MODO LOCAL] Email de recupera??o simulado; n?o enviado.");
+      return res.json({ message: "Modo de teste: email n?o enviado." });
+    }
+
     await resend.emails.send({
       from: process.env.EMAIL_USER,
       to: email,

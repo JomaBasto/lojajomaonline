@@ -155,3 +155,59 @@ export async function sendAdminEmail(order) {
   }
 
 }
+// ================================
+// CONVITE PARA AVALIAR PRODUTOS
+// ================================
+
+export async function sendReviewInvitationEmail(order, token) {
+  if (process.env.DISABLE_EMAILS === "true") {
+    return { skipped: true };
+  }
+
+  if (!/^[a-f0-9]{64}$/.test(token || "")) {
+    throw new Error("Token de avaliação inválido.");
+  }
+
+  const email = order?.cliente?.email;
+  const nome = order?.cliente?.nome || "Cliente";
+  const items = (order?.items || []).filter(item => item.produtoId);
+
+  if (!email || items.length === 0) {
+    throw new Error("A encomenda não tem email ou produtos elegíveis para avaliação.");
+  }
+
+  const escapar = valor => String(valor ?? "").replace(/[&<>"']/g, caracter => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[caracter]);
+
+  const produtosHtml = items.map(item =>
+    `<li>${escapar(item.name)} — Quantidade: ${Number(item.qty) || 1}</li>`
+  ).join("");
+
+  const base = process.env.REVIEW_BASE_URL || "https://www.jomabasto.com";
+  const link = base + "/avaliar/" + token;
+
+  const response = await resend.emails.send({
+    from: "Loja JOMA Basto <noreply@send.jomabasto.com>",
+    to: email,
+    subject: "Conte-nos a sua opinião sobre a sua compra",
+    html: `
+      <h2>Olá ${escapar(nome)}!</h2>
+      <p>A sua encomenda foi entregue. Gostaríamos de conhecer a sua opinião sobre os produtos que comprou.</p>
+      <ul>${produtosHtml}</ul>
+      <p><a href="${link}">Escrever uma avaliação</a></p>
+      <p>O convite é válido durante 30 dias.</p>
+      <p>Obrigado por comprar na JOMA Basto.</p>
+    `
+  });
+
+  if (response?.error) {
+    throw new Error("O serviço de email não conseguiu enviar o convite.");
+  }
+
+  return response;
+}

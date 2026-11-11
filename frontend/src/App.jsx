@@ -1,7 +1,9 @@
 import { useEffect, useState, useRef } from "react";
+import API_URL_CONFIG from "./api";
 import { useTranslation } from "react-i18next";
 import Player from "@vimeo/player";
 
+const API_URL = API_URL_CONFIG || "https://jomabasto-backend.onrender.com";
 const getHighQualityImage = (url) => {
   if (typeof url !== "string") return url;
   return url.replace(/_large\.jpg$/i, ".jpg");
@@ -365,7 +367,7 @@ const login = async () => {
 
   try {
 
-    const res = await fetch("https://jomabasto-backend.onrender.com/auth/login", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL || "https://jomabasto-backend.onrender.com"}/auth/login`, {
 
       method: "POST",
 
@@ -459,7 +461,7 @@ const loadOrders = async () => {
 
     const res = await fetch(
 
-      "https://jomabasto-backend.onrender.com/my-orders",
+      `${import.meta.env.VITE_API_URL || "https://jomabasto-backend.onrender.com"}/my-orders`,
 
       {
 
@@ -479,7 +481,7 @@ const loadOrders = async () => {
 
 
 
-    setOrders(data);
+    setOrders(Array.isArray(data) ? data : []);
 
 
 
@@ -490,6 +492,7 @@ const loadOrders = async () => {
   }
 
 };
+
 
 
 
@@ -2109,7 +2112,6 @@ return (
   onClick={() => {
 
     setShowAccount(true);
-
     loadOrders();
 
   }}
@@ -2398,7 +2400,7 @@ return (
 
   className="icon-btn"
 
-  onClick={() => setShowAccount(true)}
+  onClick={() => { setShowAccount(true);  }}
 
 >
 
@@ -4893,40 +4895,23 @@ ${selectedSize ? `Tamanho: ${selectedSize}` : ""}`;
 >
 
 {orders.length === 0 ? (
-
-  <p>Ainda Não existem encomendas.</p>
-
+  <p>Ainda não existem encomendas.</p>
 ) : (
-
-  orders.map((order)=>(
-
+  orders.map((order) => (
     <div
-
       key={order._id}
-
       style={{
-
         borderBottom: "1px solid #ddd",
-
         padding: "10px 0"
-
       }}
-
     >
-
-      Encomenda #{order._id}
-
-      <br/>
-
+      <b>Encomenda #{order._id}</b>
+      <br />
       Estado: {order.estado}
-
     </div>
-
   ))
+)}</div>
 
-)}
-
-</div>
 
 
 
