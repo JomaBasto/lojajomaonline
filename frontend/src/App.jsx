@@ -162,7 +162,59 @@ export default function App() {
     };
   }, []);
 
-  const [subCategory, setSubCategory] = useState("");
+  const natalVideoFrameRef = useRef(null);
+
+  useEffect(() => {
+    const frame = natalVideoFrameRef.current;
+    if (!frame) return;
+
+    const iframe = frame.querySelector("iframe");
+    if (!iframe) return;
+
+    const player = new Player(iframe);
+    let hasSkippedIntroText = false;
+    let hasSkippedOutro = false;
+
+    const handleBufferStart = () => {
+      frame.classList.add("natal-video-buffering");
+    };
+
+    const handlePlaying = () => {
+      frame.classList.remove("natal-video-buffering");
+    };
+
+    const handleTimeUpdate = ({ seconds }) => {
+      if (seconds < 6) {
+        hasSkippedIntroText = false;
+        hasSkippedOutro = false;
+        return;
+      }
+      if (seconds >= 6 && seconds < 13 && !hasSkippedIntroText) {
+        hasSkippedIntroText = true;
+        player.setCurrentTime(13).then(() => player.play()).catch(() => {
+          hasSkippedIntroText = false;
+        });
+      }
+      if (seconds >= 27 && !hasSkippedOutro) {
+        hasSkippedOutro = true;
+        player.setCurrentTime(0).then(() => player.play()).catch(() => {
+          hasSkippedOutro = false;
+        });
+      }
+    };
+
+    player.on("bufferstart", handleBufferStart);
+    player.on("bufferend", handlePlaying);
+    player.on("timeupdate", handleTimeUpdate);
+
+    return () => {
+      player.off("bufferstart", handleBufferStart);
+      player.off("bufferend", handlePlaying);
+      player.off("timeupdate", handleTimeUpdate);
+      frame.classList.remove("natal-video-buffering");
+    };
+  }, []);
+const [subCategory, setSubCategory] = useState("");
 const [filterSize, setFilterSize] = useState("");
 const [priceFilter, setPriceFilter] = useState("");
 const [priceFilterOpen, setPriceFilterOpen] = useState(false);
@@ -2781,7 +2833,43 @@ return (
     `}</style>
     <section className="home-hero-layout">
 
-      <article className="hero-video-card home-block-trail">
+      <article className="hero-video-card home-block-natal">
+        <div className="natal-video-frame" ref={natalVideoFrameRef}>
+          <iframe
+            className="natal-video-iframe"
+            src="https://player.vimeo.com/video/988266771?autoplay=1&muted=1&loop=1&controls=0"
+            title="Joma Press Day 2025 - Especial de Natal"
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+          />
+          <div className="natal-video-message">
+            <span>FELIZ NATAL</span>
+            <strong>E UM EXCELENTE 2027</strong>
+            <small>Obrigado por fazer parte da nossa história.</small>
+            <div className="natal-video-offer">
+              <p className="natal-video-offer-title">UMA PRENDA ESPECIAL PARA SI!</p>
+              <div className="natal-video-offer-highlight">
+                <p className="natal-video-offer-code">JoBasto10</p>
+                <strong className="natal-video-offer-discount">10% DE DESCONTO</strong>
+              </div>
+              <p className="natal-video-offer-detail">
+                <span>Use o código nas suas compras.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+<article className="home-block-natal-interstitial">
+        <div className="natal-interstitial-content">
+          <span className="natal-interstitial-kicker">JOMA BASTO</span>
+          <h2>O ESPÍRITO DO DESPORTO TAMBÉM SE VIVE NO NATAL</h2>
+          <div className="natal-interstitial-divider"></div>
+          <p>Que esta época seja feita de alegria, união e novas conquistas. Obrigado por continuar a fazer parte da família Joma Basto.</p>
+        </div>
+      </article>
+
+<article className="hero-video-card home-block-trail">
         <button
           type="button"
           className="hero-video-button"

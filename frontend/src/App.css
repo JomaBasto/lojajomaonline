@@ -7558,3 +7558,555 @@ body {
     animation: none !important;
   }
 }
+
+/* =========================================================
+   JOMA BASTO — VÍDEO ESPECIAL DE NATAL
+   Mesma largura e dimensões dos restantes vídeos
+   ========================================================= */
+
+.home-hero-layout .home-block-natal {
+  width: 100%;
+  min-width: 0;
+}
+
+.home-block-natal .natal-video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #000;
+}
+
+.home-block-natal .natal-video-iframe {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.home-block-natal .natal-video-message {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+  pointer-events: none;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
+}
+
+.home-block-natal .natal-video-message span {
+  font-size: clamp(28px, 4vw, 58px);
+  font-weight: 800;
+  letter-spacing: 0.07em;
+}
+
+.home-block-natal .natal-video-message strong {
+  font-size: clamp(22px, 3.2vw, 46px);
+  font-weight: 800;
+}
+
+.home-block-natal .natal-video-message small {
+  font-size: clamp(14px, 1.5vw, 20px);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .home-hero-layout .home-block-natal {
+    order: 1;
+  }
+
+  .home-hero-layout .home-block-trail {
+    order: 2;
+  }
+
+  .home-block-natal .natal-video-frame {
+    aspect-ratio: auto;
+    height: calc(100vw * 1.7778);
+  }
+
+  .home-block-natal .natal-video-iframe {
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    width: calc(100vw * 3.1605);
+    height: calc(100vw * 1.7778);
+    transform: translate(-50%, -50%);
+  }
+
+  .home-block-natal .natal-video-message {
+    gap: 9px;
+    padding: 16px;
+  }
+
+  .home-block-natal .natal-video-message span {
+    font-size: clamp(25px, 7vw, 38px);
+  }
+
+  .home-block-natal .natal-video-message strong {
+    font-size: clamp(20px, 5.5vw, 30px);
+  }
+
+  .home-block-natal .natal-video-message small {
+    font-size: clamp(13px, 3.5vw, 17px);
+  }
+}
+
+/* NATAL — DESTAQUE PROMOCIONAL JOBasto10 */
+.home-block-natal .natal-video-message span,
+.home-block-natal .natal-video-message strong {
+  font-family: Impact, "Arial Black", sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.045em;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.9);
+}
+
+.home-block-natal .natal-video-offer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.home-block-natal .natal-video-offer p {
+  margin: 0;
+}
+
+.home-block-natal .natal-video-offer-title {
+  color: #fff;
+  font-size: clamp(13px, 1.5vw, 20px);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
+}
+
+.home-block-natal .natal-video-offer-code {
+  color: #f4cf75;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: clamp(27px, 3.5vw, 44px);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+}
+
+.home-block-natal .natal-video-offer-detail {
+  color: #fff;
+  font-size: clamp(12px, 1.25vw, 17px);
+  font-weight: 600;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
+}
+
+@media (max-width: 768px) {
+  .home-block-natal .natal-video-message {
+    gap: 7px;
+    padding: 12px;
+  }
+
+  .home-block-natal .natal-video-offer {
+    gap: 3px;
+    margin-top: 3px;
+  }
+
+  .home-block-natal .natal-video-offer-title {
+    font-size: clamp(11px, 3.2vw, 15px);
+    letter-spacing: 0.08em;
+  }
+
+  .home-block-natal .natal-video-offer-code {
+    font-size: clamp(24px, 7vw, 34px);
+  }
+
+  .home-block-natal .natal-video-offer-detail {
+    max-width: 92%;
+    font-size: clamp(10px, 2.8vw, 13px);
+  }
+}
+
+
+/* NATAL — SEPARADOR EDITORIAL ENTRE VÍDEOS */
+.home-hero-layout .home-block-natal-interstitial {
+  width: 100%;
+  min-width: 0;
+  padding: clamp(26px, 4vw, 48px) 20px;
+  box-sizing: border-box;
+  text-align: center;
+  background: linear-gradient(135deg, #f8f6f0, #ffffff);
+  border-radius: 14px;
+}
+
+.natal-interstitial-content {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.natal-interstitial-kicker {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: #a77b2c;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .24em;
+}
+
+.natal-interstitial-content h2 {
+  margin: 0 auto;
+  color: #171717;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: clamp(22px, 3.1vw, 38px);
+  line-height: 1.15;
+  letter-spacing: .035em;
+  font-weight: 900;
+}
+
+.natal-interstitial-divider {
+  width: min(110px, 22vw);
+  height: 2px;
+  margin: 18px auto;
+  background: #c6a15b;
+}
+
+.natal-interstitial-content p {
+  max-width: 760px;
+  margin: 0 auto;
+  color: #454545;
+  font-size: clamp(14px, 1.35vw, 18px);
+  line-height: 1.65;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .home-hero-layout .home-block-natal-interstitial {
+    padding: 24px 16px;
+    border-radius: 12px;
+  }
+
+  .natal-interstitial-content h2 {
+    font-size: clamp(21px, 6vw, 29px);
+  }
+
+  .natal-interstitial-content p {
+    font-size: 14px;
+  }
+}
+
+/* NATAL — AJUSTES DE TIPOGRAFIA, CONTROLos E BRILHO */
+.home-block-natal .natal-video-message span,
+.home-block-natal .natal-video-message strong,
+.natal-interstitial-content h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.055em;
+}
+
+.home-block-natal .natal-video-message span,
+.home-block-natal .natal-video-message strong {
+  text-shadow: 0 2px 7px rgba(0, 0, 0, 0.8);
+}
+
+.natal-interstitial-content h2 {
+  letter-spacing: 0.025em;
+}
+
+.home-block-natal .natal-video-offer-code {
+  animation: natal-code-glow 2.4s ease-in-out infinite;
+}
+
+@keyframes natal-code-glow {
+  0%, 100% {
+    filter: brightness(1);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+  }
+  50% {
+    filter: brightness(1.16);
+    text-shadow: 0 2px 12px rgba(244, 207, 117, 0.65);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-block-natal .natal-video-offer-code {
+    animation: none;
+  }
+}
+/* NATAL — ORDEM CORRETA NO TELEMÓVEL */
+@media (max-width: 768px) {
+  .home-hero-layout .home-block-natal {
+    order: 1 !important;
+  }
+  .home-hero-layout .home-block-natal-interstitial {
+    order: 2 !important;
+  }
+  .home-hero-layout .home-block-trail {
+    order: 3 !important;
+  }
+}
+/* MOBILE — TÍTULOS E POSTERS ANTES DO VÍDEO TRAIL */
+@media (max-width: 768px) {
+  .home-hero-layout .home-block-natal {
+    order: 1 !important;
+  }
+  .home-hero-layout .home-block-natal-interstitial {
+    order: 2 !important;
+  }
+  .home-hero-layout .home-block-running {
+    order: 3 !important;
+  }
+  .home-hero-layout .home-block-running-posters {
+    order: 4 !important;
+  }
+  .home-hero-layout .home-block-trail {
+    order: 5 !important;
+  }
+}
+/* ORDEM MOBILE COMPLETA — SEQUENCIA ORIGINAL + NATAL */
+@media (max-width: 768px) {
+  .home-hero-layout .home-block-natal { order: 1 !important; }
+  .home-hero-layout .home-block-natal-interstitial { order: 2 !important; }
+  .home-hero-layout .home-block-trail { order: 3 !important; }
+  .home-hero-layout .home-block-running { order: 4 !important; }
+  .home-hero-layout .home-block-running-posters { order: 5 !important; }
+  .home-hero-layout .home-block-seo { order: 6 !important; }
+  .home-hero-layout .home-block-futebol { order: 7 !important; }
+  .home-hero-layout .home-block-futebol-intro { order: 8 !important; }
+  .home-hero-layout .home-block-futebol-posters { order: 9 !important; }
+  .home-hero-layout .home-block-divider { order: 10 !important; }
+  .home-hero-layout .home-block-tenis { order: 11 !important; }
+  .home-hero-layout .home-block-tenis-intro { order: 12 !important; }
+  .home-hero-layout .home-block-tenis-posters { order: 13 !important; }
+}
+/* NATAL — TEXTOS NOS CANTOS INFERIORES, MAIS ELEVADOS E COM MARGENS */
+.home-block-natal .natal-video-message {
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "greeting offer"
+    "headline offer"
+    "small offer";
+  align-content: end;
+  align-items: start;
+  justify-content: stretch;
+  gap: 5px 4%;
+  padding: 0 6% 9%;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.home-block-natal .natal-video-message span {
+  grid-area: greeting;
+  justify-self: start;
+  font-size: clamp(22px, 3vw, 38px);
+}
+
+.home-block-natal .natal-video-message strong {
+  grid-area: headline;
+  justify-self: start;
+  font-size: clamp(19px, 2.5vw, 32px);
+}
+
+.home-block-natal .natal-video-message small {
+  grid-area: small;
+  justify-self: start;
+  font-size: clamp(12px, 1.25vw, 17px);
+}
+
+.home-block-natal .natal-video-offer {
+  grid-area: offer;
+  align-self: end;
+  justify-self: stretch;
+  align-items: flex-end;
+  margin-top: 0;
+  text-align: right;
+  min-width: 0;
+}
+
+.home-block-natal .natal-video-offer-title,
+.home-block-natal .natal-video-offer-detail {
+  text-align: right;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .home-block-natal .natal-video-message {
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 3%;
+    padding: 0 5% 9%;
+  }
+
+  .home-block-natal .natal-video-message span {
+    font-size: clamp(15px, 4.2vw, 23px);
+    letter-spacing: 0.025em;
+  }
+
+  .home-block-natal .natal-video-message strong {
+    font-size: clamp(13px, 3.5vw, 19px);
+    letter-spacing: 0.02em;
+  }
+
+  .home-block-natal .natal-video-message small {
+    font-size: clamp(9px, 2.5vw, 13px);
+  }
+
+  .home-block-natal .natal-video-offer {
+    gap: 3px;
+  }
+
+  .home-block-natal .natal-video-offer-title {
+    font-size: clamp(9px, 2.5vw, 13px);
+    letter-spacing: 0.04em;
+  }
+
+  .home-block-natal .natal-video-offer-code {
+    font-size: clamp(19px, 5.5vw, 28px);
+  }
+
+  .home-block-natal .natal-video-offer-detail {
+    font-size: clamp(8px, 2.1vw, 11px);
+    max-width: 100%;
+  }
+}
+/* NATAL — REDUÇÃO MODERADA DO ZOOM APENAS NO TELEMÓVEL */
+@media (max-width: 768px) {
+  .home-block-natal .natal-video-frame {
+    height: calc(100vw * 1.575);
+  }
+
+  .home-block-natal .natal-video-iframe {
+    width: calc(100vw * 2.8);
+    height: calc(100vw * 1.575);
+  }
+}
+/* NATAL — CORTE TEMPORÁRIO DO TEXTO ORIGINAL ENTRE 7 E 12 SEGUNDOS */
+.home-block-natal .natal-video-frame.natal-text-crop .natal-video-iframe {
+  transform: scale(1.12);
+  transform-origin: center center;
+}
+
+@media (max-width: 768px) {
+  .home-block-natal .natal-video-frame.natal-text-crop .natal-video-iframe {
+    transform: translate(-50%, -50%) scale(1.12);
+  }
+}
+
+
+/* DESTAQUE REFORÇADO DA OFERTA NATALÍCIA */
+.home-block-natal .natal-video-offer-code {
+  font-size: clamp(30px, 4vw, 50px);
+  animation: natal-code-pulse-strong 1.35s ease-in-out infinite;
+  transform-origin: center;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95), 0 0 16px rgba(244, 207, 117, 0.65);
+}
+
+.home-block-natal .natal-video-offer-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.home-block-natal .natal-video-offer-discount {
+  color: #f4cf75;
+  font-size: clamp(19px, 2.2vw, 28px);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-shadow: 0 2px 9px rgba(0, 0, 0, 0.98), 0 0 14px rgba(244, 207, 117, 0.55);
+}
+
+@keyframes natal-code-pulse-strong {
+  0%, 100% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+  50% {
+    filter: brightness(1.4);
+    transform: scale(1.06);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95), 0 0 22px rgba(244, 207, 117, 0.95);
+  }
+}
+
+@media (max-width: 768px) {
+  .home-block-natal .natal-video-offer-code {
+    font-size: clamp(27px, 7.5vw, 38px);
+  }
+
+  .home-block-natal .natal-video-offer-discount {
+    font-size: clamp(18px, 5vw, 25px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-block-natal .natal-video-offer-code {
+    animation: none;
+  }
+}
+/* ALINHAR DESCONTO COM O C�DIGO NO COMPUTADOR */
+@media (min-width: 769px) {
+  .home-block-natal .natal-video-offer-detail {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+
+/* ALINHAMENTO DO CÓDIGO COM O DESCONTO */
+.home-block-natal .natal-video-offer-highlight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: max-content;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.home-block-natal .natal-video-offer-highlight .natal-video-offer-code {
+  margin: 0;
+}
+
+.home-block-natal .natal-video-offer-highlight .natal-video-offer-discount {
+  display: block;
+  text-align: left;
+}
+
+.home-block-natal .natal-video-offer-detail {
+  align-items: flex-end;
+  text-align: right;
+}
+/* ALINHAR O C�DIGO � MARGEM DIREITA DA OFERTA */
+.home-block-natal .natal-video-offer-highlight {
+  margin-left: auto;
+  margin-right: 0;
+  align-self: flex-end;
+}
+
+
+/* ALINHAMENTO DIREITO DO C�DIGO E DO DESCONTO � COMPUTADOR */
+@media (min-width: 769px) {
+  .home-block-natal .natal-video-offer-highlight {
+    align-items: flex-end;
+  }
+  .home-block-natal .natal-video-offer-highlight .natal-video-offer-code {
+    text-align: right;
+    width: 100%;
+  }
+  .home-block-natal .natal-video-offer-highlight .natal-video-offer-discount {
+    text-align: right;
+    width: 100%;
+  }
+}
+/* NATAL — OCULTAR IMAGEM DURANTE BUFFER */
+.home-block-natal .natal-video-frame.natal-video-buffering .natal-video-iframe {
+  visibility: hidden;
+}
