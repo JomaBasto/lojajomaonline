@@ -6,7 +6,7 @@ const SITEMAP_PATH = "./public/sitemap.xml";
 
 const response = await fetch(API_URL, {
   headers: { Accept: "application/json" },
-  signal: AbortSignal.timeout(15000),
+  signal: AbortSignal.timeout(90000),
 });
 
 if (!response.ok) {
