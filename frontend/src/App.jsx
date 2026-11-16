@@ -162,59 +162,7 @@ export default function App() {
     };
   }, []);
 
-  const natalVideoFrameRef = useRef(null);
-
-  useEffect(() => {
-    const frame = natalVideoFrameRef.current;
-    if (!frame) return;
-
-    const iframe = frame.querySelector("iframe");
-    if (!iframe) return;
-
-    const player = new Player(iframe);
-    let hasSkippedIntroText = false;
-    let hasSkippedOutro = false;
-
-    const handleBufferStart = () => {
-      frame.classList.add("natal-video-buffering");
-    };
-
-    const handlePlaying = () => {
-      frame.classList.remove("natal-video-buffering");
-    };
-
-    const handleTimeUpdate = ({ seconds }) => {
-      if (seconds < 6) {
-        hasSkippedIntroText = false;
-        hasSkippedOutro = false;
-        return;
-      }
-      if (seconds >= 6 && seconds < 13 && !hasSkippedIntroText) {
-        hasSkippedIntroText = true;
-        player.setCurrentTime(13).then(() => player.play()).catch(() => {
-          hasSkippedIntroText = false;
-        });
-      }
-      if (seconds >= 27 && !hasSkippedOutro) {
-        hasSkippedOutro = true;
-        player.setCurrentTime(0).then(() => player.play()).catch(() => {
-          hasSkippedOutro = false;
-        });
-      }
-    };
-
-    player.on("bufferstart", handleBufferStart);
-    player.on("bufferend", handlePlaying);
-    player.on("timeupdate", handleTimeUpdate);
-
-    return () => {
-      player.off("bufferstart", handleBufferStart);
-      player.off("bufferend", handlePlaying);
-      player.off("timeupdate", handleTimeUpdate);
-      frame.classList.remove("natal-video-buffering");
-    };
-  }, []);
-const [subCategory, setSubCategory] = useState("");
+  const [subCategory, setSubCategory] = useState("");
 const [filterSize, setFilterSize] = useState("");
 const [priceFilter, setPriceFilter] = useState("");
 const [priceFilterOpen, setPriceFilterOpen] = useState(false);
@@ -2720,6 +2668,40 @@ return (
 
   <>
 
+    <section className="colecoes-2027" aria-label="Coleções Joma 2027">
+      <button type="button" onClick={() => selectCategory("tenis")} aria-label="Ver coleção Ténis">
+        <img src="/images/colecoes-2027/challenge-woman.jpg" alt="Challenge Woman" />
+      </button>
+      <button type="button" onClick={() => selectCategory("homem-caminhada")} aria-label="Ver coleção Caminhada Homem">
+        <img src="/images/colecoes-2027/explorer-man.jpg" alt="Explorer Man" />
+      </button>
+      <button type="button" onClick={() => selectCategory("crianca")} aria-label="Ver coleção Criança">
+        <img src="/images/colecoes-2027/kids-junior.jpg" alt="Kids Junior" />
+      </button>
+      <button type="button" onClick={() => selectCategory("running")} aria-label="Ver coleção Running">
+        <img src="/images/colecoes-2027/running-2027.jpg" alt="Running 2027" />
+      </button>
+      <button type="button" onClick={() => selectCategory("basquetebol")} aria-label="Ver coleção Basquetebol">
+        <img src="/images/colecoes-2027/basket-2027.jpg" alt="Basket 2027" />
+      </button>
+      <button type="button" onClick={() => selectCategory("voleibol")} aria-label="Ver coleção Voleibol">
+        <img src="/images/colecoes-2027/volley-2027.jpg" alt="Volley 2027" />
+      </button>
+      <button type="button" onClick={() => selectCategory("textil")} aria-label="Ver coleção Têxtil">
+        <img src="/images/colecoes-2027/training-2027.jpg" alt="Training 2027" />
+      </button>
+      <button type="button" onClick={() => selectCategory("acessorios")} aria-label="Ver coleção Acessórios">
+        <img src="/images/colecoes-2027/accesorios-tw27.jpg" alt="Acessórios TW27" />
+      </button>
+    </section>
+    <section className="natal-2027-bar" aria-label="Campanha de Natal JomaBasto">
+      <div className="natal-2027-linha-principal">
+        <strong>BOM NATAL E BOM ANO DE 2027!</strong>
+        <span>10% DE DESCONTO EM TODOS OS ARTIGOS</span>
+        <strong className="natal-2027-codigo">JoBasto10</strong>
+      </div>
+      <p>Boas Festas! Obrigado por fazer parte da família JomaBasto Store. Que 2027 seja um ano cheio de alegria, saúde e novas conquistas!</p>
+    </section>
     {/* HERO */}
 <div className="ofertas-semana-bar" role="link" tabIndex="0" onClick={() => selectCategory("promocoes")} onKeyDown={(e) => { if (e.target !== e.currentTarget) return; if (e.key === "Enter" || e.key === " ") selectCategory("promocoes"); }}>
   <span className="ofertas-semana-text">OFERTAS DA SEMANA</span>
@@ -2833,43 +2815,7 @@ return (
     `}</style>
     <section className="home-hero-layout">
 
-      <article className="hero-video-card home-block-natal">
-        <div className="natal-video-frame" ref={natalVideoFrameRef}>
-          <iframe
-            className="natal-video-iframe"
-            src="https://player.vimeo.com/video/988266771?autoplay=1&muted=1&loop=1&controls=0"
-            title="Joma Press Day 2025 - Especial de Natal"
-            frameBorder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
-          />
-          <div className="natal-video-message">
-            <span>FELIZ NATAL</span>
-            <strong>E UM EXCELENTE 2027</strong>
-            <small>Obrigado por fazer parte da nossa história.</small>
-            <div className="natal-video-offer">
-              <p className="natal-video-offer-title">UMA PRENDA ESPECIAL PARA SI!</p>
-              <div className="natal-video-offer-highlight">
-                <p className="natal-video-offer-code">JoBasto10</p>
-                <strong className="natal-video-offer-discount">10% DE DESCONTO</strong>
-              </div>
-              <p className="natal-video-offer-detail">
-                <span>Use o código nas suas compras.</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-<article className="home-block-natal-interstitial">
-        <div className="natal-interstitial-content">
-          <span className="natal-interstitial-kicker">JOMA BASTO</span>
-          <h2>O ESPÍRITO DO DESPORTO TAMBÉM SE VIVE NO NATAL</h2>
-          <div className="natal-interstitial-divider"></div>
-          <p>Que esta época seja feita de alegria, união e novas conquistas. Obrigado por continuar a fazer parte da família Joma Basto.</p>
-        </div>
-      </article>
-
-<article className="hero-video-card home-block-trail">
+      <article className="hero-video-card home-block-trail">
         <button
           type="button"
           className="hero-video-button"
