@@ -2863,6 +2863,17 @@ return (
           <img src="/images/trail-novo.jpg" alt="Trail Joma" />
         </button>
       </div>
+      <div className="home-desktop-media-row home-desktop-running-row">
+        <button type="button" onClick={() => selectCategory("running")} aria-label="Ver Running">
+          <img src="/images/running-novo.jpg" alt="Running Joma" />
+        </button>
+        <button type="button" onClick={() => selectCategory("trail")} aria-label="Ver Trail">
+          <video className="home-desktop-video" src="/videos/trail.mp4" autoPlay muted loop playsInline preload="metadata" aria-label="Trail Joma" />
+        </button>
+        <button type="button" onClick={() => selectCategory("trail")} aria-label="Ver Trail">
+          <img src="/images/trail-novo.jpg" alt="Trail Joma" />
+        </button>
+      </div>
 
       <article className="hero-video-card hero-video-futebol home-block-futebol">
         <button
@@ -2927,6 +2938,17 @@ return (
           <img src="/images/futsal-novo.jpg" alt="Futsal Joma" />
         </button>
       </div>
+      <div className="home-desktop-media-row home-desktop-football-row">
+        <button type="button" onClick={() => selectCategory("futebol")} aria-label="Ver Futebol">
+          <img src="/images/futebol-novo.jpg" alt="Futebol Joma" />
+        </button>
+        <button type="button" onClick={() => selectCategory("futebol")} aria-label="Ver Futebol">
+          <video className="home-desktop-video" src="/videos/trail-mobile.mp4" autoPlay muted loop playsInline preload="metadata" aria-label="Futebol Joma" />
+        </button>
+        <button type="button" onClick={() => selectCategory("futsal")} aria-label="Ver Futsal">
+          <img src="/images/futsal-novo.jpg" alt="Futsal Joma" />
+        </button>
+      </div>
 
       <div className="home-section-divider home-block-divider">
         <strong>JOMA BASTO</strong>
@@ -2977,6 +2999,17 @@ return (
           <img src="/images/tenis-novo.jpg" alt="Ténis Joma" />
         </button>
         <button type="button" onClick={() => selectCategory("padel")}>
+          <img src="/images/padel-novo.jpg" alt="Padel Joma" />
+        </button>
+      </div>
+      <div className="home-desktop-media-row home-desktop-tennis-row">
+        <button type="button" onClick={() => selectCategory("tenis")} aria-label="Ver Ténis">
+          <img src="/images/tenis-novo.jpg" alt="Ténis Joma" />
+        </button>
+        <button type="button" onClick={() => selectCategory("padel")} aria-label="Ver Padel">
+          <video className="home-desktop-video" src="/videos/tenis-mobile.mp4" autoPlay muted loop playsInline preload="metadata" aria-label="Padel Joma" />
+        </button>
+        <button type="button" onClick={() => selectCategory("padel")} aria-label="Ver Padel">
           <img src="/images/padel-novo.jpg" alt="Padel Joma" />
         </button>
       </div>

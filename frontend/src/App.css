@@ -7872,3 +7872,119 @@ body {
     white-space: normal;
   }
 }
+
+/* HOMEPAGE - FILAS DESKTOP CARTAZ VIDEO CARTAZ */
+.home-desktop-media-row {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .home-hero-layout .home-block-trail,
+  .home-hero-layout .home-block-futebol,
+  .home-hero-layout .home-block-tenis,
+  .home-hero-layout .home-block-running-posters,
+  .home-hero-layout .home-block-futebol-posters,
+  .home-hero-layout .home-block-tenis-posters {
+    display: none !important;
+  }
+
+  .home-hero-layout .home-desktop-media-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .home-hero-layout .home-desktop-media-row button {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 14px;
+  }
+
+  .home-hero-layout .home-desktop-media-row img {
+    display: block;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 14px;
+  }
+
+  .home-hero-layout .home-desktop-video {
+    display: block;
+    width: 90%;
+    height: auto;
+    max-height: 460px;
+    margin: 0 auto;
+    object-fit: contain;
+    border-radius: 14px;
+    background: #000;
+  }
+}
+
+
+/* CORRECAO FINAL - ORDEM E DIMENSOES DESKTOP */
+@media (min-width: 769px) {
+
+  .home-hero-layout .home-block-running {
+    order: 1 !important;
+  }
+
+  .home-hero-layout .home-desktop-running-row {
+    order: 2 !important;
+  }
+
+  .home-hero-layout .home-block-seo {
+    order: 3 !important;
+  }
+
+  .home-hero-layout .home-block-futebol-intro {
+    order: 4 !important;
+  }
+
+  .home-hero-layout .home-desktop-football-row {
+    order: 5 !important;
+  }
+
+  .home-hero-layout .home-block-divider {
+    order: 6 !important;
+  }
+
+  .home-hero-layout .home-block-tenis-intro {
+    order: 7 !important;
+  }
+
+  .home-hero-layout .home-desktop-tennis-row {
+    order: 8 !important;
+  }
+
+  .home-hero-layout .home-desktop-media-row {
+    align-items: stretch;
+  }
+
+  .home-hero-layout .home-desktop-media-row button {
+    aspect-ratio: 2 / 3;
+    height: auto;
+  }
+
+  .home-hero-layout .home-desktop-media-row img,
+  .home-hero-layout .home-desktop-media-row video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    object-fit: cover;
+    border-radius: 14px;
+  }
+
+  .home-hero-layout .home-desktop-video {
+    max-height: none;
+    background: #000;
+  }
+}
