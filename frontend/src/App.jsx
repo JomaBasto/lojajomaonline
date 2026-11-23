@@ -2334,6 +2334,7 @@ return (
 
     <a onClick={(e) => selectMobileCategory("textil-crianca", e)}>Criança</a>
 
+    <a onClick={(e) => selectMobileCategory("textil-brama", e)}>BRAMA</a>
     <a onClick={(e) => selectMobileCategory("textil-outlet", e)}>Outlet</a>
 
   </details>
@@ -2578,6 +2579,7 @@ return (
 
     <a onClick={() => selectCategory("textil-crianca")}>{t("children")}</a>
 
+    <a onClick={() => selectCategory("textil-brama")}>BRAMA</a>
     <a onClick={() => selectCategory("textil-outlet")}>Outlet</a>
 
   </div>
@@ -3308,6 +3310,7 @@ return (
 
         <option value="crianca">Criança</option>
 
+        <option value="brama">BRAMA</option>
         <option value="outlet">Outlet</option>
 
       </>
